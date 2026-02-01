@@ -3,104 +3,180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Detail | Lumina Digital</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <title>Aura Interiors | Minimalist Luxury</title>
     <style>
-        .project-hero {
-            padding: 150px 0 80px;
-            text-align: center;
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Montserrat:wght@300;400&display=swap');
+
+        :root {
+            --bg: #f4f1ea;
+            --text: #2a2a2a;
         }
-        .project-meta {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            color: var(--text-dim);
-            font-family: var(--font-head);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
         }
-        .mockup-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 4rem 0;
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
         }
-        .mockup-img {
+
+        nav {
+            position: fixed;
+            top: 0;
             width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            background: #111;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+            color: #fff;
         }
-        .project-brief {
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: var(--text-dim);
+
+        .logo { font-size: 1.5rem; letter-spacing: 1px; font-style: italic; }
+
+        section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%; /* Taller for parallax */
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .hero-text h1 { font-size: 6rem; margin: 0; }
+        .hero-text p { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+
+        .gallery {
+            padding: 10rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .gallery-item:nth-child(even) {
+            margin-top: 10rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+        }
+
+        .text-block {
+            padding: 10rem 20%;
             text-align: center;
         }
-        @media (min-width: 768px) {
-            .mockup-grid { grid-template-columns: 1fr 1fr; }
-            .mockup-grid .full-width { grid-column: span 2; }
+
+        .text-block p {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.4;
         }
+
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 </head>
 <body>
 
-    <div class="grid-bg"></div>
-    <div class="glow-orb"></div>
-
     <nav>
-        <div class="nav-container">
-            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
-            <a href="../../work.html" class="cta-button">Back to Work</a>
-        </div>
+        <div class="logo">Aura</div>
+        <div>Menu</div>
     </nav>
 
-    <div class="container">
-        <header class="project-hero">
-            <div class="project-meta">
-                <span>2025</span>
-                <span>Web Design</span>
-                <span>Strategy</span>
-            </div>
-            <h1 class="hero-text" style="font-size: 5rem; margin-bottom: 1rem;">Aura Interiors</h1>
-        </header>
-
-        <div class="project-brief">
-            <p>A minimalist e-commerce platform for high-end interior design. Focusing on negative space and typography to highlight the product quality.</p>
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80" class="hero-img" id="hero-bg">
+        <div class="hero-text">
+            <p>Est. 2024</p>
+            <h1>Living in <br>Harmony</h1>
         </div>
+    </section>
 
-        <div class="mockup-grid">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Mockup 1" class="mockup-img full-width">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e0ad6a?auto=format&fit=crop&w=800&q=80" alt="Mockup 2" class="mockup-img">
-            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=800&q=80" alt="Mockup 3" class="mockup-img">
+    <div class="text-block">
+        <p>"Architecture should speak of its time and place, but yearn for timelessness."</p>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="gallery-img">
         </div>
-
-        <div style="text-align: center; margin-bottom: 8rem;">
-            <a href="#" class="big-link">Visit Live Site</a>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80" class="gallery-img">
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <div class="footer-meta">
-                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
-            </div>
+    <section style="height: 50vh; background: #2a2a2a; color: #fff;">
+        <div style="text-align: center;">
+            <h2>Create your space.</h2>
+            <br>
+            <a href="#" style="color: #fff; border-bottom: 1px solid #fff; text-decoration: none; font-size: 1.2rem;">Get in touch</a>
         </div>
-    </footer>
+    </section>
 
-    <script src="../../script.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax
+        gsap.to("#hero-bg", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            y: 200
+        });
+
+        // Gallery Parallax
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const img = item.querySelector('.gallery-img');
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: 100
+            });
+        });
+    </script>
 </body>
 </html>

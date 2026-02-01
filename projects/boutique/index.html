@@ -3,104 +3,717 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Project Detail | Lumina Digital</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <link rel="stylesheet" href="../../style.css">
-    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
-    <style>
-        .project-hero {
-            padding: 150px 0 80px;
-            text-align: center;
-        }
-        .project-meta {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-bottom: 2rem;
-            color: var(--text-dim);
-            font-family: var(--font-head);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            font-size: 0.9rem;
-        }
-        .mockup-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .mockup-img {
-            width: 100%;
-            border-radius: 12px;
-            border: 1px solid var(--line);
-            aspect-ratio: 16/9;
-            object-fit: cover;
-            background: #111;
-        }
-        .project-brief {
-            max-width: 800px;
-            margin: 0 auto 4rem;
-            font-size: 1.25rem;
-            line-height: 1.6;
-            color: var(--text-dim);
-            text-align: center;
-        }
-        @media (min-width: 768px) {
-            .mockup-grid { grid-template-columns: 1fr 1fr; }
-            .mockup-grid .full-width { grid-column: span 2; }
-        }
-    </style>
+    <title>VOGUE ATELIER | Designer Boutique</title>
+    <meta name="description" content="Curated designer fashion for the modern woman. Exclusive ethnic and western wear in Ahmedabad.">
+    <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-text">VOGUE</div>
+    </div>
 
-    <div class="grid-bg"></div>
-    <div class="glow-orb"></div>
-
-    <nav>
+    <!-- Navigation -->
+    <nav class="navbar">
         <div class="nav-container">
-            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
-            <a href="../../work.html" class="cta-button">Back to Work</a>
+            <a href="#home" class="logo">VOGUE ATELIER</a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#collections">Collections</a></li>
+                <li><a href="#lookbook">Lookbook</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"/>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                    </svg>
+                </a>
+                <a href="#" class="icon-btn">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="9" cy="21" r="1"/>
+                        <circle cx="20" cy="21" r="1"/>
+                        <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                    </svg>
+                </a>
+                <a href="#contact" class="btn btn-primary">Visit Store</a>
+            </div>
+            <div class="menu-toggle"><span></span><span></span></div>
         </div>
     </nav>
 
-    <div class="container">
-        <header class="project-hero">
-            <div class="project-meta">
-                <span>2025</span>
-                <span>Web Design</span>
-                <span>Strategy</span>
-            </div>
-            <h1 class="hero-text" style="font-size: 5rem; margin-bottom: 1rem;">Velvet Boutique</h1>
-        </header>
-
-        <div class="project-brief">
-            <p>A fashion e-commerce experience designed for conversion. Featuring dynamic product showcases, seamless checkout, and high-ROAS marketing integration.</p>
-        </div>
-
-        <div class="mockup-grid">
-            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Mockup 1" class="mockup-img full-width">
-            <img src="https://images.unsplash.com/photo-1558655146-d09347e0ad6a?auto=format&fit=crop&w=800&q=80" alt="Mockup 2" class="mockup-img">
-            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=800&q=80" alt="Mockup 3" class="mockup-img">
-        </div>
-
-        <div style="text-align: center; margin-bottom: 8rem;">
-            <a href="#" class="big-link">Visit Live Site</a>
-        </div>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collections">Collections</a></li>
+            <li><a href="#lookbook">Lookbook</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
 
-    <footer>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="slide active">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1920&h=1080&fit=crop')"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">New Arrival</span>
+                    <h1>Spring Summer<br><span>2025</span></h1>
+                    <p>Discover the season's most coveted styles</p>
+                    <a href="#collections" class="btn btn-light">Shop Collection</a>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop')"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Exclusive</span>
+                    <h1>Bridal<br><span>Couture</span></h1>
+                    <p>Bespoke designs for your special day</p>
+                    <a href="#collections" class="btn btn-light">Explore Bridal</a>
+                </div>
+            </div>
+            <div class="slide">
+                <div class="slide-image" style="background-image: url('https://images.unsplash.com/photo-1445205170230-053b83016050?w=1920&h=1080&fit=crop')"></div>
+                <div class="slide-content">
+                    <span class="slide-tag">Handcrafted</span>
+                    <h1>Ethnic<br><span>Elegance</span></h1>
+                    <p>Traditional artistry meets modern design</p>
+                    <a href="#collections" class="btn btn-light">View Collection</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-nav">
+            <button class="nav-btn prev">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </button>
+            <div class="slide-counter"><span class="current">01</span> / <span class="total">03</span></div>
+            <button class="nav-btn next">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"/>
+                </svg>
+            </button>
+        </div>
+
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
+
+        <div class="social-sidebar">
+            <a href="#">Ig</a>
+            <a href="#">Fb</a>
+            <a href="#">Pt</a>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="categories">
         <div class="container">
-            <div class="footer-meta">
-                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            <div class="categories-grid">
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=750&fit=crop" alt="Sarees">
+                    </div>
+                    <div class="category-info">
+                        <h3>Sarees</h3>
+                        <span>120+ Designs</span>
+                    </div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=600&h=750&fit=crop" alt="Lehengas">
+                    </div>
+                    <div class="category-info">
+                        <h3>Lehengas</h3>
+                        <span>85+ Designs</span>
+                    </div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=600&h=750&fit=crop" alt="Suits">
+                    </div>
+                    <div class="category-info">
+                        <h3>Designer Suits</h3>
+                        <span>200+ Designs</span>
+                    </div>
+                </a>
+                <a href="#" class="category-card">
+                    <div class="category-image">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=600&h=750&fit=crop" alt="Western">
+                    </div>
+                    <div class="category-info">
+                        <h3>Western Wear</h3>
+                        <span>150+ Designs</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collections Section -->
+    <section id="collections" class="collections">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Curated For You</span>
+                <h2 class="section-title">Featured Collections</h2>
+            </div>
+
+            <div class="collection-filters">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="ethnic">Ethnic</button>
+                <button class="filter-btn" data-filter="western">Western</button>
+                <button class="filter-btn" data-filter="bridal">Bridal</button>
+                <button class="filter-btn" data-filter="casual">Casual</button>
+            </div>
+
+            <div class="products-grid">
+                <div class="product-card" data-category="ethnic">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=500&h=650&fit=crop" alt="Silk Saree">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <span class="product-tag">New</span>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Banarasi Silk Saree</h3>
+                        <p>Handwoven pure silk with zari work</p>
+                        <div class="product-price">
+                            <span class="current-price">₹12,500</span>
+                            <span class="original-price">₹15,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="bridal">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=650&fit=crop" alt="Bridal Lehenga">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <span class="product-tag hot">Bestseller</span>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Royal Bridal Lehenga</h3>
+                        <p>Heavy embroidered velvet with dupatta</p>
+                        <div class="product-price">
+                            <span class="current-price">₹85,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="ethnic">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500&h=650&fit=crop" alt="Anarkali">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Floral Anarkali Suit</h3>
+                        <p>Georgette with thread embroidery</p>
+                        <div class="product-price">
+                            <span class="current-price">₹8,500</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="western">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&h=650&fit=crop" alt="Dress">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Elegant Maxi Dress</h3>
+                        <p>Flowy chiffon in pastel shades</p>
+                        <div class="product-price">
+                            <span class="current-price">₹4,500</span>
+                            <span class="original-price">₹6,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="casual">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&h=650&fit=crop" alt="Kurti">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Cotton Printed Kurti</h3>
+                        <p>Breathable cotton with block print</p>
+                        <div class="product-price">
+                            <span class="current-price">₹1,800</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-category="ethnic">
+                    <div class="product-image">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&h=650&fit=crop" alt="Sharara">
+                        <div class="product-overlay">
+                            <button class="quick-view">Quick View</button>
+                        </div>
+                        <span class="product-tag">Trending</span>
+                        <button class="wishlist-btn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="product-info">
+                        <h3>Sharara Set</h3>
+                        <p>Mirror work with sequin detailing</p>
+                        <div class="product-price">
+                            <span class="current-price">₹15,000</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="collection-cta">
+                <a href="#" class="btn btn-outline-dark btn-lg">View All Products</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lookbook Section -->
+    <section id="lookbook" class="lookbook">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Style Inspiration</span>
+                <h2 class="section-title">Lookbook SS25</h2>
+            </div>
+
+            <div class="lookbook-grid">
+                <div class="lookbook-item large">
+                    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=1000&fit=crop" alt="Look 1">
+                    <div class="lookbook-overlay">
+                        <span class="look-number">01</span>
+                        <h3>Festive Glam</h3>
+                        <a href="#" class="btn btn-light btn-sm">Shop Look</a>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=500&h=600&fit=crop" alt="Look 2">
+                    <div class="lookbook-overlay">
+                        <span class="look-number">02</span>
+                        <h3>Office Chic</h3>
+                        <a href="#" class="btn btn-light btn-sm">Shop Look</a>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1445205170230-053b83016050?w=500&h=600&fit=crop" alt="Look 3">
+                    <div class="lookbook-overlay">
+                        <span class="look-number">03</span>
+                        <h3>Weekend Vibes</h3>
+                        <a href="#" class="btn btn-light btn-sm">Shop Look</a>
+                    </div>
+                </div>
+                <div class="lookbook-item tall">
+                    <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=500&h=800&fit=crop" alt="Look 4">
+                    <div class="lookbook-overlay">
+                        <span class="look-number">04</span>
+                        <h3>Evening Elegance</h3>
+                        <a href="#" class="btn btn-light btn-sm">Shop Look</a>
+                    </div>
+                </div>
+                <div class="lookbook-item">
+                    <img src="https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=500&h=600&fit=crop" alt="Look 5">
+                    <div class="lookbook-overlay">
+                        <span class="look-number">05</span>
+                        <h3>Casual Friday</h3>
+                        <a href="#" class="btn btn-light btn-sm">Shop Look</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div class="container">
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>
+                        </svg>
+                    </div>
+                    <h3>Curated Selection</h3>
+                    <p>Handpicked designs from top Indian designers</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M20 12v10H4V12"/>
+                            <path d="M2 7h20v5H2z"/>
+                            <path d="M12 22V7"/>
+                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/>
+                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                        </svg>
+                    </div>
+                    <h3>Gift Packaging</h3>
+                    <p>Complimentary luxury gift wrapping</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <circle cx="6" cy="6" r="3"/>
+                            <circle cx="6" cy="18" r="3"/>
+                            <line x1="20" y1="4" x2="8.12" y2="15.88"/>
+                            <line x1="14.47" y1="14.48" x2="20" y2="20"/>
+                            <line x1="8.12" y1="8.12" x2="12" y2="12"/>
+                        </svg>
+                    </div>
+                    <h3>Custom Tailoring</h3>
+                    <p>Perfect fit guaranteed with alterations</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="1" y="3" width="15" height="13"/>
+                            <polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/>
+                            <circle cx="5.5" cy="18.5" r="2.5"/>
+                            <circle cx="18.5" cy="18.5" r="2.5"/>
+                        </svg>
+                    </div>
+                    <h3>Free Delivery</h3>
+                    <p>On orders above ₹5,000 in Ahmedabad</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <div class="img-main">
+                        <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=600&h=700&fit=crop" alt="Store">
+                    </div>
+                    <div class="img-accent">
+                        <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=500&fit=crop" alt="Fashion">
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-tag">Our Story</span>
+                    <h2 class="section-title">Crafting Elegance Since 2015</h2>
+                    <p class="lead">What started as a passion for beautiful textiles has grown into Ahmedabad's most beloved fashion destination.</p>
+                    <p>At Vogue Atelier, we believe every woman deserves to feel extraordinary. Our carefully curated collection brings together traditional craftsmanship and contemporary design, offering pieces that celebrate your unique style.</p>
+                    <p>From festive celebrations to everyday elegance, we're here to help you express your personal style with confidence.</p>
+                    
+                    <div class="about-stats">
+                        <div class="stat-item">
+                            <span class="stat-number">10+</span>
+                            <span class="stat-label">Years</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">5000+</span>
+                            <span class="stat-label">Happy Clients</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-number">500+</span>
+                            <span class="stat-label">Designs</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-tag">Client Love</span>
+                <h2 class="section-title">What Our Clients Say</h2>
+            </div>
+
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"Found my dream bridal lehenga here! The team was incredibly helpful and the quality exceeded my expectations. Worth every penny!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                        <div>
+                            <h4>Priya Sharma</h4>
+                            <span>Bride, Nov 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"My go-to boutique for festive wear! The collection is always fresh and the styling advice is spot on. Love this place!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client">
+                        <div>
+                            <h4>Anjali Patel</h4>
+                            <span>Regular Customer</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-content">
+                        <p>"The customization options are amazing. They tailored everything perfectly to my measurements. Highly recommend!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client">
+                        <div>
+                            <h4>Riya Kapoor</h4>
+                            <span>VIP Member</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram Section -->
+    <section class="instagram">
+        <div class="section-header text-center">
+            <span class="section-tag">Follow Us</span>
+            <h2 class="section-title">@vogueatelier</h2>
+        </div>
+        <div class="instagram-grid">
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1610030469983-98e550d6193c?w=300&h=300&fit=crop" alt="Instagram"></a>
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1583391733956-6c78276477e2?w=300&h=300&fit=crop" alt="Instagram"></a>
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=300&h=300&fit=crop" alt="Instagram"></a>
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?w=300&h=300&fit=crop" alt="Instagram"></a>
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop" alt="Instagram"></a>
+            <a href="#" class="insta-item"><img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=300&h=300&fit=crop" alt="Instagram"></a>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-tag">Visit Us</span>
+                    <h2 class="section-title">Our Boutique</h2>
+                    <p>Step into our carefully designed space and explore our collections in person. Our stylists are ready to help you find your perfect piece.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Fashion Street, C.G. Road<br>Ahmedabad, Gujarat 380009</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12 6 12 12 16 14"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <h4>Store Hours</h4>
+                                <p>Mon-Sat: 11 AM - 8 PM<br>Sunday: 12 PM - 6 PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon">
+                                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                            </span>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hello@vogueatelier.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="whatsapp-cta">
+                        <a href="https://wa.me/919876543210" class="btn btn-whatsapp btn-lg">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+                            </svg>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.904584937365!2d72.51127!3d23.02887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzQ0LjAiTiA3MsKwMzAnNDAuNSJF!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Join Our Style Circle</h2>
+                <p>Be the first to know about new arrivals, exclusive offers, and styling tips.</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email">
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">VOGUE ATELIER</a>
+                    <p>Curating elegance for the modern woman since 2015.</p>
+                    <div class="social-links">
+                        <a href="#">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M12 0a12 12 0 0 0-3.79 23.4c-.01-.34-.01-.77 0-1.27.01-.5.03-.97.06-1.42a8.9 8.9 0 0 1-1.29-.62c-.42-.24-.78-.54-1.07-.9-.29-.36-.49-.77-.6-1.23-.11-.46-.11-.94 0-1.43.11-.49.32-.93.63-1.33.31-.4.69-.72 1.14-.97.45-.25.95-.4 1.5-.45a5.3 5.3 0 0 1 1.57.09c.52.11.99.31 1.41.6.42.29.76.65 1.02 1.08a3.1 3.1 0 0 1 .47 1.47h.02c.01-.54.09-1.04.25-1.5.16-.46.39-.86.69-1.2.3-.34.66-.6 1.08-.78.42-.18.88-.27 1.38-.27.5 0 .96.09 1.38.27.42.18.78.44 1.08.78.3.34.53.74.69 1.2.16.46.24.96.25 1.5h.02a3.1 3.1 0 0 1 .47-1.47c.26-.43.6-.79 1.02-1.08.42-.29.89-.49 1.41-.6a5.3 5.3 0 0 1 1.57-.09c.55.05 1.05.2 1.5.45.45.25.83.57 1.14.97.31.4.52.84.63 1.33.11.49.11.97 0 1.43-.11.46-.31.87-.6 1.23-.29.36-.65.66-1.07.9a8.9 8.9 0 0 1-1.29.62c.03.45.05.92.06 1.42.01.5.01.93 0 1.27A12 12 0 0 0 12 0z"/>
+                            </svg>
+                        </a>
+                        <a href="#">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h4>Shop</h4>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Sarees</a></li>
+                        <li><a href="#">Lehengas</a></li>
+                        <li><a href="#">Suits</a></li>
+                        <li><a href="#">Western</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Help</h4>
+                    <ul>
+                        <li><a href="#">Size Guide</a></li>
+                        <li><a href="#">Shipping</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Care Guide</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="built-by"><a href="https://myyworkk.netlify.app" target="_blank">Built by <strong>Vibhu</strong></a></div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Vogue Atelier. All rights reserved.</p>
+                <div class="payment-methods">
+                    <svg width="32" height="20" viewBox="0 0 32 20" fill="currentColor">
+                        <rect width="32" height="20" rx="2" fill="#1A1F71"/>
+                        <text x="16" y="13" font-size="7" fill="white" text-anchor="middle">VISA</text>
+                    </svg>
+                    <svg width="32" height="20" viewBox="0 0 32 20" fill="currentColor">
+                        <rect width="32" height="20" rx="2" fill="#EB001B"/>
+                        <circle cx="12" cy="10" r="6" fill="#EB001B"/>
+                        <circle cx="20" cy="10" r="6" fill="#F79E1B"/>
+                    </svg>
+                    <svg width="32" height="20" viewBox="0 0 32 20" fill="currentColor">
+                        <rect width="32" height="20" rx="2" fill="#5C5C5C"/>
+                        <text x="16" y="13" font-size="5" fill="white" text-anchor="middle">UPI</text>
+                    </svg>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script src="../../script.js"></script>
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="18 15 12 9 6 15"/>
+        </svg>
+    </button>
+
+    <script src="script.js"></script>
 </body>
 </html>
