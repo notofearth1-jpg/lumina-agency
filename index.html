@@ -3,281 +3,172 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lumina Digital | Premium Web Design & SEO Agency Berlin</title>
-    <meta name="description" content="Lumina Digital is a premier Berlin-based agency specializing in high-performance web design, SEO strategies, and custom development (React, Next.js). Boost your ranking today.">
-    <meta name="keywords" content="Web Design Berlin, SEO Agency Berlin, Next.js Developer, React Agency, High Performance Website, Digital Marketing, E-Commerce Development">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://luminadigital.site/">
+    <title>Lumina Digital | Future-Ready Digital Experiences</title>
+    <meta name="description" content="Lumina Digital crafts high-performance digital experiences. We blend art, code, and strategy to build brands that define the future.">
     
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://luminadigital.site/">
-    <meta property="og:title" content="Lumina Digital | Premium Web Design & SEO Agency Berlin">
-    <meta property="og:description" content="We build stunning digital experiences for brands that want to stand out. Web Design, Branding, and Growth strategies in Berlin.">
-    <meta property="og:image" content="https://luminadigital.site/og-image.jpg">
-
-    <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://luminadigital.site/">
-    <meta property="twitter:title" content="Lumina Digital | Premium Web Design & SEO Agency Berlin">
-    <meta property="twitter:description" content="We build stunning digital experiences for brands that want to stand out. Web Design, Branding, and Growth strategies in Berlin.">
-    <meta property="twitter:image" content="https://luminadigital.site/og-image.jpg">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "ProfessionalService",
-      "name": "Lumina Digital",
-      "image": "https://luminadigital.site/logo.svg",
-      "url": "https://luminadigital.site",
-      "telephone": "",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "Torstr. 1",
-        "addressLocality": "Berlin",
-        "postalCode": "10119",
-        "addressCountry": "DE"
-      },
-      "geo": {
-        "@type": "GeoCoordinates",
-        "latitude": 52.5200,
-        "longitude": 13.4050
-      },
-      "openingHoursSpecification": {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": [
-          "Monday",
-          "Tuesday",
-          "Wednesday",
-          "Thursday",
-          "Friday"
-        ],
-        "opens": "09:00",
-        "closes": "18:00"
-      },
-      "sameAs": [
-        "https://www.linkedin.com/company/luminadigital",
-        "https://www.instagram.com/luminadigital"
-      ]
-    }
-    </script>
-
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-    
+
+    <!-- Grid Background -->
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <!-- Navigation -->
     <nav>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.svg" alt="Lumina Logo" style="height: 40px;">
-            </a>
-            <div class="nav-links">
-                <a href="work.html">Work</a>
-                <a href="services.html">Services</a>
-                <a href="process.html">Process</a>
-                <a href="blog.html">Insights</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="btn btn-primary">Start Project</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            
+            <div class="desktop-menu">
+                <a href="#work" class="nav-link">Work</a>
+                <a href="#expertise" class="nav-link">Expertise</a>
+                <a href="#agency" class="nav-link">Agency</a>
             </div>
-            <button class="mobile-menu-btn" aria-label="Toggle Menu">
-                <span></span>
-                <span></span>
-                <span></span>
+
+            <a href="contact.html" class="cta-button">Let's Talk</a>
+
+            <button class="menu-toggle" aria-label="Toggle Menu">
+                <span class="line"></span>
+                <span class="line"></span>
             </button>
-        </div>
-        <div class="mobile-menu">
-            <a href="work.html">Work</a>
-            <a href="services.html">Services</a>
-            <a href="process.html">Process</a>
-            <a href="blog.html">Insights</a>
-            <a href="about.html">About</a>
-            <a href="contact.html">Start Project</a>
         </div>
     </nav>
 
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="#work">Work</a>
+            <a href="#expertise">Expertise</a>
+            <a href="#agency">Agency</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
     <header class="hero">
-        <div class="hero-bg"></div>
         <div class="container">
-            <div class="hero-content">
-                <h1 class="fade-in">Crafting Digital <br><span class="gradient-text">Masterpieces</span></h1>
-                <p class="fade-in">We help ambitious brands conquer the digital world with pixel-perfect design and cutting-edge technology.</p>
-                <div class="hero-btns fade-in">
-                    <a href="#armory-showcase" class="btn btn-primary">Latest Innovation</a>
-                    <a href="contact.html" class="btn btn-secondary">Get in Touch</a>
-                </div>
+            <div class="hero-text">
+                <h1 class="reveal-text">We engineer</h1>
+                <h1 class="reveal-text highlight">digital gravity.</h1>
+            </div>
+            <p class="hero-sub reveal-text-delay">
+                Lumina is a next-generation design agency. We merge aesthetic precision with technical excellence to create websites that pull the world in.
+            </p>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="line"></div>
             </div>
         </div>
     </header>
 
-    <!-- Armory.AI Integration Section -->
-    <section id="armory-showcase" class="armory-section">
+    <!-- Spotlight Project: Armory -->
+    <section class="spotlight-section" id="work">
         <div class="container">
-            <div class="armory-wrapper">
-                <div class="armory-content">
-                    <span class="badge">New Release</span>
-                    <h2>ARMORY<span style="color: #00f3ff;">.AI</span></h2>
-                    <p>Experience the next generation of 3D asset visualization. We built a high-performance, WebGL-powered 3D weapons portfolio with immersive scrollytelling and interactive inspection modes.</p>
-                    <ul class="armory-features">
-                        <li>⚡ React Three Fiber</li>
-                        <li>🎨 Cyberpunk Aesthetics</li>
-                        <li>🔄 Interactive 3D Inspection</li>
-                    </ul>
-                    <a href="https://armory-ai-omega.vercel.app/" target="_blank" class="btn btn-armory">Launch Experience</a>
+            <div class="section-label">01 / SPOTLIGHT</div>
+            <div class="spotlight-grid">
+                <div class="spotlight-info">
+                    <h2>ARMORY<span class="accent">.AI</span></h2>
+                    <p class="project-desc">A WebGL-powered 3D asset visualization platform. Features real-time inspection, scrollytelling narratives, and high-fidelity rendering.</p>
+                    
+                    <div class="project-tags">
+                        <span>React Three Fiber</span>
+                        <span>WebGL</span>
+                        <span>Vite</span>
+                    </div>
+
+                    <a href="https://armory-ai-omega.vercel.app/" target="_blank" class="project-link">
+                        Launch Experience <span class="arrow">→</span>
+                    </a>
                 </div>
-                <div class="armory-visual">
-                    <iframe src="https://armory-ai-omega.vercel.app/" frameborder="0" scrolling="no"></iframe>
-                    <div class="visual-overlay"></div>
+                <div class="spotlight-preview">
+                    <div class="preview-frame">
+                        <iframe src="https://armory-ai-omega.vercel.app/" title="Armory Preview" loading="lazy"></iframe>
+                        <div class="click-guard"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <div class="tech-stack">
-        <div class="marquee-content">
-            <span class="tech-item">React</span>
-            <span class="tech-item">Next.js</span>
-            <span class="tech-item">TypeScript</span>
-            <span class="tech-item">Node.js</span>
-            <span class="tech-item">WebGL</span>
-            <span class="tech-item">Tailwind</span>
-            <span class="tech-item">Figma</span>
-            <span class="tech-item">React</span> <!-- Duplicated for seamless loop -->
-            <span class="tech-item">Next.js</span>
-            <span class="tech-item">TypeScript</span>
-            <span class="tech-item">Node.js</span>
-            <span class="tech-item">WebGL</span>
-            <span class="tech-item">Tailwind</span>
-            <span class="tech-item">Figma</span>
-        </div>
-    </div>
-
-    <section class="services-section">
+    <!-- Selected Work List -->
+    <section class="work-list-section">
         <div class="container">
-            <div class="section-header">
-                <h2>Our Expertise</h2>
-                <p>Comprehensive solutions for the modern web.</p>
+            <div class="section-label">02 / SELECTED WORK</div>
+            
+            <div class="project-list">
+                <a href="projects/nexus/index.html" class="project-row">
+                    <span class="p-name">Nexus VR</span>
+                    <span class="p-cat">Immersive Launch</span>
+                    <span class="p-year">2025</span>
+                </a>
+                <a href="projects/aura/index.html" class="project-row">
+                    <span class="p-name">Aura Interiors</span>
+                    <span class="p-cat">E-Commerce</span>
+                    <span class="p-year">2025</span>
+                </a>
+                <a href="projects/gym/index.html" class="project-row">
+                    <span class="p-name">Iron Forge</span>
+                    <span class="p-cat">Brand Identity</span>
+                    <span class="p-year">2024</span>
+                </a>
+                <a href="projects/salon/index.html" class="project-row">
+                    <span class="p-name">Éclat Salon</span>
+                    <span class="p-cat">Booking Platform</span>
+                    <span class="p-year">2024</span>
+                </a>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><img src="icons/design.svg" alt="Design" width="48"></div>
-                    <h3>Web Design</h3>
-                    <p>Immersive, responsive, and user-centric designs that tell your brand's story.</p>
+        </div>
+    </section>
+
+    <!-- Expertise / Services -->
+    <section class="expertise-section" id="expertise">
+        <div class="container">
+            <div class="section-label">03 / EXPERTISE</div>
+            <div class="expertise-grid">
+                <div class="exp-card">
+                    <h3>Design</h3>
+                    <p>UI/UX Design, Art Direction, Motion Design, 3D Assets, Design Systems.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><img src="icons/code.svg" alt="Code" width="48"></div>
+                <div class="exp-card">
                     <h3>Development</h3>
-                    <p>Blazing fast websites built with the latest tech stack (React, Next.js).</p>
+                    <p>Creative Coding, React/Next.js, WebGL, Headless CMS, Performance Optimization.</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><img src="icons/growth.svg" alt="Growth" width="48"></div>
-                    <h3>Growth & SEO</h3>
-                    <p>Data-driven strategies to increase visibility and convert visitors into customers.</p>
+                <div class="exp-card">
+                    <h3>Strategy</h3>
+                    <p>Brand Positioning, SEO, Analytics, Conversion Rate Optimization (CRO).</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="work-section">
+    <!-- Footer -->
+    <footer id="agency">
         <div class="container">
-            <div class="section-header">
-                <h2>Selected Work</h2>
-                <p>A showcase of our finest digital creations.</p>
+            <div class="footer-cta">
+                <h2>Have an idea?</h2>
+                <a href="contact.html" class="big-link">Let's build it.</a>
             </div>
-            <div class="work-grid">
-                <a href="projects/nexus/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1624571409412-1f253e1ecc89?auto=format&fit=crop&w=800&q=80" alt="Nexus VR Launch Site">
-                    <div class="work-overlay">
-                        <h3>Nexus VR</h3>
-                        <p><strong>Tech:</strong> Three.js / WebGL</p>
-                        <p>Immersive 3D Product Launch</p>
-                    </div>
-                </a>
-                <a href="projects/aura/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Aura Interiors">
-                    <div class="work-overlay">
-                        <h3>Aura Interiors</h3>
-                        <p><strong>Tech:</strong> GSAP Parallax</p>
-                        <p>Minimalist Design Portfolio</p>
-                    </div>
-                </a>
-                <a href="projects/gym/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gym Project">
-                    <div class="work-overlay">
-                        <h3>Iron Forge Gym</h3>
-                        <p><strong>SEO Result:</strong> +40% Organic Traffic</p>
-                        <p>Fitness Brand Overhaul & Lead Gen</p>
-                    </div>
-                </a>
-                <a href="projects/restaurant/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant Project - Taste & Soul">
-                    <div class="work-overlay">
-                        <h3>Taste & Soul</h3>
-                        <p><strong>Speed:</strong> 99/100 Google PageSpeed</p>
-                        <p>Gastronomy Experience & Local SEO</p>
-                    </div>
-                </a>
-                <a href="projects/salon/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Salon Project - Éclat Salon">
-                    <div class="work-overlay">
-                        <h3>Éclat Salon</h3>
-                        <p><strong>Conversion:</strong> 2x Booking Rate</p>
-                        <p>Luxury Booking Platform</p>
-                    </div>
-                </a>
-                 <a href="projects/boutique/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Fashion Project - Velvet Boutique">
-                    <div class="work-overlay">
-                        <h3>Velvet Boutique</h3>
-                        <p><strong>Sales:</strong> +150% ROAS</p>
-                        <p>E-Commerce Experience</p>
-                    </div>
-                </a>
-            </div>
-            <div style="text-align: center; margin-top: 4rem;">
-                <a href="work.html" class="btn btn-secondary">View All Projects</a>
-            </div>
-        </div>
-    </section>
-
-    <footer>
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">LUMINA</a>
-                    <p>Building the future of digital experiences from Berlin to the world.</p>
+            <div class="footer-meta">
+                <div class="meta-col">
+                    <span class="label">Socials</span>
+                    <a href="#">Instagram</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">LinkedIn</a>
                 </div>
-                <div class="footer-col">
-                    <h4>Sitemap</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="work.html">Work</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
+                <div class="meta-col">
+                    <span class="label">Contact</span>
+                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <p>Berlin, Germany</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Socials</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
-                        <li><a href="#">Dribbble</a></li>
-                    </ul>
+                <div class="meta-col copyright">
+                    <p>&copy; 2026 Lumina Digital</p>
                 </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Impressum</a></li>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Terms</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lumina Digital. All rights reserved.</p>
             </div>
         </div>
     </footer>
