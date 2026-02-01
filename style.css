@@ -184,9 +184,10 @@ nav.scrolled {
     background: white;
 }
 
-/* --- Spotlight (Armory) --- */
+/* --- Spotlight (Armory & Projects) --- */
 .spotlight-section {
-    padding: 10rem 0;
+    padding: 8rem 0;
+    border-bottom: 1px solid var(--line);
 }
 
 .spotlight-grid {
@@ -196,9 +197,22 @@ nav.scrolled {
     align-items: center;
 }
 
+/* Alternating Layout */
+.spotlight-grid.reverse {
+    grid-template-columns: 1.5fr 1fr;
+}
+
+.spotlight-grid.reverse .spotlight-info {
+    order: 2; /* Push text to right */
+}
+
+.spotlight-grid.reverse .spotlight-preview {
+    order: 1; /* Push image to left */
+}
+
 .spotlight-info h2 {
     font-family: var(--font-head);
-    font-size: 4rem;
+    font-size: 3.5rem;
     margin-bottom: 1.5rem;
     line-height: 1;
 }
@@ -210,12 +224,14 @@ nav.scrolled {
     color: var(--text-dim);
     margin-bottom: 2rem;
     line-height: 1.7;
+    max-width: 90%;
 }
 
 .project-tags {
     display: flex;
     gap: 1rem;
     margin-bottom: 3rem;
+    flex-wrap: wrap;
 }
 
 .project-tags span {
@@ -225,6 +241,7 @@ nav.scrolled {
     padding: 0.4rem 0.8rem;
     border-radius: 4px;
     color: var(--text-dim);
+    letter-spacing: 1px;
 }
 
 .project-link {
@@ -249,8 +266,24 @@ nav.scrolled {
     border-radius: 12px;
     overflow: hidden;
     border: 1px solid var(--line);
-    height: 600px;
+    height: 500px;
     background: #000;
+    transition: transform 0.5s ease;
+}
+
+.spotlight-preview:hover {
+    border-color: rgba(255,255,255,0.2);
+}
+
+.spotlight-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.7s ease;
+}
+
+.spotlight-preview:hover img {
+    transform: scale(1.05);
 }
 
 .preview-frame {
@@ -264,6 +297,25 @@ nav.scrolled {
     height: 100%;
     border: none;
     opacity: 0.8;
+}
+
+/* --- Responsive Updates for Spotlights --- */
+@media (max-width: 1024px) {
+    .spotlight-grid, .spotlight-grid.reverse {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+    }
+    
+    .spotlight-grid.reverse .spotlight-info { order: 0; }
+    .spotlight-grid.reverse .spotlight-preview { order: 1; }
+    
+    .spotlight-info h2 { font-size: 3rem; }
+    .spotlight-preview { height: 400px; }
+}
+
+@media (max-width: 768px) {
+    .spotlight-preview { height: 280px; }
+    .spotlight-info h2 { font-size: 2.5rem; }
 }
 
 /* --- Project List (Expanding) --- */
