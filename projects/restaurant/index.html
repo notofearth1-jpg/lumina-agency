@@ -3,45 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nexus VR | Lumina Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Project Detail | Lumina Digital</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <style>
-        :root {
-            --primary: #3b82f6;
-            --bg-color: #050505;
-            --text-color: #ffffff;
-        }
-        body {
-            margin: 0;
-            background: var(--bg-color);
-            color: var(--text-color);
-            font-family: 'Inter', sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+        .project-hero {
+            padding: 150px 0 80px;
             text-align: center;
         }
-        h1 { font-family: 'Outfit', sans-serif; font-size: 3rem; margin-bottom: 1rem; color: var(--primary); }
-        p { font-size: 1.2rem; color: #a3a3a3; max-width: 600px; line-height: 1.6; }
-        .back-btn {
-            display: inline-block;
-            margin-top: 2rem;
-            padding: 0.8rem 1.5rem;
-            border: 1px solid rgba(255,255,255,0.2);
-            color: white;
-            text-decoration: none;
-            border-radius: 50px;
-            transition: all 0.3s;
+        .project-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            color: var(--text-dim);
+            font-family: var(--font-head);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
         }
-        .back-btn:hover { background: rgba(255,255,255,0.1); }
+        .mockup-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .mockup-img {
+            width: 100%;
+            border-radius: 12px;
+            border: 1px solid var(--line);
+            aspect-ratio: 16/9;
+            object-fit: cover;
+            background: #111;
+        }
+        .project-brief {
+            max-width: 800px;
+            margin: 0 auto 4rem;
+            font-size: 1.25rem;
+            line-height: 1.6;
+            color: var(--text-dim);
+            text-align: center;
+        }
+        @media (min-width: 768px) {
+            .mockup-grid { grid-template-columns: 1fr 1fr; }
+            .mockup-grid .full-width { grid-column: span 2; }
+        }
     </style>
 </head>
 <body>
-    <div>
-        <h1>Nexus VR Launch</h1>
-        <p>This project is currently under maintenance or being updated to the new design system. Check back soon for the immersive 3D experience.</p>
-        <a href="../../index.html" class="back-btn">Back to Agency</a>
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <a href="../../work.html" class="cta-button">Back to Work</a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="project-hero">
+            <div class="project-meta">
+                <span>2025</span>
+                <span>Web Design</span>
+                <span>Strategy</span>
+            </div>
+            <h1 class="hero-text" style="font-size: 5rem; margin-bottom: 1rem;">Taste & Soul</h1>
+        </header>
+
+        <div class="project-brief">
+            <p>A gastronomic digital experience capturing the essence of modern fusion cuisine. Integrated reservation systems with a focus on local SEO dominance.</p>
+        </div>
+
+        <div class="mockup-grid">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1200&q=80" alt="Mockup 1" class="mockup-img full-width">
+            <img src="https://images.unsplash.com/photo-1558655146-d09347e0ad6a?auto=format&fit=crop&w=800&q=80" alt="Mockup 2" class="mockup-img">
+            <img src="https://images.unsplash.com/photo-1555421689-491a97ff2040?auto=format&fit=crop&w=800&q=80" alt="Mockup 3" class="mockup-img">
+        </div>
+
+        <div style="text-align: center; margin-bottom: 8rem;">
+            <a href="#" class="big-link">Visit Live Site</a>
+        </div>
     </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-meta">
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
 </body>
 </html>

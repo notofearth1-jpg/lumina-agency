@@ -21,31 +21,36 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll Animations (Simple Intersection Observer)
+    // Nav Scroll Effect
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) {
+            nav.classList.add('scrolled');
+        } else {
+            nav.classList.remove('scrolled');
+        }
+    });
+
+    // Expanding Project Cards (Scroll Intersection)
     const observerOptions = {
-        threshold: 0.1,
-        rootMargin: "0px 0px -50px 0px"
+        threshold: 0.5, // Trigger when 50% visible
+        rootMargin: "-10% 0px -10% 0px" // Focus area in center of screen
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const projectObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
+            // Add 'active-scroll' class when in center view
             if (entry.isIntersecting) {
                 entry.target.classList.add('active-scroll');
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
-                observer.unobserve(entry.target);
+            } else {
+                entry.target.classList.remove('active-scroll');
             }
         });
     }, observerOptions);
 
-    // Select elements to animate
-    const animateElements = document.querySelectorAll('.project-row, .exp-card, .spotlight-info');
-    
-    animateElements.forEach((el, index) => {
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(30px)';
-        el.style.transition = `all 0.8s cubic-bezier(0.2, 1, 0.3, 1) ${index * 0.1}s`;
-        observer.observe(el);
+    const projectRows = document.querySelectorAll('.project-row');
+    projectRows.forEach(row => {
+        projectObserver.observe(row);
     });
 
     // Custom Mouse Glow (Performance Optimized)
