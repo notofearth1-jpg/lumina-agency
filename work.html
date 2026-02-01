@@ -3,98 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selected Work & Case Studies | Lumina Digital Portfolio</title>
-    <meta name="description" content="See how we transformed brands like Iron Forge Gym, Taste & Soul, and Éclat Salon with award-winning web design and SEO strategies.">
-    <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://luminadigital.site/work.html">
-
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>Selected Work | Lumina Digital</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 <body>
-    
+
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
     <nav>
-        <div class="container">
-            <a href="index.html" class="logo">
-                <img src="logo.svg" alt="Lumina Logo" style="height: 40px;">
-            </a>
-            <div class="nav-links">
-                <a href="work.html" class="active">Work</a>
-                <a href="services.html">Services</a>
-                <a href="process.html">Process</a>
-                <a href="blog.html">Insights</a>
-                <a href="about.html">About</a>
-                <a href="contact.html" class="btn btn-primary">Start Project</a>
+        <div class="nav-container">
+            <a href="index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="expertise.html" class="nav-link">Expertise</a>
+                <a href="agency.html" class="nav-link">Agency</a>
             </div>
+            <a href="contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
 
-    <div class="page-header">
-        <div class="container">
-            <h1>Our <span class="gradient-text">Portfolio</span></h1>
-            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">We take pride in every pixel. Explore our selected case studies across various industries.</p>
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="expertise.html">Expertise</a>
+            <a href="agency.html">Agency</a>
+            <a href="contact.html">Contact</a>
         </div>
     </div>
 
-    <section class="work-section" style="padding-top: 0;">
+    <section class="work-list-section" style="padding-top: 150px;">
         <div class="container">
-            <div class="work-grid">
-                <a href="projects/nexus/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1624571409412-1f253e1ecc89?auto=format&fit=crop&w=800&q=80" alt="Nexus VR Launch Site">
-                    <div class="work-overlay">
-                        <h3>Nexus VR</h3>
-                        <p><strong>Tech:</strong> Three.js / WebGL</p>
-                        <p>Immersive 3D Product Launch</p>
-                    </div>
+            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 4rem;">Selected Work</h1>
+            
+            <div class="project-list">
+                <a href="projects/nexus/index.html" class="project-row">
+                    <span class="p-name">Nexus VR Launch</span>
+                    <span class="p-cat">Immersive Experience</span>
+                    <span class="p-year">2025</span>
                 </a>
-                <a href="projects/aura/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=800&q=80" alt="Aura Interiors">
-                    <div class="work-overlay">
-                        <h3>Aura Interiors</h3>
-                        <p><strong>Tech:</strong> GSAP Parallax</p>
-                        <p>Minimalist Design Portfolio</p>
-                    </div>
+                <a href="projects/aura/index.html" class="project-row">
+                    <span class="p-name">Aura Interiors</span>
+                    <span class="p-cat">E-Commerce Platform</span>
+                    <span class="p-year">2025</span>
                 </a>
-                <a href="projects/gym/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" alt="Gym Project">
-                    <div class="work-overlay">
-                        <h3>Iron Forge Gym</h3>
-                        <p><strong>Result:</strong> +40% Traffic</p>
-                        <p>Web Design / Branding</p>
-                    </div>
+                <a href="projects/gym/index.html" class="project-row">
+                    <span class="p-name">Iron Forge Gym</span>
+                    <span class="p-cat">Brand Identity & Web</span>
+                    <span class="p-year">2024</span>
                 </a>
-                <a href="projects/restaurant/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=800&q=80" alt="Restaurant Web Design">
-                    <div class="work-overlay">
-                        <h3>Taste & Soul</h3>
-                        <p><strong>Result:</strong> 99/100 Speed</p>
-                        <p>Web Design / Photography</p>
-                    </div>
+                <a href="projects/restaurant/index.html" class="project-row">
+                    <span class="p-name">Taste & Soul</span>
+                    <span class="p-cat">Hospitality Website</span>
+                    <span class="p-year">2024</span>
                 </a>
-                <a href="projects/salon/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=800&q=80" alt="Salon Booking System">
-                    <div class="work-overlay">
-                        <h3>Éclat Salon</h3>
-                        <p><strong>Result:</strong> 2x Bookings</p>
-                        <p>Booking System / UI</p>
-                    </div>
+                <a href="projects/salon/index.html" class="project-row">
+                    <span class="p-name">Éclat Salon</span>
+                    <span class="p-cat">Booking System</span>
+                    <span class="p-year">2024</span>
                 </a>
-                <a href="projects/boutique/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80" alt="Fashion E-Commerce Site">
-                    <div class="work-overlay">
-                        <h3>Velvet Boutique</h3>
-                        <p><strong>Result:</strong> +150% Sales</p>
-                        <p>E-Commerce / Shopify</p>
-                    </div>
-                </a>
-                <a href="projects/coaching/index.html" class="work-card">
-                    <img src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=800&q=80" alt="Coaching Personal Brand Site">
-                    <div class="work-overlay">
-                        <h3>Elevate Coaching</h3>
-                        <p><strong>Result:</strong> Brand Authority</p>
-                        <p>Personal Brand / Strategy</p>
-                    </div>
+                <a href="projects/boutique/index.html" class="project-row">
+                    <span class="p-name">Velvet Boutique</span>
+                    <span class="p-cat">Fashion E-Commerce</span>
+                    <span class="p-year">2023</span>
                 </a>
             </div>
         </div>
@@ -102,40 +81,16 @@
 
     <footer>
         <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">LUMINA</a>
-                    <p>Building the future of digital experiences.</p>
-                </div>
-                <div class="footer-col">
-                    <h4>Sitemap</h4>
-                    <ul>
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="work.html">Work</a></li>
-                        <li><a href="services.html">Services</a></li>
-                        <li><a href="about.html">About</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Socials</h4>
-                    <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
-                        <li><a href="#">Twitter</a></li>
-                    </ul>
-                </div>
-                <div class="footer-col">
-                    <h4>Legal</h4>
-                    <ul>
-                        <li><a href="#">Impressum</a></li>
-                        <li><a href="#">Privacy</a></li>
-                    </ul>
-                </div>
+            <div class="footer-cta">
+                <h2>Ready to start?</h2>
+                <a href="contact.html" class="big-link">Get in touch.</a>
             </div>
-            <div class="footer-bottom">
-                <p>&copy; 2026 Lumina Digital. All rights reserved.</p>
+            <div class="footer-meta">
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
             </div>
         </div>
     </footer>
+
+    <script src="script.js"></script>
 </body>
 </html>
