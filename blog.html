@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights & Blog | Web Design Trends 2026 | Lumina Digital</title>
+    <meta name="description" content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumina team.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://luminadigital.site/blog.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+        }
+        .blog-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            overflow: hidden;
+            transition: transform 0.3s;
+            text-decoration: none;
+            color: var(--text-main);
+            display: flex;
+            flex-direction: column;
+        }
+        .blog-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .blog-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        .blog-content {
+            padding: 2rem;
+            flex: 1;
+        }
+        .blog-tag {
+            font-size: 0.8rem;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+        .blog-date {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            margin-top: 1rem;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" alt="Lumina Logo" style="height: 40px;">
+            </a>
+            <div class="nav-links">
+                <a href="work.html">Work</a>
+                <a href="services.html">Services</a>
+                <a href="process.html">Process</a>
+                <a href="blog.html" class="active">Insights</a>
+                <a href="contact.html" class="btn btn-primary">Start Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>Latest <span class="gradient-text">Insights</span></h1>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">Thoughts on design, technology, and business.</p>
+        </div>
+    </div>
+
+    <section style="padding-bottom: 8rem;">
+        <div class="container">
+            <div class="blog-grid">
+                
+                <!-- Post 1 -->
+                <a href="#" class="blog-card fade-in">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="Web Design Trends">
+                    <div class="blog-content">
+                        <span class="blog-tag">Design</span>
+                        <h3>5 Web Design Trends Defining 2026</h3>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">From 3D interactive elements to neo-brutalism, here is what's taking over the web this year.</p>
+                        <span class="blog-date">Jan 30, 2026 • 5 min read</span>
+                    </div>
+                </a>
+
+                <!-- Post 2 -->
+                <a href="#" class="blog-card fade-in" style="transition-delay: 100ms;">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="SEO Strategies">
+                    <div class="blog-content">
+                        <span class="blog-tag">SEO</span>
+                        <h3>The Death of Keywords?</h3>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">Why semantic search and AI are changing how we rank on Google forever.</p>
+                        <span class="blog-date">Jan 15, 2026 • 7 min read</span>
+                    </div>
+                </a>
+
+                <!-- Post 3 -->
+                <a href="#" class="blog-card fade-in" style="transition-delay: 200ms;">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="Headless CMS">
+                    <div class="blog-content">
+                        <span class="blog-tag">Development</span>
+                        <h3>Why We Switched to Headless CMS</h3>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">The benefits of decoupling your frontend from your backend for speed and scalability.</p>
+                        <span class="blog-date">Dec 20, 2025 • 4 min read</span>
+                    </div>
+                </a>
+
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">LUMINA</a>
+                    <p>Building the future of digital experiences.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="work.html">Work</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="blog.html">Insights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Socials</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lumina Digital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

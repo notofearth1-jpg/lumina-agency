@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luxe Beauty | Premium Salon & Spa</title>
+    <meta name="description" content="Experience luxury beauty treatments at Ahmedabad's premier salon and spa destination.">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="preloader-logo"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM12 16a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM2 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0zM16 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"/></svg></div>
+        <p>Loading beauty...</p>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#home" class="logo">
+                <span class="logo-symbol"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM12 16a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM2 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0zM16 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"/></svg></span>
+                <span class="logo-text">Luxe Beauty</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#team">Team</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#booking" class="btn btn-primary">Book Appointment</a>
+            <div class="menu-toggle"><span></span><span></span><span></span></div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu -->
+    <div class="mobile-menu">
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="#team">Team</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="#booking" class="btn btn-primary">Book Now</a></li>
+        </ul>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-slider">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=1920')"></div>
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=1920')"></div>
+        </div>
+        <div class="hero-overlay"></div>
+        
+        <div class="hero-content">
+            <span class="hero-tagline animate-in"><svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Ahmedabad's Premier Beauty Destination</span>
+            <h1 class="hero-title animate-in delay-1">
+                Where Beauty<br>
+                <span class="script-text">Meets Luxury</span>
+            </h1>
+            <p class="hero-subtitle animate-in delay-2">
+                Indulge in transformative beauty experiences crafted by expert artisans
+            </p>
+            <div class="hero-buttons animate-in delay-3">
+                <a href="#booking" class="btn btn-primary btn-lg">Book Your Experience</a>
+                <a href="#services" class="btn btn-outline-light btn-lg">Explore Services</a>
+            </div>
+        </div>
+
+        <div class="hero-slider-nav">
+            <span class="dot active"></span>
+            <span class="dot"></span>
+            <span class="dot"></span>
+        </div>
+
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+
+        <div class="floating-elements">
+            <div class="float-element e1"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM12 16a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM2 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0zM16 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"/></svg></div>
+            <div class="float-element e2"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" opacity="0.6"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6z"/></svg></div>
+            <div class="float-element e3"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><polygon points="12 2 14 10 22 12 14 14 12 22 10 14 2 12 10 10"/></svg></div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-images">
+                    <div class="img-wrapper main-img">
+                        <img src="https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?w=600" alt="Salon Interior">
+                    </div>
+                    <div class="img-wrapper accent-img">
+                        <img src="https://images.unsplash.com/photo-1522337094846-8a818192de1f?w=400" alt="Beauty Treatment">
+                    </div>
+                    <div class="experience-badge">
+                        <span class="badge-number">12</span>
+                        <span class="badge-text">Years of<br>Excellence</span>
+                    </div>
+                </div>
+                <div class="about-content">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">A Sanctuary of<br><span class="script-text">Beauty & Wellness</span></h2>
+                    <p class="lead-text">Founded in 2012, Luxe Beauty has been Ahmedabad's destination for those who seek not just beauty treatments, but transformative experiences.</p>
+                    <p>Our team of internationally trained specialists combines age-old Ayurvedic wisdom with cutting-edge techniques to create personalized beauty journeys. Every visit is designed to rejuvenate your body, mind, and spirit.</p>
+                    
+                    <div class="about-features">
+                        <div class="feature-item">
+                            <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 3h12l4 6-10 13L2 9z"/><path d="M11 3l1 6h9"/><path d="M2 9h20"/><path d="M12 9v13"/></svg></div>
+                            <h4>Premium Products</h4>
+                            <p>Only the finest international brands</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M20 21a8 8 0 1 0-16 0"/></svg></div>
+                            <h4>Expert Team</h4>
+                            <p>Certified beauty specialists</p>
+                        </div>
+                        <div class="feature-item">
+                            <div class="feature-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6 2.54 6 6 0 4.42-4.42 8-8 8"/><path d="M2 7c5.52 0 10 4.48 10 10"/></svg></div>
+                            <h4>Natural Care</h4>
+                            <p>Organic & sustainable options</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Our Services</span>
+                <h2 class="section-title">Indulge in <span class="script-text">Luxury</span></h2>
+                <p>Discover our curated menu of premium beauty treatments</p>
+            </div>
+
+            <div class="services-tabs">
+                <button class="service-tab active" data-tab="hair">Hair</button>
+                <button class="service-tab" data-tab="skin">Skin</button>
+                <button class="service-tab" data-tab="makeup">Makeup</button>
+                <button class="service-tab" data-tab="spa">Spa</button>
+                <button class="service-tab" data-tab="nails">Nails</button>
+            </div>
+
+            <div class="services-content">
+                <!-- Hair Services -->
+                <div class="service-category active" id="hair">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="Haircut">
+                            </div>
+                            <div class="service-info">
+                                <h3>Signature Haircut</h3>
+                                <p>Precision cut tailored to your face shape and lifestyle</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 45 mins</span>
+                                    <span class="price">₹800</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card featured">
+                            <div class="featured-badge">Bestseller</div>
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=400" alt="Hair Color">
+                            </div>
+                            <div class="service-info">
+                                <h3>Global Hair Color</h3>
+                                <p>Full coverage color with premium ammonia-free formulas</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2 hrs</span>
+                                    <span class="price">₹3,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1562322140-8baeececf3df?w=400" alt="Hair Treatment">
+                            </div>
+                            <div class="service-info">
+                                <h3>Keratin Treatment</h3>
+                                <p>Smooth, frizz-free hair for up to 4 months</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 hrs</span>
+                                    <span class="price">₹8,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?w=400" alt="Hair Spa">
+                            </div>
+                            <div class="service-info">
+                                <h3>Luxury Hair Spa</h3>
+                                <p>Deep conditioning with scalp massage therapy</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 hr</span>
+                                    <span class="price">₹1,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Skin Services -->
+                <div class="service-category" id="skin">
+                    <div class="services-grid">
+                        <div class="service-card featured">
+                            <div class="featured-badge">Popular</div>
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400" alt="Facial">
+                            </div>
+                            <div class="service-info">
+                                <h3>Signature Facial</h3>
+                                <p>Customized facial with deep cleansing and hydration</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 hr</span>
+                                    <span class="price">₹2,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1616394584738-fc6e612e71b9?w=400" alt="Cleanup">
+                            </div>
+                            <div class="service-info">
+                                <h3>Gold Facial</h3>
+                                <p>24K gold infused treatment for radiant glow</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 90 mins</span>
+                                    <span class="price">₹3,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?w=400" alt="Waxing">
+                            </div>
+                            <div class="service-info">
+                                <h3>Full Body Waxing</h3>
+                                <p>Gentle Rica wax for smooth, lasting results</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2 hrs</span>
+                                    <span class="price">₹2,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Makeup Services -->
+                <div class="service-category" id="makeup">
+                    <div class="services-grid">
+                        <div class="service-card featured">
+                            <div class="featured-badge">Bridal</div>
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400" alt="Bridal Makeup">
+                            </div>
+                            <div class="service-info">
+                                <h3>Bridal Makeup</h3>
+                                <p>Complete bridal transformation with HD airbrush</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 3 hrs</span>
+                                    <span class="price">₹25,000</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=400" alt="Party Makeup">
+                            </div>
+                            <div class="service-info">
+                                <h3>Party Makeup</h3>
+                                <p>Glamorous look for special occasions</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1.5 hrs</span>
+                                    <span class="price">₹3,000</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Spa Services -->
+                <div class="service-category" id="spa">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400" alt="Massage">
+                            </div>
+                            <div class="service-info">
+                                <h3>Swedish Massage</h3>
+                                <p>Full body relaxation therapy with aromatic oils</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 hr</span>
+                                    <span class="price">₹2,500</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card featured">
+                            <div class="featured-badge">Signature</div>
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=400" alt="Body Wrap">
+                            </div>
+                            <div class="service-info">
+                                <h3>Luxe Body Ritual</h3>
+                                <p>Scrub, wrap, and massage - complete rejuvenation</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 2.5 hrs</span>
+                                    <span class="price">₹5,500</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Nail Services -->
+                <div class="service-category" id="nails">
+                    <div class="services-grid">
+                        <div class="service-card">
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="Manicure">
+                            </div>
+                            <div class="service-info">
+                                <h3>Spa Manicure</h3>
+                                <p>Luxurious hand treatment with gel polish</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 45 mins</span>
+                                    <span class="price">₹1,200</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="service-card featured">
+                            <div class="featured-badge">Popular</div>
+                            <div class="service-image">
+                                <img src="https://images.unsplash.com/photo-1610992015732-2449b76344bc?w=400" alt="Nail Art">
+                            </div>
+                            <div class="service-info">
+                                <h3>Nail Art</h3>
+                                <p>Custom designs from simple to intricate</p>
+                                <div class="service-meta">
+                                    <span class="duration"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg> 1 hr</span>
+                                    <span class="price">₹500+</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="services-cta text-center">
+                <a href="#booking" class="btn btn-primary btn-lg">View All Services & Book</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Our Work</span>
+                <h2 class="section-title">Beauty <span class="script-text">Portfolio</span></h2>
+            </div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item large">
+                    <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?w=800" alt="Hair Styling">
+                    <div class="gallery-overlay">
+                        <span>Hair Styling</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=400" alt="Salon">
+                    <div class="gallery-overlay">
+                        <span>Our Space</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1570172619644-dfd03ed5d881?w=400" alt="Facial">
+                    <div class="gallery-overlay">
+                        <span>Skin Care</span>
+                    </div>
+                </div>
+                <div class="gallery-item tall">
+                    <img src="https://images.unsplash.com/photo-1457972729786-0411a3b2b626?w=400" alt="Bridal">
+                    <div class="gallery-overlay">
+                        <span>Bridal</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1604654894610-df63bc536371?w=400" alt="Nails">
+                    <div class="gallery-overlay">
+                        <span>Nail Art</span>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=400" alt="Spa">
+                    <div class="gallery-overlay">
+                        <span>Spa</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Our Experts</span>
+                <h2 class="section-title">Meet the <span class="script-text">Artists</span></h2>
+                <p>Our team of certified professionals dedicated to your beauty</p>
+            </div>
+
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400" alt="Stylist">
+                        <div class="team-social">
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></a>
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Priya Sharma</h3>
+                        <span>Senior Hair Stylist</span>
+                        <p>15+ years experience. Celebrity stylist.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400" alt="Makeup Artist">
+                        <div class="team-social">
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></a>
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Anjali Mehta</h3>
+                        <span>Bridal Makeup Expert</span>
+                        <p>500+ brides transformed. HD certified.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1551836022-deb4988cc6c0?w=400" alt="Skin Specialist">
+                        <div class="team-social">
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></a>
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Dr. Neha Patel</h3>
+                        <span>Skin Care Specialist</span>
+                        <p>Dermatology certified. Advanced treatments.</p>
+                    </div>
+                </div>
+
+                <div class="team-card">
+                    <div class="team-image">
+                        <img src="https://images.unsplash.com/photo-1607746882042-944635dfe10e?w=400" alt="Spa Therapist">
+                        <div class="team-social">
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></a>
+                            <a href="#"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+                        </div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Kavita Joshi</h3>
+                        <span>Spa Therapist</span>
+                        <p>Thai massage certified. Wellness expert.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header text-center">
+                <span class="section-label">Client Love</span>
+                <h2 class="section-title">What They <span class="script-text">Say</span></h2>
+            </div>
+
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"Luxe Beauty made my wedding day absolutely magical! Priya understood exactly what I wanted and the results were beyond my dreams."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client">
+                        <div>
+                            <h4>Riya Kapoor</h4>
+                            <span>Bride, December 2024</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"The keratin treatment transformed my frizzy hair completely! Best investment I've made. The team is so professional and welcoming."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Client">
+                        <div>
+                            <h4>Meera Shah</h4>
+                            <span>Regular Client</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div class="testimonial-stars"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+                    <p class="testimonial-text">"Finally found my go-to salon! The spa treatments are heavenly and the ambiance is so relaxing. Worth every rupee."</p>
+                    <div class="testimonial-author">
+                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Client">
+                        <div>
+                            <h4>Anita Desai</h4>
+                            <span>VIP Member</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="booking" class="booking">
+        <div class="booking-bg">
+            <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?w=1920" alt="Salon">
+        </div>
+        <div class="container">
+            <div class="booking-content">
+                <div class="booking-info">
+                    <span class="section-label">Book Now</span>
+                    <h2 class="section-title">Begin Your<br><span class="script-text">Beauty Journey</span></h2>
+                    <p>Schedule your appointment and let us pamper you with the finest beauty treatments.</p>
+                    
+                    <div class="booking-features">
+                        <div class="bf-item">
+                            <span class="bf-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <span>Instant Confirmation</span>
+                        </div>
+                        <div class="bf-item">
+                            <span class="bf-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <span>Free Consultation</span>
+                        </div>
+                        <div class="bf-item">
+                            <span class="bf-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
+                            <span>Easy Rescheduling</span>
+                        </div>
+                    </div>
+
+                    <div class="booking-contact">
+                        <a href="tel:+919876543210" class="contact-link">
+                            <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.88.37 1.73.7 2.55.18.47.11.99-.17 1.39l-1.26 1.6a12 12 0 0 0 5.54 5.54l1.6-1.26c.4-.28.92-.35 1.39-.17.82.33 1.67.57 2.55.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                            <div>
+                                <strong>Call Us</strong>
+                                <span>+91 98765 43210</span>
+                            </div>
+                        </a>
+                        <a href="https://wa.me/919876543210" class="contact-link whatsapp">
+                            <span class="icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+                            <div>
+                                <strong>WhatsApp</strong>
+                                <span>Quick Booking</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="booking-form-wrapper">
+                    <form class="booking-form" id="bookingForm">
+                        <h3>Book Appointment</h3>
+                        <div class="form-group">
+                            <input type="text" id="name" required placeholder=" ">
+                            <label for="name">Your Name</label>
+                        </div>
+                        <div class="form-group">
+                            <input type="tel" id="phone" required placeholder=" ">
+                            <label for="phone">Phone Number</label>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <input type="date" id="date" required>
+                                <label for="date" class="static">Preferred Date</label>
+                            </div>
+                            <div class="form-group">
+                                <select id="time" required>
+                                    <option value="" disabled selected></option>
+                                    <option>10:00 AM</option>
+                                    <option>11:00 AM</option>
+                                    <option>12:00 PM</option>
+                                    <option>2:00 PM</option>
+                                    <option>3:00 PM</option>
+                                    <option>4:00 PM</option>
+                                    <option>5:00 PM</option>
+                                    <option>6:00 PM</option>
+                                </select>
+                                <label for="time" class="static">Time Slot</label>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <select id="service" required>
+                                <option value="" disabled selected></option>
+                                <option>Hair - Haircut</option>
+                                <option>Hair - Color</option>
+                                <option>Hair - Treatment</option>
+                                <option>Skin - Facial</option>
+                                <option>Skin - Waxing</option>
+                                <option>Makeup - Bridal</option>
+                                <option>Makeup - Party</option>
+                                <option>Spa - Massage</option>
+                                <option>Nails - Manicure/Pedicure</option>
+                                <option>Consultation</option>
+                            </select>
+                            <label for="service" class="static">Service</label>
+                        </div>
+                        <div class="form-group">
+                            <textarea id="notes" rows="3" placeholder=" "></textarea>
+                            <label for="notes">Special Requests (Optional)</label>
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-lg full-width">
+                            Confirm Booking
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <span class="section-label">Visit Us</span>
+                    <h2 class="section-title">Find Your <span class="script-text">Oasis</span></h2>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+                            <div>
+                                <h4>Location</h4>
+                                <p>123 Beauty Lane, Satellite<br>Ahmedabad, Gujarat 380015</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></span>
+                            <div>
+                                <h4>Hours</h4>
+                                <p>Mon-Sat: 10 AM - 8 PM<br>Sunday: 11 AM - 6 PM</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.88.37 1.73.7 2.55.18.47.11.99-.17 1.39l-1.26 1.6a12 12 0 0 0 5.54 5.54l1.6-1.26c.4-.28.92-.35 1.39-.17.82.33 1.67.57 2.55.7A2 2 0 0 1 22 16.92z"/></svg></span>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+91 98765 43210</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <span class="icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></span>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hello@luxebeauty.in</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="social-links">
+                        <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg></a>
+                        <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+                        <a href="#" class="social-link"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></a>
+                    </div>
+                </div>
+                <div class="contact-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.904584937365!2d72.51127!3d23.02887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzQ0LjAiTiA3MsKwMzAnNDAuNSJF!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin" 
+                        width="100%" 
+                        height="100%" 
+                        style="border:0; border-radius: 20px;" 
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <span class="logo-symbol"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="3"/><path d="M12 2a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM12 16a3 3 0 0 0 0 6 3 3 0 0 0 0-6zM2 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0zM16 12a3 3 0 0 0 6 0 3 3 0 0 0-6 0z"/></svg></span>
+                        <span class="logo-text">Luxe Beauty</span>
+                    </a>
+                    <p>Where beauty meets luxury. Your premier destination for transformative beauty experiences.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                        <li><a href="#booking">Book Now</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Hair Styling</a></li>
+                        <li><a href="#">Skin Care</a></li>
+                        <li><a href="#">Bridal Makeup</a></li>
+                        <li><a href="#">Spa & Wellness</a></li>
+                        <li><a href="#">Nail Art</a></li>
+                    </ul>
+                </div>
+                <div class="footer-newsletter">
+                    <h4>Stay Beautiful</h4>
+                    <p>Subscribe for exclusive offers and beauty tips!</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Your email">
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            <div class="built-by"><a href="https://myyworkk.netlify.app" target="_blank">Built by <strong>Vibhu</strong></a></div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Luxe Beauty. All rights reserved.</p>
+                <p>Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> in Ahmedabad</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top -->
+    <button class="back-to-top" id="backToTop"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="18 15 12 9 6 15"/></svg></button>
+
+    <script src="script.js"></script>
+</body>
+</html>

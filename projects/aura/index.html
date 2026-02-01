@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Interiors | Minimalist Luxury</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Montserrat:wght@300;400&display=swap');
+
+        :root {
+            --bg: #f4f1ea;
+            --text: #2a2a2a;
+        }
+
+        body {
+            margin: 0;
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 2rem 4rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+            color: #fff;
+        }
+
+        .logo { font-size: 1.5rem; letter-spacing: 1px; font-style: italic; }
+
+        section {
+            min-height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 120%; /* Taller for parallax */
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero-text {
+            text-align: center;
+            color: #fff;
+            z-index: 1;
+        }
+
+        .hero-text h1 { font-size: 6rem; margin: 0; }
+        .hero-text p { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; }
+
+        .gallery {
+            padding: 10rem 4rem;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+        
+        .gallery-item:nth-child(even) {
+            margin-top: 10rem;
+        }
+
+        .gallery-img {
+            width: 100%;
+            height: 120%;
+            object-fit: cover;
+            position: absolute;
+            top: -10%;
+        }
+
+        .text-block {
+            padding: 10rem 20%;
+            text-align: center;
+        }
+
+        .text-block p {
+            font-size: 2rem;
+            font-family: 'Cormorant Garamond', serif;
+            line-height: 1.4;
+        }
+
+    </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Aura</div>
+        <div>Menu</div>
+    </nav>
+
+    <section class="hero">
+        <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1920&q=80" class="hero-img" id="hero-bg">
+        <div class="hero-text">
+            <p>Est. 2024</p>
+            <h1>Living in <br>Harmony</h1>
+        </div>
+    </section>
+
+    <div class="text-block">
+        <p>"Architecture should speak of its time and place, but yearn for timelessness."</p>
+    </div>
+
+    <div class="gallery">
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+        <div class="gallery-item">
+            <img src="https://images.unsplash.com/photo-1600573472550-8090b5e0745e?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+        </div>
+    </div>
+
+    <section style="height: 50vh; background: #2a2a2a; color: #fff;">
+        <div style="text-align: center;">
+            <h2>Create your space.</h2>
+            <br>
+            <a href="#" style="color: #fff; border-bottom: 1px solid #fff; text-decoration: none; font-size: 1.2rem;">Get in touch</a>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Parallax
+        gsap.to("#hero-bg", {
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            },
+            y: 200
+        });
+
+        // Gallery Parallax
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            const img = item.querySelector('.gallery-img');
+            gsap.to(img, {
+                scrollTrigger: {
+                    trigger: item,
+                    start: "top bottom",
+                    end: "bottom top",
+                    scrub: true
+                },
+                y: 100
+            });
+        });
+    </script>
+</body>
+</html>

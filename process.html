@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Process | The Lumina Method | Web Design Berlin</title>
+    <meta name="description" content="Discover the Lumina Method: Discovery, Design, Development, and Launch. Our proven process ensures high-quality digital products delivered on time.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://luminadigital.site/process.html">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .process-step {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            align-items: center;
+        }
+        .process-step:nth-child(even) {
+            direction: rtl; /* Flip layout for visual interest */
+        }
+        .process-step:nth-child(even) .step-content {
+            direction: ltr; /* Reset text direction */
+        }
+        .step-number {
+            font-size: 8rem;
+            font-weight: 700;
+            color: rgba(255,255,255,0.05);
+            line-height: 1;
+            position: absolute;
+            z-index: -1;
+            transform: translate(-20px, -40px);
+        }
+        .step-content { position: relative; }
+        .step-visual {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            height: 400px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="logo.svg" alt="Lumina Logo" style="height: 40px;">
+            </a>
+            <div class="nav-links">
+                <a href="work.html">Work</a>
+                <a href="services.html">Services</a>
+                <a href="process.html" class="active">Process</a>
+                <a href="about.html">About</a>
+                <a href="contact.html" class="btn btn-primary">Start Project</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="page-header">
+        <div class="container">
+            <h1>The Lumina <span class="gradient-text">Method</span></h1>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">A structured approach to chaos. We turn complex problems into simple, beautiful solutions.</p>
+        </div>
+    </div>
+
+    <section style="padding-bottom: 8rem;">
+        <div class="container">
+            
+            <!-- Step 1 -->
+            <div class="process-step fade-in">
+                <div class="step-content">
+                    <span class="step-number">01</span>
+                    <h3>Discovery & Strategy</h3>
+                    <p>We start by listening. We dive deep into your business goals, target audience, and competitors. We don't just build websites; we build business tools.</p>
+                    <ul style="margin-top: 1rem; color: var(--text-muted); padding-left: 1rem;">
+                        <li>Stakeholder Interviews</li>
+                        <li>Competitor Analysis</li>
+                        <li>User Personas</li>
+                        <li>SEO Audit</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <img src="icons/growth.svg" width="80" alt="Strategy">
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="process-step fade-in">
+                <div class="step-content">
+                    <span class="step-number">02</span>
+                    <h3>Design & Prototyping</h3>
+                    <p>Before writing a single line of code, we craft the visual identity and user experience. We iterate on high-fidelity prototypes until every pixel is perfect.</p>
+                    <ul style="margin-top: 1rem; color: var(--text-muted); padding-left: 1rem;">
+                        <li>Wireframing</li>
+                        <li>UI Design (Figma)</li>
+                        <li>Interactive Prototypes</li>
+                        <li>Design Systems</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <img src="icons/design.svg" width="80" alt="Design">
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="process-step fade-in">
+                <div class="step-content">
+                    <span class="step-number">03</span>
+                    <h3>Development</h3>
+                    <p>This is where the magic happens. We build your site using modern, scalable technologies like React and Next.js, ensuring blazing fast performance.</p>
+                    <ul style="margin-top: 1rem; color: var(--text-muted); padding-left: 1rem;">
+                        <li>Front-end (React/Next.js)</li>
+                        <li>CMS Integration</li>
+                        <li>Performance Optimization</li>
+                        <li>SEO Implementation</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <img src="icons/code.svg" width="80" alt="Development">
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="process-step fade-in">
+                <div class="step-content">
+                    <span class="step-number">04</span>
+                    <h3>Launch & Growth</h3>
+                    <p>Launch is just the beginning. We help you go live smoothly and provide ongoing support and analytics to ensure your site continues to grow.</p>
+                    <ul style="margin-top: 1rem; color: var(--text-muted); padding-left: 1rem;">
+                        <li>QA Testing</li>
+                        <li>Deployment</li>
+                        <li>Analytics Setup</li>
+                        <li>Post-Launch Support</li>
+                    </ul>
+                </div>
+                <div class="step-visual">
+                    <img src="icons/shop.svg" width="80" alt="Launch">
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">LUMINA</a>
+                    <p>Building the future of digital experiences.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Sitemap</h4>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="work.html">Work</a></li>
+                        <li><a href="services.html">Services</a></li>
+                        <li><a href="process.html">Process</a></li>
+                        <li><a href="about.html">About</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Socials</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Impressum</a></li>
+                        <li><a href="#">Privacy</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 Lumina Digital. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>
