@@ -4,254 +4,200 @@ const path = require('path');
 // --- Templates ---
 const blogTemplate = fs.readFileSync(path.join(__dirname, 'blog_template.html'), 'utf8');
 const serviceTemplate = fs.readFileSync(path.join(__dirname, 'service_template.html'), 'utf8');
+const pageTemplate = fs.readFileSync(path.join(__dirname, 'page_template.html'), 'utf8');
+const caseStudyTemplate = fs.readFileSync(path.join(__dirname, 'case_study_template.html'), 'utf8');
 
-// --- Blog Data (10 Posts with Expanded Content) ---
-const blogs = [
+// --- Helper: Generate List HTML ---
+const listHTML = (items) => items.map(i => `<li>${i}</li>`).join('');
+
+// --- Data: Case Studies ---
+const caseStudies = [
     {
-        slug: 'rise-of-generative-ui',
-        title: 'The Rise of Generative UI',
-        desc: 'How AI is building interfaces on the fly and what it means for designers.',
-        category: 'AI / DESIGN',
-        readTime: '5 MIN READ',
-        author: 'Alex Morgan',
-        date: 'Oct 12, 2025',
-        image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Interfaces That Adapt to You</h2>
-            <p>Imagine a website that doesn't just look the same for everyone, but reconstructs itself based on your intent. Generative UI is shifting the paradigm from static layouts to fluid, intent-based components. By leveraging LLMs, we can now generate UI components on the fly. A dashboard for a CFO might prioritize high-level charts, while the same dashboard for an engineer focuses on logs and uptime.</p>
-            <p>This shift represents a fundamental change in how we conceive of digital products. Instead of designing fixed pages, we are designing systems of components that can be assembled in infinite variations. This allows for a level of personalization that was previously impossible.</p>
-            
-            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Generative UI Concept" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
-
-            <h2>The Role of the Designer</h2>
-            <p>Does this mean the end of design? Far from it. Designers are moving from "painters" to "gardeners". We define the constraints, the design system tokens, and the rules of engagement. The AI acts as the layout engine, but the soul of the experience remains human-crafted.</p>
-            <ul>
-                <li><strong>Dynamic Components:</strong> UI elements that spawn based on context, such as a weather widget appearing only when rain is forecast.</li>
-                <li><strong>Personalized Flows:</strong> User journeys that shorten based on historical data, removing friction for power users.</li>
-                <li><strong>Accessibility:</strong> Interfaces that auto-adjust contrast, text size, and layout density for user needs without manual settings.</li>
-            </ul>
-            <p>The future isn't about pixel perfection; it's about system perfection. We need to build robust, flexible systems that can handle the unpredictability of AI-generated layouts while maintaining brand integrity.</p>
-            
-            <h3>Challenges Ahead</h3>
-            <p>Of course, this future isn't without its hurdles. Ensuring consistency, preventing "hallucinated" UI elements that don't function, and maintaining performance are all significant challenges. But the potential for truly adaptive, helpful interfaces is too great to ignore.</p>
-        `
+        slug: 'nexus',
+        title: 'Nexus VR Launch',
+        year: '2025',
+        category: 'Immersive Web',
+        client: 'Nexus Technologies',
+        heroImg: 'https://images.unsplash.com/photo-1624571409412-1f253e1ecc89?auto=format&fit=crop&w=1600&q=80',
+        services: ['3D Design', 'Web Development', 'Strategy'],
+        tech: ['React Three Fiber', 'Next.js', 'WebGL', 'GSAP'],
+        challenge: 'Nexus needed to launch their X1 headset with a bang. Traditional e-commerce pages felt flat. They wanted a web experience that rivaled the immersion of the headset itself.',
+        solution: 'We built a fully interactive 3D landing page where users can "explode" the headset model to see internal components. The scroll-controlled animation tells the story of the hardware, resulting in a 400% increase in pre-order engagement compared to their previous static site.',
+        gallery1: 'https://images.unsplash.com/photo-1633412803867-0f4abd1be462?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'webgpu-next-era',
-        title: 'WebGPU: The Next Era of Graphics',
-        desc: 'Unlocking native-level 3D performance in the browser.',
-        category: 'TECH / 3D',
-        readTime: '6 MIN READ',
-        author: 'Sarah Chen',
-        date: 'Nov 02, 2025',
-        image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Beyond WebGL</h2>
-            <p>WebGL has served us well for over a decade, but it was built on OpenGL ES—an API designed for mobile devices from the 2000s. WebGPU is the modern successor, designed to map directly to Vulkan, Metal, and DirectX 12. This means lower overhead, better driver support, and significantly higher performance.</p>
-            <p>For developers, this opens up a new world of possibilities. We can now render scenes with millions of polygons, complex lighting, and advanced post-processing effects directly in the browser, without plugins.</p>
-
-            <img src="https://images.unsplash.com/photo-1633412803867-0f4abd1be462?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D Render" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
-
-            <h2>Compute Shaders</h2>
-            <p>The biggest game-changer is compute shaders. This allows us to offload heavy calculations (physics, AI inference, particle systems) to the GPU, freeing up the main thread for interaction logic. Previously, these calculations had to be done on the CPU or via hacky fragment shader workarounds.</p>
-            <p><strong>Key Benefits:</strong></p>
-            <ul>
-                <li><strong>10x Performance:</strong> Draw calls are significantly cheaper, allowing for more detailed scenes.</li>
-                <li><strong>Browser AI:</strong> Running local LLMs and neural networks efficiently in the browser using the GPU.</li>
-                <li><strong>Complex Simulations:</strong> Fluid dynamics, cloth simulation, and flocking behaviors in real-time.</li>
-            </ul>
-            <p>WebGPU is not just a graphics update; it's a computational revolution for the web platform.</p>
-        `
+        slug: 'aura',
+        title: 'Aura Interiors',
+        year: '2025',
+        category: 'E-Commerce',
+        client: 'Aura Living',
+        heroImg: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80',
+        services: ['UX/UI Design', 'Shopify Dev', 'Art Direction'],
+        tech: ['Shopify Plus', 'Liquid', 'Vue.js'],
+        challenge: 'Aura’s previous site was cluttered and slow, failing to reflect their high-end, minimalist furniture. They needed a digital flagship store that felt like an art gallery.',
+        solution: 'We stripped away the noise. Using a headless Shopify architecture, we created a lightning-fast browsing experience with massive, high-fidelity imagery. A custom "Room Visualizer" allows users to see pieces in context.',
+        gallery1: 'https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'seo-in-chatgpt-era',
-        title: 'SEO in the Age of ChatGPT',
-        desc: 'Optimizing for Search Generative Experience (SGE) and LLMs.',
-        category: 'STRATEGY / SEO',
-        readTime: '4 MIN READ',
-        author: 'Marcus Weber',
-        date: 'Sep 28, 2025',
-        image: 'https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>From Links to Answers</h2>
-            <p>Google's SGE (Search Generative Experience) answers questions directly. If your content is just "10 blue links" bait, you will lose visibility. The goal now is to be the *source* of the AI's answer. This means optimizing for "Answer Engine Optimization" (AEO) rather than just SEO.</p>
-            <p>Content needs to be more direct, structured, and authoritative. Fluff pieces written solely for keyword density will be ignored by LLMs looking for factual answers.</p>
-
-            <img src="https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&w=800&q=80" alt="AI Search Interface" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
-
-            <h2>EEAT is King</h2>
-            <p>Experience, Expertise, Authoritativeness, and Trustworthiness. AI can generate generic content, but it cannot generate genuine human experience. Personal anecdotes, original data studies, and contrarian takes are the new gold.</p>
-            <ul>
-                <li><strong>Structured Data:</strong> Feed the bots with clear Schema.org markup so they understand exactly what your content represents.</li>
-                <li><strong>Brand Entity:</strong> Build your brand so users search for *you*, not just keywords. Navigational queries are immune to AI displacement.</li>
-                <li><strong>Opinionated Content:</strong> AI is neutral. Be opinionated. Take a stand. This creates a "moat" around your content.</li>
-            </ul>
-        `
+        slug: 'gym',
+        title: 'Iron Forge Gym',
+        year: '2024',
+        category: 'Branding',
+        client: 'Iron Forge Fitness',
+        heroImg: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80',
+        services: ['Brand Identity', 'Web Design', 'Local SEO'],
+        tech: ['Webflow', 'Memberstack', 'Zapier'],
+        challenge: 'Iron Forge was losing members to big-box chains. They lacked a distinct identity and their website was non-functional for booking classes.',
+        solution: 'We rebranded them as the home for serious athletes. The new site features a bold, gritty aesthetic and a seamless class booking system. Member sign-ups increased by 40% in the first month.',
+        gallery1: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'spatial-computing-web',
-        title: 'Spatial Computing & The Web',
-        desc: 'Designing websites for Apple Vision Pro and Meta Quest.',
-        category: 'VR / AR',
-        readTime: '7 MIN READ',
-        author: 'Elena Voigt',
-        date: 'Dec 15, 2025',
-        image: 'https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>The Infinite Canvas</h2>
-            <p>With the release of Vision Pro, the web is breaking out of the 16:9 monitor. Spatial web design isn't just about VR; it's about depth, glassmorphism, and gaze-based interaction. Your website is no longer a flat plane; it's a window floating in the user's physical space.</p>
-            <p>This requires a rethink of layout. Elements can extend beyond the viewport. Interactions need to account for eye-tracking accuracy. Hover states are triggered by looking, not mousing.</p>
-
-            <img src="https://images.unsplash.com/photo-1592478411213-61535fdd861d?auto=format&fit=crop&w=800&q=80" alt="VR Headset User" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
-
-            <h2>CSS for Spatial</h2>
-            <p>Did you know CSS is evolving? New media queries allow us to detect immersive sessions. We can now design layouts that curve around the user or float elements at different Z-depths using the new spatial properties.</p>
-            <p>Brands that adopt spatial-ready websites now will define the luxury digital experience of the late 2020s. Imagine an e-commerce store where products float out of the screen for inspection.</p>
-        `
+        slug: 'restaurant',
+        title: 'Taste & Soul',
+        year: '2024',
+        category: 'Hospitality',
+        client: 'T&S Group',
+        heroImg: 'https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80',
+        services: ['Photography', 'Web Design', 'Reservations'],
+        tech: ['WordPress', 'OpenTable API', 'React'],
+        challenge: 'A fusion restaurant needed to fill tables on weeknights. Their old site didn\'t showcase their stunning dishes or allow for easy reservations.',
+        solution: 'We put the food front and center with a dark, moody design. We integrated a custom reservation engine that reduces friction. The result? A 200% increase in online bookings.',
+        gallery1: 'https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'headless-cms-vs-monolith',
-        title: 'Headless CMS vs. Monolith',
-        desc: 'Why modern brands are decoupling frontend from backend.',
-        category: 'DEV / ARCHITECTURE',
-        readTime: '5 MIN READ',
-        author: 'David Kim',
-        date: 'Aug 10, 2025',
-        image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Speed and Flexibility</h2>
-            <p>Monolithic platforms (like old WordPress or Magento) couple the display layer with the data layer. This makes redesigns painful and performance optimization difficult. You are locked into their templating engine and their limitations.</p>
-            <p>Headless architecture decouples these. Your content lives in a pure data API (Sanity, Contentful), and your frontend is a high-performance React application.</p>
-
-            <h2>The Headless Advantage</h2>
-            <p>By using a Headless CMS, we gain significant advantages:</p>
-            <ul>
-                <li><strong>Instant Page Loads:</strong> Static generation at the edge means HTML is pre-built and served instantly from CDNs globally.</li>
-                <li><strong>Omnichannel:</strong> Push content to Web, App, Watch, and even instore displays from one single source of truth.</li>
-                <li><strong>Security:</strong> The database isn't exposed directly to the public web, significantly reducing the attack surface.</li>
-            </ul>
-            <p>It's not just a trend; it's the maturity of the web platform.</p>
-        `
+        slug: 'salon',
+        title: 'Éclat Salon',
+        year: '2024',
+        category: 'Beauty',
+        client: 'Éclat Paris',
+        heroImg: 'https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80',
+        services: ['Booking System', 'Brand Strategy', 'Social Media'],
+        tech: ['Next.js', 'PostgreSQL', 'Stripe'],
+        challenge: 'Éclat’s phone lines were clogged with appointment calls. They needed a premium self-service booking platform that reflected their luxury status.',
+        solution: 'We built a bespoke booking app that allows clients to choose stylists, services, and times. The design is clean, elegant, and perfectly responsive.',
+        gallery1: 'https://images.unsplash.com/photo-1633681926022-84c23e8cb2d6?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'sustainable-web-design',
-        title: 'Sustainable Web Design',
-        desc: 'Reducing digital carbon footprints through code efficiency.',
-        category: 'ETHICS / CODE',
-        readTime: '4 MIN READ',
-        author: 'Anna Green',
-        date: 'Jul 22, 2025',
-        image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>The Internet's Carbon Cost</h2>
-            <p>If the internet were a country, it would be the 6th largest polluter. Every byte transferred requires energy—from the data center, through the transmission networks, to the user's device. Heavy, bloated websites aren't just slow; they are dirty.</p>
-            <p>As digital creators, we have a responsibility to minimize this impact. Sustainable web design is about efficiency, which happily aligns with performance and user experience.</p>
-
-            <h2>Green Coding</h2>
-            <p>We practice sustainable design by:</p>
-            <ul>
-                <li><strong>Optimizing Assets:</strong> Using modern formats like AVIF and WebP, and aggressive lazy loading to only load what is seen.</li>
-                <li><strong>Dark Mode:</strong> Designing dark-default interfaces saves significant battery life on OLED screens, reducing charging frequency.</li>
-                <li><strong>Efficient Caching:</strong> Reducing server requests through smart CDN caching strategies.</li>
-            </ul>
-            <p>Good performance is good for the planet.</p>
-        `
+        slug: 'boutique',
+        title: 'Velvet Boutique',
+        year: '2023',
+        category: 'Fashion',
+        client: 'Velvet Global',
+        heroImg: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80',
+        services: ['E-Commerce', 'Performance', 'Motion'],
+        tech: ['Hydrogen', 'Sanity CMS', 'Tailwind'],
+        challenge: 'Velvet wanted to scale globally but their site was slow and crashed during drops. They needed enterprise-grade performance.',
+        solution: 'We migrated them to a headless stack on Vercel Edge Network. The site now loads in under 800ms globally, handling traffic spikes with ease.',
+        gallery1: 'https://images.unsplash.com/photo-1483985988355-763728e1935b?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1490481651871-32d6d6228b5b?auto=format&fit=crop&w=1200&q=80'
     },
     {
-        slug: 'micro-interactions-matter',
-        title: 'Why Micro-interactions Matter',
-        desc: 'The psychology of UI animation and user delight.',
-        category: 'UX / DESIGN',
-        readTime: '3 MIN READ',
-        author: 'Lucas Ponti',
-        date: 'Jun 14, 2025',
-        image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Feedback Loops</h2>
-            <p>A button click shouldn't just do something; it should *feel* like it did something. Micro-interactions provide the tactile feedback that builds trust and confirms actions. Without them, interfaces feel dead and unresponsive.</p>
-            <p>Think about the "like" heart animation on Instagram, or the "pull to refresh" rubber-band effect. These aren't necessary for function, but they are essential for *feeling*.</p>
+        slug: 'coaching',
+        title: 'Bright Minds',
+        year: '2023',
+        category: 'Education',
+        client: 'Bright Minds Academy',
+        heroImg: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80',
+        services: ['LMS', 'Student Portal', 'Web App'],
+        tech: ['MERN Stack', 'AWS', 'Socket.io'],
+        challenge: 'A leading coaching institute needed to digitize their curriculum and track student progress online.',
+        solution: 'We developed a comprehensive Learning Management System (LMS) with live classes, test series, and performance analytics dashboards for parents.',
+        gallery1: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80'
+    }
+];
 
-            <h2>Delight in Details</h2>
-            <p>It's the little things: the way a toggle slides, the bounce of a notification, the loading skeleton. These details separate a "functional" app from a "premium" product. They show that care was put into the craft.</p>
-            <p>We use tools like Framer Motion to orchestrate these moments, ensuring they are performant and don't block the main thread.</p>
-        `
+// --- Data: Agency Pages ---
+const agencyPages = [
+    {
+        path: 'about/team.html',
+        title: 'Leadership',
+        category: 'AGENCY / PEOPLE',
+        intro: 'We are a collective of visionaries, engineers, and artists. Led by industry veterans, our team is dedicated to pushing the boundaries of digital.',
+        body1: 'Our leadership team brings together decades of experience from top tech companies and design studios.',
+        body2: 'We believe in a flat hierarchy where the best idea wins. Every member of the team is empowered to make decisions and drive impact.',
+        h1: 'Vibhu Thanki',
+        h2: 'Founder & CEO',
+        h3: 'Creative Director'
     },
     {
-        slug: 'end-of-cookies',
-        title: 'The End of Third-Party Cookies',
-        desc: 'Marketing strategies for a privacy-first world.',
-        category: 'MARKETING',
-        readTime: '5 MIN READ',
-        author: 'Rachel Moore',
-        date: 'May 30, 2025',
-        image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Privacy Sandbox</h2>
-            <p>Chrome is phasing out third-party cookies. Retargeting ads as we know them are dying. The solution? First-party data. The era of tracking users across the web without consent is (thankfully) ending.</p>
-            <p>This forces marketers to return to fundamentals: building genuine brand equity and communities.</p>
-
-            <h2>Owning Your Audience</h2>
-            <p>Brands must build direct relationships. Email lists, community discords, and loyalty programs are more valuable than any ad pixel. We help brands build infrastructure to collect and utilize their own data ethically.</p>
-            <p>Contextual advertising is also making a comeback. Instead of tracking *who* is looking, we target *what* they are looking at.</p>
-        `
+        path: 'about/careers.html',
+        title: 'Careers',
+        category: 'AGENCY / JOIN US',
+        intro: 'Do the best work of your life. We are looking for exceptional talent to help us build the future of the web.',
+        body1: 'Current Openings: 1. Senior Frontend Engineer (React/WebGL) - Remote. 2. UI/UX Designer - Berlin/Hybrid. 3. SEO Strategist - Remote.',
+        body2: 'We offer competitive equity, unlimited PTO, and a stipend for learning and development. If you are obsessed with quality, we want to hear from you.',
+        h1: 'Frontend Engineer',
+        h2: 'Product Designer',
+        h3: 'Growth Marketer'
     },
     {
-        slug: 'ai-personalization',
-        title: 'AI-Driven Personalization',
-        desc: 'Tailoring user journeys in real-time with machine learning.',
-        category: 'AI / UX',
-        readTime: '6 MIN READ',
-        author: 'Tom Hiddleston',
-        date: 'Apr 18, 2025',
-        image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>Dynamic Content</h2>
-            <p>Why show the same hero banner to a returning customer as a first-time visitor? AI can analyze behavior in real-time to swap images, copy, and CTAs to match the user's likely intent.</p>
-            <p>If a user spends time on "Enterprise" pages, the next time they visit, the homepage should highlight Enterprise case studies, not startup pricing.</p>
-
-            <h2>Edge Personalization</h2>
-            <p>We implement tools like Vercel Edge Middleware to personalize content at the CDN level. This means we can swap content milliseconds before it reaches the user's browser, ensuring zero latency penalty for dynamic experiences.</p>
-            <p>This is the holy grail: dynamic, personalized content served with the speed of static HTML.</p>
-        `
+        path: 'about/culture.html',
+        title: 'Our Culture',
+        category: 'AGENCY / DNA',
+        intro: 'We value craft, curiosity, and collaboration. We are not a feature factory; we are a laboratory for digital innovation.',
+        body1: 'We work in small, autonomous squads. This keeps us fast and agile. We prioritize deep work and protect our makers from unnecessary meetings.',
+        body2: 'Diversity is our strength. We actively seek out perspectives that challenge our own, fostering an environment of continuous growth.',
+        h1: 'Deep Work',
+        h2: 'Radical Candor',
+        h3: 'Continuous Learning'
     },
     {
-        slug: 'nocode-vs-procode',
-        title: 'No-Code vs. Pro-Code',
-        desc: 'Finding the right balance for enterprise speed.',
-        category: 'DEV / OPS',
-        readTime: '4 MIN READ',
-        author: 'Sarah Chen',
-        date: 'Mar 22, 2025',
-        image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
-        content: `
-            <h2>The Hybrid Stack</h2>
-            <p>Marketing teams need speed (Webflow, Framer) to launch campaigns without waiting for engineering. Product teams need power (React, Node) to build complex applications. The modern enterprise uses both.</p>
-            <p>The "All or Nothing" mindset is dead. Smart companies use the right tool for the job.</p>
-
-            <h2>Seamless Integration</h2>
-            <p>We architect systems where the marketing site is agile and no-code, while the core app remains a robust engineering feat. We stitch them together seamlessly on the same domain using reverse proxies, so the user never knows they crossed a technology boundary.</p>
-            <p>This gives marketing autonomy and engineering focus.</p>
-        `
+        path: 'about/awards.html',
+        title: 'Recognition',
+        category: 'AGENCY / AWARDS',
+        intro: 'Our work has been recognized by the industry’s most prestigious bodies. But our proudest metric is client success.',
+        body1: '2025: Awwwards Agency of the Year Nominee. 2024: Webby Award for Best Use of Animation. 2024: CSS Design Awards - Site of the Day.',
+        body2: 'These accolades validate our commitment to pushing the envelope of what is possible in a browser.',
+        h1: 'Awwwards',
+        h2: 'The FWA',
+        h3: 'Webby Awards'
     }
 ];
 
 // --- Generation Loop ---
 
-// 1. Generate Blogs
-blogs.forEach(blog => {
-    let content = blogTemplate
-        .replace(/TITLE_PLACEHOLDER/g, blog.title)
-        .replace(/META_DESC_PLACEHOLDER/g, blog.desc)
-        .replace(/CATEGORY_PLACEHOLDER/g, blog.category)
-        .replace(/READ_TIME_PLACEHOLDER/g, blog.readTime)
-        .replace(/AUTHOR_PLACEHOLDER/g, blog.author)
-        .replace(/AUTHOR_IMG_PLACEHOLDER/g, `https://ui-avatars.com/api/?name=${blog.author}&background=random`)
-        .replace(/DATE_PLACEHOLDER/g, blog.date)
-        .replace(/IMAGE_PLACEHOLDER/g, blog.image)
-        .replace('CONTENT_PLACEHOLDER', blog.content);
-    
-    fs.writeFileSync(path.join(__dirname, 'blog', `${blog.slug}.html`), content);
-    console.log(`Generated Blog: ${blog.slug}`);
+// 1. Generate Case Studies
+caseStudies.forEach(cs => {
+    let content = caseStudyTemplate
+        .replace(/TITLE_PLACEHOLDER/g, cs.title)
+        .replace(/META_DESC_PLACEHOLDER/g, `Case study for ${cs.title} - ${cs.challenge}`)
+        .replace(/YEAR_PLACEHOLDER/g, cs.year)
+        .replace(/CATEGORY_PLACEHOLDER/g, cs.category)
+        .replace(/HERO_IMG_PLACEHOLDER/g, cs.heroImg)
+        .replace(/SERVICES_LIST_PLACEHOLDER/g, listHTML(cs.services))
+        .replace(/TECH_STACK_PLACEHOLDER/g, listHTML(cs.tech))
+        .replace(/CLIENT_PLACEHOLDER/g, cs.client)
+        .replace(/CHALLENGE_PLACEHOLDER/g, cs.challenge)
+        .replace(/SOLUTION_PLACEHOLDER/g, cs.solution)
+        .replace(/GALLERY_IMG_1/g, cs.gallery1)
+        .replace(/GALLERY_IMG_2/g, cs.gallery2);
+
+    const dir = path.join(__dirname, 'projects', cs.slug);
+    if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+    fs.writeFileSync(path.join(dir, 'index.html'), content);
+    console.log(`Generated Case Study: ${cs.slug}`);
 });
 
-console.log('--- Blog Content Updated ---');
+// 2. Generate Agency Pages
+agencyPages.forEach(page => {
+    let content = pageTemplate
+        .replace(/TITLE_PLACEHOLDER/g, page.title)
+        .replace(/CATEGORY_PLACEHOLDER/g, page.category)
+        .replace(/CONTENT_INTRO_PLACEHOLDER/g, page.intro)
+        .replace(/CONTENT_BODY_1/g, page.body1)
+        .replace(/CONTENT_BODY_2/g, page.body2)
+        .replace(/HIGHLIGHT_1/g, page.h1)
+        .replace(/HIGHLIGHT_2/g, page.h2)
+        .replace(/HIGHLIGHT_3/g, page.h3);
+    
+    fs.writeFileSync(path.join(__dirname, page.path), content);
+    console.log(`Generated Agency Page: ${page.path}`);
+});
+
+console.log('--- Rich Content Generation Complete ---');

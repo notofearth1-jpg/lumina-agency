@@ -3,662 +3,112 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IRONFORGE | Elite Fitness Studio</title>
-    <meta name="description" content="Transform your body, transform your life. Join Ahmedabad's premier fitness destination.">
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Iron Forge Gym | Lumina Digital</title>
+    <meta name="description" content="Case study for Iron Forge Gym - Iron Forge was losing members to big-box chains. They lacked a distinct identity and their website was non-functional for booking classes.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        .cs-hero { padding: 180px 0 80px; text-align: center; }
+        .cs-meta { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-size: 0.9rem; }
+        .cs-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin: 4rem 0; }
+        .cs-sidebar h3 { font-size: 1.2rem; margin-bottom: 1rem; color: white; }
+        .cs-sidebar ul { margin-bottom: 3rem; color: var(--text-dim); }
+        .cs-sidebar li { margin-bottom: 0.5rem; }
+        .cs-content p { font-size: 1.15rem; line-height: 1.8; color: #d4d4d8; margin-bottom: 2rem; }
+        .cs-gallery { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 4rem 0; }
+        .cs-img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+        .live-btn-container { text-align: center; margin: 6rem 0; padding: 4rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        @media(max-width:900px){ .cs-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader-ring">
-            <div></div><div></div><div></div><div></div>
-        </div>
-        <p>LOADING YOUR POTENTIAL...</p>
-    </div>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
 
-    <!-- Navigation -->
-    <nav class="navbar">
+    <nav>
         <div class="nav-container">
-            <a href="#home" class="logo">
-                <span class="logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-                <span>IRONFORGE</span>
-            </a>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#about">About</a></li>
-                <li><a href="#programs">Programs</a></li>
-                <li><a href="#trainers">Trainers</a></li>
-                <li><a href="#pricing">Pricing</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#join" class="btn btn-primary">JOIN NOW</a>
-            <div class="menu-toggle">
-                <span></span><span></span><span></span>
+            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../work.html" class="nav-link">Work</a>
+                <a href="../../expertise.html" class="nav-link">Expertise</a>
+                <a href="../../agency.html" class="nav-link">Agency</a>
             </div>
+            <a href="../../contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#programs">Programs</a></li>
-            <li><a href="#trainers">Trainers</a></li>
-            <li><a href="#pricing">Pricing</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#join" class="btn btn-primary">JOIN NOW</a></li>
-        </ul>
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../work.html">Work</a>
+            <a href="../../expertise.html">Expertise</a>
+            <a href="../../agency.html">Agency</a>
+            <a href="../../contact.html">Contact</a>
+        </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-video-bg">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-man-doing-exercises-in-a-gym-23399-large.mp4" type="video/mp4">
-            </video>
-            <div class="hero-overlay"></div>
-        </div>
-        
-        <div class="hero-content">
-            <div class="hero-tag">
-                <span class="pulse-dot"></span>
-                AHMEDABAD'S #1 FITNESS STUDIO
+    <div class="container">
+        <header class="cs-hero">
+            <div class="cs-meta">
+                <span>2024</span>
+                <span>Branding</span>
             </div>
-            <h1 class="hero-title">
-                <span class="line line-1">PUSH YOUR</span>
-                <span class="line line-2">LIMITS</span>
-            </h1>
-            <p class="hero-subtitle">Where champions are built. Join 5000+ members who've transformed their lives with us.</p>
-            <div class="hero-cta">
-                <a href="#join" class="btn btn-primary btn-lg">
-                    <span>START FREE TRIAL</span>
-                    <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                </a>
-                <a href="#programs" class="btn btn-ghost btn-lg">
-                    <span>VIEW PROGRAMS</span>
-                </a>
+            <h1 class="hero-text" style="font-size: 5rem; line-height: 1;">Iron Forge Gym</h1>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80" class="cs-img" style="aspect-ratio: 21/9; object-fit: cover; margin-bottom: 4rem;">
+
+        <div class="cs-grid">
+            <div class="cs-sidebar">
+                <h3>Services</h3>
+                <ul><li>Brand Identity</li><li>Web Design</li><li>Local SEO</li></ul>
+                
+                <h3>Tech Stack</h3>
+                <ul><li>Webflow</li><li>Memberstack</li><li>Zapier</li></ul>
+
+                <h3>Client</h3>
+                <p style="color: var(--text-dim);">Iron Forge Fitness</p>
             </div>
-            <div class="hero-stats">
-                <div class="stat">
-                    <span class="stat-value" data-count="5000">0</span>
-                    <span class="stat-label">Active Members</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" data-count="15">0</span>
-                    <span class="stat-label">Expert Trainers</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" data-count="50">0</span>
-                    <span class="stat-label">Weekly Classes</span>
-                </div>
-                <div class="stat">
-                    <span class="stat-value" data-count="24">0</span>
-                    <span class="stat-label">Hours Open</span>
-                </div>
+            <div class="cs-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--font-head); color: white;">The Challenge</h2>
+                <p>Iron Forge was losing members to big-box chains. They lacked a distinct identity and their website was non-functional for booking classes.</p>
+                
+                <h2 style="font-size: 2.5rem; margin: 3rem 0 1.5rem; font-family: var(--font-head); color: white;">The Solution</h2>
+                <p>We rebranded them as the home for serious athletes. The new site features a bold, gritty aesthetic and a seamless class booking system. Member sign-ups increased by 40% in the first month.</p>
             </div>
         </div>
 
-        <div class="scroll-down">
-            <span>SCROLL</span>
-            <div class="scroll-line"></div>
+        <div class="live-btn-container">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-family: var(--font-head);">Experience the Live Site</h2>
+            <a href="live.html" target="_blank" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">Launch Project ↗</a>
         </div>
 
-        <div class="hero-shapes">
-            <div class="shape shape-1"></div>
-            <div class="shape shape-2"></div>
-            <div class="shape shape-3"></div>
+        <div class="cs-gallery">
+            <img src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1200&q=80" class="cs-img">
+            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?auto=format&fit=crop&w=1200&q=80" class="cs-img">
         </div>
-    </section>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <footer>
         <div class="container">
-            <div class="about-grid">
-                <div class="about-content">
-                    <span class="section-tag">WHO WE ARE</span>
-                    <h2 class="section-title">MORE THAN A GYM.<br><span class="text-gradient">A LIFESTYLE.</span></h2>
-                    <p>Founded in 2015, IRONFORGE has been Ahmedabad's premier destination for serious fitness enthusiasts. We're not just a gym – we're a community of warriors committed to pushing boundaries.</p>
-                    <p>Our state-of-the-art 15,000 sq ft facility features the latest equipment, dedicated training zones, and a team of certified professionals ready to guide your transformation.</p>
-                    
-                    <div class="about-features">
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-                            </div>
-                            <div>
-                                <h4>Premium Equipment</h4>
-                                <p>Top-tier machines from Technogym & Life Fitness</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
-                            </div>
-                            <div>
-                                <h4>24/7 Access</h4>
-                                <p>Train on your schedule, not ours</p>
-                            </div>
-                        </div>
-                        <div class="feature">
-                            <div class="feature-icon">
-                                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-                            </div>
-                            <div>
-                                <h4>Personal Training</h4>
-                                <p>1-on-1 sessions with certified coaches</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="about-images">
-                    <div class="image-stack">
-                        <div class="img-wrapper img-1">
-                            <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=600" alt="Gym Floor">
-                        </div>
-                        <div class="img-wrapper img-2">
-                            <img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=400" alt="Training">
-                        </div>
-                    </div>
-                    <div class="experience-box">
-                        <span class="exp-years">10+</span>
-                        <span class="exp-text">YEARS OF EXCELLENCE</span>
-                    </div>
-                </div>
+            <div class="footer-cta">
+                <h2>Next Project?</h2>
+                <a href="../../contact.html" class="big-link">Yours.</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Programs Section -->
-    <section id="programs" class="programs">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">OUR PROGRAMS</span>
-                <h2 class="section-title">TRAIN LIKE A<br><span class="text-gradient">CHAMPION</span></h2>
-                <p>Choose from our range of specialized training programs designed for every fitness level.</p>
-            </div>
-            
-            <div class="programs-grid">
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=500" alt="Strength Training">
-                        <div class="program-overlay">
-                            <span class="program-tag">POPULAR</span>
-                        </div>
-                    </div>
-                    <div class="program-content">
-                        <h3>Strength Training</h3>
-                        <p>Build muscle, increase power, and sculpt your physique with our comprehensive strength program.</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 60 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> All levels</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
+            <div class="footer-meta">
+                <div class="meta-links">
+                    <a href="../../sitemap.html">Sitemap</a>
+                    <a href="../../legal/privacy.html">Privacy</a>
+                    <a href="../../legal/terms.html">Terms</a>
                 </div>
-
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=500" alt="HIIT">
-                        <div class="program-overlay">
-                            <span class="program-tag hot"><svg width="12" height="12" viewBox="0 0 24 24" fill="#e74c3c"><path d="M12 22c-4.97 0-9-4.03-9-9 0-3.5 2.32-7.04 6.9-10.6.31-.24.75-.24 1.07 0l.13.1C15.68 5.96 21 9.5 21 13c0 4.97-4.03 9-9 9z"/></svg> HOT</span>
-                        </div>
-                    </div>
-                    <div class="program-content">
-                        <h3>HIIT Classes</h3>
-                        <p>High-intensity interval training to maximize calorie burn and boost your metabolism.</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 45 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Intermediate</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
-                </div>
-
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?w=500" alt="CrossFit">
-                    </div>
-                    <div class="program-content">
-                        <h3>CrossFit</h3>
-                        <p>Functional fitness at its finest. Build strength, endurance, and agility through varied workouts.</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 60 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Advanced</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
-                </div>
-
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=500" alt="Yoga">
-                    </div>
-                    <div class="program-content">
-                        <h3>Power Yoga</h3>
-                        <p>Strengthen your mind-body connection while building flexibility and core strength.</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 75 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> All levels</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
-                </div>
-
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1549576490-b0b4831ef60a?w=500" alt="Cardio">
-                    </div>
-                    <div class="program-content">
-                        <h3>Cardio Blast</h3>
-                        <p>Get your heart pumping with our energetic cardio sessions. Dance, step, cycle, and more!</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 50 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> Beginner</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
-                </div>
-
-                <div class="program-card">
-                    <div class="program-image">
-                        <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?w=500" alt="Zumba">
-                    </div>
-                    <div class="program-content">
-                        <h3>Zumba</h3>
-                        <p>Dance your way to fitness! Fun, energetic Zumba sessions that make working out a party.</p>
-                        <div class="program-meta">
-                            <span><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> 60 mins</span>
-                            <span><svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> All levels</span>
-                        </div>
-                        <a href="#join" class="btn btn-outline">Join Program</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Trainers Section -->
-    <section id="trainers" class="trainers">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">EXPERT COACHES</span>
-                <h2 class="section-title">MEET YOUR<br><span class="text-gradient">MENTORS</span></h2>
-                <p>Our certified trainers are here to guide you every step of the way.</p>
-            </div>
-
-            <div class="trainers-grid">
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1567013127542-490d757e51fc?w=400" alt="Trainer">
-                        <div class="trainer-social">
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="trainer-info">
-                        <h3>Vikram Singh</h3>
-                        <span class="trainer-role">Head Coach / CrossFit</span>
-                        <p>15+ years experience. National level powerlifter.</p>
-                    </div>
-                </div>
-
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1594381898411-846e7d193883?w=400" alt="Trainer">
-                        <div class="trainer-social">
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="trainer-info">
-                        <h3>Priya Patel</h3>
-                        <span class="trainer-role">Yoga & Wellness Expert</span>
-                        <p>Certified yoga instructor with 10+ years of practice.</p>
-                    </div>
-                </div>
-
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=400" alt="Trainer">
-                        <div class="trainer-social">
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="trainer-info">
-                        <h3>Rahul Sharma</h3>
-                        <span class="trainer-role">Strength & Conditioning</span>
-                        <p>Former national athlete. Sports science certified.</p>
-                    </div>
-                </div>
-
-                <div class="trainer-card">
-                    <div class="trainer-image">
-                        <img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=400" alt="Trainer">
-                        <div class="trainer-social">
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
-                            <a href="#"><svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg></a>
-                        </div>
-                    </div>
-                    <div class="trainer-info">
-                        <h3>Ananya Mehta</h3>
-                        <span class="trainer-role">Zumba & Dance Fitness</span>
-                        <p>Licensed Zumba instructor. Making fitness fun!</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Pricing Section -->
-    <section id="pricing" class="pricing">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">MEMBERSHIP PLANS</span>
-                <h2 class="section-title">INVEST IN<br><span class="text-gradient">YOURSELF</span></h2>
-                <p>Flexible plans designed to fit your lifestyle and goals.</p>
-            </div>
-
-            <div class="pricing-toggle">
-                <span class="active">Monthly</span>
-                <label class="toggle">
-                    <input type="checkbox" id="pricingToggle">
-                    <span class="toggle-slider"></span>
-                </label>
-                <span>Yearly <span class="save-badge">Save 20%</span></span>
-            </div>
-
-            <div class="pricing-grid">
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>STARTER</h3>
-                        <p>Perfect for beginners</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price monthly-price">1,499</span>
-                        <span class="price yearly-price" style="display:none">1,199</span>
-                        <span class="period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Access to gym floor</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Locker room access</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 2 group classes/week</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Basic fitness assessment</li>
-                        <li class="inactive"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Personal training</li>
-                        <li class="inactive"><svg viewBox="0 0 24 24"><path d="M18 6L6 18M6 6l12 12"/></svg> Nutrition guidance</li>
-                    </ul>
-                    <a href="#join" class="btn btn-outline">Get Started</a>
-                </div>
-
-                <div class="pricing-card popular">
-                    <div class="popular-badge">MOST POPULAR</div>
-                    <div class="pricing-header">
-                        <h3>PRO</h3>
-                        <p>For serious fitness enthusiasts</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price monthly-price">2,999</span>
-                        <span class="price yearly-price" style="display:none">2,399</span>
-                        <span class="period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 24/7 gym access</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> All group classes</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> 2 PT sessions/month</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Nutrition consultation</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Body composition analysis</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Towel & locker</li>
-                    </ul>
-                    <a href="#join" class="btn btn-primary">Get Started</a>
-                </div>
-
-                <div class="pricing-card">
-                    <div class="pricing-header">
-                        <h3>ELITE</h3>
-                        <p>The ultimate transformation</p>
-                    </div>
-                    <div class="pricing-amount">
-                        <span class="currency">₹</span>
-                        <span class="price monthly-price">4,999</span>
-                        <span class="price yearly-price" style="display:none">3,999</span>
-                        <span class="period">/month</span>
-                    </div>
-                    <ul class="pricing-features">
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Everything in Pro</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Unlimited PT sessions</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Custom meal plans</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Recovery zone access</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Monthly progress review</li>
-                        <li><svg viewBox="0 0 24 24"><path d="M20 6L9 17l-5-5"/></svg> Guest passes (2/month)</li>
-                    </ul>
-                    <a href="#join" class="btn btn-outline">Get Started</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Transformation Section -->
-    <section class="transformation">
-        <div class="container">
-            <div class="section-header">
-                <span class="section-tag">SUCCESS STORIES</span>
-                <h2 class="section-title">REAL PEOPLE.<br><span class="text-gradient">REAL RESULTS.</span></h2>
-            </div>
-            
-            <div class="transformations-slider">
-                <div class="transformation-card">
-                    <div class="before-after">
-                        <div class="ba-image">
-                            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400" alt="Transformation">
-                            <span class="ba-label">AFTER</span>
-                        </div>
-                    </div>
-                    <div class="transformation-content">
-                        <div class="transformation-stats">
-                            <div class="t-stat">
-                                <span class="t-value">-18kg</span>
-                                <span class="t-label">Weight Lost</span>
-                            </div>
-                            <div class="t-stat">
-                                <span class="t-value">6 months</span>
-                                <span class="t-label">Duration</span>
-                            </div>
-                        </div>
-                        <blockquote>"IRONFORGE changed my life. The trainers pushed me when I wanted to quit, and the community kept me motivated. I'm stronger than I've ever been!"</blockquote>
-                        <div class="transformation-author">
-                            <strong>Sneha K.</strong>
-                            <span>Member since 2023</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="transformation-card">
-                    <div class="before-after">
-                        <div class="ba-image">
-                            <img src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?w=400" alt="Transformation">
-                            <span class="ba-label">AFTER</span>
-                        </div>
-                    </div>
-                    <div class="transformation-content">
-                        <div class="transformation-stats">
-                            <div class="t-stat">
-                                <span class="t-value">+12kg</span>
-                                <span class="t-label">Muscle Gain</span>
-                            </div>
-                            <div class="t-stat">
-                                <span class="t-value">8 months</span>
-                                <span class="t-label">Duration</span>
-                            </div>
-                        </div>
-                        <blockquote>"From skinny to strong! The personalized training plan and nutrition guidance made all the difference. Best investment I've made."</blockquote>
-                        <div class="transformation-author">
-                            <strong>Arjun M.</strong>
-                            <span>Member since 2022</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="join" class="cta-section">
-        <div class="cta-bg">
-            <video autoplay muted loop playsinline>
-                <source src="https://assets.mixkit.co/videos/preview/mixkit-muscular-man-exercising-with-dumbbells-in-a-gym-44248-large.mp4" type="video/mp4">
-            </video>
-            <div class="cta-overlay"></div>
-        </div>
-        <div class="container">
-            <div class="cta-content">
-                <h2>READY TO<br><span class="text-gradient">TRANSFORM?</span></h2>
-                <p>Start your free 7-day trial today. No commitment, no credit card required.</p>
-                <form class="cta-form">
-                    <div class="form-row">
-                        <input type="text" placeholder="Your Name" required>
-                        <input type="tel" placeholder="Phone Number" required>
-                    </div>
-                    <div class="form-row">
-                        <select required>
-                            <option value="" disabled selected>Select Plan</option>
-                            <option>Starter - ₹1,499/mo</option>
-                            <option>Pro - ₹2,999/mo</option>
-                            <option>Elite - ₹4,999/mo</option>
-                        </select>
-                        <button type="submit" class="btn btn-primary btn-lg">START FREE TRIAL</button>
-                    </div>
-                </form>
-                <p class="cta-note"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg> Limited slots available. Join 50+ people who signed up this week!</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <span class="section-tag">GET IN TOUCH</span>
-                    <h2 class="section-title">VISIT<br><span class="text-gradient">OUR GYM</span></h2>
-                    <p>Drop by for a free tour or reach out to us with any questions.</p>
-                    
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <div class="contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-                            <div>
-                                <h4>Location</h4>
-                                <p>123 Fitness Avenue, Satellite<br>Ahmedabad, Gujarat 380015</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.88.37 1.73.7 2.55.18.47.11.99-.17 1.39l-1.26 1.6a12 12 0 0 0 5.54 5.54l1.6-1.26c.4-.28.92-.35 1.39-.17.82.33 1.67.57 2.55.7A2 2 0 0 1 22 16.92z"/></svg></div>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+91 98765 43210</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
-                            <div>
-                                <h4>Hours</h4>
-                                <p>Open 24/7</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <div class="contact-icon"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
-                            <div>
-                                <h4>Email</h4>
-                                <p>hello@ironforge.fit</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="social-links">
-                        <a href="#" class="social-btn">
-                            <svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
-                        </a>
-                        <a href="#" class="social-btn">
-                            <svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
-                        </a>
-                        <a href="#" class="social-btn">
-                            <svg viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></svg>
-                        </a>
-                        <a href="#" class="social-btn whatsapp">
-                            <svg viewBox="0 0 24 24"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.904584937365!2d72.51127!3d23.02887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzQ0LjAiTiA3MsKwMzAnNDAuNSJF!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; border-radius: 20px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <span class="logo-icon"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg></span>
-                        <span>IRONFORGE</span>
-                    </a>
-                    <p>Building champions since 2015. Join the movement and transform your life.</p>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#programs">Programs</a></li>
-                        <li><a href="#trainers">Trainers</a></li>
-                        <li><a href="#pricing">Pricing</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Programs</h4>
-                    <ul>
-                        <li><a href="#">Strength Training</a></li>
-                        <li><a href="#">HIIT Classes</a></li>
-                        <li><a href="#">CrossFit</a></li>
-                        <li><a href="#">Yoga</a></li>
-                        <li><a href="#">Personal Training</a></li>
-                    </ul>
-                </div>
-                <div class="footer-newsletter">
-                    <h4>Stay Updated</h4>
-                    <p>Get fitness tips and exclusive offers!</p>
-                    <form class="newsletter-form">
-                        <input type="email" placeholder="Your email">
-                        <button type="submit" class="btn btn-primary">SUBSCRIBE</button>
-                    </form>
-                </div>
-            </div>
-            <div class="built-by"><a href="https://myyworkk.netlify.app" target="_blank">Built by <strong>Vibhu</strong></a></div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 IRONFORGE. All rights reserved.</p>
-                <p>Made with <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6.5 6.5l11 11"/><path d="M21 21l-3.5-3.5"/><path d="M17.5 17.5l3-3c.6-.6.6-1.5 0-2.1l-1.4-1.4c-.6-.6-1.5-.6-2.1 0l-3 3"/><path d="M3 3l3.5 3.5"/><path d="M6.5 6.5l-3 3c-.6.6-.6 1.5 0 2.1l1.4 1.4c.6.6 1.5.6 2.1 0l3-3"/></svg> in Ahmedabad</p>
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop">
-        <svg viewBox="0 0 24 24"><path d="M12 19V5M5 12l7-7 7 7"/></svg>
-    </button>
-
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
 </body>
 </html>
