@@ -3,265 +3,590 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS VR | Next Generation Reality</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <title>NEXUS | The Neural Interface</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+
     <style>
         :root {
-            --bg: #030303;
-            --surface: #0f0f0f;
-            --primary: #3b82f6;
-            --accent: #60a5fa;
-            --text: #ffffff;
-            --text-dim: #9ca3af;
+            --bg: #030305;
+            --primary: #00f3ff;
+            --secondary: #bd00ff;
+            --surface: rgba(10, 10, 15, 0.6);
+            --border: rgba(255, 255, 255, 0.1);
+            --font-head: 'Syncopate', sans-serif;
+            --font-body: 'Rajdhani', sans-serif;
         }
-        
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             background-color: var(--bg);
-            color: var(--text);
-            font-family: 'Inter', sans-serif;
+            color: #fff;
+            font-family: var(--font-body);
             overflow-x: hidden;
+            cursor: none; /* Custom cursor */
         }
 
-        h1, h2, h3 { font-family: 'Space Grotesk', sans-serif; }
+        /* --- Custom Cursor --- */
+        .cursor {
+            width: 20px; height: 20px;
+            border: 1px solid var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
+            transition: width 0.3s, height 0.3s, background 0.3s;
+        }
+        .cursor-dot {
+            width: 4px; height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9999;
+            transform: translate(-50%, -50%);
+        }
+        body:hover .cursor { opacity: 1; }
+        
+        /* --- WebGL Canvas --- */
+        #canvas-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            z-index: -1;
+            opacity: 0; /* Fade in on load */
+            transition: opacity 1s ease;
+        }
 
-        /* Nav */
+        /* --- UI Elements --- */
         nav {
             position: fixed;
-            top: 0; left: 0; width: 100%;
-            padding: 1.5rem 2rem;
+            top: 0; width: 100%;
+            padding: 2rem 3rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
             z-index: 100;
-            backdrop-filter: blur(10px);
-            background: rgba(3,3,3,0.5);
-            border-bottom: 1px solid rgba(255,255,255,0.05);
+            mix-blend-mode: exclusion;
         }
 
-        .logo { font-weight: 700; font-size: 1.5rem; letter-spacing: -1px; display: flex; align-items: center; gap: 10px; }
-        .logo span { color: var(--primary); }
-        
-        .nav-btn {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.1);
-            padding: 0.6rem 1.2rem;
-            border-radius: 4px;
-            color: white;
+        .logo {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.5rem;
+            letter-spacing: 2px;
+            color: #fff;
             text-decoration: none;
-            font-size: 0.9rem;
-            transition: all 0.3s;
         }
-        .nav-btn:hover { background: var(--primary); border-color: var(--primary); }
 
-        /* Hero */
-        .hero {
-            height: 100vh;
+        .menu-btn {
+            font-family: var(--font-head);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            position: relative;
+        }
+        .menu-btn::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0%; height: 1px; background: var(--primary);
+            transition: 0.3s;
+        }
+        .menu-btn:hover::after { width: 100%; }
+
+        /* --- Loading Screen --- */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: #000;
+            z-index: 999;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+        .loader-bar {
+            width: 200px; height: 2px;
+            background: #333;
+            margin-top: 1rem;
             position: relative;
             overflow: hidden;
         }
-
-        .hero-bg {
-            position: absolute;
-            width: 100%; height: 100%;
-            background: radial-gradient(circle at 50% 50%, rgba(59, 130, 246, 0.1) 0%, transparent 60%);
-            z-index: -1;
+        .loader-progress {
+            position: absolute; top: 0; left: 0;
+            height: 100%; width: 0%;
+            background: var(--primary);
+            transition: width 0.1s;
+        }
+        .loader-text {
+            font-family: var(--font-head);
+            font-size: 3rem;
+            letter-spacing: 5px;
+            font-weight: 700;
         }
 
-        .hero-content {
+        /* --- Sections --- */
+        section {
+            min-height: 100vh;
+            padding: 4rem 2rem;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .hero {
+            align-items: center;
             text-align: center;
-            z-index: 2;
-            max-width: 800px;
-            padding: 0 1rem;
         }
 
         .hero h1 {
-            font-size: 6rem;
+            font-family: var(--font-head);
+            font-size: 8vw;
             line-height: 0.9;
-            margin-bottom: 1.5rem;
-            letter-spacing: -2px;
-            background: linear-gradient(to bottom, #fff, #888);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            mix-blend-mode: overlay;
+            opacity: 0;
+            transform: translateY(50px);
         }
 
         .hero p {
-            font-size: 1.25rem;
-            color: var(--text-dim);
-            margin-bottom: 2.5rem;
-            font-weight: 300;
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: 2rem auto;
+            color: rgba(255,255,255,0.7);
+            letter-spacing: 1px;
+            opacity: 0;
+            transform: translateY(30px);
         }
 
-        .cta-group { display: flex; gap: 1rem; justify-content: center; }
-
-        .btn-primary {
+        .cta-btn {
+            padding: 1rem 3rem;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            text-transform: uppercase;
+            font-family: var(--font-head);
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            background: transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        .cta-btn::before {
+            content: '';
+            position: absolute; top: 0; left: -100%;
+            width: 100%; height: 100%;
             background: var(--primary);
-            color: white;
-            padding: 1rem 2.5rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            transition: transform 0.3s;
+            transition: 0.3s;
+            z-index: -1;
         }
-        .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 30px -10px rgba(59, 130, 246, 0.5); }
+        .cta-btn:hover::before { left: 0; }
+        .cta-btn:hover { color: #000; box-shadow: 0 0 30px var(--primary); }
 
-        /* 3D Product Placeholder */
-        .product-stage {
-            position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            width: 600px; height: 600px;
-            border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.05);
-            z-index: 0;
-            animation: spin 20s linear infinite;
+        /* HUD Overlay */
+        .hud-corner {
+            position: fixed;
+            width: 100px; height: 100px;
+            border: 1px solid rgba(255,255,255,0.1);
+            pointer-events: none;
+            z-index: 50;
         }
-        .product-stage::before {
-            content: ''; position: absolute; inset: -20px; border-radius: 50%;
-            border: 1px solid rgba(255,255,255,0.02);
-            animation: spin 30s linear infinite reverse;
-        }
+        .hud-tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
+        .hud-tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
+        .hud-bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
+        .hud-br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
 
-        @keyframes spin { 100% { transform: translate(-50%, -50%) rotate(360deg); } }
+        .hud-text {
+            position: fixed;
+            bottom: 2rem; left: 50%;
+            transform: translateX(-50%);
+            font-family: var(--font-head);
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.5);
+            z-index: 50;
+        }
 
         /* Features */
-        .features { padding: 8rem 2rem; }
-        .section-header { text-align: center; margin-bottom: 6rem; }
-        .section-header h2 { font-size: 3rem; margin-bottom: 1rem; }
-        
-        .feature-grid {
+        .features {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
-            max-width: 1200px;
+            max-width: 1400px;
             margin: 0 auto;
         }
-
         .feature-card {
-            background: var(--surface);
-            border: 1px solid rgba(255,255,255,0.05);
-            padding: 2.5rem;
-            border-radius: 16px;
-            transition: all 0.3s;
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--border);
+            padding: 3rem;
+            transition: 0.3s;
         }
-        .feature-card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .feature-card h3 { font-size: 1.5rem; margin-bottom: 1rem; color: white; }
-        .feature-card p { color: var(--text-dim); line-height: 1.6; }
+        .feature-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            background: rgba(0, 243, 255, 0.05);
+        }
+        .f-icon {
+            font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary);
+        }
+        .f-title {
+            font-family: var(--font-head);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        .f-desc {
+            color: rgba(255,255,255,0.6);
+            line-height: 1.6;
+        }
 
-        /* Specs */
-        .specs { padding: 8rem 0; background: #080808; }
-        .specs-container {
-            max-width: 1000px;
-            margin: 0 auto;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-            padding: 0 2rem;
+        /* Specs (Scroll Horizontal) */
+        .scroll-section {
+            height: 400vh; /* Long scroll area for pinning */
+            position: relative;
         }
-        .spec-list div {
-            padding: 1.5rem 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+        .scroll-content {
+            position: sticky;
+            top: 0;
+            height: 100vh;
+            overflow: hidden;
             display: flex;
-            justify-content: space-between;
+            align-items: center;
         }
-        .spec-label { color: var(--text-dim); }
-        .spec-val { font-weight: 600; color: white; }
+        .scroll-track {
+            display: flex;
+            gap: 10vw;
+            padding-left: 10vw;
+        }
+        .spec-item {
+            min-width: 60vw;
+            font-size: 4rem;
+            font-family: var(--font-head);
+            color: transparent;
+            -webkit-text-stroke: 2px rgba(255,255,255,0.3);
+            transition: 0.3s;
+        }
+        .spec-item.active {
+            color: white;
+            -webkit-text-stroke: 0px;
+            text-shadow: 0 0 30px rgba(255,255,255,0.5);
+        }
 
         /* Footer */
-        footer { padding: 4rem 2rem; border-top: 1px solid rgba(255,255,255,0.05); text-align: center; color: var(--text-dim); }
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 4rem 2rem;
+            text-align: center;
+            font-family: var(--font-head);
+            font-size: 0.8rem;
+            letter-spacing: 2px;
+            color: rgba(255,255,255,0.4);
+        }
 
         @media(max-width: 768px) {
-            .hero h1 { font-size: 3.5rem; }
-            .specs-container { grid-template-columns: 1fr; }
-            .product-stage { width: 300px; height: 300px; }
+            .hero h1 { font-size: 15vw; }
+            .features { grid-template-columns: 1fr; }
+            .spec-item { font-size: 2rem; min-width: 80vw; }
         }
     </style>
 </head>
 <body>
 
+    <!-- Cursor -->
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- WebGL Background -->
+    <div id="canvas-container"></div>
+
+    <!-- Loader -->
+    <div class="loader">
+        <div class="loader-text">INITIALIZING</div>
+        <div class="loader-bar"><div class="loader-progress"></div></div>
+    </div>
+
+    <!-- HUD -->
+    <div class="hud-corner hud-tl"></div>
+    <div class="hud-corner hud-tr"></div>
+    <div class="hud-corner hud-bl"></div>
+    <div class="hud-corner hud-br"></div>
+    <div class="hud-text">SYS.VER.2.0.4 // ONLINE</div>
+
+    <!-- Navigation -->
     <nav>
-        <div class="logo">NEXUS<span>X1</span></div>
-        <a href="#" class="nav-btn">Pre-Order</a>
+        <a href="#" class="logo">NEXUS</a>
+        <div class="menu-btn">MENU</div>
     </nav>
 
-    <section class="hero">
-        <div class="hero-bg"></div>
-        <div class="product-stage"></div>
-        <div class="hero-content">
-            <h1 class="fade-up">Reality,<br>Redefined.</h1>
-            <p class="fade-up">The world's first neural-ready VR interface. <br>8K resolution per eye. Zero latency. Total immersion.</p>
-            <div class="cta-group fade-up">
-                <a href="#preorder" class="btn-primary">Reserve Yours</a>
-            </div>
-        </div>
-    </section>
+    <!-- Content -->
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
+            
+            <section class="hero">
+                <h1>Beyond<br>Reality</h1>
+                <p>The first neural interface designed for the mass market. Step into the void.</p>
+                <button class="cta-btn">Initiate Sequence</button>
+            </section>
 
-    <section class="features">
-        <div class="section-header">
-            <h2>Hardware of Tomorrow</h2>
-            <p style="color: var(--text-dim);">Engineered for the impossible.</p>
-        </div>
-        <div class="feature-grid">
-            <div class="feature-card">
-                <h3>8K Retina Display</h3>
-                <p>Micro-OLED panels delivering 60 pixels per degree. Indistinguishable from reality.</p>
-            </div>
-            <div class="feature-card">
-                <h3>Neural Link</h3>
-                <p>Non-invasive BCI sensors detect intent before you even move your hand.</p>
-            </div>
-            <div class="feature-card">
-                <h3>120Hz Passthrough</h3>
-                <p>Stereoscopic color passthrough with depth mapping for perfect mixed reality.</p>
-            </div>
-        </div>
-    </section>
+            <section class="features">
+                <div class="feature-card">
+                    <div class="f-icon">✦</div>
+                    <div class="f-title">8K Retina</div>
+                    <div class="f-desc">Micro-OLED panels delivering 60 pixels per degree. Indistinguishable from the physical world.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon">⚡</div>
+                    <div class="f-title">Zero Latency</div>
+                    <div class="f-desc">Proprietary photon-to-motion engine ensures instantaneous response times under 2ms.</div>
+                </div>
+                <div class="feature-card">
+                    <div class="f-icon">🧠</div>
+                    <div class="f-title">Neural Link</div>
+                    <div class="f-desc">Non-invasive BCI sensors detect intent before you even move your hand.</div>
+                </div>
+            </section>
 
-    <section class="specs">
-        <div class="specs-container">
-            <div>
-                <h2 style="font-size: 3rem; margin-bottom: 1rem;">Tech Specs</h2>
-                <p style="color: var(--text-dim); margin-bottom: 2rem;">Uncompromising performance in a featherweight chassis.</p>
-                <img src="https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&w=800&q=80" alt="Headset" style="width: 100%; border-radius: 12px; opacity: 0.8;">
-            </div>
-            <div class="spec-list">
-                <div><span class="spec-label">Resolution</span><span class="spec-val">8K (4K per eye)</span></div>
-                <div><span class="spec-label">Refresh Rate</span><span class="spec-val">120Hz / 144Hz</span></div>
-                <div><span class="spec-label">FOV</span><span class="spec-val">120° Horizontal</span></div>
-                <div><span class="spec-label">Weight</span><span class="spec-val">320g</span></div>
-                <div><span class="spec-label">Battery</span><span class="spec-val">4 Hours Active</span></div>
-                <div><span class="spec-label">Processor</span><span class="spec-val">Nexus N1 Chip</span></div>
-            </div>
-        </div>
-    </section>
+            <section class="scroll-section">
+                <div class="scroll-content">
+                    <div class="scroll-track">
+                        <div class="spec-item">120Hz REFRESH</div>
+                        <div class="spec-item">200° FOV</div>
+                        <div class="spec-item">HAPTIC SUIT</div>
+                        <div class="spec-item">EYE TRACKING</div>
+                    </div>
+                </div>
+            </section>
 
-    <footer>
-        <p>&copy; 2025 Nexus Technologies. Designed by Lumina.</p>
-    </footer>
+            <footer>
+                NEXUS INDUSTRIES © 2026 // ALL SYSTEMS OPERATIONAL
+            </footer>
+
+        </div>
+    </div>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger);
-
-        gsap.from(".fade-up", {
-            y: 50,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power3.out"
+        // --- Custom Cursor ---
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursorDot.style.left = e.clientX + 'px';
+            cursorDot.style.top = e.clientY + 'px';
+            
+            // Lag effect for outer circle
+            setTimeout(() => {
+                cursor.style.left = e.clientX + 'px';
+                cursor.style.top = e.clientY + 'px';
+            }, 50);
         });
 
+        document.addEventListener('mousedown', () => {
+            cursor.style.transform = "translate(-50%, -50%) scale(0.5)";
+        });
+        
+        document.addEventListener('mouseup', () => {
+            cursor.style.transform = "translate(-50%, -50%) scale(1)";
+        });
+
+        // --- Three.js Setup (The "Core") ---
+        const scene = new THREE.Scene();
+        scene.fog = new THREE.FogExp2(0x030305, 0.02); // Distance fog
+
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.z = 5;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        document.getElementById('canvas-container').appendChild(renderer.domElement);
+
+        // Geometries
+        const coreGeo = new THREE.IcosahedronGeometry(1, 4);
+        const wireframeMat = new THREE.MeshBasicMaterial({ 
+            color: 0x00f3ff, 
+            wireframe: true, 
+            transparent: true, 
+            opacity: 0.3 
+        });
+        const core = new THREE.Mesh(coreGeo, wireframeMat);
+        scene.add(core);
+
+        // Particle Cloud
+        const particlesGeo = new THREE.BufferGeometry();
+        const particlesCount = 2000;
+        const posArray = new Float32Array(particlesCount * 3);
+
+        for(let i = 0; i < particlesCount * 3; i++) {
+            posArray[i] = (Math.random() - 0.5) * 15; // Spread
+        }
+
+        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+        const particlesMat = new THREE.PointsMaterial({
+            size: 0.02,
+            color: 0xbd00ff,
+            transparent: true,
+            opacity: 0.8,
+            blending: THREE.AdditiveBlending
+        });
+        const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
+        scene.add(particlesMesh);
+
+        // Outer Rings
+        const ringGeo = new THREE.TorusGeometry(3, 0.02, 16, 100);
+        const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
+        const ring1 = new THREE.Mesh(ringGeo, ringMat);
+        const ring2 = new THREE.Mesh(ringGeo, ringMat);
+        const ring3 = new THREE.Mesh(ringGeo, ringMat);
+        
+        ring1.rotation.x = Math.PI / 2;
+        ring2.rotation.y = Math.PI / 2;
+        
+        scene.add(ring1);
+        scene.add(ring2);
+        scene.add(ring3);
+
+        // Lights
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+        
+        const pointLight = new THREE.PointLight(0x00f3ff, 2);
+        pointLight.position.set(2, 3, 4);
+        scene.add(pointLight);
+
+        // Animation Loop
+        let mouseX = 0;
+        let mouseY = 0;
+        let targetX = 0;
+        let targetY = 0;
+
+        const windowHalfX = window.innerWidth / 2;
+        const windowHalfY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (event) => {
+            mouseX = (event.clientX - windowHalfX);
+            mouseY = (event.clientY - windowHalfY);
+        });
+
+        const clock = new THREE.Clock();
+
+        function animate() {
+            const elapsedTime = clock.getElapsedTime();
+
+            targetX = mouseX * 0.001;
+            targetY = mouseY * 0.001;
+
+            // Rotate Core
+            core.rotation.y += 0.005;
+            core.rotation.x += 0.002;
+            
+            // Pulse Core
+            const scale = 1 + Math.sin(elapsedTime * 2) * 0.1;
+            core.scale.set(scale, scale, scale);
+
+            // Rotate Particles
+            particlesMesh.rotation.y = elapsedTime * 0.05;
+            particlesMesh.rotation.x = mouseY * 0.0005;
+
+            // Rotate Rings (Gyroscopic effect)
+            ring1.rotation.x += 0.01;
+            ring1.rotation.y += 0.005;
+            ring2.rotation.y += 0.01;
+            ring2.rotation.z += 0.005;
+            ring3.rotation.z += 0.01;
+            ring3.rotation.x += 0.005;
+
+            // Mouse Interaction Parallax
+            core.rotation.y += 0.05 * (targetX - core.rotation.y);
+            core.rotation.x += 0.05 * (targetY - core.rotation.x);
+
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
+        }
+        animate();
+
+        // Handle Resize
+        window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+            renderer.setSize(window.innerWidth, window.innerHeight);
+        });
+
+        // --- Page Logic (GSAP + Lenis) ---
+        
+        // 1. Loader Logic
+        const progress = document.querySelector('.loader-progress');
+        const loader = document.querySelector('.loader');
+        const canvasContainer = document.getElementById('canvas-container');
+
+        let loadVal = 0;
+        const interval = setInterval(() => {
+            loadVal += Math.random() * 10;
+            if (loadVal >= 100) {
+                loadVal = 100;
+                clearInterval(interval);
+                
+                // Animation Complete
+                gsap.to('.loader', {
+                    yPercent: -100,
+                    duration: 1,
+                    ease: 'power4.inOut',
+                    onComplete: () => {
+                        // Reveal Hero
+                        canvasContainer.style.opacity = 1;
+                        gsap.to('.hero h1', { opacity: 1, y: 0, duration: 1, delay: 0.2 });
+                        gsap.to('.hero p', { opacity: 1, y: 0, duration: 1, delay: 0.4 });
+                        gsap.to('.cta-btn', { opacity: 1, y: 0, duration: 1, delay: 0.6 });
+                    }
+                });
+            }
+            progress.style.width = loadVal + '%';
+        }, 100);
+
+        // 2. Lenis Smooth Scroll
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            gestureDirection: 'vertical',
+            smooth: true,
+            mouseMultiplier: 1,
+            smoothTouch: false,
+            touchMultiplier: 2,
+        });
+
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 3. Scroll Triggers
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Features Fade In
         gsap.utils.toArray('.feature-card').forEach((card, i) => {
             gsap.from(card, {
                 scrollTrigger: {
                     trigger: card,
                     start: "top 85%",
+                    toggleActions: "play none none reverse"
                 },
                 y: 50,
                 opacity: 0,
@@ -269,6 +594,55 @@
                 delay: i * 0.1
             });
         });
+
+        // Horizontal Scroll for Specs
+        const track = document.querySelector('.scroll-track');
+        const items = document.querySelectorAll('.spec-item');
+        
+        // Horizontal movement
+        gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".scroll-section",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: 1,
+                pin: true,
+                anticipatePin: 1
+            }
+        });
+
+        // Highlight items as they pass center
+        items.forEach(item => {
+            ScrollTrigger.create({
+                trigger: item,
+                containerAnimation: gsap.getTweensOf(track)[0], // Link to horizontal tween
+                start: "center 60%",
+                end: "center 40%",
+                onEnter: () => item.classList.add('active'),
+                onLeave: () => item.classList.remove('active'),
+                onEnterBack: () => item.classList.add('active'),
+                onLeaveBack: () => item.classList.remove('active')
+            });
+        });
+
+        // 4. Connect Scroll to Three.js
+        // Zoom camera in/out based on scroll
+        gsap.to(camera.position, {
+            z: 2, // Zoom in
+            scrollTrigger: {
+                trigger: "body",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: true
+            }
+        });
+        
+        // Rotate rings faster on scroll
+        gsap.to(ring1.rotation, { x: Math.PI * 4, scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }});
+        gsap.to(ring2.rotation, { y: Math.PI * 4, scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }});
+
     </script>
 </body>
 </html>
