@@ -3,24 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Team | Lumina Digital</title>
+    <title>Leadership | Lumina Digital</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
-    <style>
-        .team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 4rem; margin-top: 4rem; }
-        .team-card { text-align: center; }
-        .team-img { width: 100%; height: 400px; object-fit: cover; border-radius: 12px; margin-bottom: 2rem; filter: grayscale(100%); transition: all 0.4s ease; border: 1px solid var(--line); }
-        .team-card:hover .team-img { filter: grayscale(0%); transform: translateY(-10px); }
-        .team-role { color: var(--accent); font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; margin-bottom: 0.5rem; display: block; }
-        .team-name { font-size: 1.8rem; margin-bottom: 1rem; color: white; }
-        .team-bio { font-size: 1rem; color: var(--text-dim); line-height: 1.6; }
-    </style>
 </head>
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
+    
     <nav>
         <div class="nav-container">
             <a href="../index.html" class="logo">LUMINA<span class="dot">.</span></a>
@@ -28,12 +20,13 @@
                 <a href="../index.html" class="nav-link">Home</a>
                 <a href="../work.html" class="nav-link">Work</a>
                 <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link active">Agency</a>
+                <a href="../agency.html" class="nav-link">Agency</a>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
+
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -49,28 +42,30 @@
         <div class="container">
             <div class="section-label">AGENCY / PEOPLE</div>
             <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Leadership</h1>
-            <p style="font-size: 1.5rem; color: var(--text-dim); max-width: 700px; line-height: 1.5;">
-                A collective of visionaries, engineers, and artists. Led by industry veterans, our team is dedicated to pushing the boundaries of digital.
-            </p>
-
-            <div class="team-grid">
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=800&q=80" alt="Vibhu Thanki" class="team-img">
-                    <span class="team-role">Founder & CEO</span>
-                    <h3 class="team-name">Vibhu Thanki</h3>
-                    <p class="team-bio">Visionary leader driving the strategic direction of Lumina. Vibhu combines deep technical knowledge with a passion for world-class design.</p>
-                </div>
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=800&q=80" alt="Sarah Chen" class="team-img">
-                    <span class="team-role">Creative Director</span>
-                    <h3 class="team-name">Sarah Chen</h3>
-                    <p class="team-bio">Award-winning designer with a portfolio spanning fashion, tech, and luxury. She ensures every pixel serves a purpose.</p>
-                </div>
-                <div class="team-card">
-                    <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80" alt="Marcus Weber" class="team-img">
-                    <span class="team-role">Head of Technology</span>
-                    <h3 class="team-name">Marcus Weber</h3>
-                    <p class="team-bio">Full-stack architect specializing in WebGL and headless infrastructure. Marcus turns impossible designs into performant reality.</p>
+            <div style="max-width: 800px;">
+                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
+                    We are a collective of visionaries, engineers, and artists. Led by industry veterans, our team is dedicated to pushing the boundaries of digital.
+                </p>
+                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
+                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
+                    <p style="margin-bottom: 2rem;">
+                        Our leadership team brings together decades of experience from top tech companies and design studios.
+                    </p>
+                    <p style="margin-bottom: 2rem;">
+                        We believe in a flat hierarchy where the best idea wins. Every member of the team is empowered to make decisions and drive impact.
+                    </p>
+                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights</h3>
+                    <ul style="list-style: none; padding: 0;">
+                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
+                            <span style="color: var(--accent);">→</span> Vibhu Thanki
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
+                            <span style="color: var(--accent);">→</span> Founder & CEO
+                        </li>
+                        <li style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
+                            <span style="color: var(--accent);">→</span> Creative Director
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -79,8 +74,8 @@
     <footer>
         <div class="container">
             <div class="footer-cta">
-                <h2>Join us?</h2>
-                <a href="careers.html" class="big-link">View Roles.</a>
+                <h2>Next Steps?</h2>
+                <a href="../contact.html" class="big-link">Get in touch.</a>
             </div>
             <div class="footer-meta">
                 <div class="meta-links">
