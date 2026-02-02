@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Senior Frontend Engineer | Lumina Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        .career-hero { padding: 180px 0 80px; text-align: center; }
+        .career-meta { display: flex; justify-content: center; gap: 2rem; margin-bottom: 2rem; color: var(--accent); font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; font-size: 0.9rem; }
+        .job-content { max-width: 800px; margin: 0 auto; }
+        .job-content h3 { font-size: 1.5rem; color: white; margin: 3rem 0 1rem; font-family: var(--font-head); }
+        .job-content ul { list-style: disc; padding-left: 1.5rem; color: var(--text-dim); margin-bottom: 2rem; }
+        .job-content li { margin-bottom: 0.5rem; line-height: 1.6; }
+        .apply-form { margin-top: 4rem; padding: 3rem; background: rgba(255,255,255,0.03); border: 1px solid var(--line); border-radius: 12px; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-label { display: block; margin-bottom: 0.5rem; color: var(--text-dim); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; }
+        .form-input { 
+            width: 100%; background: transparent; border: 1px solid var(--line); padding: 1rem; color: white; 
+            font-family: var(--font-body); border-radius: 4px; transition: border-color 0.3s;
+        }
+        .form-input:focus { border-color: var(--accent); outline: none; }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../work.html" class="nav-link">Work</a>
+                <a href="../../expertise.html" class="nav-link">Expertise</a>
+                <a href="../../agency.html" class="nav-link active">Agency</a>
+            </div>
+            <a href="../../contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../work.html">Work</a>
+            <a href="../../expertise.html">Expertise</a>
+            <a href="../../agency.html">Agency</a>
+            <a href="../../contact.html">Contact</a>
+        </div>
+    </div>
+
+    <div class="container">
+        <header class="career-hero">
+            <div class="career-meta">
+                <span>Remote (EU Timezone)</span>
+                <span>Full-Time</span>
+            </div>
+            <h1 class="hero-text" style="font-size: 4rem;">Senior Frontend Engineer</h1>
+        </header>
+
+        <div class="job-content">
+            <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 3rem;">
+                We are looking for a creative engineer who obsesses over interaction details. You will work directly with our design team to implement award-winning WebGL experiences.
+            </p>
+
+            <h3>What You'll Do</h3>
+            <ul><li>Architect and build high-performance frontends using Next.js and React Three Fiber.</li><li>Collaborate with designers to implement complex animations using GSAP.</li><li>Optimize applications for maximum speed and accessibility (Core Web Vitals).</li><li>Mentor junior developers and establish code quality standards.</li></ul>
+
+            <h3>Requirements</h3>
+            <ul><li>5+ years of experience with React and modern CSS.</li><li>Strong proficiency in Three.js / WebGL.</li><li>Experience with headless CMS architectures (Sanity, Contentful).</li><li>A portfolio demonstrating creative coding projects.</li></ul>
+
+            <h3>Benefits</h3>
+            <ul>
+                <li>Competitive equity package</li>
+                <li>Unlimited PTO and flexible hours</li>
+                <li>Latest MacBook Pro & Home Office Stipend</li>
+                <li>Annual team retreats</li>
+            </ul>
+
+            <div class="apply-form">
+                <h3 style="margin-top: 0;">Apply for this Role</h3>
+                <form>
+                    <div class="form-group">
+                        <label class="form-label">Full Name</label>
+                        <input type="text" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Portfolio / LinkedIn URL</label>
+                        <input type="url" class="form-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Why you?</label>
+                        <textarea class="form-input" rows="4"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width:100%; border-radius:4px; margin-top:1rem;">Submit Application</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <div class="footer-meta">
+                <div class="meta-links">
+                    <a href="../../sitemap.html">Sitemap</a>
+                    <a href="../../legal/privacy.html">Privacy</a>
+                    <a href="../../legal/terms.html">Terms</a>
+                </div>
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../../script.js"></script>
+</body>
+</html>

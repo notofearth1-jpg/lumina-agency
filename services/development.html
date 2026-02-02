@@ -1,22 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Development Services | Lumina Digital</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        .service-hero { padding: 180px 0 100px; }
+        .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin: 6rem 0; }
+        .feature-item { padding: 2rem; border: 1px solid var(--line); border-radius: 12px; background: rgba(255,255,255,0.02); }
+        .feature-item h3 { font-size: 1.5rem; color: white; margin-bottom: 1rem; }
+        .process-row { display: grid; grid-template-columns: 100px 1fr; gap: 2rem; margin-bottom: 4rem; border-top: 1px solid var(--line); padding-top: 2rem; }
+        .step-num { font-family: var(--font-head); font-size: 3rem; color: var(--accent); font-weight: 700; opacity: 0.5; }
+        .tech-tag { display: inline-block; padding: 0.5rem 1rem; border: 1px solid var(--accent); border-radius: 50px; color: var(--accent); font-size: 0.9rem; margin-bottom: 2rem; }
+        @media(max-width: 900px) { .feature-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-    <div class="grid-bg"></div><div class="glow-orb"></div>
-    <nav><div class="nav-container"><a href="../index.html" class="logo">LUMINA<span class="dot">.</span></a><a href="../contact.html" class="cta-button">Contact</a></div></nav>
-    <div class="container" style="padding-top:150px;">
-        <h1 class="hero-text">Development</h1>
-        <p class="project-desc">Clean, scalable code that powers the next generation of the web. We specialize in modern frameworks and performance optimization.</p>
-        <div class="expertise-grid">
-            <div class="exp-card"><h3>Frontend</h3><p>React, Vue, and WebGL for interactive, responsive front-ends.</p></div>
-            <div class="exp-card"><h3>Backend</h3><p>Node.js, Python, and scalable cloud infrastructure.</p></div>
-            <div class="exp-card"><h3>E-Commerce</h3><p>Custom Shopify and headless commerce solutions.</p></div>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../work.html" class="nav-link">Work</a>
+                <a href="../expertise.html" class="nav-link active">Expertise</a>
+                <a href="../agency.html" class="nav-link">Agency</a>
+            </div>
+            <a href="../contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="../index.html">Home</a>
+            <a href="../work.html">Work</a>
+            <a href="../expertise.html">Expertise</a>
+            <a href="../agency.html">Agency</a>
+            <a href="../contact.html">Contact</a>
         </div>
     </div>
+
+    <header class="service-hero">
+        <div class="container">
+            <span class="tech-tag">SERVICE OFFERING</span>
+            <h1 class="hero-text" style="font-size: 4.5rem; margin-bottom: 2rem;">Development</h1>
+            <p style="font-size: 1.5rem; color: var(--text-dim); max-width: 700px; line-height: 1.5;">
+                Clean, scalable code that powers the next generation of the web. We specialize in modern frameworks and performance optimization.
+            </p>
+        </div>
+    </header>
+
+    <section>
+        <div class="container">
+            <div class="section-label">01 / DELIVERABLES</div>
+            <div class="feature-grid">
+                
+            <div class="feature-item"><h3>Frontend</h3><p>React, Vue, and WebGL for interactive, responsive front-ends.</p></div>
+            <div class="feature-item"><h3>Backend</h3><p>Node.js, Python, and scalable cloud infrastructure.</p></div>
+            <div class="feature-item"><h3>E-Commerce</h3><p>Custom Shopify and headless commerce solutions.</p></div>
+        
+            </div>
+        </div>
+    </section>
+
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label">02 / PROCESS</div>
+            
+            <div class="process-row"><div class="step-num">01</div><div><h3>Architecture</h3><p>Selecting the right stack.</p></div></div>
+            <div class="process-row"><div class="step-num">02</div><div><h3>Build</h3><p>Frontend development and API hookups.</p></div></div>
+            <div class="process-row"><div class="step-num">03</div><div><h3>Launch</h3><p>Testing payments and fulfillment.</p></div></div>
+        
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h2>Transform your business.</h2>
+                <a href="../contact.html" class="big-link">Start Project.</a>
+            </div>
+            <div class="footer-meta">
+                <div class="meta-links">
+                    <a href="../sitemap.html">Sitemap</a>
+                    <a href="../legal/privacy.html">Privacy</a>
+                    <a href="../legal/terms.html">Terms</a>
+                </div>
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
 </body>
 </html>
