@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Rise of Generative UI | Lumina Digital</title>
+    <meta name="description" content="How AI is building interfaces on the fly and what it means for designers.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../style.css">
+    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <style>
+        .blog-header { padding: 180px 0 60px; text-align: center; max-width: 900px; margin: 0 auto; }
+        .blog-meta { color: var(--accent); font-family: var(--font-head); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; font-size: 0.9rem; }
+        .blog-hero-img { width: 100%; height: 500px; object-fit: cover; border-radius: 20px; margin-bottom: 4rem; border: 1px solid var(--line); }
+        .blog-content { max-width: 740px; margin: 0 auto; font-size: 1.15rem; line-height: 1.8; color: #d4d4d8; }
+        .blog-content h2 { font-size: 2rem; color: white; margin: 3rem 0 1.5rem; font-family: var(--font-head); }
+        .blog-content p { margin-bottom: 1.5rem; }
+        .blog-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 2rem; color: #a1a1aa; }
+        .blog-content li { margin-bottom: 0.5rem; }
+        .blog-content strong { color: white; }
+        .author-box { border-top: 1px solid var(--line); margin-top: 4rem; padding-top: 2rem; display: flex; align-items: center; gap: 1.5rem; }
+        .author-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
+        .share-links { margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; }
+        .share-btn { padding: 0.5rem 1.5rem; border: 1px solid var(--line); border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
+        .share-btn:hover { background: white; color: black; }
+        @media(max-width: 768px) { .blog-hero-img { height: 300px; } .blog-header { padding-top: 120px; } }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="../index.html" class="nav-link">Home</a>
+                <a href="../work.html" class="nav-link">Work</a>
+                <a href="../expertise.html" class="nav-link">Expertise</a>
+                <a href="../agency.html" class="nav-link">Agency</a>
+            </div>
+            <a href="../contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="../index.html">Home</a>
+            <a href="../work.html">Work</a>
+            <a href="../expertise.html">Expertise</a>
+            <a href="../agency.html">Agency</a>
+            <a href="../contact.html">Contact</a>
+        </div>
+    </div>
+
+    <article>
+        <header class="blog-header">
+            <div class="blog-meta">AI / DESIGN • 5 MIN READ</div>
+            <h1 class="hero-text" style="font-size: 3.5rem; margin-bottom: 2rem;">The Rise of Generative UI</h1>
+            <div style="display: flex; justify-content: center; gap: 2rem; color: var(--text-dim); font-size: 0.9rem;">
+                <span>By Alex Morgan</span>
+                <span>Oct 12, 2025</span>
+            </div>
+        </header>
+
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80" alt="The Rise of Generative UI" class="blog-hero-img">
+            
+            <div class="blog-content">
+                
+            <h2>Interfaces That Adapt to You</h2>
+            <p>Imagine a website that doesn't just look the same for everyone, but reconstructs itself based on your intent. Generative UI is shifting the paradigm from static layouts to fluid, intent-based components.</p>
+            <p>By leveraging LLMs, we can now generate UI components on the fly. A dashboard for a CFO might prioritize high-level charts, while the same dashboard for an engineer focuses on logs and uptime.</p>
+            <h2>The Role of the Designer</h2>
+            <p>Does this mean the end of design? Far from it. Designers are moving from "painters" to "gardeners". We define the constraints, the design system tokens, and the rules of engagement.</p>
+            <ul>
+                <li><strong>Dynamic Components:</strong> UI elements that spawn based on context.</li>
+                <li><strong>Personalized Flows:</strong> User journeys that shorten based on historical data.</li>
+                <li><strong>Accessibility:</strong> Interfaces that auto-adjust contrast and size for user needs.</li>
+            </ul>
+            <p>The future isn't about pixel perfection; it's about system perfection.</p>
+        
+                
+                <div class="author-box">
+                    <img src="https://ui-avatars.com/api/?name=Alex Morgan&background=random" alt="Author" class="author-img">
+                    <div>
+                        <h4 style="color: white; margin-bottom: 0.2rem;">Alex Morgan</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-dim); margin: 0;">Senior Editor & Tech Strategist at Lumina Digital.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </article>
+
+    <footer>
+        <div class="container">
+            <div class="footer-cta">
+                <h2>Ready to innovate?</h2>
+                <a href="../contact.html" class="big-link">Start now.</a>
+            </div>
+            <div class="footer-meta">
+                <div class="meta-links">
+                    <a href="../sitemap.html">Sitemap</a>
+                    <a href="../legal/privacy.html">Privacy</a>
+                    <a href="../legal/terms.html">Terms</a>
+                </div>
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
