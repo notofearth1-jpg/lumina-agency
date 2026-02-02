@@ -13,6 +13,20 @@ const listHTML = (items) => items.map(i => `<li>${i}</li>`).join('');
 // --- Data: Case Studies ---
 const caseStudies = [
     {
+        slug: 'armory',
+        title: 'ARMORY.AI',
+        year: '2026',
+        category: 'Featured Spotlight',
+        client: 'Internal Venture',
+        heroImg: 'https://images.unsplash.com/photo-1614726365723-49cfae9734ae?auto=format&fit=crop&w=1600&q=80',
+        services: ['3D Engineering', 'Creative Dev', 'UX Design'],
+        tech: ['React Three Fiber', 'WebGL', 'Vite', 'Tailwind'],
+        challenge: 'Traditional 3D asset libraries are clunky and static. Designers and gamers need a way to inspect high-fidelity models (weapons, armor) in real-time on the web without heavy plugin downloads.',
+        solution: 'We built a high-performance WebGL viewer that loads GLB assets instantly. Featuring a custom auto-scaling engine, orbit controls, and a "scrollytelling" gallery mode, it redefines how 3D content is consumed in the browser.',
+        gallery1: 'https://images.unsplash.com/photo-1633412803867-0f4abd1be462?auto=format&fit=crop&w=1200&q=80',
+        gallery2: 'https://images.unsplash.com/photo-1617802690992-15d93263d3a9?auto=format&fit=crop&w=1200&q=80'
+    },
+    {
         slug: 'nexus',
         title: 'Nexus VR Launch',
         year: '2025',
@@ -130,8 +144,8 @@ const agencyPages = [
         title: 'Careers',
         category: 'AGENCY / JOIN US',
         intro: 'Do the best work of your life. We are looking for exceptional talent to help us build the future of the web.',
-        body1: 'Current Openings: 1. Senior Frontend Engineer (React/WebGL) - Remote. 2. UI/UX Designer - Berlin/Hybrid. 3. SEO Strategist - Remote.',
-        body2: 'We offer competitive equity, unlimited PTO, and a stipend for learning and development. If you are obsessed with quality, we want to hear from you.',
+        body1: 'We offer competitive equity, unlimited PTO, and a stipend for learning and development. If you are obsessed with quality, we want to hear from you.',
+        body2: 'Current Openings: 1. Senior Frontend Engineer (React/WebGL) - Remote. 2. UI/UX Designer - Berlin/Hybrid. 3. SEO Strategist - Remote.',
         h1: 'Frontend Engineer',
         h2: 'Product Designer',
         h3: 'Growth Marketer'
