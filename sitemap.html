@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | Lumina Digital</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <style>
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 4rem;
+            margin-top: 4rem;
+        }
+        .sitemap-col h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--accent);
+            border-bottom: 1px solid var(--line);
+            padding-bottom: 0.5rem;
+        }
+        .sitemap-col ul li {
+            margin-bottom: 1rem;
+        }
+        .sitemap-col ul li a {
+            color: var(--text-dim);
+            transition: color 0.3s;
+            font-size: 1.1rem;
+        }
+        .sitemap-col ul li a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
+
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="work.html" class="nav-link">Work</a>
+                <a href="agency.html" class="nav-link">Agency</a>
+            </div>
+            <a href="contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
+        </div>
+    </nav>
+
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="index.html">Home</a>
+            <a href="work.html">Work</a>
+            <a href="agency.html">Agency</a>
+            <a href="contact.html">Contact</a>
+        </div>
+    </div>
+
+    <section style="padding: 150px 0 100px;">
+        <div class="container">
+            <h1 class="hero-text" style="font-size: 4rem;">Sitemap</h1>
+            
+            <div class="sitemap-grid">
+                <div class="sitemap-col">
+                    <h3>Main</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="work.html">Selected Work</a></li>
+                        <li><a href="expertise.html">Expertise</a></li>
+                        <li><a href="agency.html">The Agency</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-col">
+                    <h3>Expertise</h3>
+                    <ul>
+                        <li><a href="services/branding.html">Brand Identity</a></li>
+                        <li><a href="services/development.html">Web Development</a></li>
+                        <li><a href="services/motion.html">Motion & 3D</a></li>
+                        <li><a href="services/ecommerce.html">E-Commerce</a></li>
+                        <li><a href="services/mobile-apps.html">Mobile Apps</a></li>
+                        <li><a href="services/seo.html">SEO Growth</a></li>
+                        <li><a href="services/analytics.html">Data Strategy</a></li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-col">
+                    <h3>Insights</h3>
+                    <ul>
+                        <li><a href="blog/future-of-webgl.html">Future of WebGL</a></li>
+                        <li><a href="blog/speed-matters.html">Why Speed Matters</a></li>
+                        <li><a href="blog/design-systems.html">Design Systems</a></li>
+                        <li><a href="blog/seo-trends-2026.html">SEO Trends 2026</a></li>
+                        <li><a href="blog/headless-commerce.html">Headless Commerce</a></li>
+                        <li><a href="blog/ai-in-design.html">AI in Design</a></li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-col">
+                    <h3>Agency</h3>
+                    <ul>
+                        <li><a href="about/team.html">Our Team</a></li>
+                        <li><a href="about/culture.html">Culture</a></li>
+                        <li><a href="about/careers.html">Careers</a></li>
+                        <li><a href="about/awards.html">Awards</a></li>
+                    </ul>
+                </div>
+
+                <div class="sitemap-col">
+                    <h3>Legal</h3>
+                    <ul>
+                        <li><a href="legal/privacy.html">Privacy Policy</a></li>
+                        <li><a href="legal/terms.html">Terms of Service</a></li>
+                        <li><a href="legal/cookies.html">Cookie Policy</a></li>
+                        <li><a href="legal/impressum.html">Impressum</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-meta">
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

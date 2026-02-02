@@ -455,6 +455,26 @@ footer {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 3rem;
+    border-top: 1px solid var(--line); /* Separator line */
+    padding-top: 3rem;
+}
+
+.meta-links {
+    display: flex;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+
+.meta-links a {
+    color: var(--text-dim);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    transition: color 0.3s;
+}
+
+.meta-links a:hover {
+    color: white;
 }
 
 .meta-col {
