@@ -3,910 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bright Minds Academy | Premier Coaching Institute</title>
-    <meta name="description" content="Transform your academic journey with Ahmedabad's top coaching institute. Expert faculty, proven results.">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
+    <title>Bright Minds | Lumina Digital</title>
+    <meta name="description" content="Case study for Bright Minds - A leading coaching institute needed to digitize their curriculum and track student progress online.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../../style.css">
+    <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
+    <style>
+        .cs-hero { padding: 180px 0 80px; text-align: center; }
+        .cs-meta { display: flex; justify-content: center; gap: 3rem; margin-bottom: 2rem; font-family: var(--font-head); text-transform: uppercase; letter-spacing: 1px; color: var(--accent); font-size: 0.9rem; }
+        .cs-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; margin: 4rem 0; }
+        .cs-sidebar h3 { font-size: 1.2rem; margin-bottom: 1rem; color: white; }
+        .cs-sidebar ul { margin-bottom: 3rem; color: var(--text-dim); }
+        .cs-sidebar li { margin-bottom: 0.5rem; }
+        .cs-content p { font-size: 1.15rem; line-height: 1.8; color: #d4d4d8; margin-bottom: 2rem; }
+        .cs-gallery { display: grid; grid-template-columns: 1fr; gap: 2rem; margin: 4rem 0; }
+        .cs-img { width: 100%; border-radius: 12px; border: 1px solid var(--line); }
+        .live-btn-container { text-align: center; margin: 6rem 0; padding: 4rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+        @media(max-width:900px){ .cs-grid { grid-template-columns: 1fr; } }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader">
-        <div class="loader-book">
-            <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-            </svg>
-        </div>
-        <p>Loading Excellence...</p>
-    </div>
+    <div class="grid-bg"></div>
+    <div class="glow-orb"></div>
 
-    <!-- Top Bar -->
-    <div class="top-bar">
-        <div class="container">
-            <div class="top-bar-content">
-                <div class="top-info">
-                    <span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        +91 98765 43210
-                    </span>
-                    <span>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        info@brightminds.edu
-                    </span>
-                </div>
-                <div class="top-actions">
-                    <a href="#" class="top-link">Student Portal</a>
-                    <a href="#" class="top-link">Results</a>
-                    <a href="#enroll" class="btn btn-sm btn-accent">Enroll Now</a>
-                </div>
+    
+    
+    
+    
+    
+    <nav>
+        <div class="nav-container">
+            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <div class="desktop-menu">
+                <a href="../../index.html" class="nav-link">Home</a>
+                <a href="../../work.html" class="nav-link active">Work</a>
+                <a href="../../expertise.html" class="nav-link">Expertise</a>
+                <a href="../../agency.html" class="nav-link">Agency</a>
             </div>
-        </div>
-    </div>
-
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-container">
-                <a href="#home" class="logo">
-                    <span class="logo-icon">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                        </svg>
-                    </span>
-                    <div class="logo-text">
-                        <span class="logo-main">Bright Minds</span>
-                        <span class="logo-sub">Academy</span>
-                    </div>
-                </a>
-                <ul class="nav-links">
-                    <li><a href="#home" class="active">Home</a></li>
-                    <li><a href="#about">About Us</a></li>
-                    <li><a href="#courses">Courses</a></li>
-                    <li><a href="#results">Results</a></li>
-                    <li><a href="#faculty">Faculty</a></li>
-                    <li><a href="#testimonials">Testimonials</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                </ul>
-                <a href="#enroll" class="btn btn-primary nav-cta">Get Started</a>
-                <div class="menu-toggle"><span></span><span></span><span></span></div>
-            </div>
+            <a href="../../contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
 
-    <!-- Mobile Menu -->
-    <div class="mobile-menu">
-        <ul>
-            <li><a href="#home">Home</a></li>
-            <li><a href="#about">About Us</a></li>
-            <li><a href="#courses">Courses</a></li>
-            <li><a href="#results">Results</a></li>
-            <li><a href="#faculty">Faculty</a></li>
-            <li><a href="#testimonials">Testimonials</a></li>
-            <li><a href="#contact">Contact</a></li>
-            <li><a href="#enroll" class="btn btn-primary">Enroll Now</a></li>
-        </ul>
+
+
+
+
+    <div class="mobile-menu-overlay">
+        <div class="mobile-links">
+            <a href="../../index.html">Home</a>
+            <a href="../../work.html">Work</a>
+            <a href="../../expertise.html">Expertise</a>
+            <a href="../../agency.html">Agency</a>
+            <a href="../../contact.html">Contact</a>
+        </div>
     </div>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
-        <div class="hero-bg">
-            <div class="hero-shapes">
-                <div class="shape shape-1"></div>
-                <div class="shape shape-2"></div>
-                <div class="shape shape-3"></div>
+    <div class="container">
+        <header class="cs-hero">
+            <div class="cs-meta">
+                <span>2023</span>
+                <span>Education</span>
+            </div>
+            <h1 class="hero-text" style="font-size: 5rem; line-height: 1;">Bright Minds</h1>
+        </header>
+
+        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80" class="cs-img" style="aspect-ratio: 21/9; object-fit: cover; margin-bottom: 4rem;">
+
+        <div class="cs-grid">
+            <div class="cs-sidebar">
+                <h3>Services</h3>
+                <ul><li>LMS</li><li>Student Portal</li><li>Web App</li></ul>
+                
+                <h3>Tech Stack</h3>
+                <ul><li>MERN Stack</li><li>AWS</li><li>Socket.io</li></ul>
+
+                <h3>Client</h3>
+                <p style="color: var(--text-dim);">Bright Minds Academy</p>
+            </div>
+            <div class="cs-content">
+                <h2 style="font-size: 2.5rem; margin-bottom: 1.5rem; font-family: var(--font-head); color: white;">The Challenge</h2>
+                <p>A leading coaching institute needed to digitize their curriculum and track student progress online.</p>
+                
+                <h2 style="font-size: 2.5rem; margin: 3rem 0 1.5rem; font-family: var(--font-head); color: white;">The Solution</h2>
+                <p>We developed a comprehensive Learning Management System (LMS) with live classes, test series, and performance analytics dashboards for parents.</p>
             </div>
         </div>
-        <div class="container">
-            <div class="hero-grid">
-                <div class="hero-content">
-                    <div class="hero-badge">
-                        <span class="badge-icon">
-                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                            </svg>
-                        </span>
-                        <span>Ahmedabad's #1 Rated Coaching Institute</span>
-                    </div>
-                    <h1 class="hero-title">
-                        Unlock Your <span class="text-gradient">Academic</span> Potential
-                    </h1>
-                    <p class="hero-subtitle">Expert coaching for Board Exams, JEE, NEET, and competitive exams. Join 5000+ successful students who achieved their dreams with us.</p>
-                    <div class="hero-cta">
-                        <a href="#enroll" class="btn btn-primary btn-lg">
-                            <span>Start Free Demo Class</span>
-                            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M5 12h14M12 5l7 7-7 7"/>
-                            </svg>
-                        </a>
-                        <a href="#courses" class="btn btn-outline btn-lg">View Courses</a>
-                    </div>
-                    <div class="hero-stats">
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="5000">0</span>
-                            <span class="stat-label">Students Trained</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="95">0</span>
-                            <span class="stat-label">% Success Rate</span>
-                        </div>
-                        <div class="stat-item">
-                            <span class="stat-number" data-count="15">0</span>
-                            <span class="stat-label">Years Experience</span>
-                        </div>
-                    </div>
-                </div>
-                <div class="hero-image">
-                    <div class="hero-img-wrapper">
-                        <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?w=600&h=500&fit=crop" alt="Students">
-                    </div>
-                    <div class="hero-card card-1">
-                        <span class="card-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/>
-                                <polyline points="17 6 23 6 23 12"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <strong>98%</strong>
-                            <span>Board Results</span>
-                        </div>
-                    </div>
-                    <div class="hero-card card-2">
-                        <span class="card-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <circle cx="12" cy="12" r="3"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <strong>500+</strong>
-                            <span>IIT Selections</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+        <div class="live-btn-container">
+            <h2 style="font-size: 2rem; margin-bottom: 2rem; font-family: var(--font-head);">Experience the Live Site</h2>
+            <a href="live.html" target="_blank" class="btn btn-primary" style="padding: 1.5rem 3rem; font-size: 1.2rem;">Launch Project ↗</a>
         </div>
-    </section>
 
-    <!-- Features Strip -->
-    <section class="features-strip">
-        <div class="container">
-            <div class="features-grid">
-                <div class="feature-item">
-                    <span class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-                            <circle cx="9" cy="7" r="4"/>
-                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-                        </svg>
-                    </span>
-                    <h3>Expert Faculty</h3>
-                    <p>IIT/NIT alumni teachers</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </span>
-                    <h3>Study Material</h3>
-                    <p>Comprehensive notes & tests</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
-                            <line x1="8" y1="21" x2="16" y2="21"/>
-                            <line x1="12" y1="17" x2="12" y2="21"/>
-                        </svg>
-                    </span>
-                    <h3>Hybrid Learning</h3>
-                    <p>Online + Offline classes</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <line x1="18" y1="20" x2="18" y2="10"/>
-                            <line x1="12" y1="20" x2="12" y2="4"/>
-                            <line x1="6" y1="20" x2="6" y2="14"/>
-                        </svg>
-                    </span>
-                    <h3>Progress Tracking</h3>
-                    <p>Regular tests & analysis</p>
-                </div>
-                <div class="feature-item">
-                    <span class="feature-icon">
-                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="3"/>
-                        </svg>
-                    </span>
-                    <h3>Doubt Sessions</h3>
-                    <p>1-on-1 doubt clearing</p>
-                </div>
-            </div>
+        <div class="cs-gallery">
+            <img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=1200&q=80" class="cs-img">
+            <img src="https://images.unsplash.com/photo-1427504494785-3a9ca7044f45?auto=format&fit=crop&w=1200&q=80" class="cs-img">
         </div>
-    </section>
+    </div>
 
-    <!-- About Section -->
-    <section id="about" class="about">
+    <footer>
         <div class="container">
-            <div class="about-grid">
-                <div class="about-images">
-                    <div class="img-main">
-                        <img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=600&h=450&fit=crop" alt="Classroom">
-                    </div>
-                    <div class="img-accent">
-                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=400&h=300&fit=crop" alt="Students">
-                    </div>
-                    <div class="experience-badge">
-                        <span class="exp-number">15+</span>
-                        <span class="exp-text">Years of Excellence</span>
-                    </div>
-                </div>
-                <div class="about-content">
-                    <span class="section-label">About Us</span>
-                    <h2 class="section-title">Shaping Future Leaders Since 2010</h2>
-                    <p class="lead">At Bright Minds Academy, we believe every student has the potential to excel. Our mission is to unlock that potential through quality education and personalized guidance.</p>
-                    <p>Founded by IIT alumni, we've grown from a small coaching center to Ahmedabad's most trusted institute. Our students consistently top board exams and secure admissions to premier institutions like IITs, NITs, and AIIMS.</p>
-                    
-                    <div class="about-highlights">
-                        <div class="highlight-item">
-                            <span class="highlight-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </span>
-                            <span>Small batch sizes (max 25 students)</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </span>
-                            <span>Regular parent-teacher meetings</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </span>
-                            <span>Weekly mock tests with analysis</span>
-                        </div>
-                        <div class="highlight-item">
-                            <span class="highlight-icon">
-                                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3">
-                                    <polyline points="20 6 9 17 4 12"/>
-                                </svg>
-                            </span>
-                            <span>Personalized attention for every student</span>
-                        </div>
-                    </div>
-
-                    <a href="#contact" class="btn btn-primary">Know More About Us</a>
-                </div>
+            <div class="footer-cta">
+                <h2>Next Project?</h2>
+                <a href="../../contact.html" class="big-link">Yours.</a>
             </div>
-        </div>
-    </section>
-
-    <!-- Courses Section -->
-    <section id="courses" class="courses">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-label">Our Programs</span>
-                <h2 class="section-title">Courses We Offer</h2>
-                <p>Comprehensive coaching programs designed for success</p>
-            </div>
-
-            <div class="courses-grid">
-                <div class="course-card featured">
-                    <div class="course-badge">Most Popular</div>
-                    <div class="course-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <circle cx="12" cy="12" r="10"/>
-                            <circle cx="12" cy="12" r="3"/>
-                        </svg>
-                    </div>
-                    <h3>JEE Main + Advanced</h3>
-                    <p>Complete preparation for IIT-JEE with expert guidance and extensive practice.</p>
-                    <ul class="course-features">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> Complete syllabus coverage</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> 500+ mock tests</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/></svg> IIT alumni faculty</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Performance analytics</li>
-                    </ul>
-                    <div class="course-meta">
-                        <div class="duration">
-                            <span class="meta-label">Duration</span>
-                            <span class="meta-value">2 Years</span>
-                        </div>
-                        <div class="batch">
-                            <span class="meta-label">New Batch</span>
-                            <span class="meta-value">Feb 2025</span>
-                        </div>
-                    </div>
-                    <div class="course-price">
-                        <span class="price-label">Starting from</span>
-                        <span class="price-value">₹75,000<span>/year</span></span>
-                    </div>
-                    <a href="#enroll" class="btn btn-primary full-width">Enroll Now</a>
+            <div class="footer-meta">
+                <div class="meta-links">
+                    <a href="../../sitemap.html">Sitemap</a>
+                    <a href="../../legal/privacy.html">Privacy</a>
+                    <a href="../../legal/terms.html">Terms</a>
                 </div>
-
-                <div class="course-card">
-                    <div class="course-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
-                        </svg>
-                    </div>
-                    <h3>NEET Preparation</h3>
-                    <p>Structured coaching for medical aspirants with focus on Biology, Physics & Chemistry.</p>
-                    <ul class="course-features">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> NCERT + advanced topics</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Daily practice tests</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg> Lab sessions included</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> All India mock tests</li>
-                    </ul>
-                    <div class="course-meta">
-                        <div class="duration">
-                            <span class="meta-label">Duration</span>
-                            <span class="meta-value">2 Years</span>
-                        </div>
-                        <div class="batch">
-                            <span class="meta-label">New Batch</span>
-                            <span class="meta-value">Feb 2025</span>
-                        </div>
-                    </div>
-                    <div class="course-price">
-                        <span class="price-label">Starting from</span>
-                        <span class="price-value">₹65,000<span>/year</span></span>
-                    </div>
-                    <a href="#enroll" class="btn btn-outline full-width">Enroll Now</a>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                        </svg>
-                    </div>
-                    <h3>Board Exam (Class 10 & 12)</h3>
-                    <p>Excel in your board exams with our result-oriented coaching methodology.</p>
-                    <ul class="course-features">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> CBSE/GSEB curriculum</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg> Chapter-wise tests</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"/></svg> Comprehensive notes</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/></svg> 95%+ guarantee*</li>
-                    </ul>
-                    <div class="course-meta">
-                        <div class="duration">
-                            <span class="meta-label">Duration</span>
-                            <span class="meta-value">1 Year</span>
-                        </div>
-                        <div class="batch">
-                            <span class="meta-label">New Batch</span>
-                            <span class="meta-value">Starting</span>
-                        </div>
-                    </div>
-                    <div class="course-price">
-                        <span class="price-label">Starting from</span>
-                        <span class="price-value">₹35,000<span>/year</span></span>
-                    </div>
-                    <a href="#enroll" class="btn btn-outline full-width">Enroll Now</a>
-                </div>
-
-                <div class="course-card">
-                    <div class="course-icon">
-                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <polygon points="12 2 2 7 12 12 22 7 12 2"/>
-                            <polyline points="2 17 12 22 22 17"/>
-                            <polyline points="2 12 12 17 22 12"/>
-                        </svg>
-                    </div>
-                    <h3>Foundation (Class 8-10)</h3>
-                    <p>Build strong fundamentals for future competitive exam success.</p>
-                    <ul class="course-features">
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg> School + competitive prep</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg> Olympiad training</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg> Concept building</li>
-                        <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg> Aptitude development</li>
-                    </ul>
-                    <div class="course-meta">
-                        <div class="duration">
-                            <span class="meta-label">Duration</span>
-                            <span class="meta-value">1 Year</span>
-                        </div>
-                        <div class="batch">
-                            <span class="meta-label">New Batch</span>
-                            <span class="meta-value">Mar 2025</span>
-                        </div>
-                    </div>
-                    <div class="course-price">
-                        <span class="price-label">Starting from</span>
-                        <span class="price-value">₹25,000<span>/year</span></span>
-                    </div>
-                    <a href="#enroll" class="btn btn-outline full-width">Enroll Now</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Results Section -->
-    <section id="results" class="results">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-label">Our Pride</span>
-                <h2 class="section-title">Proven Track Record</h2>
-                <p>Our students consistently achieve extraordinary results</p>
-            </div>
-
-            <div class="results-stats">
-                <div class="result-stat">
-                    <div class="stat-circle">
-                        <svg viewBox="0 0 36 36">
-                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path class="circle-fill" stroke-dasharray="98, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                        </svg>
-                        <span class="stat-percent">98%</span>
-                    </div>
-                    <h3>Board Results</h3>
-                    <p>Students scoring 90%+</p>
-                </div>
-                <div class="result-stat">
-                    <div class="stat-circle">
-                        <svg viewBox="0 0 36 36">
-                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path class="circle-fill" stroke-dasharray="85, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                        </svg>
-                        <span class="stat-percent">85%</span>
-                    </div>
-                    <h3>JEE Qualifications</h3>
-                    <p>Students qualifying JEE Main</p>
-                </div>
-                <div class="result-stat">
-                    <div class="stat-circle">
-                        <svg viewBox="0 0 36 36">
-                            <path class="circle-bg" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                            <path class="circle-fill" stroke-dasharray="80, 100" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831"/>
-                        </svg>
-                        <span class="stat-percent">80%</span>
-                    </div>
-                    <h3>NEET Selections</h3>
-                    <p>Students qualifying NEET</p>
-                </div>
-            </div>
-
-            <div class="toppers-section">
-                <h3 class="toppers-title">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
-                    </svg>
-                    2024 Toppers
-                </h3>
-                <div class="toppers-grid">
-                    <div class="topper-card">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Topper">
-                        <h4>Arjun Patel</h4>
-                        <span class="topper-rank">JEE Advanced AIR 245</span>
-                        <span class="topper-college">IIT Bombay - CSE</span>
-                    </div>
-                    <div class="topper-card">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Topper">
-                        <h4>Priya Sharma</h4>
-                        <span class="topper-rank">NEET AIR 189</span>
-                        <span class="topper-college">AIIMS Delhi</span>
-                    </div>
-                    <div class="topper-card">
-                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Topper">
-                        <h4>Rahul Mehta</h4>
-                        <span class="topper-rank">CBSE 99.2%</span>
-                        <span class="topper-college">Board Exam Topper</span>
-                    </div>
-                    <div class="topper-card">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Topper">
-                        <h4>Ananya Desai</h4>
-                        <span class="topper-rank">JEE Main 99.8%ile</span>
-                        <span class="topper-college">NIT Trichy - ECE</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Faculty Section -->
-    <section id="faculty" class="faculty">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-label">Expert Mentors</span>
-                <h2 class="section-title">Meet Our Faculty</h2>
-                <p>Learn from the best - IIT/NIT alumni with years of teaching experience</p>
-            </div>
-
-            <div class="faculty-grid">
-                <div class="faculty-card">
-                    <div class="faculty-image">
-                        <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Faculty">
-                    </div>
-                    <div class="faculty-info">
-                        <h3>Prof. Rajesh Kumar</h3>
-                        <span class="faculty-subject">Physics</span>
-                        <p>IIT Delhi | 15+ years experience | 500+ IIT selections</p>
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-image">
-                        <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="Faculty">
-                    </div>
-                    <div class="faculty-info">
-                        <h3>Dr. Priya Singh</h3>
-                        <span class="faculty-subject">Chemistry</span>
-                        <p>IIT Madras | PhD Chemistry | 12+ years experience</p>
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-image">
-                        <img src="https://randomuser.me/api/portraits/men/52.jpg" alt="Faculty">
-                    </div>
-                    <div class="faculty-info">
-                        <h3>Prof. Amit Joshi</h3>
-                        <span class="faculty-subject">Mathematics</span>
-                        <p>IIT Kharagpur | 18+ years experience | Math wizard</p>
-                    </div>
-                </div>
-                <div class="faculty-card">
-                    <div class="faculty-image">
-                        <img src="https://randomuser.me/api/portraits/women/45.jpg" alt="Faculty">
-                    </div>
-                    <div class="faculty-info">
-                        <h3>Dr. Neha Patel</h3>
-                        <span class="faculty-subject">Biology</span>
-                        <p>AIIMS | MD | 300+ NEET selections</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-label">Student Stories</span>
-                <h2 class="section-title">What Our Students Say</h2>
-            </div>
-
-            <div class="testimonials-slider">
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="testimonial-text">"Bright Minds Academy transformed my preparation completely. The faculty's dedication and systematic approach helped me crack JEE Advanced with AIR 245. Forever grateful!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Student">
-                        <div>
-                            <h4>Arjun Patel</h4>
-                            <span>JEE Advanced 2024 | IIT Bombay</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="testimonial-text">"The doubt-clearing sessions were a game-changer. Teachers were always available and explained concepts until I fully understood. Best decision joining here!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Student">
-                        <div>
-                            <h4>Priya Sharma</h4>
-                            <span>NEET 2024 | AIIMS Delhi</span>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="testimonial-card">
-                    <div class="testimonial-rating">
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
-                    </div>
-                    <p class="testimonial-text">"From average grades to board topper - that's my journey with Bright Minds. The study material and test series are outstanding. Highly recommend!"</p>
-                    <div class="testimonial-author">
-                        <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Student">
-                        <div>
-                            <h4>Rahul Mehta</h4>
-                            <span>CBSE 2024 | 99.2%</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section id="enroll" class="cta-section">
-        <div class="container">
-            <div class="cta-grid">
-                <div class="cta-content">
-                    <span class="section-label light">Start Your Journey</span>
-                    <h2 class="section-title light">Ready to Achieve Your Dreams?</h2>
-                    <p>Join our free demo class and experience the Bright Minds difference. Limited seats available for the new batch!</p>
-                    <div class="cta-features">
-                        <div class="cta-feature">
-                            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            Free Demo Class
-                        </div>
-                        <div class="cta-feature">
-                            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            Free Counseling Session
-                        </div>
-                        <div class="cta-feature">
-                            <span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg></span>
-                            Scholarship Test Available
-                        </div>
-                    </div>
-                </div>
-                <div class="cta-form-wrapper">
-                    <form class="cta-form" id="enrollForm">
-                        <h3>Book Free Demo Class</h3>
-                        <div class="form-group">
-                            <input type="text" id="studentName" required placeholder=" ">
-                            <label for="studentName">Student Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="tel" id="parentPhone" required placeholder=" ">
-                            <label for="parentPhone">Parent's Phone</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="course" required>
-                                <option value="" disabled selected></option>
-                                <option>JEE Main + Advanced</option>
-                                <option>NEET Preparation</option>
-                                <option>Board Exam (Class 10)</option>
-                                <option>Board Exam (Class 12)</option>
-                                <option>Foundation (Class 8-10)</option>
-                            </select>
-                            <label for="course" class="select-label">Interested Course</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="currentClass" required>
-                                <option value="" disabled selected></option>
-                                <option>Class 8</option>
-                                <option>Class 9</option>
-                                <option>Class 10</option>
-                                <option>Class 11</option>
-                                <option>Class 12</option>
-                                <option>Dropper</option>
-                            </select>
-                            <label for="currentClass" class="select-label">Current Class</label>
-                        </div>
-                        <button type="submit" class="btn btn-primary btn-lg full-width">
-                            Book Free Demo
-                        </button>
-                        <p class="form-note">
-                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                            We'll call you within 24 hours to schedule
-                        </p>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact" class="contact">
-        <div class="container">
-            <div class="section-header text-center">
-                <span class="section-label">Get in Touch</span>
-                <h2 class="section-title">Visit Our Campus</h2>
-            </div>
-
-            <div class="contact-grid">
-                <div class="contact-info">
-                    <div class="contact-card">
-                        <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                                <circle cx="12" cy="10" r="3"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h4>Address</h4>
-                            <p>123 Education Hub, Near Gujarat University<br>Ahmedabad, Gujarat 380009</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h4>Phone</h4>
-                            <p>+91 98765 43210<br>+91 98765 43211</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="12" cy="12" r="10"/>
-                                <polyline points="12 6 12 12 16 14"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h4>Office Hours</h4>
-                            <p>Mon-Sat: 9 AM - 8 PM<br>Sunday: 10 AM - 2 PM</p>
-                        </div>
-                    </div>
-                    <div class="contact-card">
-                        <span class="contact-icon">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                                <polyline points="22,6 12,13 2,6"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h4>Email</h4>
-                            <p>info@brightminds.edu<br>admissions@brightminds.edu</p>
-                        </div>
-                    </div>
-
-                    <div class="whatsapp-btn">
-                        <a href="https://wa.me/919876543210" class="btn btn-whatsapp btn-lg full-width">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-                            </svg>
-                            Chat on WhatsApp
-                        </a>
-                    </div>
-                </div>
-                <div class="contact-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3671.904584937365!2d72.51127!3d23.02887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjPCsDAxJzQ0LjAiTiA3MsKwMzAnNDAuNSJF!5e0!3m2!1sen!2sin!4v1635000000000!5m2!1sen!2sin" 
-                        width="100%" 
-                        height="100%" 
-                        style="border:0; border-radius: 20px;" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-grid">
-                <div class="footer-brand">
-                    <a href="#" class="logo">
-                        <span class="logo-icon">
-                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-                                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-                            </svg>
-                        </span>
-                        <div class="logo-text">
-                            <span class="logo-main">Bright Minds</span>
-                            <span class="logo-sub">Academy</span>
-                        </div>
-                    </a>
-                    <p>Shaping future leaders through quality education since 2010.</p>
-                    <div class="social-links">
-                        <a href="#">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
-                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
-                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/>
-                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/>
-                            </svg>
-                        </a>
-                        <a href="#">
-                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                                <rect x="2" y="9" width="4" height="12"/>
-                                <circle cx="4" cy="4" r="2"/>
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <div class="footer-links">
-                    <h4>Quick Links</h4>
-                    <ul>
-                        <li><a href="#about">About Us</a></li>
-                        <li><a href="#courses">Courses</a></li>
-                        <li><a href="#results">Results</a></li>
-                        <li><a href="#faculty">Faculty</a></li>
-                        <li><a href="#contact">Contact</a></li>
-                    </ul>
-                </div>
-                <div class="footer-links">
-                    <h4>Courses</h4>
-                    <ul>
-                        <li><a href="#">JEE Preparation</a></li>
-                        <li><a href="#">NEET Coaching</a></li>
-                        <li><a href="#">Board Exams</a></li>
-                        <li><a href="#">Foundation</a></li>
-                        <li><a href="#">Crash Course</a></li>
-                    </ul>
-                </div>
-                <div class="footer-contact">
-                    <h4>Contact Us</h4>
-                    <p>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
-                            <circle cx="12" cy="10" r="3"/>
-                        </svg>
-                        123 Education Hub, Ahmedabad
-                    </p>
-                    <p>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
-                        </svg>
-                        +91 98765 43210
-                    </p>
-                    <p>
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
-                            <polyline points="22,6 12,13 2,6"/>
-                        </svg>
-                        info@brightminds.edu
-                    </p>
-                </div>
-            </div>
-            <div class="built-by"><a href="https://myyworkk.netlify.app" target="_blank">Built by <strong>Vibhu</strong></a></div>
-            <div class="footer-bottom">
-                <p>&copy; 2025 Bright Minds Academy. All rights reserved.</p>
-                <p>Made with 
-                    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                        <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-                    </svg>
-                    for Future Leaders
-                </p>
+                <div class="meta-col copyright"><p>&copy; 2026 Lumina Digital</p></div>
             </div>
         </div>
     </footer>
 
-    <!-- Back to Top -->
-    <button class="back-to-top" id="backToTop">
-        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <polyline points="18 15 12 9 6 15"/>
-        </svg>
-    </button>
-
-    <script src="script.js"></script>
+    <script src="../../script.js"></script>
 </body>
 </html>
