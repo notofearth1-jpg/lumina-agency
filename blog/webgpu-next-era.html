@@ -70,15 +70,20 @@
             <div class="blog-content">
                 
             <h2>Beyond WebGL</h2>
-            <p>WebGL has served us well for over a decade, but it was built on OpenGL ES—an API designed for mobile devices from the 2000s. WebGPU is the modern successor, designed to map directly to Vulkan, Metal, and DirectX 12.</p>
+            <p>WebGL has served us well for over a decade, but it was built on OpenGL ES—an API designed for mobile devices from the 2000s. WebGPU is the modern successor, designed to map directly to Vulkan, Metal, and DirectX 12. This means lower overhead, better driver support, and significantly higher performance.</p>
+            <p>For developers, this opens up a new world of possibilities. We can now render scenes with millions of polygons, complex lighting, and advanced post-processing effects directly in the browser, without plugins.</p>
+
+            <img src="https://images.unsplash.com/photo-1633412803867-0f4abd1be462?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D Render" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
             <h2>Compute Shaders</h2>
-            <p>The biggest game-changer is compute shaders. This allows us to offload heavy calculations (physics, AI inference, particle systems) to the GPU, freeing up the main thread for interaction logic.</p>
+            <p>The biggest game-changer is compute shaders. This allows us to offload heavy calculations (physics, AI inference, particle systems) to the GPU, freeing up the main thread for interaction logic. Previously, these calculations had to be done on the CPU or via hacky fragment shader workarounds.</p>
             <p><strong>Key Benefits:</strong></p>
             <ul>
-                <li><strong>10x Performance:</strong> Draw calls are significantly cheaper.</li>
-                <li><strong>Browser AI:</strong> Running local LLMs efficiently in the browser.</li>
-                <li><strong>Complex Simulations:</strong> Fluid dynamics and cloth simulation in real-time.</li>
+                <li><strong>10x Performance:</strong> Draw calls are significantly cheaper, allowing for more detailed scenes.</li>
+                <li><strong>Browser AI:</strong> Running local LLMs and neural networks efficiently in the browser using the GPU.</li>
+                <li><strong>Complex Simulations:</strong> Fluid dynamics, cloth simulation, and flocking behaviors in real-time.</li>
             </ul>
+            <p>WebGPU is not just a graphics update; it's a computational revolution for the web platform.</p>
         
                 
                 <div class="author-box">

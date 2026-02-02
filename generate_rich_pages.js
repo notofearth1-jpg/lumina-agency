@@ -4,9 +4,8 @@ const path = require('path');
 // --- Templates ---
 const blogTemplate = fs.readFileSync(path.join(__dirname, 'blog_template.html'), 'utf8');
 const serviceTemplate = fs.readFileSync(path.join(__dirname, 'service_template.html'), 'utf8');
-const legalTemplate = fs.readFileSync(path.join(__dirname, 'page_template.html'), 'utf8'); // Re-use simple one
 
-// --- Blog Data (10 Posts) ---
+// --- Blog Data (10 Posts with Expanded Content) ---
 const blogs = [
     {
         slug: 'rise-of-generative-ui',
@@ -19,16 +18,22 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Interfaces That Adapt to You</h2>
-            <p>Imagine a website that doesn't just look the same for everyone, but reconstructs itself based on your intent. Generative UI is shifting the paradigm from static layouts to fluid, intent-based components.</p>
-            <p>By leveraging LLMs, we can now generate UI components on the fly. A dashboard for a CFO might prioritize high-level charts, while the same dashboard for an engineer focuses on logs and uptime.</p>
+            <p>Imagine a website that doesn't just look the same for everyone, but reconstructs itself based on your intent. Generative UI is shifting the paradigm from static layouts to fluid, intent-based components. By leveraging LLMs, we can now generate UI components on the fly. A dashboard for a CFO might prioritize high-level charts, while the same dashboard for an engineer focuses on logs and uptime.</p>
+            <p>This shift represents a fundamental change in how we conceive of digital products. Instead of designing fixed pages, we are designing systems of components that can be assembled in infinite variations. This allows for a level of personalization that was previously impossible.</p>
+            
+            <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?auto=format&fit=crop&w=800&q=80" alt="Generative UI Concept" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
             <h2>The Role of the Designer</h2>
-            <p>Does this mean the end of design? Far from it. Designers are moving from "painters" to "gardeners". We define the constraints, the design system tokens, and the rules of engagement.</p>
+            <p>Does this mean the end of design? Far from it. Designers are moving from "painters" to "gardeners". We define the constraints, the design system tokens, and the rules of engagement. The AI acts as the layout engine, but the soul of the experience remains human-crafted.</p>
             <ul>
-                <li><strong>Dynamic Components:</strong> UI elements that spawn based on context.</li>
-                <li><strong>Personalized Flows:</strong> User journeys that shorten based on historical data.</li>
-                <li><strong>Accessibility:</strong> Interfaces that auto-adjust contrast and size for user needs.</li>
+                <li><strong>Dynamic Components:</strong> UI elements that spawn based on context, such as a weather widget appearing only when rain is forecast.</li>
+                <li><strong>Personalized Flows:</strong> User journeys that shorten based on historical data, removing friction for power users.</li>
+                <li><strong>Accessibility:</strong> Interfaces that auto-adjust contrast, text size, and layout density for user needs without manual settings.</li>
             </ul>
-            <p>The future isn't about pixel perfection; it's about system perfection.</p>
+            <p>The future isn't about pixel perfection; it's about system perfection. We need to build robust, flexible systems that can handle the unpredictability of AI-generated layouts while maintaining brand integrity.</p>
+            
+            <h3>Challenges Ahead</h3>
+            <p>Of course, this future isn't without its hurdles. Ensuring consistency, preventing "hallucinated" UI elements that don't function, and maintaining performance are all significant challenges. But the potential for truly adaptive, helpful interfaces is too great to ignore.</p>
         `
     },
     {
@@ -42,15 +47,20 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Beyond WebGL</h2>
-            <p>WebGL has served us well for over a decade, but it was built on OpenGL ES—an API designed for mobile devices from the 2000s. WebGPU is the modern successor, designed to map directly to Vulkan, Metal, and DirectX 12.</p>
+            <p>WebGL has served us well for over a decade, but it was built on OpenGL ES—an API designed for mobile devices from the 2000s. WebGPU is the modern successor, designed to map directly to Vulkan, Metal, and DirectX 12. This means lower overhead, better driver support, and significantly higher performance.</p>
+            <p>For developers, this opens up a new world of possibilities. We can now render scenes with millions of polygons, complex lighting, and advanced post-processing effects directly in the browser, without plugins.</p>
+
+            <img src="https://images.unsplash.com/photo-1633412803867-0f4abd1be462?auto=format&fit=crop&w=800&q=80" alt="Abstract 3D Render" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
             <h2>Compute Shaders</h2>
-            <p>The biggest game-changer is compute shaders. This allows us to offload heavy calculations (physics, AI inference, particle systems) to the GPU, freeing up the main thread for interaction logic.</p>
+            <p>The biggest game-changer is compute shaders. This allows us to offload heavy calculations (physics, AI inference, particle systems) to the GPU, freeing up the main thread for interaction logic. Previously, these calculations had to be done on the CPU or via hacky fragment shader workarounds.</p>
             <p><strong>Key Benefits:</strong></p>
             <ul>
-                <li><strong>10x Performance:</strong> Draw calls are significantly cheaper.</li>
-                <li><strong>Browser AI:</strong> Running local LLMs efficiently in the browser.</li>
-                <li><strong>Complex Simulations:</strong> Fluid dynamics and cloth simulation in real-time.</li>
+                <li><strong>10x Performance:</strong> Draw calls are significantly cheaper, allowing for more detailed scenes.</li>
+                <li><strong>Browser AI:</strong> Running local LLMs and neural networks efficiently in the browser using the GPU.</li>
+                <li><strong>Complex Simulations:</strong> Fluid dynamics, cloth simulation, and flocking behaviors in real-time.</li>
             </ul>
+            <p>WebGPU is not just a graphics update; it's a computational revolution for the web platform.</p>
         `
     },
     {
@@ -64,12 +74,17 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1664575602554-2087b04935a5?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>From Links to Answers</h2>
-            <p>Google's SGE (Search Generative Experience) answers questions directly. If your content is just "10 blue links" bait, you will lose visibility. The goal now is to be the *source* of the AI's answer.</p>
+            <p>Google's SGE (Search Generative Experience) answers questions directly. If your content is just "10 blue links" bait, you will lose visibility. The goal now is to be the *source* of the AI's answer. This means optimizing for "Answer Engine Optimization" (AEO) rather than just SEO.</p>
+            <p>Content needs to be more direct, structured, and authoritative. Fluff pieces written solely for keyword density will be ignored by LLMs looking for factual answers.</p>
+
+            <img src="https://images.unsplash.com/photo-1676299081847-824916de030a?auto=format&fit=crop&w=800&q=80" alt="AI Search Interface" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
             <h2>EEAT is King</h2>
             <p>Experience, Expertise, Authoritativeness, and Trustworthiness. AI can generate generic content, but it cannot generate genuine human experience. Personal anecdotes, original data studies, and contrarian takes are the new gold.</p>
             <ul>
-                <li><strong>Structured Data:</strong> Feed the bots with clear Schema.org markup.</li>
-                <li><strong>Brand Entity:</strong> Build your brand so users search for *you*, not just keywords.</li>
+                <li><strong>Structured Data:</strong> Feed the bots with clear Schema.org markup so they understand exactly what your content represents.</li>
+                <li><strong>Brand Entity:</strong> Build your brand so users search for *you*, not just keywords. Navigational queries are immune to AI displacement.</li>
+                <li><strong>Opinionated Content:</strong> AI is neutral. Be opinionated. Take a stand. This creates a "moat" around your content.</li>
             </ul>
         `
     },
@@ -84,10 +99,14 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>The Infinite Canvas</h2>
-            <p>With the release of Vision Pro, the web is breaking out of the 16:9 monitor. Spatial web design isn't just about VR; it's about depth, glassmorphism, and gaze-based interaction.</p>
+            <p>With the release of Vision Pro, the web is breaking out of the 16:9 monitor. Spatial web design isn't just about VR; it's about depth, glassmorphism, and gaze-based interaction. Your website is no longer a flat plane; it's a window floating in the user's physical space.</p>
+            <p>This requires a rethink of layout. Elements can extend beyond the viewport. Interactions need to account for eye-tracking accuracy. Hover states are triggered by looking, not mousing.</p>
+
+            <img src="https://images.unsplash.com/photo-1592478411213-61535fdd861d?auto=format&fit=crop&w=800&q=80" alt="VR Headset User" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
             <h2>CSS for Spatial</h2>
-            <p>Did you know CSS is evolving? New media queries allow us to detect immersive sessions. We can now design layouts that curve around the user or float elements at different Z-depths.</p>
-            <p>Brands that adopt spatial-ready websites now will define the luxury digital experience of the late 2020s.</p>
+            <p>Did you know CSS is evolving? New media queries allow us to detect immersive sessions. We can now design layouts that curve around the user or float elements at different Z-depths using the new spatial properties.</p>
+            <p>Brands that adopt spatial-ready websites now will define the luxury digital experience of the late 2020s. Imagine an e-commerce store where products float out of the screen for inspection.</p>
         `
     },
     {
@@ -101,14 +120,17 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1555099962-4199c345e5dd?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Speed and Flexibility</h2>
-            <p>Monolithic platforms (like old WordPress or Magento) couple the display layer with the data layer. This makes redesigns painful and performance optimization difficult.</p>
+            <p>Monolithic platforms (like old WordPress or Magento) couple the display layer with the data layer. This makes redesigns painful and performance optimization difficult. You are locked into their templating engine and their limitations.</p>
+            <p>Headless architecture decouples these. Your content lives in a pure data API (Sanity, Contentful), and your frontend is a high-performance React application.</p>
+
             <h2>The Headless Advantage</h2>
-            <p>By using a Headless CMS (Sanity, Contentful, Strapi), we can build the frontend in React/Next.js. This results in:</p>
+            <p>By using a Headless CMS, we gain significant advantages:</p>
             <ul>
-                <li><strong>Instant Page Loads:</strong> Static generation at the edge.</li>
-                <li><strong>Omnichannel:</strong> Push content to Web, App, and Watch from one place.</li>
-                <li><strong>Security:</strong> The database isn't exposed directly to the public web.</li>
+                <li><strong>Instant Page Loads:</strong> Static generation at the edge means HTML is pre-built and served instantly from CDNs globally.</li>
+                <li><strong>Omnichannel:</strong> Push content to Web, App, Watch, and even instore displays from one single source of truth.</li>
+                <li><strong>Security:</strong> The database isn't exposed directly to the public web, significantly reducing the attack surface.</li>
             </ul>
+            <p>It's not just a trend; it's the maturity of the web platform.</p>
         `
     },
     {
@@ -122,13 +144,15 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>The Internet's Carbon Cost</h2>
-            <p>If the internet were a country, it would be the 6th largest polluter. Every byte transferred requires energy. Heavy websites aren't just slow; they are dirty.</p>
+            <p>If the internet were a country, it would be the 6th largest polluter. Every byte transferred requires energy—from the data center, through the transmission networks, to the user's device. Heavy, bloated websites aren't just slow; they are dirty.</p>
+            <p>As digital creators, we have a responsibility to minimize this impact. Sustainable web design is about efficiency, which happily aligns with performance and user experience.</p>
+
             <h2>Green Coding</h2>
             <p>We practice sustainable design by:</p>
             <ul>
-                <li><strong>Optimizing Assets:</strong> AVIF/WebP formats and lazy loading.</li>
-                <li><strong>Dark Mode:</strong> Saves battery on OLED screens.</li>
-                <li><strong>Efficient Caching:</strong> Reducing server requests.</li>
+                <li><strong>Optimizing Assets:</strong> Using modern formats like AVIF and WebP, and aggressive lazy loading to only load what is seen.</li>
+                <li><strong>Dark Mode:</strong> Designing dark-default interfaces saves significant battery life on OLED screens, reducing charging frequency.</li>
+                <li><strong>Efficient Caching:</strong> Reducing server requests through smart CDN caching strategies.</li>
             </ul>
             <p>Good performance is good for the planet.</p>
         `
@@ -144,9 +168,12 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Feedback Loops</h2>
-            <p>A button click shouldn't just do something; it should *feel* like it did something. Micro-interactions provide the tactile feedback that builds trust.</p>
+            <p>A button click shouldn't just do something; it should *feel* like it did something. Micro-interactions provide the tactile feedback that builds trust and confirms actions. Without them, interfaces feel dead and unresponsive.</p>
+            <p>Think about the "like" heart animation on Instagram, or the "pull to refresh" rubber-band effect. These aren't necessary for function, but they are essential for *feeling*.</p>
+
             <h2>Delight in Details</h2>
-            <p>It's the little things: the way a toggle slides, the bounce of a notification, the loading skeleton. These details separate a "functional" app from a "premium" product.</p>
+            <p>It's the little things: the way a toggle slides, the bounce of a notification, the loading skeleton. These details separate a "functional" app from a "premium" product. They show that care was put into the craft.</p>
+            <p>We use tools like Framer Motion to orchestrate these moments, ensuring they are performant and don't block the main thread.</p>
         `
     },
     {
@@ -160,9 +187,12 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1563986768609-322da13575f3?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Privacy Sandbox</h2>
-            <p>Chrome is phasing out third-party cookies. Retargeting ads as we know them are dying. The solution? First-party data.</p>
+            <p>Chrome is phasing out third-party cookies. Retargeting ads as we know them are dying. The solution? First-party data. The era of tracking users across the web without consent is (thankfully) ending.</p>
+            <p>This forces marketers to return to fundamentals: building genuine brand equity and communities.</p>
+
             <h2>Owning Your Audience</h2>
             <p>Brands must build direct relationships. Email lists, community discords, and loyalty programs are more valuable than any ad pixel. We help brands build infrastructure to collect and utilize their own data ethically.</p>
+            <p>Contextual advertising is also making a comeback. Instead of tracking *who* is looking, we target *what* they are looking at.</p>
         `
     },
     {
@@ -176,8 +206,12 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>Dynamic Content</h2>
-            <p>Why show the same hero banner to a returning customer as a first-time visitor? AI can analyze behavior in real-time to swap images, copy, and CTAs.</p>
-            <p>We implement tools like Vercel Edge Middleware to personalize content at the CDN level, ensuring zero latency penalty for dynamic experiences.</p>
+            <p>Why show the same hero banner to a returning customer as a first-time visitor? AI can analyze behavior in real-time to swap images, copy, and CTAs to match the user's likely intent.</p>
+            <p>If a user spends time on "Enterprise" pages, the next time they visit, the homepage should highlight Enterprise case studies, not startup pricing.</p>
+
+            <h2>Edge Personalization</h2>
+            <p>We implement tools like Vercel Edge Middleware to personalize content at the CDN level. This means we can swap content milliseconds before it reaches the user's browser, ensuring zero latency penalty for dynamic experiences.</p>
+            <p>This is the holy grail: dynamic, personalized content served with the speed of static HTML.</p>
         `
     },
     {
@@ -191,102 +225,12 @@ const blogs = [
         image: 'https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=1200&q=80',
         content: `
             <h2>The Hybrid Stack</h2>
-            <p>Marketing teams need speed (Webflow, Framer). Product teams need power (React, Node). The modern enterprise uses both.</p>
-            <p>We architect systems where the marketing site is agile and no-code, while the core app remains a robust engineering feat, stitched together seamlessly on the same domain.</p>
-        `
-    }
-];
+            <p>Marketing teams need speed (Webflow, Framer) to launch campaigns without waiting for engineering. Product teams need power (React, Node) to build complex applications. The modern enterprise uses both.</p>
+            <p>The "All or Nothing" mindset is dead. Smart companies use the right tool for the job.</p>
 
-// --- Service Data ---
-const services = [
-    {
-        slug: 'seo',
-        title: 'SEO Strategy',
-        desc: 'Dominating search results isn’t magic—it’s engineering.',
-        features: `
-            <div class="feature-item"><h3>Technical Audits</h3><p>Deep crawl analysis to fix indexing and render-blocking issues.</p></div>
-            <div class="feature-item"><h3>Content Silos</h3><p>Structuring content to establish topical authority.</p></div>
-            <div class="feature-item"><h3>Core Web Vitals</h3><p>Speed optimization for ranking boosts.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>Audit</h3><p>We analyze your current footprint and competitors.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Strategy</h3><p>Keyword mapping and technical roadmap.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Execution</h3><p>Content creation and on-page optimization.</p></div></div>
-        `
-    },
-    {
-        slug: 'branding',
-        title: 'Brand Identity',
-        desc: 'We craft visual identities that resonate deeply with your target audience.',
-        features: `
-            <div class="feature-item"><h3>Visual Systems</h3><p>Logos, typography, and color theory.</p></div>
-            <div class="feature-item"><h3>Voice & Tone</h3><p>Defining how your brand speaks.</p></div>
-            <div class="feature-item"><h3>Brand Guidelines</h3><p>A rulebook for consistency.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>Discovery</h3><p>Understanding your core values.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Concept</h3><p>Iterating on visual directions.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Delivery</h3><p>Final assets and style guides.</p></div></div>
-        `
-    },
-    {
-        slug: 'motion',
-        title: 'Motion Design',
-        desc: 'We use motion to guide attention and delight users.',
-        features: `
-            <div class="feature-item"><h3>WebGL</h3><p>High-performance 3D graphics.</p></div>
-            <div class="feature-item"><h3>Micro-interactions</h3><p>Subtle UI feedback.</p></div>
-            <div class="feature-item"><h3>Scrolltelling</h3><p>Narrative-driven scroll experiences.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>Storyboarding</h3><p>Planning the motion flow.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Animation</h3><p>GSAP and Three.js implementation.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Optimization</h3><p>Ensuring 60fps performance.</p></div></div>
-        `
-    },
-    {
-        slug: 'ecommerce',
-        title: 'E-Commerce',
-        desc: 'We build stores that sell, using headless architecture.',
-        features: `
-            <div class="feature-item"><h3>Headless Shopify</h3><p>Ultimate flexibility and speed.</p></div>
-            <div class="feature-item"><h3>Custom Checkout</h3><p>Optimized for conversion.</p></div>
-            <div class="feature-item"><h3>PIM Integration</h3><p>Managing complex catalogs.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>Architecture</h3><p>Selecting the right stack.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Build</h3><p>Frontend development and API hookups.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Launch</h3><p>Testing payments and fulfillment.</p></div></div>
-        `
-    },
-    {
-        slug: 'mobile-apps',
-        title: 'Mobile Apps',
-        desc: 'Native and cross-platform apps for iOS and Android.',
-        features: `
-            <div class="feature-item"><h3>React Native</h3><p>One codebase, two platforms.</p></div>
-            <div class="feature-item"><h3>Native UI</h3><p>Smooth, platform-specific interactions.</p></div>
-            <div class="feature-item"><h3>Offline Mode</h3><p>Robust local data sync.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>UX Design</h3><p>Mobile-first prototyping.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Dev</h3><p>Building core features.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Deploy</h3><p>App Store submission.</p></div></div>
-        `
-    },
-    {
-        slug: 'analytics',
-        title: 'Data & Analytics',
-        desc: 'Guesswork is expensive. We implement robust tracking.',
-        features: `
-            <div class="feature-item"><h3>Event Tracking</h3><p>Measuring every click and interaction.</p></div>
-            <div class="feature-item"><h3>Dashboards</h3><p>Real-time visualization of KPIs.</p></div>
-            <div class="feature-item"><h3>A/B Testing</h3><p>Data-driven optimization.</p></div>
-        `,
-        process: `
-            <div class="process-row"><div class="step-num">01</div><div><h3>Audit</h3><p>Reviewing current data quality.</p></div></div>
-            <div class="process-row"><div class="step-num">02</div><div><h3>Setup</h3><p>GTM and GA4 configuration.</p></div></div>
-            <div class="process-row"><div class="step-num">03</div><div><h3>Analysis</h3><p>Monthly reporting and insights.</p></div></div>
+            <h2>Seamless Integration</h2>
+            <p>We architect systems where the marketing site is agile and no-code, while the core app remains a robust engineering feat. We stitch them together seamlessly on the same domain using reverse proxies, so the user never knows they crossed a technology boundary.</p>
+            <p>This gives marketing autonomy and engineering focus.</p>
         `
     }
 ];
@@ -310,17 +254,4 @@ blogs.forEach(blog => {
     console.log(`Generated Blog: ${blog.slug}`);
 });
 
-// 2. Generate Services
-services.forEach(service => {
-    let content = serviceTemplate
-        .replace(/TITLE_PLACEHOLDER/g, service.title)
-        .replace(/META_DESC_PLACEHOLDER/g, service.desc)
-        .replace(/INTRO_PLACEHOLDER/g, service.desc)
-        .replace('FEATURES_PLACEHOLDER', service.features)
-        .replace('PROCESS_PLACEHOLDER', service.process);
-
-    fs.writeFileSync(path.join(__dirname, 'services', `${service.slug}.html`), content);
-    console.log(`Generated Service: ${service.slug}`);
-});
-
-console.log('--- Content Generation Complete ---');
+console.log('--- Blog Content Updated ---');
