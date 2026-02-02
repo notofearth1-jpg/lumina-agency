@@ -46,8 +46,15 @@ const rootHeaderHTML = `
 // Update Templates
 templates.forEach(t => {
     let content = fs.readFileSync(path.join(__dirname, t), 'utf8');
+    
+    // Determine correct header depth
+    let header = headerHTML.replace(/\.\.\/\.\.\//g, '../'); // Default (1 level deep)
+    if (t === 'case_study_template.html') {
+        header = headerHTML; // Keep ../../ for Case Studies (2 levels deep)
+    }
+
     // Regex to replace existing <nav> block
-    content = content.replace(/<nav>[\s\S]*?<\/nav>/, headerHTML.replace(/\.\.\/\.\.\//g, '../')); 
+    content = content.replace(/<nav>[\s\S]*?<\/nav>/, header); 
     fs.writeFileSync(path.join(__dirname, t), content);
 });
 
