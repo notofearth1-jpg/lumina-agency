@@ -3,222 +3,377 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Liquid Luxury</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Manrope:wght@300;400&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>AURA | Timeless Interiors</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Libraries -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/split-type"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
     <style>
+        :root {
+            --bg: #f5f3ef;
+            --text: #1d1d1d;
+            --accent: #a39586;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
         body {
-            margin: 0;
-            background-color: #e0e0e0;
-            color: #1a1a1a;
-            font-family: 'Playfair Display', serif;
-            overflow: hidden;
+            background-color: var(--bg);
+            color: var(--text);
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+            cursor: none;
         }
 
-        #webgl {
-            position: fixed; top: 0; left: 0; z-index: -1;
-        }
-
-        nav {
-            position: fixed; top: 0; width: 100%;
-            padding: 2rem 4rem;
-            display: flex; justify-content: space-between;
-            font-family: 'Manrope', sans-serif;
-            font-size: 0.9rem;
-            letter-spacing: 1px;
-            mix-blend-mode: difference;
-            color: white;
-            z-index: 10;
-        }
-
-        .hero-text {
-            position: absolute; top: 50%; left: 50%;
+        /* Custom Cursor */
+        .cursor-dot, .cursor-outline {
+            position: fixed; top: 0; left: 0;
             transform: translate(-50%, -50%);
-            text-align: center;
-            width: 100%;
-            mix-blend-mode: difference;
-            color: white;
-            pointer-events: none;
+            border-radius: 50%; pointer-events: none; z-index: 9999;
         }
+        .cursor-dot { width: 5px; height: 5px; background: var(--text); }
+        .cursor-outline { width: 30px; height: 30px; border: 1px solid var(--text); transition: width 0.2s, height 0.2s; }
+        
+        body:hover .cursor-outline { opacity: 1; }
+        .hovered .cursor-outline { width: 60px; height: 60px; background: rgba(0,0,0,0.05); border-color: transparent; backdrop-filter: invert(1); }
 
-        h1 {
-            font-size: 12vw;
-            margin: 0;
-            line-height: 0.85;
-            font-weight: 400;
-            opacity: 0;
-            transform: translateY(100px);
+        /* Loader */
+        .preloader {
+            position: fixed; inset: 0; background: #fff; z-index: 1000;
+            display: flex; justify-content: center; align-items: center;
+        }
+        .loader-text {
+            font-family: 'Cormorant Garamond', serif; font-size: 3rem; overflow: hidden;
+        }
+        .loader-text span { display: inline-block; transform: translateY(100%); }
+
+        /* Nav */
+        nav {
+            position: fixed; top: 0; width: 100%; padding: 2rem 3rem;
+            display: flex; justify-content: space-between; align-items: center; z-index: 100;
+            mix-blend-mode: difference; color: #fff;
+        }
+        .logo { font-family: 'Cormorant Garamond', serif; font-size: 2rem; }
+
+        /* Hero */
+        .hero { height: 100vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+        
+        .hero-img-wrap {
+            position: absolute; width: 40vw; height: 60vh; overflow: hidden;
+            clip-path: inset(100% 0 0 0); /* Reveal animation */
+        }
+        .hero-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.5); }
+
+        .hero-title {
+            position: relative; z-index: 2; text-align: center;
+            font-family: 'Cormorant Garamond', serif; font-size: 8vw;
+            line-height: 0.9; color: var(--text); mix-blend-mode: exclusion; color: #fff;
+        }
+        .hero-title .line { overflow: hidden; }
+        .hero-title .word { display: inline-block; transform: translateY(100%); }
+
+        /* Gallery / Horizontal Scroll */
+        .gallery-section {
+            height: 400vh; /* Scroll distance */
+            background: #111; color: #fff;
         }
         
-        .gallery {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            pointer-events: none;
+        .gallery-track-wrap {
+            position: sticky; top: 0; height: 100vh; overflow: hidden;
+            display: flex; align-items: center;
         }
 
-        .img-plane {
-            width: 400px; height: 500px;
-            /* Placeholder for positioning logic, actual images handled by WebGL */
-            display: none; 
+        .gallery-track {
+            display: flex; gap: 4rem; padding-left: 10vw;
         }
 
-        .cursor-follow {
-            position: fixed; width: 20px; height: 20px;
-            border: 1px solid white; border-radius: 50%;
-            pointer-events: none; z-index: 100;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
+        .gallery-item {
+            position: relative; width: 400px; flex-shrink: 0;
         }
+        .gallery-img-box {
+            width: 100%; height: 500px; overflow: hidden;
+            transform: scale(0.9); transition: transform 0.5s;
+        }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; transform: scale(1.2); }
+        .gallery-info {
+            margin-top: 1.5rem; font-family: 'Cormorant Garamond', serif;
+            display: flex; justify-content: space-between; font-size: 1.5rem;
+            opacity: 0.5; transition: 0.3s;
+        }
+        
+        .gallery-item:hover .gallery-img-box { transform: scale(1); }
+        .gallery-item:hover .gallery-info { opacity: 1; }
 
+        /* Parallax Text Section */
+        .text-section {
+            padding: 10rem 2rem; text-align: center;
+            background: var(--bg);
+        }
+        .big-text {
+            font-family: 'Cormorant Garamond', serif; font-size: 5vw;
+            line-height: 1.2; max-width: 1200px; margin: 0 auto;
+        }
+        .word-wrap { display: inline-block; overflow: hidden; vertical-align: bottom; }
+        .word-inner { display: inline-block; transform: translateY(100%); }
+
+        /* Footer */
+        .next-project {
+            height: 100vh; background: #000; color: #fff;
+            display: flex; justify-content: center; align-items: center;
+            position: relative; cursor: pointer;
+        }
+        .next-img {
+            position: absolute; width: 300px; height: 400px;
+            object-fit: cover; opacity: 0; pointer-events: none;
+            transition: opacity 0.3s; z-index: 1;
+        }
+        .next-title {
+            font-family: 'Cormorant Garamond', serif; font-size: 8vw; z-index: 2;
+            transition: transform 0.5s;
+        }
+        .next-project:hover .next-title { font-style: italic; letter-spacing: 10px; }
     </style>
 </head>
 <body>
 
-    <div class="cursor-follow"></div>
+    <!-- Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
 
-    <nav>
-        <div>AURA</div>
-        <div>2025</div>
-    </nav>
-
-    <div class="hero-text">
-        <h1>FLUID</h1>
-        <h1>FORMS</h1>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader-text">
+            <span>A</span><span>U</span><span>R</span><span>A</span>
+        </div>
     </div>
 
-    <div id="webgl"></div>
+    <nav>
+        <div class="logo">AURA</div>
+        <div class="menu-btn hover-trigger">MENU</div>
+    </nav>
 
-    <!-- Images to be loaded into texture -->
-    <img id="tex1" src="https://images.unsplash.com/photo-1549497557-d54cd2f0872b?auto=format&fit=crop&w=800&q=80" style="display:none;">
+    <div id="smooth-wrapper">
+        <div id="smooth-content">
 
-    <script id="vertexShader" type="x-shader/x-vertex">
-        uniform float uTime;
-        uniform vec2 uMouse;
-        varying vec2 vUv;
+            <header class="hero">
+                <div class="hero-img-wrap">
+                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1200&q=80" class="hero-img" alt="Interior">
+                </div>
+                <div class="hero-title">
+                    <div class="line"><span class="word">TIMELESS</span></div>
+                    <div class="line"><span class="word">DESIGN</span></div>
+                </div>
+            </header>
 
-        void main() {
-            vUv = uv;
-            vec3 pos = position;
-            
-            // Liquid ripple effect based on mouse distance
-            float dist = distance(uv, uMouse);
-            float wave = sin(dist * 10.0 - uTime * 2.0) * exp(-dist * 2.0);
-            
-            pos.z += wave * 0.5; // Deform mesh
-            
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
-        }
-    </script>
+            <section class="text-section">
+                <div class="big-text">
+                    We believe in spaces that breathe. Furniture designed not just to fill a room, but to complete it.
+                </div>
+            </section>
 
-    <script id="fragmentShader" type="x-shader/x-fragment">
-        uniform sampler2D uTexture;
-        uniform vec2 uMouse;
-        uniform float uTime;
-        varying vec2 vUv;
+            <section class="gallery-section">
+                <div class="gallery-track-wrap">
+                    <div class="gallery-track">
+                        
+                        <div class="gallery-item hover-trigger">
+                            <div class="gallery-img-box">
+                                <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+                            </div>
+                            <div class="gallery-info"><span>Lounge Chair</span><span>$1,200</span></div>
+                        </div>
 
-        void main() {
-            vec2 uv = vUv;
-            
-            // RGB Shift Distortion
-            float r = texture2D(uTexture, uv + 0.01 * sin(uv.y * 10.0 + uTime)).r;
-            float g = texture2D(uTexture, uv).g;
-            float b = texture2D(uTexture, uv - 0.01 * sin(uv.y * 10.0 + uTime)).b;
-            
-            vec3 color = vec3(r, g, b);
-            
-            // Vignette
-            float dist = distance(uv, vec2(0.5));
-            color *= 1.0 - dist * 0.5;
+                        <div class="gallery-item hover-trigger">
+                            <div class="gallery-img-box">
+                                <img src="https://images.unsplash.com/photo-1540932296774-7dd77d556272?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+                            </div>
+                            <div class="gallery-info"><span>Arc Lamp</span><span>$450</span></div>
+                        </div>
 
-            gl_FragColor = vec4(color, 1.0);
-        }
-    </script>
+                        <div class="gallery-item hover-trigger">
+                            <div class="gallery-img-box">
+                                <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+                            </div>
+                            <div class="gallery-info"><span>Coffee Table</span><span>$890</span></div>
+                        </div>
+
+                        <div class="gallery-item hover-trigger">
+                            <div class="gallery-img-box">
+                                <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80" class="gallery-img">
+                            </div>
+                            <div class="gallery-info"><span>Ceramic Vase</span><span>$120</span></div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+
+            <section class="next-project hover-trigger">
+                <h1 class="next-title">NEXT CASE</h1>
+                <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=800&q=80" class="next-img">
+            </section>
+
+        </div>
+    </div>
 
     <script>
-        // Setup
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
-        camera.position.z = 2;
-
-        const renderer = new THREE.WebGLRenderer({ alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.getElementById('webgl').appendChild(renderer.domElement);
-
-        // Image Plane
-        const texture = new THREE.TextureLoader().load(document.getElementById('tex1').src);
-        const geometry = new THREE.PlaneGeometry(1.2, 1.6, 32, 32); // High segmentation for vertex deformation
-        
-        const uniforms = {
-            uTime: { value: 0 },
-            uTexture: { value: texture },
-            uMouse: { value: new THREE.Vector2(0.5, 0.5) }
-        };
-
-        const material = new THREE.ShaderMaterial({
-            vertexShader: document.getElementById('vertexShader').textContent,
-            fragmentShader: document.getElementById('fragmentShader').textContent,
-            uniforms: uniforms,
-            side: THREE.DoubleSide
-        });
-
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
-
-        // Interaction
-        const mouse = new THREE.Vector2();
-        document.addEventListener('mousemove', (e) => {
-            // Normalize mouse 0-1
-            mouse.x = e.clientX / window.innerWidth;
-            mouse.y = 1.0 - (e.clientY / window.innerHeight);
-            
-            // Smooth lerp for uniforms in animate loop
-            
-            // Custom Cursor
-            const cursor = document.querySelector('.cursor-follow');
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-        });
-
-        // Animation
-        const clock = new THREE.Clock();
-
-        function animate() {
-            const time = clock.getElapsedTime();
-            
-            // Smoothly update shader mouse uniform
-            uniforms.uMouse.value.lerp(mouse, 0.1);
-            uniforms.uTime.value = time;
-
-            // Gentle float
-            mesh.rotation.y = Math.sin(time * 0.5) * 0.1;
-            mesh.rotation.x = Math.cos(time * 0.3) * 0.05;
-
-            renderer.render(scene, camera);
-            requestAnimationFrame(animate);
-        }
-        animate();
-
-        // GSAP Intro
-        gsap.to('h1', {
-            y: 0,
-            opacity: 1,
+        // --- Init Lenis ---
+        const lenis = new Lenis({
             duration: 1.5,
-            stagger: 0.2,
-            ease: "power3.out",
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            direction: 'vertical',
+            smooth: true
+        });
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+
+        // --- GSAP Setup ---
+        gsap.registerPlugin(ScrollTrigger);
+
+        // 1. Preloader Animation
+        const tl = gsap.timeline();
+        
+        tl.to('.loader-text span', {
+            y: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power4.out"
+        })
+        .to('.preloader', {
+            y: '-100%',
+            duration: 1,
+            ease: "power4.inOut",
             delay: 0.5
+        })
+        .to('.hero-img-wrap', {
+            clipPath: 'inset(0% 0 0 0)',
+            duration: 1.5,
+            ease: "expo.out"
+        }, "-=0.5")
+        .to('.hero-img', {
+            scale: 1,
+            duration: 1.5,
+            ease: "expo.out"
+        }, "<")
+        .to('.hero-title .word', {
+            y: 0,
+            stagger: 0.1,
+            duration: 1,
+            ease: "power4.out"
+        }, "-=1");
+
+        // 2. Parallax Hero Image
+        gsap.to('.hero-img', {
+            yPercent: 30,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
         });
 
-        // Resize
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
+        // 3. Horizontal Scroll
+        const track = document.querySelector('.gallery-track');
+        gsap.to(track, {
+            x: () => -(track.scrollWidth - window.innerWidth),
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".gallery-section",
+                pin: true,
+                scrub: 1,
+                end: "+=3000"
+            }
         });
+
+        // 4. Parallax Images in Gallery
+        document.querySelectorAll('.gallery-img').forEach(img => {
+            gsap.to(img, {
+                scale: 1, // Zoom out effect on scroll
+                scrollTrigger: {
+                    trigger: img.parentElement,
+                    containerAnimation: gsap.getTweensOf(track)[0], // Link to horizontal scroll
+                    start: "left right",
+                    end: "right left",
+                    scrub: true
+                }
+            });
+        });
+
+        // 5. Text Reveal Animation
+        const splitText = new SplitType('.big-text', { types: 'lines, words' });
+        // Wrap words for animation
+        document.querySelectorAll('.big-text .word').forEach(word => {
+            const wrapper = document.createElement('div');
+            wrapper.classList.add('word-wrap');
+            word.parentNode.insertBefore(wrapper, word);
+            wrapper.appendChild(word);
+            word.classList.add('word-inner');
+        });
+
+        gsap.utils.toArray('.word-inner').forEach(word => {
+            gsap.to(word, {
+                y: 0,
+                duration: 1,
+                ease: "power4.out",
+                scrollTrigger: {
+                    trigger: word,
+                    start: "top 80%"
+                }
+            });
+        });
+
+        // 6. Custom Cursor
+        const dot = document.querySelector('.cursor-dot');
+        const outline = document.querySelector('.cursor-outline');
+        
+        window.addEventListener('mousemove', (e) => {
+            const posX = e.clientX;
+            const posY = e.clientY;
+
+            dot.style.left = `${posX}px`;
+            dot.style.top = `${posY}px`;
+
+            // Smooth follow for outline
+            outline.animate({
+                left: `${posX}px`,
+                top: `${posY}px`
+            }, { duration: 500, fill: "forwards" });
+        });
+
+        // Hover effect for cursor
+        document.querySelectorAll('.hover-trigger').forEach(el => {
+            el.addEventListener('mouseenter', () => document.body.classList.add('hovered'));
+            el.addEventListener('mouseleave', () => document.body.classList.remove('hovered'));
+        });
+
+        // 7. Footer Next Project Image Follow
+        const footer = document.querySelector('.next-project');
+        const footerImg = document.querySelector('.next-img');
+        
+        footer.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            
+            // Image follows cursor but constrained
+            gsap.to(footerImg, {
+                x: x - window.innerWidth / 2,
+                y: y - window.innerHeight / 2,
+                opacity: 1,
+                duration: 0.5
+            });
+        });
+        
+        footer.addEventListener('mouseleave', () => {
+            gsap.to(footerImg, { opacity: 0 });
+        });
+
     </script>
 </body>
 </html>
