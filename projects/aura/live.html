@@ -3,429 +3,222 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AURA | Timeless Interiors</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Satoshi:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Libraries -->
+    <title>AURA | Liquid Luxury</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Manrope:wght@300;400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
 
     <style>
-        /* --- Setup --- */
-        @font-face {
-            font-family: 'Satoshi';
-            src: url('https://cdn.fontshare.com/wf/TTX2Z3BF3P6Y5BQT3IV2ZJ8Cx1.woff2') format('woff2');
-            font-weight: 100 900;
-            font-display: swap;
-            font-style: normal;
-        }
-
-        :root {
-            --bg: #fdfcf8;
-            --text: #1a1a1a;
-            --accent: #d4a373;
-            --secondary: #e6e6e6;
-            --font-serif: 'Cormorant Garamond', serif;
-            --font-sans: 'Satoshi', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
         body {
-            background-color: var(--bg);
-            color: var(--text);
-            font-family: var(--font-sans);
-            overflow-x: hidden;
-            cursor: none; /* Custom cursor */
+            margin: 0;
+            background-color: #e0e0e0;
+            color: #1a1a1a;
+            font-family: 'Playfair Display', serif;
+            overflow: hidden;
         }
 
-        /* --- Custom Cursor --- */
-        .cursor {
-            width: 10px; height: 10px;
-            background: var(--text);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            transition: width 0.3s, height 0.3s, background 0.3s;
-        }
-        
-        body:hover .cursor.hovered {
-            width: 50px; height: 50px;
-            background: transparent;
-            border: 1px solid var(--text);
-            mix-blend-mode: difference;
+        #webgl {
+            position: fixed; top: 0; left: 0; z-index: -1;
         }
 
-        /* --- Nav --- */
         nav {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
+            position: fixed; top: 0; width: 100%;
             padding: 2rem 4rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
-            mix-blend-mode: difference;
-            color: white; /* Difference mode needs white to invert to black */
-        }
-
-        .logo {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 400;
-            letter-spacing: -1px;
-        }
-
-        .cart-trigger {
+            display: flex; justify-content: space-between;
+            font-family: 'Manrope', sans-serif;
             font-size: 0.9rem;
-            text-transform: uppercase;
             letter-spacing: 1px;
-            cursor: pointer;
+            mix-blend-mode: difference;
+            color: white;
+            z-index: 10;
         }
 
-        /* --- Hero --- */
-        .hero {
-            height: 100vh;
-            display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            align-items: center;
-            padding: 0 4rem;
-            position: relative;
-        }
-
-        .hero-text h1 {
-            font-family: var(--font-serif);
-            font-size: 8vw;
-            line-height: 0.85;
-            font-weight: 300;
-            color: var(--text);
-            margin-bottom: 2rem;
-            overflow: hidden;
-        }
-        
-        .char { display: inline-block; transform: translateY(100%); }
-
-        .hero-sub {
-            max-width: 400px;
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 3rem;
-            opacity: 0;
-            transform: translateY(20px);
-        }
-
-        .hero-img-container {
+        .hero-text {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
             width: 100%;
-            height: 80vh;
-            position: relative;
-            overflow: hidden;
-            border-radius: 200px 200px 0 0; /* Arch Shape */
+            mix-blend-mode: difference;
+            color: white;
+            pointer-events: none;
         }
 
-        .hero-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transform: scale(1.5); /* For parallax */
-        }
-
-        /* --- Marquee --- */
-        .marquee {
-            padding: 2rem 0;
-            border-top: 1px solid var(--secondary);
-            border-bottom: 1px solid var(--secondary);
-            overflow: hidden;
-            white-space: nowrap;
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            color: #999;
-            font-style: italic;
-        }
-        .marquee-content {
-            display: inline-block;
-            animation: marquee 20s linear infinite;
-        }
-        @keyframes marquee { 0% { transform: translateX(0); } 100% { transform: translateX(-100%); } }
-
-        /* --- Collections Grid --- */
-        .collections { padding: 8rem 4rem; }
-        .section-head {
-            font-family: var(--font-sans);
-            text-transform: uppercase;
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            margin-bottom: 4rem;
-            display: block;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 4rem;
-        }
-
-        .card {
-            cursor: pointer;
-            position: relative;
+        h1 {
+            font-size: 12vw;
+            margin: 0;
+            line-height: 0.85;
+            font-weight: 400;
+            opacity: 0;
+            transform: translateY(100px);
         }
         
-        .card.stagger-down { margin-top: 8rem; } /* Asymmetrical Layout */
-
-        .card-img-wrap {
-            overflow: hidden;
-            border-radius: 8px;
-            aspect-ratio: 4/5;
-            margin-bottom: 1.5rem;
-        }
-
-        .card-img {
-            width: 100%; height: 100%;
-            object-fit: cover;
-            transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1);
-        }
-
-        .card:hover .card-img { transform: scale(1.1); }
-
-        .card-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-        }
-
-        .card-title {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            font-weight: 400;
-        }
-
-        .card-price {
-            font-family: var(--font-sans);
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .card-btn {
+        .gallery {
             position: absolute;
-            top: 50%; left: 50%;
-            transform: translate(-50%, -50%) scale(0);
-            background: white;
-            color: black;
-            padding: 1rem 2rem;
-            border-radius: 50px;
-            font-weight: 500;
-            opacity: 0;
-            transition: all 0.4s;
-            pointer-events: none; /* Just visual */
+            top: 0; left: 0; width: 100%; height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
         }
 
-        .card:hover .card-btn {
-            opacity: 1;
-            transform: translate(-50%, -50%) scale(1);
+        .img-plane {
+            width: 400px; height: 500px;
+            /* Placeholder for positioning logic, actual images handled by WebGL */
+            display: none; 
         }
 
-        /* --- Footer --- */
-        footer {
-            background: #111;
-            color: #fff;
-            padding: 6rem 4rem;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        .cursor-follow {
+            position: fixed; width: 20px; height: 20px;
+            border: 1px solid white; border-radius: 50%;
+            pointer-events: none; z-index: 100;
+            transform: translate(-50%, -50%);
+            mix-blend-mode: difference;
         }
-        .footer-brand { font-family: var(--font-serif); font-size: 4rem; line-height: 1; }
-        .footer-links { display: flex; gap: 3rem; justify-content: flex-end; align-items: flex-start; }
-        .footer-links a { color: #888; text-decoration: none; font-size: 1.1rem; transition: color 0.3s; }
-        .footer-links a:hover { color: #fff; }
 
-        /* --- Responsive --- */
-        @media(max-width: 900px) {
-            .hero { grid-template-columns: 1fr; padding: 100px 2rem 0; height: auto; }
-            .hero-img-container { height: 500px; margin-top: 3rem; border-radius: 100px 100px 0 0; }
-            .hero-text h1 { font-size: 15vw; }
-            .grid { grid-template-columns: 1fr; gap: 2rem; }
-            .card.stagger-down { margin-top: 0; }
-            footer { grid-template-columns: 1fr; gap: 4rem; padding: 4rem 2rem; }
-            .footer-links { justify-content: flex-start; flex-wrap: wrap; }
-        }
     </style>
 </head>
 <body>
 
-    <div class="cursor"></div>
+    <div class="cursor-follow"></div>
 
     <nav>
-        <div class="logo">AURA.</div>
-        <div class="cart-trigger hover-trigger">CART (0)</div>
+        <div>AURA</div>
+        <div>2025</div>
     </nav>
 
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-            
-            <header class="hero">
-                <div class="hero-content">
-                    <div class="hero-text">
-                        <h1>Design for</h1>
-                        <h1>Living.</h1>
-                    </div>
-                    <p class="hero-sub">
-                        We believe in spaces that breathe. Furniture designed not just to fill a room, but to complete it.
-                    </p>
-                    <a href="#collection" class="hover-trigger" style="text-decoration: underline; text-underline-offset: 5px;">Explore Collection</a>
-                </div>
-                <div class="hero-img-container">
-                    <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=1600&q=80" alt="Interior" class="hero-img">
-                </div>
-            </header>
-
-            <div class="marquee">
-                <div class="marquee-content">
-                    ETHICAL SOURCING • MASTER CRAFTSMANSHIP • TIMELESS DESIGN • ETHICAL SOURCING • MASTER CRAFTSMANSHIP • TIMELESS DESIGN •
-                </div>
-            </div>
-
-            <section class="collections" id="collection">
-                <span class="section-head">NEW ARRIVALS 2025</span>
-                
-                <div class="grid">
-                    <!-- Product 1 -->
-                    <div class="card hover-trigger">
-                        <div class="card-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1592078615290-033ee584e267?auto=format&fit=crop&w=800&q=80" class="card-img" alt="Chair">
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">The Lounge Chair</h3>
-                            <span class="card-price">$1,200</span>
-                        </div>
-                        <div class="card-btn">Add to Cart</div>
-                    </div>
-
-                    <!-- Product 2 (Staggered) -->
-                    <div class="card stagger-down hover-trigger">
-                        <div class="card-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1540932296774-7dd77d556272?auto=format&fit=crop&w=800&q=80" class="card-img" alt="Lamp">
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Arc Floor Lamp</h3>
-                            <span class="card-price">$450</span>
-                        </div>
-                        <div class="card-btn">Add to Cart</div>
-                    </div>
-
-                    <!-- Product 3 -->
-                    <div class="card hover-trigger">
-                        <div class="card-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?auto=format&fit=crop&w=800&q=80" class="card-img" alt="Table">
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Oak Coffee Table</h3>
-                            <span class="card-price">$890</span>
-                        </div>
-                        <div class="card-btn">Add to Cart</div>
-                    </div>
-
-                    <!-- Product 4 -->
-                    <div class="card stagger-down hover-trigger">
-                        <div class="card-img-wrap">
-                            <img src="https://images.unsplash.com/photo-1615873968403-89e068629265?auto=format&fit=crop&w=800&q=80" class="card-img" alt="Vase">
-                        </div>
-                        <div class="card-info">
-                            <h3 class="card-title">Ceramic Vessel</h3>
-                            <span class="card-price">$120</span>
-                        </div>
-                        <div class="card-btn">Add to Cart</div>
-                    </div>
-                </div>
-            </section>
-
-            <footer>
-                <div class="footer-brand">AURA.</div>
-                <div class="footer-links">
-                    <a href="#">Instagram</a>
-                    <a href="#">Pinterest</a>
-                    <a href="#">Terms</a>
-                    <a href="#">Contact</a>
-                </div>
-            </footer>
-
-        </div>
+    <div class="hero-text">
+        <h1>FLUID</h1>
+        <h1>FORMS</h1>
     </div>
 
+    <div id="webgl"></div>
+
+    <!-- Images to be loaded into texture -->
+    <img id="tex1" src="https://images.unsplash.com/photo-1549497557-d54cd2f0872b?auto=format&fit=crop&w=800&q=80" style="display:none;">
+
+    <script id="vertexShader" type="x-shader/x-vertex">
+        uniform float uTime;
+        uniform vec2 uMouse;
+        varying vec2 vUv;
+
+        void main() {
+            vUv = uv;
+            vec3 pos = position;
+            
+            // Liquid ripple effect based on mouse distance
+            float dist = distance(uv, uMouse);
+            float wave = sin(dist * 10.0 - uTime * 2.0) * exp(-dist * 2.0);
+            
+            pos.z += wave * 0.5; // Deform mesh
+            
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(pos, 1.0);
+        }
+    </script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform sampler2D uTexture;
+        uniform vec2 uMouse;
+        uniform float uTime;
+        varying vec2 vUv;
+
+        void main() {
+            vec2 uv = vUv;
+            
+            // RGB Shift Distortion
+            float r = texture2D(uTexture, uv + 0.01 * sin(uv.y * 10.0 + uTime)).r;
+            float g = texture2D(uTexture, uv).g;
+            float b = texture2D(uTexture, uv - 0.01 * sin(uv.y * 10.0 + uTime)).b;
+            
+            vec3 color = vec3(r, g, b);
+            
+            // Vignette
+            float dist = distance(uv, vec2(0.5));
+            color *= 1.0 - dist * 0.5;
+
+            gl_FragColor = vec4(color, 1.0);
+        }
+    </script>
+
     <script>
-        // --- Custom Cursor ---
-        const cursor = document.querySelector('.cursor');
+        // Setup
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 100);
+        camera.position.z = 2;
+
+        const renderer = new THREE.WebGLRenderer({ alpha: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        document.getElementById('webgl').appendChild(renderer.domElement);
+
+        // Image Plane
+        const texture = new THREE.TextureLoader().load(document.getElementById('tex1').src);
+        const geometry = new THREE.PlaneGeometry(1.2, 1.6, 32, 32); // High segmentation for vertex deformation
         
+        const uniforms = {
+            uTime: { value: 0 },
+            uTexture: { value: texture },
+            uMouse: { value: new THREE.Vector2(0.5, 0.5) }
+        };
+
+        const material = new THREE.ShaderMaterial({
+            vertexShader: document.getElementById('vertexShader').textContent,
+            fragmentShader: document.getElementById('fragmentShader').textContent,
+            uniforms: uniforms,
+            side: THREE.DoubleSide
+        });
+
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
+
+        // Interaction
+        const mouse = new THREE.Vector2();
         document.addEventListener('mousemove', (e) => {
+            // Normalize mouse 0-1
+            mouse.x = e.clientX / window.innerWidth;
+            mouse.y = 1.0 - (e.clientY / window.innerHeight);
+            
+            // Smooth lerp for uniforms in animate loop
+            
+            // Custom Cursor
+            const cursor = document.querySelector('.cursor-follow');
             cursor.style.left = e.clientX + 'px';
             cursor.style.top = e.clientY + 'px';
         });
 
-        // Hover Effect
-        document.querySelectorAll('.hover-trigger').forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('hovered'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('hovered'));
-        });
+        // Animation
+        const clock = new THREE.Clock();
 
-        // --- GSAP Animations ---
-        gsap.registerPlugin(ScrollTrigger);
+        function animate() {
+            const time = clock.getElapsedTime();
+            
+            // Smoothly update shader mouse uniform
+            uniforms.uMouse.value.lerp(mouse, 0.1);
+            uniforms.uTime.value = time;
 
-        // Hero Text Reveal
-        const split = new SplitType('.hero-text h1', { types: 'chars' });
-        
-        gsap.to('.hero-text .char', {
-            y: 0,
-            stagger: 0.05,
-            delay: 0.2,
-            duration: 1,
-            ease: "power4.out"
-        });
+            // Gentle float
+            mesh.rotation.y = Math.sin(time * 0.5) * 0.1;
+            mesh.rotation.x = Math.cos(time * 0.3) * 0.05;
 
-        gsap.to('.hero-sub', { opacity: 1, y: 0, duration: 1, delay: 1 });
-
-        // Parallax Image
-        gsap.to('.hero-img', {
-            scale: 1,
-            scrollTrigger: {
-                trigger: '.hero',
-                start: "top top",
-                end: "bottom top",
-                scrub: 1
-            }
-        });
-
-        // Product Reveal
-        gsap.utils.toArray('.card').forEach(card => {
-            gsap.from(card, {
-                opacity: 0,
-                y: 100,
-                duration: 1,
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%"
-                }
-            });
-        });
-
-        // --- Lenis Smooth Scroll ---
-        const lenis = new Lenis({
-            duration: 1.5,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
+            renderer.render(scene, camera);
+            requestAnimationFrame(animate);
         }
-        requestAnimationFrame(raf);
+        animate();
+
+        // GSAP Intro
+        gsap.to('h1', {
+            y: 0,
+            opacity: 1,
+            duration: 1.5,
+            stagger: 0.2,
+            ease: "power3.out",
+            delay: 0.5
+        });
+
+        // Resize
+        window.addEventListener('resize', () => {
+            renderer.setSize(window.innerWidth, window.innerHeight);
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
+        });
     </script>
-    <script src="https://unpkg.com/split-type"></script>
 </body>
 </html>

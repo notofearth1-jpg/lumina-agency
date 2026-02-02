@@ -3,646 +3,199 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS | The Neural Interface</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600;700&family=Syncopate:wght@400;700&display=swap" rel="stylesheet">
-    
-    <!-- Libraries -->
+    <title>NEXUS | THE VOID</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://unpkg.com/split-type"></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
-
+    
     <style>
-        :root {
-            --bg: #030305;
-            --primary: #00f3ff;
-            --secondary: #bd00ff;
-            --surface: rgba(10, 10, 15, 0.6);
-            --border: rgba(255, 255, 255, 0.1);
-            --font-head: 'Syncopate', sans-serif;
-            --font-body: 'Rajdhani', sans-serif;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { margin: 0; background: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; color: #fff; }
+        canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; }
         
-        body {
-            background-color: var(--bg);
-            color: #fff;
-            font-family: var(--font-body);
-            overflow-x: hidden;
-            cursor: none; /* Custom cursor */
-        }
-
-        /* --- Custom Cursor --- */
-        .cursor {
-            width: 20px; height: 20px;
-            border: 1px solid var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-            mix-blend-mode: difference;
-            transition: width 0.3s, height 0.3s, background 0.3s;
-        }
-        .cursor-dot {
-            width: 4px; height: 4px;
-            background: var(--primary);
-            border-radius: 50%;
-            position: fixed;
-            pointer-events: none;
-            z-index: 9999;
-            transform: translate(-50%, -50%);
-        }
-        body:hover .cursor { opacity: 1; }
-        
-        /* --- WebGL Canvas --- */
-        #canvas-container {
-            position: fixed;
-            top: 0; left: 0;
-            width: 100%; height: 100vh;
-            z-index: -1;
-            opacity: 0; /* Fade in on load */
-            transition: opacity 1s ease;
-        }
-
-        /* --- UI Elements --- */
-        nav {
-            position: fixed;
-            top: 0; width: 100%;
-            padding: 2rem 3rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            z-index: 100;
+        #ui {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 10;
             mix-blend-mode: exclusion;
         }
 
-        .logo {
-            font-family: var(--font-head);
-            font-weight: 700;
-            font-size: 1.5rem;
-            letter-spacing: 2px;
-            color: #fff;
-            text-decoration: none;
+        .hero-title {
+            position: absolute; top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center; width: 100%;
         }
 
-        .menu-btn {
-            font-family: var(--font-head);
-            font-size: 0.8rem;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            cursor: pointer;
-            position: relative;
+        h1 {
+            font-size: 10vw; line-height: 0.8; margin: 0;
+            text-transform: uppercase; letter-spacing: -5px;
+            opacity: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
         }
-        .menu-btn::after {
-            content: ''; position: absolute; bottom: -5px; left: 0;
-            width: 0%; height: 1px; background: var(--primary);
-            transition: 0.3s;
-        }
-        .menu-btn:hover::after { width: 100%; }
-
-        /* --- Loading Screen --- */
-        .loader {
-            position: fixed;
-            inset: 0;
-            background: #000;
-            z-index: 999;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
-        .loader-bar {
-            width: 200px; height: 2px;
-            background: #333;
-            margin-top: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
-        .loader-progress {
-            position: absolute; top: 0; left: 0;
-            height: 100%; width: 0%;
-            background: var(--primary);
-            transition: width 0.1s;
-        }
-        .loader-text {
-            font-family: var(--font-head);
-            font-size: 3rem;
-            letter-spacing: 5px;
-            font-weight: 700;
+        
+        .sub {
+            font-size: 1.5rem; letter-spacing: 10px; margin-top: 2rem;
+            color: #00f3ff; opacity: 0;
         }
 
-        /* --- Sections --- */
-        section {
-            min-height: 100vh;
-            padding: 4rem 2rem;
-            position: relative;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
+        .overlay {
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 20%, transparent 80%, rgba(0,0,0,0.8));
+            background-size: 100% 4px;
+            pointer-events: none; z-index: 5;
         }
 
-        .hero {
-            align-items: center;
-            text-align: center;
+        .scanline {
+            position: absolute; top: 0; left: 0; width: 100%; height: 20px;
+            background: rgba(0, 243, 255, 0.1);
+            animation: scan 4s linear infinite;
+            z-index: 6; pointer-events: none;
         }
 
-        .hero h1 {
-            font-family: var(--font-head);
-            font-size: 8vw;
-            line-height: 0.9;
-            text-transform: uppercase;
-            mix-blend-mode: overlay;
-            opacity: 0;
-            transform: translateY(50px);
-        }
+        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
 
-        .hero p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            margin: 2rem auto;
-            color: rgba(255,255,255,0.7);
-            letter-spacing: 1px;
-            opacity: 0;
-            transform: translateY(30px);
+        /* HUD Elements */
+        .hud { position: absolute; font-size: 10px; color: rgba(255,255,255,0.5); }
+        .tl { top: 30px; left: 30px; border-top: 1px solid #fff; border-left: 1px solid #fff; width: 50px; height: 50px; }
+        .br { bottom: 30px; right: 30px; border-bottom: 1px solid #fff; border-right: 1px solid #fff; width: 50px; height: 50px; }
+        
+        .scroll-prompt {
+            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
+            font-size: 12px; letter-spacing: 2px; animation: blink 2s infinite;
         }
+        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-        .cta-btn {
-            padding: 1rem 3rem;
-            border: 1px solid var(--primary);
-            color: var(--primary);
-            text-transform: uppercase;
-            font-family: var(--font-head);
-            font-size: 0.9rem;
-            letter-spacing: 2px;
-            background: transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-            position: relative;
-            overflow: hidden;
-            opacity: 0;
-            transform: translateY(30px);
-        }
-        .cta-btn::before {
-            content: '';
-            position: absolute; top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: var(--primary);
-            transition: 0.3s;
-            z-index: -1;
-        }
-        .cta-btn:hover::before { left: 0; }
-        .cta-btn:hover { color: #000; box-shadow: 0 0 30px var(--primary); }
-
-        /* HUD Overlay */
-        .hud-corner {
-            position: fixed;
-            width: 100px; height: 100px;
-            border: 1px solid rgba(255,255,255,0.1);
-            pointer-events: none;
-            z-index: 50;
-        }
-        .hud-tl { top: 2rem; left: 2rem; border-right: none; border-bottom: none; }
-        .hud-tr { top: 2rem; right: 2rem; border-left: none; border-bottom: none; }
-        .hud-bl { bottom: 2rem; left: 2rem; border-right: none; border-top: none; }
-        .hud-br { bottom: 2rem; right: 2rem; border-left: none; border-top: none; }
-
-        .hud-text {
-            position: fixed;
-            bottom: 2rem; left: 50%;
-            transform: translateX(-50%);
-            font-family: var(--font-head);
-            font-size: 0.7rem;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.5);
-            z-index: 50;
-        }
-
-        /* Features */
-        .features {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-            max-width: 1400px;
-            margin: 0 auto;
-        }
-        .feature-card {
-            background: rgba(255,255,255,0.02);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--border);
-            padding: 3rem;
-            transition: 0.3s;
-        }
-        .feature-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-10px);
-            background: rgba(0, 243, 255, 0.05);
-        }
-        .f-icon {
-            font-size: 2rem; margin-bottom: 1.5rem; color: var(--primary);
-        }
-        .f-title {
-            font-family: var(--font-head);
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-        .f-desc {
-            color: rgba(255,255,255,0.6);
-            line-height: 1.6;
-        }
-
-        /* Specs (Scroll Horizontal) */
-        .scroll-section {
-            height: 400vh; /* Long scroll area for pinning */
-            position: relative;
-        }
-        .scroll-content {
-            position: sticky;
-            top: 0;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-        }
-        .scroll-track {
-            display: flex;
-            gap: 10vw;
-            padding-left: 10vw;
-        }
-        .spec-item {
-            min-width: 60vw;
-            font-size: 4rem;
-            font-family: var(--font-head);
-            color: transparent;
-            -webkit-text-stroke: 2px rgba(255,255,255,0.3);
-            transition: 0.3s;
-        }
-        .spec-item.active {
-            color: white;
-            -webkit-text-stroke: 0px;
-            text-shadow: 0 0 30px rgba(255,255,255,0.5);
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--border);
-            padding: 4rem 2rem;
-            text-align: center;
-            font-family: var(--font-head);
-            font-size: 0.8rem;
-            letter-spacing: 2px;
-            color: rgba(255,255,255,0.4);
-        }
-
-        @media(max-width: 768px) {
-            .hero h1 { font-size: 15vw; }
-            .features { grid-template-columns: 1fr; }
-            .spec-item { font-size: 2rem; min-width: 80vw; }
+        .vignette {
+            position: fixed; inset: 0;
+            background: radial-gradient(circle, transparent 50%, black 120%);
+            z-index: 2; pointer-events: none;
         }
     </style>
 </head>
 <body>
 
-    <!-- Cursor -->
-    <div class="cursor"></div>
-    <div class="cursor-dot"></div>
+    <div class="overlay"></div>
+    <div class="scanline"></div>
+    <div class="vignette"></div>
 
-    <!-- WebGL Background -->
-    <div id="canvas-container"></div>
-
-    <!-- Loader -->
-    <div class="loader">
-        <div class="loader-text">INITIALIZING</div>
-        <div class="loader-bar"><div class="loader-progress"></div></div>
-    </div>
-
-    <!-- HUD -->
-    <div class="hud-corner hud-tl"></div>
-    <div class="hud-corner hud-tr"></div>
-    <div class="hud-corner hud-bl"></div>
-    <div class="hud-corner hud-br"></div>
-    <div class="hud-text">SYS.VER.2.0.4 // ONLINE</div>
-
-    <!-- Navigation -->
-    <nav>
-        <a href="#" class="logo">NEXUS</a>
-        <div class="menu-btn">MENU</div>
-    </nav>
-
-    <!-- Content -->
-    <div id="smooth-wrapper">
-        <div id="smooth-content">
-            
-            <section class="hero">
-                <h1>Beyond<br>Reality</h1>
-                <p>The first neural interface designed for the mass market. Step into the void.</p>
-                <button class="cta-btn">Initiate Sequence</button>
-            </section>
-
-            <section class="features">
-                <div class="feature-card">
-                    <div class="f-icon">✦</div>
-                    <div class="f-title">8K Retina</div>
-                    <div class="f-desc">Micro-OLED panels delivering 60 pixels per degree. Indistinguishable from the physical world.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon">⚡</div>
-                    <div class="f-title">Zero Latency</div>
-                    <div class="f-desc">Proprietary photon-to-motion engine ensures instantaneous response times under 2ms.</div>
-                </div>
-                <div class="feature-card">
-                    <div class="f-icon">🧠</div>
-                    <div class="f-title">Neural Link</div>
-                    <div class="f-desc">Non-invasive BCI sensors detect intent before you even move your hand.</div>
-                </div>
-            </section>
-
-            <section class="scroll-section">
-                <div class="scroll-content">
-                    <div class="scroll-track">
-                        <div class="spec-item">120Hz REFRESH</div>
-                        <div class="spec-item">200° FOV</div>
-                        <div class="spec-item">HAPTIC SUIT</div>
-                        <div class="spec-item">EYE TRACKING</div>
-                    </div>
-                </div>
-            </section>
-
-            <footer>
-                NEXUS INDUSTRIES © 2026 // ALL SYSTEMS OPERATIONAL
-            </footer>
-
+    <div id="ui">
+        <div class="hud tl"></div>
+        <div class="hud br"></div>
+        <div class="hero-title">
+            <h1>NEXUS</h1>
+            <h1>REALITY</h1>
+            <div class="sub">SYSTEM ONLINE</div>
         </div>
+        <div class="scroll-prompt">SCROLL TO DIVE</div>
     </div>
+
+    <script id="vertexShader" type="x-shader/x-vertex">
+        varying vec2 vUv;
+        void main() {
+            vUv = uv;
+            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+        }
+    </script>
+
+    <script id="fragmentShader" type="x-shader/x-fragment">
+        uniform float iTime;
+        uniform vec2 iResolution;
+        uniform float iSpeed;
+        varying vec2 vUv;
+
+        // Noise Function
+        float hash(vec2 p) { return fract(1e4 * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)))); }
+        
+        void main() {
+            vec2 uv = (vUv - 0.5) * 2.0;
+            uv.x *= iResolution.x / iResolution.y;
+            
+            float r = length(uv);
+            float a = atan(uv.y, uv.x);
+            
+            // Warp tunnel
+            float f = smoothstep(-0.5, 1.0, sin(a * 10.0 + iTime));
+            vec2 tun = vec2(1.0/r + iTime * iSpeed, a / 3.14159);
+            
+            // Grid pattern
+            float grid = step(0.95, fract(tun.x * 5.0)) + step(0.95, fract(tun.y * 10.0));
+            
+            // Color grading
+            vec3 col = vec3(0.0, 0.0, 0.0);
+            col += vec3(0.0, 0.8, 1.0) * grid * (r * r); // Neon Cyan grid
+            col += vec3(0.5, 0.0, 1.0) * (1.0 - grid) * smoothstep(0.0, 1.0, hash(tun * 20.0)) * 0.2; // Purple noise
+            
+            // Depth fog
+            col *= smoothstep(0.0, 0.8, r);
+
+            gl_FragColor = vec4(col, 1.0);
+        }
+    </script>
 
     <script>
-        // --- Custom Cursor ---
-        const cursor = document.querySelector('.cursor');
-        const cursorDot = document.querySelector('.cursor-dot');
-        
-        document.addEventListener('mousemove', (e) => {
-            cursorDot.style.left = e.clientX + 'px';
-            cursorDot.style.top = e.clientY + 'px';
-            
-            // Lag effect for outer circle
-            setTimeout(() => {
-                cursor.style.left = e.clientX + 'px';
-                cursor.style.top = e.clientY + 'px';
-            }, 50);
-        });
-
-        document.addEventListener('mousedown', () => {
-            cursor.style.transform = "translate(-50%, -50%) scale(0.5)";
-        });
-        
-        document.addEventListener('mouseup', () => {
-            cursor.style.transform = "translate(-50%, -50%) scale(1)";
-        });
-
-        // --- Three.js Setup (The "Core") ---
+        // Setup Three.js
         const scene = new THREE.Scene();
-        scene.fog = new THREE.FogExp2(0x030305, 0.02); // Distance fog
+        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
+        camera.position.z = 1;
 
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        camera.position.z = 5;
-
-        const renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+        const renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
-        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-        document.getElementById('canvas-container').appendChild(renderer.domElement);
+        document.body.appendChild(renderer.domElement);
 
-        // Geometries
-        const coreGeo = new THREE.IcosahedronGeometry(1, 4);
-        const wireframeMat = new THREE.MeshBasicMaterial({ 
-            color: 0x00f3ff, 
-            wireframe: true, 
-            transparent: true, 
-            opacity: 0.3 
+        // Uniforms for Shader
+        const uniforms = {
+            iTime: { value: 0 },
+            iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
+            iSpeed: { value: 1.0 } // Scroll speed controls this
+        };
+
+        // Screen Quad
+        const geometry = new THREE.PlaneGeometry(2, 2);
+        const material = new THREE.ShaderMaterial({
+            uniforms: uniforms,
+            vertexShader: document.getElementById('vertexShader').textContent,
+            fragmentShader: document.getElementById('fragmentShader').textContent
         });
-        const core = new THREE.Mesh(coreGeo, wireframeMat);
-        scene.add(core);
 
-        // Particle Cloud
-        const particlesGeo = new THREE.BufferGeometry();
-        const particlesCount = 2000;
-        const posArray = new Float32Array(particlesCount * 3);
-
-        for(let i = 0; i < particlesCount * 3; i++) {
-            posArray[i] = (Math.random() - 0.5) * 15; // Spread
-        }
-
-        particlesGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
-        const particlesMat = new THREE.PointsMaterial({
-            size: 0.02,
-            color: 0xbd00ff,
-            transparent: true,
-            opacity: 0.8,
-            blending: THREE.AdditiveBlending
-        });
-        const particlesMesh = new THREE.Points(particlesGeo, particlesMat);
-        scene.add(particlesMesh);
-
-        // Outer Rings
-        const ringGeo = new THREE.TorusGeometry(3, 0.02, 16, 100);
-        const ringMat = new THREE.MeshBasicMaterial({ color: 0xffffff, transparent: true, opacity: 0.1 });
-        const ring1 = new THREE.Mesh(ringGeo, ringMat);
-        const ring2 = new THREE.Mesh(ringGeo, ringMat);
-        const ring3 = new THREE.Mesh(ringGeo, ringMat);
-        
-        ring1.rotation.x = Math.PI / 2;
-        ring2.rotation.y = Math.PI / 2;
-        
-        scene.add(ring1);
-        scene.add(ring2);
-        scene.add(ring3);
-
-        // Lights
-        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
-        scene.add(ambientLight);
-        
-        const pointLight = new THREE.PointLight(0x00f3ff, 2);
-        pointLight.position.set(2, 3, 4);
-        scene.add(pointLight);
+        const mesh = new THREE.Mesh(geometry, material);
+        scene.add(mesh);
 
         // Animation Loop
-        let mouseX = 0;
-        let mouseY = 0;
-        let targetX = 0;
-        let targetY = 0;
-
-        const windowHalfX = window.innerWidth / 2;
-        const windowHalfY = window.innerHeight / 2;
-
-        document.addEventListener('mousemove', (event) => {
-            mouseX = (event.clientX - windowHalfX);
-            mouseY = (event.clientY - windowHalfY);
+        const clock = new THREE.Clock();
+        
+        // Scroll Logic
+        let targetSpeed = 0.5;
+        let currentSpeed = 0.5;
+        
+        window.addEventListener('wheel', (e) => {
+            targetSpeed += e.deltaY * 0.005;
+            targetSpeed = Math.max(0.5, Math.min(targetSpeed, 5.0)); // Clamp speed
         });
 
-        const clock = new THREE.Clock();
-
         function animate() {
-            const elapsedTime = clock.getElapsedTime();
-
-            targetX = mouseX * 0.001;
-            targetY = mouseY * 0.001;
-
-            // Rotate Core
-            core.rotation.y += 0.005;
-            core.rotation.x += 0.002;
+            uniforms.iTime.value = clock.getElapsedTime();
             
-            // Pulse Core
-            const scale = 1 + Math.sin(elapsedTime * 2) * 0.1;
-            core.scale.set(scale, scale, scale);
-
-            // Rotate Particles
-            particlesMesh.rotation.y = elapsedTime * 0.05;
-            particlesMesh.rotation.x = mouseY * 0.0005;
-
-            // Rotate Rings (Gyroscopic effect)
-            ring1.rotation.x += 0.01;
-            ring1.rotation.y += 0.005;
-            ring2.rotation.y += 0.01;
-            ring2.rotation.z += 0.005;
-            ring3.rotation.z += 0.01;
-            ring3.rotation.x += 0.005;
-
-            // Mouse Interaction Parallax
-            core.rotation.y += 0.05 * (targetX - core.rotation.y);
-            core.rotation.x += 0.05 * (targetY - core.rotation.x);
+            // Smooth speed decay
+            targetSpeed += (0.5 - targetSpeed) * 0.05; 
+            currentSpeed += (targetSpeed - currentSpeed) * 0.1;
+            
+            uniforms.iSpeed.value = currentSpeed;
 
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
         animate();
 
-        // Handle Resize
+        // Intro Animation (GSAP)
+        gsap.to('h1', {
+            y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: "power4.out", delay: 0.5
+        });
+        gsap.to('.sub', {
+            opacity: 1, duration: 1, delay: 1.5
+        });
+
+        // Resize
         window.addEventListener('resize', () => {
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
+            uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
         });
-
-        // --- Page Logic (GSAP + Lenis) ---
-        
-        // 1. Loader Logic
-        const progress = document.querySelector('.loader-progress');
-        const loader = document.querySelector('.loader');
-        const canvasContainer = document.getElementById('canvas-container');
-
-        let loadVal = 0;
-        const interval = setInterval(() => {
-            loadVal += Math.random() * 10;
-            if (loadVal >= 100) {
-                loadVal = 100;
-                clearInterval(interval);
-                
-                // Animation Complete
-                gsap.to('.loader', {
-                    yPercent: -100,
-                    duration: 1,
-                    ease: 'power4.inOut',
-                    onComplete: () => {
-                        // Reveal Hero
-                        canvasContainer.style.opacity = 1;
-                        gsap.to('.hero h1', { opacity: 1, y: 0, duration: 1, delay: 0.2 });
-                        gsap.to('.hero p', { opacity: 1, y: 0, duration: 1, delay: 0.4 });
-                        gsap.to('.cta-btn', { opacity: 1, y: 0, duration: 1, delay: 0.6 });
-                    }
-                });
-            }
-            progress.style.width = loadVal + '%';
-        }, 100);
-
-        // 2. Lenis Smooth Scroll
-        const lenis = new Lenis({
-            duration: 1.2,
-            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-            direction: 'vertical',
-            gestureDirection: 'vertical',
-            smooth: true,
-            mouseMultiplier: 1,
-            smoothTouch: false,
-            touchMultiplier: 2,
-        });
-
-        function raf(time) {
-            lenis.raf(time);
-            requestAnimationFrame(raf);
-        }
-        requestAnimationFrame(raf);
-
-        // 3. Scroll Triggers
-        gsap.registerPlugin(ScrollTrigger);
-
-        // Features Fade In
-        gsap.utils.toArray('.feature-card').forEach((card, i) => {
-            gsap.from(card, {
-                scrollTrigger: {
-                    trigger: card,
-                    start: "top 85%",
-                    toggleActions: "play none none reverse"
-                },
-                y: 50,
-                opacity: 0,
-                duration: 0.8,
-                delay: i * 0.1
-            });
-        });
-
-        // Horizontal Scroll for Specs
-        const track = document.querySelector('.scroll-track');
-        const items = document.querySelectorAll('.spec-item');
-        
-        // Horizontal movement
-        gsap.to(track, {
-            x: () => -(track.scrollWidth - window.innerWidth),
-            ease: "none",
-            scrollTrigger: {
-                trigger: ".scroll-section",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: 1,
-                pin: true,
-                anticipatePin: 1
-            }
-        });
-
-        // Highlight items as they pass center
-        items.forEach(item => {
-            ScrollTrigger.create({
-                trigger: item,
-                containerAnimation: gsap.getTweensOf(track)[0], // Link to horizontal tween
-                start: "center 60%",
-                end: "center 40%",
-                onEnter: () => item.classList.add('active'),
-                onLeave: () => item.classList.remove('active'),
-                onEnterBack: () => item.classList.add('active'),
-                onLeaveBack: () => item.classList.remove('active')
-            });
-        });
-
-        // 4. Connect Scroll to Three.js
-        // Zoom camera in/out based on scroll
-        gsap.to(camera.position, {
-            z: 2, // Zoom in
-            scrollTrigger: {
-                trigger: "body",
-                start: "top top",
-                end: "bottom bottom",
-                scrub: true
-            }
-        });
-        
-        // Rotate rings faster on scroll
-        gsap.to(ring1.rotation, { x: Math.PI * 4, scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }});
-        gsap.to(ring2.rotation, { y: Math.PI * 4, scrollTrigger: { trigger: "body", start: "top top", end: "bottom bottom", scrub: 2 }});
-
     </script>
 </body>
 </html>
