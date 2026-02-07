@@ -1091,10 +1091,10 @@
                                 }
 
                                 const original = originalMaterialColors.get(mat.uuid);
-                                const origLumia Digitalnce = original.r * 0.299 + original.g * 0.587 + original.b * 0.114;
+                                const origLuminance = original.r * 0.299 + original.g * 0.587 + original.b * 0.114;
 
                                 // Only change materials that were originally light (the body/shell)
-                                if (origLumia Digitalnce > 0.5) {
+                                if (origLuminance > 0.5) {
                                     const newR = ((config.color >> 16) & 255) / 255;
                                     const newG = ((config.color >> 8) & 255) / 255;
                                     const newB = (config.color & 255) / 255;
