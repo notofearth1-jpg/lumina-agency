@@ -1,0 +1,14 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Lumia Digital Stylized Logo: The Digital Ascension -->
+  
+  <!-- Bar 1: Base -->
+  <rect x="100" y="320" width="80" height="200" rx="40" transform="rotate(-45 100 320)" fill="#4f46e5" fill-opacity="0.6"/>
+  
+  <!-- Bar 2: Core -->
+  <rect x="200" y="220" width="80" height="300" rx="40" transform="rotate(-45 200 220)" fill="#4f46e5" fill-opacity="0.8"/>
+  
+  <!-- Bar 3: Peak -->
+  <rect x="300" y="120" width="80" height="200" rx="40" transform="rotate(-45 300 120)" fill="#4f46e5"/>
+
+  <!-- Optional: A sleek connection dot or 'digital gravity' center if needed, but keeping it minimal as requested -->
+</svg>

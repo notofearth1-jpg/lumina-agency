@@ -70,7 +70,7 @@ const caseStudies = [
     },
     {
         slug: 'restaurant',
-        title: 'Taste & Soul',
+        title: 'Spice Garden',
         year: '2024',
         category: 'Hospitality',
         client: 'T&S Group',
@@ -98,7 +98,7 @@ const caseStudies = [
     },
     {
         slug: 'boutique',
-        title: 'Velvet Boutique',
+        title: 'Vogue Atelier',
         year: '2023',
         category: 'Fashion',
         client: 'Velvet Global',

@@ -226,7 +226,7 @@ const pages = [
         title: 'Impressum',
         category: 'LEGAL',
         intro: 'Legal information required by German law (TMG).',
-        body1: 'Lumina Digital GmbH\nTorstr. 1\n10119 Berlin\nGermany',
+        body1: 'Lumia Digital GmbH\nTorstr. 1\n10119 Berlin\nGermany',
         body2: 'Managing Director: Vibhu Thanki\nVAT ID: DE 123 456 789\nEmail: hello@luminadigital.site',
         h1: 'Company Info',
         h2: 'Contact',

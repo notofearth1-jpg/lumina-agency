@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Selected Work | Lumina Digital</title>
+    <title>Selected Work | Lumia Digital</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,6 +14,7 @@
         rel="stylesheet">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="flowing-menu.css">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 </head>
 
@@ -22,14 +23,13 @@
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
+    <!-- Flowing Menu Container (Removed for new marquee style) -->
 
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <a href="index.html" class="logo"><img src="logo.svg" alt="Lumia Digital Logo" class="logo-icon"
+                    style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span
+                    class="dot">.</span></a>
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="work.html" class="nav-link active">Work</a>
@@ -40,10 +40,6 @@
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -59,49 +55,59 @@
         <div class="container">
             <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 4rem;">Selected Work</h1>
 
-            <div class="project-list">
-                <!-- Armory -->
-                <a href="portfolio/index.html" target="_blank" class="project-row">
-                    <span class="p-name">ARMORY.AI</span>
-                    <span class="p-cat">Featured Spotlight</span>
-                    <span class="p-year">2026</span>
-                </a>
-                <!-- Projects -->
-                <a href="projects/nexus/index.html" class="project-row">
-                    <span class="p-name">Nexus VR Launch</span>
-                    <span class="p-cat">Immersive Experience</span>
-                    <span class="p-year">2025</span>
-                </a>
-                <a href="projects/aura/index.html" class="project-row">
-                    <span class="p-name">Aura Interiors</span>
-                    <span class="p-cat">E-Commerce Platform</span>
-                    <span class="p-year">2025</span>
-                </a>
-                <a href="projects/gym/index.html" class="project-row">
-                    <span class="p-name">Iron Forge Gym</span>
-                    <span class="p-cat">Brand Identity & Web</span>
-                    <span class="p-year">2024</span>
-                </a>
-                <a href="projects/restaurant/index.html" class="project-row">
-                    <span class="p-name">Taste & Soul</span>
-                    <span class="p-cat">Hospitality Website</span>
-                    <span class="p-year">2024</span>
-                </a>
-                <a href="projects/salon/index.html" class="project-row">
-                    <span class="p-name">Éclat Salon</span>
-                    <span class="p-cat">Booking System</span>
-                    <span class="p-year">2024</span>
-                </a>
-                <a href="projects/boutique/index.html" class="project-row">
-                    <span class="p-name">Velvet Boutique</span>
-                    <span class="p-cat">Fashion E-Commerce</span>
-                    <span class="p-year">2023</span>
-                </a>
-                <a href="projects/coaching/index.html" class="project-row">
-                    <span class="p-name">Bright Minds</span>
-                    <span class="p-cat">EdTech Platform</span>
-                    <span class="p-year">2023</span>
-                </a>
+            <div class="menu-wrap">
+                <div class="menu">
+                    <!-- Armory -->
+                    <div class="menu__item">
+                        <a href="projects/armory/index.html" target="_blank" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1700774607099-8c4631ee9764?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJtb3J5fGVufDB8fDB8fHww">
+                            ARMORY.AI
+                        </a>
+                    </div>
+                    <!-- Projects -->
+                    <div class="menu__item">
+                        <a href="projects/nexus/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1588336443962-49d88df004a1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHZyJTIwaGVhZHNldHxlbnwwfHwwfHx8MA%3D%3D">
+                            Nexus VR Launch
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/aura/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80">
+                            Aura Interiors
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/gym/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80">
+                            Iron Forge Gym
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/restaurant/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80">
+                            Spice Garden
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/salon/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80">
+                            Luxe Beauty
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/boutique/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80">
+                            Vogue Atelier
+                        </a>
+                    </div>
+                    <div class="menu__item">
+                        <a href="projects/coaching/index.html" class="menu__item-link"
+                            data-image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80">
+                            Bright Minds
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -130,13 +136,15 @@
                     <a href="legal/terms.html">Terms</a>
                 </div>
                 <div class="meta-col copyright">
-                    <p>&copy; 2026 Lumina Digital</p>
+                    <p>&copy; 2026 Lumia Digital</p>
                 </div>
             </div>
         </div>
     </footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
+    <script src="flowing-menu.js"></script>
 </body>
 
 </html>

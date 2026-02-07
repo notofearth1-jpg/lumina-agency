@@ -14,7 +14,7 @@ const templates = [
 const headerHTML = `
     <nav>
         <div class="nav-container">
-            <a href="../../index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <a href="../../index.html" class="logo">LUMIA DIGITAL<span class="dot">.</span></a>
             <div class="desktop-menu">
                 <a href="../../index.html" class="nav-link">Home</a>
                 <a href="../../work.html" class="nav-link">Work</a>
@@ -30,7 +30,7 @@ const headerHTML = `
 const rootHeaderHTML = `
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo">LUMINA<span class="dot">.</span></a>
+            <a href="index.html" class="logo">LUMIA DIGITAL<span class="dot">.</span></a>
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Home</a>
                 <a href="work.html" class="nav-link">Work</a>

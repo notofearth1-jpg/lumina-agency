@@ -1,201 +1,1392 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS | THE VOID</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <title>NEXUS | VR Experience</title>
+    <meta name="description"
+        content="Experience the future of virtual reality. Nexus VR - Immersive, Intuitive, Infinite.">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- GSAP -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+
+    <!-- Three.js Import Map -->
+    <script type="importmap">
+    {
+        "imports": {
+            "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+            "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+        }
+    }
+    </script>
+
     <style>
-        body { margin: 0; background: #000; overflow: hidden; font-family: 'Orbitron', sans-serif; color: #fff; }
-        canvas { display: block; position: fixed; top: 0; left: 0; z-index: 0; }
-        
-        #ui {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            pointer-events: none; z-index: 10;
-            mix-blend-mode: exclusion;
+        :root {
+            --bg: #050508;
+            --bg-vr: #0a0a15;
+            --slate: #a0a5b1;
+            --slate-dim: #5a5f6a;
+            --white: #f5f5f5;
+            --accent: #00d4ff;
+            --accent-purple: #a855f7;
+            --mono: 'IBM Plex Mono', monospace;
         }
 
-        .hero-title {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            text-align: center; width: 100%;
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
         }
 
-        h1 {
-            font-size: 10vw; line-height: 0.8; margin: 0;
-            text-transform: uppercase; letter-spacing: -5px;
-            opacity: 0; clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-        }
-        
-        .sub {
-            font-size: 1.5rem; letter-spacing: 10px; margin-top: 2rem;
-            color: #00f3ff; opacity: 0;
+        html {
+            font-size: 16px;
         }
 
-        .overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(to bottom, rgba(0,0,0,0.8), transparent 20%, transparent 80%, rgba(0,0,0,0.8));
-            background-size: 100% 4px;
-            pointer-events: none; z-index: 5;
+        body {
+            background: var(--bg);
+            color: var(--white);
+            font-family: var(--mono);
+            font-weight: 400;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
         }
 
-        .scanline {
-            position: absolute; top: 0; left: 0; width: 100%; height: 20px;
-            background: rgba(0, 243, 255, 0.1);
-            animation: scan 4s linear infinite;
-            z-index: 6; pointer-events: none;
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
         }
 
-        @keyframes scan { 0% { top: -10%; } 100% { top: 110%; } }
-
-        /* HUD Elements */
-        .hud { position: absolute; font-size: 10px; color: rgba(255,255,255,0.5); }
-        .tl { top: 30px; left: 30px; border-top: 1px solid #fff; border-left: 1px solid #fff; width: 50px; height: 50px; }
-        .br { bottom: 30px; right: 30px; border-bottom: 1px solid #fff; border-right: 1px solid #fff; width: 50px; height: 50px; }
-        
-        .scroll-prompt {
-            position: absolute; bottom: 50px; left: 50%; transform: translateX(-50%);
-            font-size: 12px; letter-spacing: 2px; animation: blink 2s infinite;
+        .scroll-container {
+            position: relative;
+            z-index: 10;
+            height: 1000vh;
+            /* Extended for more sections */
         }
-        @keyframes blink { 0%, 100% { opacity: 0.3; } 50% { opacity: 1; } }
 
-        .vignette {
-            position: fixed; inset: 0;
-            background: radial-gradient(circle, transparent 50%, black 120%);
-            z-index: 2; pointer-events: none;
+        /* Loader */
+        .loader {
+            position: fixed;
+            inset: 0;
+            background: var(--bg);
+            z-index: 9999;
+            display: grid;
+            place-items: center;
+            transition: opacity 0.8s, visibility 0.8s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+
+        .loader__bar {
+            width: 200px;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-bottom: 1.5rem;
+            overflow: hidden;
+        }
+
+        .loader__progress {
+            width: 0%;
+            height: 100%;
+            background: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .loader__text {
+            font-size: 0.625rem;
+            color: var(--slate-dim);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+            mix-blend-mode: difference;
+        }
+
+        .nav__logo {
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+        }
+
+        .nav__links {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .nav__links a {
+            font-size: 0.625rem;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--slate);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav__links a:hover {
+            color: var(--white);
+        }
+
+        /* HUD */
+        .hud {
+            position: fixed;
+            font-size: 0.5rem;
+            color: var(--slate-dim);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 50;
+            pointer-events: none;
+            transition: opacity 0.5s;
+        }
+
+        .hud--tl {
+            top: 6rem;
+            left: 3rem;
+        }
+
+        .hud--br {
+            bottom: 2rem;
+            right: 3rem;
+            text-align: right;
+        }
+
+        .hud__dot {
+            display: inline-block;
+            width: 4px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 50%;
+            margin-right: 0.5rem;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0.3;
+            }
+        }
+
+        /* Content Sections */
+        .content-section {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            pointer-events: none;
+            z-index: 20;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .content-section.active {
+            opacity: 1;
+        }
+
+        /* Hero */
+        .hero-content {
+            text-align: center;
+            max-width: 800px;
+            padding: 0 2rem;
+            margin-top: 15vh;
+        }
+
+        .hero__pretitle {
+            font-size: 0.625rem;
+            letter-spacing: 0.4em;
+            color: var(--slate-dim);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+
+        .hero__title {
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .hero__subtitle {
+            font-size: 0.875rem;
+            color: var(--slate);
+            letter-spacing: 0.1em;
+            line-height: 1.8;
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: fixed;
+            bottom: 4rem;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 60;
+            text-align: center;
+            transition: opacity 0.5s;
+        }
+
+        .scroll-indicator__text {
+            font-size: 0.5rem;
+            letter-spacing: 0.3em;
+            color: var(--slate-dim);
+            margin-bottom: 1rem;
+        }
+
+        .scroll-indicator__line {
+            width: 1px;
+            height: 40px;
+            background: linear-gradient(to bottom, var(--accent), transparent);
+            margin: 0 auto;
+            animation: scrollPulse 2s infinite;
+        }
+
+        @keyframes scrollPulse {
+
+            0%,
+            100% {
+                opacity: 0.3;
+            }
+
+            50% {
+                opacity: 1;
+            }
+        }
+
+        /* Transition Overlay */
+        .transition-overlay {
+            position: fixed;
+            inset: 0;
+            background: white;
+            z-index: 200;
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* VR UI */
+        /* VR Title Section - Shows FIRST, CENTERED */
+        .vr-title-section {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .vr-title-section.active {
+            opacity: 1;
+        }
+
+        .vr-title {
+            text-align: center;
+        }
+
+        .vr-title-section.active .vr-title {
+            animation: fadeInUpTitle 1s ease forwards;
+        }
+
+        @keyframes fadeInUpTitle {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .vr-title h2 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 200;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--accent), var(--accent-purple));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+        }
+
+        .vr-title p {
+            font-size: 1rem;
+            color: var(--slate);
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+
+        /* VR Specs Section - Shows AFTER title */
+        .vr-specs-section {
+            position: fixed;
+            inset: 0;
+            z-index: 30;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 4rem;
+        }
+
+        .vr-specs-section.active {
+            opacity: 1;
+        }
+
+        .vr-specs {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            width: 100%;
+            max-width: 1400px;
+        }
+
+        .spec-card {
+            background: rgba(10, 10, 20, 0.7);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            transform: translateY(40px);
+            opacity: 0;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .vr-specs-section.active .spec-card {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(1) {
+            transition-delay: 0.1s;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(2) {
+            transition-delay: 0.15s;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(3) {
+            transition-delay: 0.2s;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(4) {
+            transition-delay: 0.25s;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(5) {
+            transition-delay: 0.3s;
+        }
+
+        .vr-specs-section.active .spec-card:nth-child(6) {
+            transition-delay: 0.35s;
+        }
+
+        .spec-card__icon {
+            font-size: 1.25rem;
+            margin-bottom: 0.75rem;
+            color: var(--accent);
+            opacity: 0.8;
+        }
+
+        .spec-card__label {
+            font-size: 0.5rem;
+            letter-spacing: 0.25em;
+            color: var(--slate-dim);
+            text-transform: uppercase;
+            margin-bottom: 0.4rem;
+        }
+
+        .spec-card__value {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--white);
+        }
+
+        .spec-card__desc {
+            font-size: 0.7rem;
+            color: var(--slate);
+            margin-top: 0.5rem;
+            line-height: 1.5;
+            opacity: 0.7;
+        }
+
+        /* ==================== COLOR VARIANTS SECTION ==================== */
+        .color-section {
+            position: fixed;
+            inset: 0;
+            z-index: 40;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            align-items: center;
+            padding-bottom: 6rem;
+        }
+
+        .color-section.active {
+            opacity: 1;
+        }
+
+        .color-ui {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(10, 10, 15, 0.85);
+            backdrop-filter: blur(30px);
+            padding: 2.5rem 4rem;
+            border-radius: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .color-section__title {
+            font-size: 0.625rem;
+            letter-spacing: 0.5em;
+            color: var(--slate-dim);
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-variants {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+
+        .color-dot {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            pointer-events: auto;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            /* Button reset styles */
+            padding: 0;
+            outline: none;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+
+        .color-dot:hover {
+            transform: scale(1.15);
+        }
+
+        .color-dot.active {
+            border-color: var(--white);
+            transform: scale(1.2);
+            box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
+        }
+
+        .color-dot--white {
+            background: linear-gradient(135deg, #ffffff, #e0e0e0);
+        }
+
+        .color-dot--black {
+            background: linear-gradient(135deg, #2a2a2a, #0a0a0a);
+        }
+
+        .color-dot--blue {
+            background: linear-gradient(135deg, #00d4ff, #0099cc);
+        }
+
+        .color-dot--purple {
+            background: linear-gradient(135deg, #a855f7, #7c3aed);
+        }
+
+        .color-label {
+            font-size: 1rem;
+            font-weight: 400;
+            letter-spacing: 0.1em;
+            color: var(--white);
+        }
+
+        /* ==================== PRE-ORDER SECTION ==================== */
+        .preorder-section {
+            position: fixed;
+            inset: 0;
+            z-index: 35;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 0.8s;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: radial-gradient(ellipse at center, rgba(0, 212, 255, 0.03) 0%, transparent 70%);
+        }
+
+        .preorder-section.active {
+            opacity: 1;
+        }
+
+        .preorder__badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid rgba(0, 212, 255, 0.2);
+            border-radius: 100px;
+            margin-bottom: 2.5rem;
+        }
+
+        .preorder__badge-dot {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+            animation: pulse 2s infinite;
+        }
+
+        .preorder__label {
+            font-size: 0.625rem;
+            letter-spacing: 0.3em;
+            color: var(--accent);
+            text-transform: uppercase;
+        }
+
+        .preorder__title {
+            font-size: clamp(3rem, 10vw, 7rem);
+            font-weight: 200;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+
+        .preorder__title span {
+            background: linear-gradient(135deg, var(--white) 30%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .preorder__subtitle {
+            font-size: 1rem;
+            color: var(--slate);
+            max-width: 450px;
+            line-height: 1.9;
+            margin-bottom: 3rem;
+            letter-spacing: 0.02em;
+        }
+
+        .preorder__actions {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .preorder__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 1.25rem 3.5rem;
+            background: linear-gradient(135deg, var(--accent), #00a6cc);
+            color: var(--bg);
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            text-decoration: none;
+            border: none;
+            border-radius: 100px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            pointer-events: auto;
+            box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+        }
+
+        .preorder__btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 20px 50px rgba(0, 212, 255, 0.4);
+        }
+
+        .preorder__btn-arrow {
+            font-size: 1rem;
+            transition: transform 0.3s;
+        }
+
+        .preorder__btn:hover .preorder__btn-arrow {
+            transform: translateX(4px);
+        }
+
+        .preorder__meta {
+            display: flex;
+            gap: 3rem;
+            margin-top: 1rem;
+        }
+
+        .preorder__meta-item {
+            text-align: center;
+        }
+
+        .preorder__meta-value {
+            font-size: 1.25rem;
+            font-weight: 300;
+            color: var(--white);
+            margin-bottom: 0.25rem;
+        }
+
+        .preorder__meta-label {
+            font-size: 0.5rem;
+            letter-spacing: 0.2em;
+            color: var(--slate-dim);
+            text-transform: uppercase;
+        }
+
+        /* Progress Bar */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--accent), var(--accent-purple));
+            z-index: 999;
+        }
+
+        @media (max-width: 1024px) {
+            .vr-specs {
+                grid-template-columns: repeat(2, 1fr);
+                padding: 0 2rem 2rem;
+            }
+
+            .nav__links {
+                display: none;
+            }
+
+            .color-variants {
+                gap: 1.5rem;
+            }
+
+            .preorder__meta {
+                gap: 2rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .hud {
+                display: none;
+            }
+
+            .vr-specs {
+                grid-template-columns: 1fr;
+                padding: 0 1.5rem 1.5rem;
+                gap: 1rem;
+            }
+
+            .vr-title h2 {
+                font-size: clamp(1.75rem, 6vw, 3rem);
+            }
+
+            .spec-card {
+                padding: 1.25rem;
+            }
+
+            .color-ui {
+                padding: 2rem;
+                margin: 0 1rem;
+            }
+
+            .preorder__title {
+                font-size: clamp(2rem, 8vw, 4rem);
+            }
+
+            .preorder__btn {
+                padding: 1rem 2.5rem;
+            }
         }
     </style>
 </head>
+
 <body>
+    <div class="progress-bar" id="progressBar"></div>
 
-    <div class="overlay"></div>
-    <div class="scanline"></div>
-    <div class="vignette"></div>
-
-    <div id="ui">
-        <div class="hud tl"></div>
-        <div class="hud br"></div>
-        <div class="hero-title">
-            <h1>NEXUS</h1>
-            <h1>REALITY</h1>
-            <div class="sub">SYSTEM ONLINE</div>
+    <div class="loader" id="loader">
+        <div class="loader__content">
+            <div class="loader__bar">
+                <div class="loader__progress" id="loadProgress"></div>
+            </div>
+            <div class="loader__text">LOADING VR EXPERIENCE</div>
         </div>
-        <div class="scroll-prompt">SCROLL TO DIVE</div>
     </div>
 
-    <script id="vertexShader" type="x-shader/x-vertex">
-        varying vec2 vUv;
-        void main() {
-            vUv = uv;
-            gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
-        }
-    </script>
+    <div class="transition-overlay" id="transitionOverlay"></div>
+    <div id="canvas-container"></div>
 
-    <script id="fragmentShader" type="x-shader/x-fragment">
-        uniform float iTime;
-        uniform vec2 iResolution;
-        uniform float iSpeed;
-        varying vec2 vUv;
+    <nav>
+        <div class="nav__logo">NEXUS VR</div>
+        <div class="nav__links">
+            <a href="#specs">Specs</a>
+            <a href="#colors">Colors</a>
+            <a href="#preorder">Pre-order</a>
+        </div>
+    </nav>
 
-        // Noise Function
-        float hash(vec2 p) { return fract(1e4 * sin(17.0 * p.x + p.y * 0.1) * (0.1 + abs(sin(p.y * 13.0 + p.x)))); }
-        
-        void main() {
-            vec2 uv = (vUv - 0.5) * 2.0;
-            uv.x *= iResolution.x / iResolution.y;
-            
-            float r = length(uv);
-            float a = atan(uv.y, uv.x);
-            
-            // Warp tunnel
-            float f = smoothstep(-0.5, 1.0, sin(a * 10.0 + iTime));
-            vec2 tun = vec2(1.0/r + iTime * iSpeed, a / 3.14159);
-            
-            // Grid pattern
-            float grid = step(0.95, fract(tun.x * 5.0)) + step(0.95, fract(tun.y * 10.0));
-            
-            // Color grading
-            vec3 col = vec3(0.0, 0.0, 0.0);
-            col += vec3(0.0, 0.8, 1.0) * grid * (r * r); // Neon Cyan grid
-            col += vec3(0.5, 0.0, 1.0) * (1.0 - grid) * smoothstep(0.0, 1.0, hash(tun * 20.0)) * 0.2; // Purple noise
-            
-            // Depth fog
-            col *= smoothstep(0.0, 0.8, r);
+    <div class="hud hud--tl">
+        <div><span class="hud__dot"></span>NEXUS VR SYSTEM</div>
+        <div style="margin-top: 0.5rem;">STAGE: <span id="stage-display">INTRO</span></div>
+    </div>
+    <div class="hud hud--br">
+        <div>SCROLL</div>
+        <div id="scroll-percent">0%</div>
+    </div>
 
-            gl_FragColor = vec4(col, 1.0);
-        }
-    </script>
+    <div class="scroll-indicator" id="scrollIndicator">
+        <div class="scroll-indicator__text">SCROLL TO EXPLORE</div>
+        <div class="scroll-indicator__line"></div>
+    </div>
 
-    <script>
-        // Setup Three.js
-        const scene = new THREE.Scene();
-        const camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0.1, 10);
-        camera.position.z = 1;
+    <div class="content-section active" id="heroSection">
+        <div class="hero-content">
+            <div class="hero__pretitle">Introducing</div>
+            <h1 class="hero__title">NEXUS VR</h1>
+            <p class="hero__subtitle">Step into infinite worlds. Experience reality reimagined.</p>
+        </div>
+    </div>
 
-        const renderer = new THREE.WebGLRenderer();
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
+    <!-- VR Title Section - Shows FIRST -->
+    <div class="vr-title-section" id="vrTitleSection">
+        <div class="vr-title">
+            <h2>Welcome to the Metaverse</h2>
+            <p>You're now inside the Nexus VR experience</p>
+        </div>
+    </div>
 
-        // Uniforms for Shader
-        const uniforms = {
-            iTime: { value: 0 },
-            iResolution: { value: new THREE.Vector2(window.innerWidth, window.innerHeight) },
-            iSpeed: { value: 1.0 } // Scroll speed controls this
+    <!-- VR Specs Section - Shows AFTER title fades -->
+    <div class="vr-specs-section" id="vrSpecsSection">
+        <div class="vr-specs">
+            <div class="spec-card">
+                <div class="spec-card__icon">◈</div>
+                <div class="spec-card__label">Display Resolution</div>
+                <div class="spec-card__value">4K per eye</div>
+                <div class="spec-card__desc">2160 x 2160 pixels for crystal clear visuals</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-card__icon">◎</div>
+                <div class="spec-card__label">Field of View</div>
+                <div class="spec-card__value">120° FOV</div>
+                <div class="spec-card__desc">Expansive peripheral vision for true immersion</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-card__icon">⟳</div>
+                <div class="spec-card__label">Refresh Rate</div>
+                <div class="spec-card__value">120Hz</div>
+                <div class="spec-card__desc">Ultra-smooth motion with zero motion sickness</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-card__icon">⚡</div>
+                <div class="spec-card__label">Processor</div>
+                <div class="spec-card__value">Snapdragon XR2+</div>
+                <div class="spec-card__desc">Next-gen mobile compute for standalone power</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-card__icon">◐</div>
+                <div class="spec-card__label">Weight</div>
+                <div class="spec-card__value">515g</div>
+                <div class="spec-card__desc">Lightweight for extended comfort sessions</div>
+            </div>
+            <div class="spec-card">
+                <div class="spec-card__icon">▣</div>
+                <div class="spec-card__label">Battery Life</div>
+                <div class="spec-card__value">3+ Hours</div>
+                <div class="spec-card__desc">Extended playtime with fast charging support</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="color-section" id="colorSection">
+        <div class="color-ui">
+            <div class="color-section__title">Choose Your Style</div>
+            <div class="color-variants">
+                <button type="button" class="color-dot color-dot--white active" data-color="white"></button>
+                <button type="button" class="color-dot color-dot--black" data-color="black"></button>
+                <button type="button" class="color-dot color-dot--blue" data-color="blue"></button>
+                <button type="button" class="color-dot color-dot--purple" data-color="purple"></button>
+            </div>
+            <div class="color-label" id="colorLabel">Arctic White</div>
+        </div>
+    </div>
+
+    <div class="preorder-section" id="preorderSection">
+        <div class="preorder__badge">
+            <span class="preorder__badge-dot"></span>
+            <span class="preorder__label">Coming Soon</span>
+        </div>
+        <h2 class="preorder__title"><span>Pre-order Starts Soon</span></h2>
+        <p class="preorder__subtitle">Be the first to step into the future of virtual reality. Join our exclusive
+            waitlist for early access and special launch pricing.</p>
+        <div class="preorder__actions">
+            <a href="#" class="preorder__btn">
+                Join Waitlist
+                <span class="preorder__btn-arrow">→</span>
+            </a>
+            <div class="preorder__meta">
+                <div class="preorder__meta-item">
+                    <div class="preorder__meta-value">$499</div>
+                    <div class="preorder__meta-label">Starting at</div>
+                </div>
+                <div class="preorder__meta-item">
+                    <div class="preorder__meta-value">Q2 2026</div>
+                    <div class="preorder__meta-label">Shipping</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="scroll-container"></div>
+
+    <script type="module">
+        import * as THREE from 'three';
+        import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+
+        // DOM Elements
+        const container = document.getElementById('canvas-container');
+        const loader = document.getElementById('loader');
+        const loadProgress = document.getElementById('loadProgress');
+        const progressBar = document.getElementById('progressBar');
+        const transitionOverlay = document.getElementById('transitionOverlay');
+        const heroSection = document.getElementById('heroSection');
+        const vrTitleSection = document.getElementById('vrTitleSection');
+        const vrSpecsSection = document.getElementById('vrSpecsSection');
+        const colorSection = document.getElementById('colorSection');
+        const preorderSection = document.getElementById('preorderSection');
+        const scrollIndicator = document.getElementById('scrollIndicator');
+        const stageDisplay = document.getElementById('stage-display');
+        const scrollPercent = document.getElementById('scroll-percent');
+        const colorLabel = document.getElementById('colorLabel');
+        const colorDots = document.querySelectorAll('.color-dot');
+
+        // Color configurations
+        const colorConfigs = {
+            white: { name: 'Arctic White', color: 0xf5f5f5 },
+            black: { name: 'Stealth Black', color: 0x1a1a1a },
+            blue: { name: 'Cyber Blue', color: 0x00d4ff },
+            purple: { name: 'Nebula Purple', color: 0xa855f7 }
         };
+        let currentColor = 'white';
 
-        // Screen Quad
-        const geometry = new THREE.PlaneGeometry(2, 2);
-        const material = new THREE.ShaderMaterial({
-            uniforms: uniforms,
-            vertexShader: document.getElementById('vertexShader').textContent,
-            fragmentShader: document.getElementById('fragmentShader').textContent
+        // Three.js Setup
+        const scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x050508);
+
+        const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
+        camera.position.set(0, 0, 5);
+
+        const renderer = new THREE.WebGLRenderer({ antialias: true });
+        renderer.setSize(window.innerWidth, window.innerHeight);
+        renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+        renderer.outputColorSpace = THREE.SRGBColorSpace;
+        renderer.toneMapping = THREE.ACESFilmicToneMapping;
+        renderer.toneMappingExposure = 1.5;
+        container.appendChild(renderer.domElement);
+
+        // Lighting
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.8);
+        scene.add(ambientLight);
+
+        const mainLight = new THREE.DirectionalLight(0xffffff, 2);
+        mainLight.position.set(5, 5, 5);
+        scene.add(mainLight);
+
+        const fillLight = new THREE.DirectionalLight(0x00d4ff, 0.5);
+        fillLight.position.set(-5, 0, 3);
+        scene.add(fillLight);
+
+        const rimLight = new THREE.DirectionalLight(0xa855f7, 0.6);
+        rimLight.position.set(0, -3, -5);
+        scene.add(rimLight);
+
+        // VR Environment
+        const vrEnvironment = new THREE.Group();
+        vrEnvironment.visible = false;
+
+        const gridHelper = new THREE.GridHelper(50, 50, 0x00d4ff, 0x1a1a2e);
+        gridHelper.position.y = -2;
+        vrEnvironment.add(gridHelper);
+
+        const vrParticleCount = 1000;
+        const vrParticleGeo = new THREE.BufferGeometry();
+        const vrPositions = new Float32Array(vrParticleCount * 3);
+        for (let i = 0; i < vrParticleCount * 3; i += 3) {
+            vrPositions[i] = (Math.random() - 0.5) * 30;
+            vrPositions[i + 1] = Math.random() * 15 - 2;
+            vrPositions[i + 2] = (Math.random() - 0.5) * 30;
+        }
+        vrParticleGeo.setAttribute('position', new THREE.BufferAttribute(vrPositions, 3));
+        const vrParticleMat = new THREE.PointsMaterial({ color: 0x00d4ff, size: 0.03, transparent: true, opacity: 0.6 });
+        const vrParticles = new THREE.Points(vrParticleGeo, vrParticleMat);
+        vrEnvironment.add(vrParticles);
+        scene.add(vrEnvironment);
+
+        // Color variant models container
+        let headset;
+        let headsetMaterials = [];
+        const baseY = -0.3; // Lower position to center the model
+        let originalScale = 1; // Will be set after model loads
+
+        // Load GLB Model
+        const gltfLoader = new GLTFLoader();
+        gltfLoader.load(
+            'oculus_quest_3.glb',
+            (gltf) => {
+                headset = gltf.scene;
+
+                // Center and scale the model
+                const box = new THREE.Box3().setFromObject(headset);
+                const center = box.getCenter(new THREE.Vector3());
+                const size = box.getSize(new THREE.Vector3());
+
+                const maxDim = Math.max(size.x, size.y, size.z);
+                originalScale = 2.2 / maxDim; // Save original scale
+                headset.scale.setScalar(originalScale);
+
+                // Center the model and position it lower
+                headset.position.x = -center.x * originalScale;
+                headset.position.y = -center.y * originalScale + baseY;
+                headset.position.z = -center.z * originalScale;
+
+                // Initial rotation - FRONT view (showing external cameras/sensors)
+                // 0° = front of headset facing camera
+                // 180° (Math.PI) = back of headset (internal lenses) facing camera
+                headset.rotation.y = 0; // Start from FRONT view
+
+                // Collect all materials for color changing
+                headset.traverse((child) => {
+                    if (child.isMesh && child.material) {
+                        if (Array.isArray(child.material)) {
+                            headsetMaterials.push(...child.material);
+                        } else {
+                            headsetMaterials.push(child.material);
+                        }
+                    }
+                });
+
+                scene.add(headset);
+                console.log('VR headset loaded, centered at Y:', baseY);
+
+                loadProgress.style.width = '100%';
+                setTimeout(() => {
+                    loader.classList.add('hidden');
+                    startExperience();
+                }, 500);
+            },
+            (progress) => {
+                if (progress.total > 0) {
+                    const percent = (progress.loaded / progress.total) * 100;
+                    loadProgress.style.width = percent + '%';
+                }
+            },
+            (error) => {
+                console.error('Error loading model:', error);
+                createFallbackHeadset();
+            }
+        );
+
+        function createFallbackHeadset() {
+            const group = new THREE.Group();
+
+            const bodyGeo = new THREE.BoxGeometry(1.8, 0.9, 0.6);
+            const bodyMat = new THREE.MeshStandardMaterial({ color: 0x2a2a2a, roughness: 0.3, metalness: 0.8 });
+            const body = new THREE.Mesh(bodyGeo, bodyMat);
+            group.add(body);
+            headsetMaterials.push(bodyMat);
+
+            const lensGeo = new THREE.CylinderGeometry(0.25, 0.25, 0.1, 32);
+            const lensMat = new THREE.MeshStandardMaterial({ color: 0x0a0a0a, roughness: 0.1, metalness: 0.9 });
+
+            const leftLens = new THREE.Mesh(lensGeo, lensMat);
+            leftLens.rotation.x = Math.PI / 2;
+            leftLens.position.set(-0.35, 0, 0.3);
+            group.add(leftLens);
+
+            const rightLens = new THREE.Mesh(lensGeo, lensMat);
+            rightLens.rotation.x = Math.PI / 2;
+            rightLens.position.set(0.35, 0, 0.3);
+            group.add(rightLens);
+
+            headset = group;
+            headset.rotation.y = 0; // Start from FRONT view
+            headset.position.y = baseY;
+            scene.add(headset);
+
+            loadProgress.style.width = '100%';
+            setTimeout(() => {
+                loader.classList.add('hidden');
+                startExperience();
+            }, 500);
+        }
+
+        // Store original material colors for color changing
+        let originalMaterialColors = new Map();
+
+        // Color change function
+        function changeHeadsetColor(colorKey) {
+            const config = colorConfigs[colorKey];
+            colorLabel.textContent = config.name;
+
+            // Update dot styles
+            colorDots.forEach(dot => {
+                dot.classList.toggle('active', dot.dataset.color === colorKey);
+            });
+
+            // Change body materials (the white/light colored parts)
+            if (headset) {
+                headset.traverse((child) => {
+                    if (child.isMesh && child.material) {
+                        const mats = Array.isArray(child.material) ? child.material : [child.material];
+                        mats.forEach(mat => {
+                            if (mat.color) {
+                                // Store original color on first run
+                                if (!originalMaterialColors.has(mat.uuid)) {
+                                    originalMaterialColors.set(mat.uuid, {
+                                        r: mat.color.r,
+                                        g: mat.color.g,
+                                        b: mat.color.b
+                                    });
+                                }
+
+                                const original = originalMaterialColors.get(mat.uuid);
+                                const origLumia Digitalnce = original.r * 0.299 + original.g * 0.587 + original.b * 0.114;
+
+                                // Only change materials that were originally light (the body/shell)
+                                if (origLumia Digitalnce > 0.5) {
+                                    const newR = ((config.color >> 16) & 255) / 255;
+                                    const newG = ((config.color >> 8) & 255) / 255;
+                                    const newB = (config.color & 255) / 255;
+
+                                    gsap.to(mat.color, {
+                                        r: newR,
+                                        g: newG,
+                                        b: newB,
+                                        duration: 0.5
+                                    });
+                                }
+                            }
+                        });
+                    }
+                });
+            }
+
+            currentColor = colorKey;
+        }
+
+        // Color dot click handlers - PREVENT DEFAULT to stop navigation
+        colorDots.forEach(dot => {
+            // Prevent any default behavior
+            dot.addEventListener('mousedown', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+            });
+
+            dot.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+                changeHeadsetColor(dot.dataset.color);
+                return false;
+            });
         });
 
-        const mesh = new THREE.Mesh(geometry, material);
-        scene.add(mesh);
+        // Nav link handlers - scroll to correct scroll percentage instead of using hashes
+        document.querySelectorAll('.nav__links a').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const href = link.getAttribute('href');
+                const scrollHeight = document.body.scrollHeight - window.innerHeight;
+
+                if (href === '#specs') {
+                    window.scrollTo({ top: scrollHeight * 0.60, behavior: 'smooth' });
+                } else if (href === '#colors') {
+                    window.scrollTo({ top: scrollHeight * 0.75, behavior: 'smooth' });
+                } else if (href === '#preorder') {
+                    window.scrollTo({ top: scrollHeight * 0.90, behavior: 'smooth' });
+                }
+            });
+        });
+
+        // Preorder button handler - prevent default anchor navigation
+        const preorderBtn = document.querySelector('.preorder__btn');
+        if (preorderBtn) {
+            preorderBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                // Could add modal or external link here in the future
+                console.log('Join Waitlist clicked');
+            });
+        }
+
+        // Animation State
+        let scrollProgress = 0;
+        let currentStage = 'intro';
+        let isInVR = false;
+
+        function startExperience() {
+            gsap.from('.hero__pretitle', { opacity: 0, y: 20, duration: 1, delay: 0.2 });
+            gsap.from('.hero__title', { opacity: 0, y: 30, duration: 1.2, delay: 0.4 });
+            gsap.from('.hero__subtitle', { opacity: 0, y: 20, duration: 1, delay: 0.6 });
+        }
+
+        // Scroll Handler
+        window.addEventListener('scroll', () => {
+            const scrollHeight = document.body.scrollHeight - window.innerHeight;
+            scrollProgress = window.scrollY / scrollHeight;
+
+            progressBar.style.width = (scrollProgress * 100) + '%';
+            scrollPercent.textContent = Math.round(scrollProgress * 100) + '%';
+
+            updateScene(scrollProgress);
+        });
+
+        function updateScene(progress) {
+            if (!headset) return;
+
+            // Helper to hide all sections
+            function hideAllSections() {
+                heroSection.classList.remove('active');
+                vrTitleSection.classList.remove('active');
+                vrSpecsSection.classList.remove('active');
+                colorSection.classList.remove('active');
+                preorderSection.classList.remove('active');
+            }
+
+            // Stage 1: Intro - FRONT VIEW (0-10%)
+            if (progress < 0.1) {
+                currentStage = 'intro';
+                stageDisplay.textContent = 'INTRO';
+
+                headset.position.x = 0;
+                headset.scale.setScalar(originalScale);
+                headset.rotation.y = Math.sin(Date.now() * 0.001) * 0.03;
+                headset.position.y = baseY + Math.sin(Date.now() * 0.0008) * 0.03;
+                camera.position.set(0, 0, 5);
+                camera.lookAt(0, 0, 0);
+
+                headset.visible = true;
+                vrEnvironment.visible = false;
+                scrollIndicator.style.opacity = '1';
+
+                hideAllSections();
+                heroSection.classList.add('active');
+            }
+            // Stage 2: ROTATE 180° to show BACK (10-35%)
+            else if (progress < 0.35) {
+                currentStage = 'rotate';
+                stageDisplay.textContent = 'ROTATING';
+
+                const rotateProgress = (progress - 0.1) / 0.25;
+                headset.rotation.y = rotateProgress * Math.PI;
+                headset.position.y = baseY;
+                headset.position.x = 0;
+                headset.scale.setScalar(originalScale);
+
+                camera.position.z = 5 - rotateProgress * 1.5;
+                camera.position.y = rotateProgress * 0.2;
+
+                headset.visible = true;
+                vrEnvironment.visible = false;
+                scrollIndicator.style.opacity = '0';
+
+                hideAllSections();
+            }
+            // Stage 3: ZOOM into INTERNAL lenses (35-48%)
+            else if (progress < 0.48) {
+                currentStage = 'zoom';
+                stageDisplay.textContent = 'APPROACHING';
+
+                const zoomProgress = (progress - 0.35) / 0.13;
+                headset.rotation.y = Math.PI;
+                headset.position.x = 0;
+                headset.scale.setScalar(originalScale);
+
+                camera.position.z = 3.5 - (zoomProgress * 3.2);
+                camera.position.y = 0.2 - (zoomProgress * 0.15);
+
+                transitionOverlay.style.opacity = '0';
+                headset.visible = true;
+                vrEnvironment.visible = false;
+
+                hideAllSections();
+            }
+            // Stage 4: Transition flash (48-52%)
+            else if (progress < 0.52) {
+                currentStage = 'transition';
+                stageDisplay.textContent = 'ENTERING VR';
+
+                const transProgress = (progress - 0.48) / 0.04;
+                transitionOverlay.style.opacity = transProgress < 0.5 ? transProgress * 2 : 2 - transProgress * 2;
+
+                if (transProgress > 0.5 && !isInVR) {
+                    isInVR = true;
+                    scene.background = new THREE.Color(0x0a0a15);
+                    headset.visible = false;
+                    vrEnvironment.visible = true;
+                }
+
+                hideAllSections();
+            }
+            // Stage 5: VR TITLE ONLY (52-58%) - Title centered on screen
+            else if (progress < 0.58) {
+                currentStage = 'vr-title';
+                stageDisplay.textContent = 'WELCOME';
+
+                transitionOverlay.style.opacity = '0';
+                scene.background = new THREE.Color(0x0a0a15);
+                headset.visible = false;
+                vrEnvironment.visible = true;
+                isInVR = true;
+
+                camera.position.set(0, 1, 5);
+                camera.lookAt(0, 0, 0);
+
+                hideAllSections();
+                vrTitleSection.classList.add('active');
+            }
+            // Stage 6: VR SPECS ONLY (58-70%) - Specs grid, title gone
+            else if (progress < 0.70) {
+                currentStage = 'vr-specs';
+                stageDisplay.textContent = 'SPECS';
+
+                transitionOverlay.style.opacity = '0';
+                scene.background = new THREE.Color(0x0a0a15);
+                headset.visible = false;
+                vrEnvironment.visible = true;
+                isInVR = true;
+
+                camera.position.set(0, 1, 5);
+                camera.lookAt(0, 0, 0);
+
+                hideAllSections();
+                vrSpecsSection.classList.add('active');
+            }
+            // Stage 7: Color Variants (70-85%)
+            else if (progress < 0.85) {
+                currentStage = 'colors';
+                stageDisplay.textContent = 'COLORS';
+
+                scene.background = new THREE.Color(0x050508);
+                headset.visible = true;
+                vrEnvironment.visible = false;
+                isInVR = false;
+
+                headset.position.x = 0;
+                headset.rotation.y = Math.PI * 0.3 + Math.sin(Date.now() * 0.0005) * 0.05;
+                headset.position.y = baseY + 0.5;
+                headset.scale.setScalar(originalScale);
+
+                camera.position.set(0, 0.5, 4);
+                camera.lookAt(0, 0, 0);
+
+                hideAllSections();
+                colorSection.classList.add('active');
+            }
+            // Stage 8: Pre-order (85-100%) - Smooth transition to side
+            else {
+                currentStage = 'preorder';
+                stageDisplay.textContent = 'PRE-ORDER';
+
+                // Calculate progress within this stage (0 to 1)
+                const preorderProgress = (progress - 0.85) / 0.15;
+
+                scene.background = new THREE.Color(0x050508);
+                headset.visible = true;
+                vrEnvironment.visible = false;
+
+                // Smooth interpolation: slide from center (0) to left (-3)
+                headset.position.x = -3 * preorderProgress;
+                // Smooth interpolation: lower from baseY+0.5 to baseY-0.3
+                headset.position.y = baseY + 0.5 - (0.8 * preorderProgress);
+                // Smooth interpolation: scale from 1 to 0.7
+                const scaleMultiplier = 1 - (0.3 * preorderProgress);
+                headset.scale.setScalar(originalScale * scaleMultiplier);
+                // Rotation with subtle animation
+                headset.rotation.y = Math.PI * 0.3 - (Math.PI * 0.15 * preorderProgress) + Math.sin(Date.now() * 0.0003) * 0.05;
+
+                // Camera smoothly moves back
+                camera.position.set(0, 0.5 - (0.5 * preorderProgress), 4 + (1 * preorderProgress));
+                camera.lookAt(0, 0, 0);
+
+                hideAllSections();
+                // Only show preorder section after model has moved enough
+                if (preorderProgress > 0.3) {
+                    preorderSection.classList.add('active');
+                }
+            }
+
+            // Reset VR state when scrolling back up
+            if (progress < 0.48 && isInVR) {
+                isInVR = false;
+                scene.background = new THREE.Color(0x050508);
+                headset.visible = true;
+                vrEnvironment.visible = false;
+            }
+        }
 
         // Animation Loop
         const clock = new THREE.Clock();
-        
-        // Scroll Logic
-        let targetSpeed = 0.5;
-        let currentSpeed = 0.5;
-        
-        window.addEventListener('wheel', (e) => {
-            targetSpeed += e.deltaY * 0.005;
-            targetSpeed = Math.max(0.5, Math.min(targetSpeed, 5.0)); // Clamp speed
-        });
 
         function animate() {
-            uniforms.iTime.value = clock.getElapsedTime();
-            
-            // Smooth speed decay
-            targetSpeed += (0.5 - targetSpeed) * 0.05; 
-            currentSpeed += (targetSpeed - currentSpeed) * 0.1;
-            
-            uniforms.iSpeed.value = currentSpeed;
+            const elapsed = clock.getElapsedTime();
+
+            if (vrEnvironment.visible) {
+                vrParticles.rotation.y = elapsed * 0.05;
+            }
 
             renderer.render(scene, camera);
             requestAnimationFrame(animate);
         }
         animate();
 
-        // Intro Animation (GSAP)
-        gsap.to('h1', {
-            y: 0, opacity: 1, duration: 1.5, stagger: 0.2, ease: "power4.out", delay: 0.5
-        });
-        gsap.to('.sub', {
-            opacity: 1, duration: 1, delay: 1.5
-        });
-
         // Resize
         window.addEventListener('resize', () => {
+            camera.aspect = window.innerWidth / window.innerHeight;
+            camera.updateProjectionMatrix();
             renderer.setSize(window.innerWidth, window.innerHeight);
-            uniforms.iResolution.value.set(window.innerWidth, window.innerHeight);
         });
     </script>
 </body>
+
 </html>

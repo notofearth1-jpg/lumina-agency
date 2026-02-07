@@ -1,11 +1,11 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileOverlay = document.querySelector('.mobile-menu-overlay');
     const mobileLinks = document.querySelectorAll('.mobile-links a');
 
-    if(menuToggle) {
+    if (menuToggle) {
         menuToggle.addEventListener('click', () => {
             menuToggle.classList.toggle('active');
             mobileOverlay.classList.toggle('active');
@@ -76,7 +76,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         requestAnimationFrame(animateOrb);
     }
-    
+
     // Start animation loop
     animateOrb();
+
+    // Spotlight Text Effect
+    const highlightText = document.querySelector('.highlight');
+    if (highlightText) {
+        document.addEventListener('mousemove', (e) => {
+            const rect = highlightText.getBoundingClientRect();
+            // Calculate mouse position relative to the element
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            highlightText.style.setProperty('--x', `${x}px`);
+            highlightText.style.setProperty('--y', `${y}px`);
+        });
+    }
 });
