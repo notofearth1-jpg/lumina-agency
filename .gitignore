@@ -1,3 +1,5 @@
 portfolio/
 .DS_Store
 node_modules/
+.vercel
+.env*.local
