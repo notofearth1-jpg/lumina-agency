@@ -5,37 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Terms of Service | Lumia Digital</title>
+    <meta name="description"
+        content="Lumia Digital terms of service. The legal agreement governing your use of our services.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,39 +83,94 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero -->
+    <section class="service-hero" style="padding-bottom: 4rem;">
         <div class="container">
             <div class="section-label">LEGAL</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Terms of Service</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    The rules of the road. By using our website and services, you agree to these terms.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        These terms govern your use of our website and any services we provide.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        We reserve the right to modify these terms at any time. Continued use constitutes acceptance.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Usage Rights
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Liability
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Termination
-                        </li>
-                    </ul>
-                </div>
+            <h1>Terms of Service</h1>
+            <p class="lead">Last updated: February 2026</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <section style="padding: 4rem 0 8rem;">
+        <div class="container">
+            <div class="legal-toc reveal-up">
+                <h4>Contents</h4>
+                <a href="#acceptance">Acceptance of Terms</a>
+                <a href="#services">Our Services</a>
+                <a href="#obligations">Your Obligations</a>
+                <a href="#ip">Intellectual Property</a>
+                <a href="#liability">Limitation of Liability</a>
+                <a href="#governing">Governing Law</a>
+            </div>
+
+            <div class="legal-content">
+                <p>These Terms of Service ("Terms") govern your access to and use of Lumia Digital's website and
+                    services. By accessing or using our services, you agree to be bound by these Terms.</p>
+
+                <h2 id="acceptance">1. Acceptance of Terms</h2>
+                <p>By accessing our website or engaging our services, you acknowledge that you have read, understood,
+                    and agree to be bound by these Terms. If you do not agree, you may not use our services.</p>
+                <p>We reserve the right to update these Terms at any time. Continued use of our services after changes
+                    constitutes acceptance of the updated Terms.</p>
+
+                <h2 id="services">2. Our Services</h2>
+                <p>Lumia Digital provides digital design, development, and strategy services. Our services include but
+                    are not limited to:</p>
+                <ul>
+                    <li>Web design and development</li>
+                    <li>Brand identity design</li>
+                    <li>UI/UX design</li>
+                    <li>Search engine optimization</li>
+                    <li>E-commerce solutions</li>
+                    <li>Motion design and animation</li>
+                </ul>
+                <p>Specific deliverables, timelines, and pricing are defined in individual project agreements.</p>
+
+                <h2 id="obligations">3. Your Obligations</h2>
+                <p>As a client or user, you agree to:</p>
+                <ul>
+                    <li>Provide accurate and complete information</li>
+                    <li>Respond to requests for feedback in a timely manner</li>
+                    <li>Pay invoices according to agreed payment terms</li>
+                    <li>Not use our services for unlawful purposes</li>
+                    <li>Respect intellectual property rights</li>
+                </ul>
+
+                <h2 id="ip">4. Intellectual Property</h2>
+                <h3>Our Property</h3>
+                <p>All content on this website, including text, graphics, logos, and software, is the property of Lumia
+                    Digital and protected by copyright laws.</p>
+
+                <h3>Client Work</h3>
+                <p>Upon full payment, intellectual property rights for client work transfer to the client as specified
+                    in the project agreement. We reserve the right to display completed work in our portfolio unless
+                    otherwise agreed.</p>
+
+                <h2 id="liability">5. Limitation of Liability</h2>
+                <p>To the maximum extent permitted by law, Lumia Digital shall not be liable for:</p>
+                <ul>
+                    <li>Indirect, incidental, or consequential damages</li>
+                    <li>Loss of profits, data, or business opportunities</li>
+                    <li>Damages arising from third-party actions</li>
+                    <li>Downtime or service interruptions</li>
+                </ul>
+                <p>Our total liability shall not exceed the fees paid by you in the twelve (12) months preceding the
+                    claim.</p>
+
+                <h2 id="governing">6. Governing Law</h2>
+                <p>These Terms are governed by the laws of Germany. Any disputes shall be resolved in the courts of
+                    Berlin, Germany.</p>
+                <p>If any provision of these Terms is found to be unenforceable, the remaining provisions will continue
+                    in effect.</p>
+
+                <h2>Contact</h2>
+                <p>For questions about these Terms, please contact:</p>
+                <ul>
+                    <li><strong>Email:</strong> legal@lumiadigital.site</li>
+                    <li><strong>Address:</strong> Lumia Digital, Torstraße 123, 10119 Berlin, Germany</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -99,13 +190,13 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
                     <a href="../sitemap.html">Sitemap</a>
-                    <a href="../legal/privacy.html">Privacy</a>
-                    <a href="../legal/terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
                 </div>
                 <div class="meta-col copyright">
                     <p>&copy; 2026 Lumia Digital</p>
@@ -115,6 +206,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

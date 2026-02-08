@@ -4,40 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Our Culture | Lumia Digital</title>
+    <title>Culture | Lumia Digital</title>
+    <meta name="description"
+        content="Discover the Lumia Digital culture. Our values, work environment, and what makes us different.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link active">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link active">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="team.html">Our Team</a>
+                        <a href="culture.html">Culture</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -49,38 +83,151 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">AGENCY / DNA</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Our Culture</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    We value craft, curiosity, and collaboration. We are not a feature factory; we are a laboratory for digital innovation.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        We work in small, autonomous squads. This keeps us fast and agile. We prioritize deep work and protect our makers from unnecessary meetings.
+            <div class="section-label">AGENCY / CULTURE</div>
+            <h1>Our Culture</h1>
+            <p class="lead">We believe great work comes from great environments. Here's what shapes our culture and
+                drives us to create exceptional digital experiences.</p>
+        </div>
+    </section>
+
+    <!-- Values Section -->
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label">OUR VALUES</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">What We Stand For</h2>
+
+            <div class="values-grid">
+                <div class="value-card reveal-up stagger-1">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg></div>
+                    <h3>Excellence Over Everything</h3>
+                    <p>We don't ship good work—we ship exceptional work. Every pixel, every line of code, every
+                        interaction matters.</p>
+                </div>
+                <div class="value-card reveal-up stagger-2">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg></div>
+                    <h3>Obsessive Curiosity</h3>
+                    <p>We never stop learning. New technologies, methodologies, and perspectives fuel our innovation.
                     </p>
-                    <p style="margin-bottom: 2rem;">
-                        Diversity is our strength. We actively seek out perspectives that challenge our own, fostering an environment of continuous growth.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Deep Work
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Radical Candor
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Continuous Learning
-                        </li>
-                    </ul>
+                </div>
+                <div class="value-card reveal-up stagger-3">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg></div>
+                    <h3>Radical Transparency</h3>
+                    <p>Open communication, honest feedback, and shared context. No politics, no silos, no hidden
+                        agendas.</p>
+                </div>
+                <div class="value-card reveal-up stagger-4">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg></div>
+                    <h3>Ship Fast, Learn Faster</h3>
+                    <p>Perfection is the enemy of progress. We iterate rapidly and let real-world feedback guide us.</p>
+                </div>
+                <div class="value-card reveal-up stagger-5">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <h3>Global First</h3>
+                    <p>Remote work isn't a perk—it's our DNA. We hire the best talent, regardless of geography.</p>
+                </div>
+                <div class="value-card reveal-up stagger-6">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg></div>
+                    <h3>People Over Profits</h3>
+                    <p>Happy teams make happy clients. We invest in wellbeing, growth, and work-life harmony.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Perks Section -->
+    <section
+        style="padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.02) 50%, transparent 100%);">
+        <div class="container">
+            <div class="section-label">PERKS & BENEFITS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">Taking Care of Our Team
+            </h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg></div>
+                    <h3>Remote-First</h3>
+                    <p>Work from anywhere. We provide home office stipends and coworking memberships worldwide.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="12" y1="8" x2="12" y2="12" />
+                            <line x1="12" y1="16" x2="12.01" y2="16" />
+                        </svg></div>
+                    <h3>Unlimited PTO</h3>
+                    <p>Take the time you need. We trust our team to manage their own schedules responsibly.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg></div>
+                    <h3>Learning Budget</h3>
+                    <p>$2,500/year for courses, conferences, books, and certifications. Never stop growing.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" />
+                        </svg></div>
+                    <h3>Health & Wellness</h3>
+                    <p>Comprehensive health insurance, mental health support, and fitness allowances.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-5">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg></div>
+                    <h3>Team Offsites</h3>
+                    <p>Annual company retreats in exciting locations. Connect, collaborate, and celebrate together.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-6">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="1" x2="12" y2="23" />
+                            <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" />
+                        </svg></div>
+                    <h3>Equity Options</h3>
+                    <p>Everyone has a stake in our success. We offer meaningful equity to all team members.</p>
                 </div>
             </div>
         </div>
@@ -101,7 +248,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -117,6 +264,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

@@ -4,40 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recognition | Lumia Digital</title>
+    <title>Awards | Lumia Digital</title>
+    <meta name="description"
+        content="Lumia Digital awards and recognition. See our industry accolades from Awwwards, FWA, CSS Design Awards, and more.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link active">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link active">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="team.html">Our Team</a>
+                        <a href="culture.html">Culture</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -49,38 +83,165 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
             <div class="section-label">AGENCY / AWARDS</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Recognition</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Our work has been recognized by the industry’s most prestigious bodies. But our proudest metric is client success.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        2025: Awwwards Agency of the Year Nominee. 2024: Webby Award for Best Use of Animation. 2024: CSS Design Awards - Site of the Day.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        These accolades validate our commitment to pushing the envelope of what is possible in a browser.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Awwwards
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> The FWA
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Webby Awards
-                        </li>
-                    </ul>
+            <h1>Recognition</h1>
+            <p class="lead">Our work has been recognized by the most prestigious organizations in digital design and
+                development. Here's our trophy case.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Total Awards</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Site of the Day</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Agency of the Year Noms</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">#1</div>
+                    <div class="stat-label">Ranked Berlin Agency</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Awards Grid -->
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label">RECENT AWARDS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">2025-2026 Highlights</h2>
+
+            <div class="awards-grid">
+                <div class="award-card reveal-up stagger-1">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="7" />
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                        </svg></div>
+                    <h3>Site of the Day</h3>
+                    <div class="award-year">January 2026</div>
+                    <div class="award-org">Awwwards</div>
+                </div>
+                <div class="award-card reveal-up stagger-2">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg></div>
+                    <h3>FWA of the Day</h3>
+                    <div class="award-year">December 2025</div>
+                    <div class="award-org">The FWA</div>
+                </div>
+                <div class="award-card reveal-up stagger-3">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <path d="M17.5 10.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5" />
+                            <circle cx="7.5" cy="14.5" r="2.5" />
+                            <path d="M5 18c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5" />
+                            <circle cx="16.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <h3>Best UI Design</h3>
+                    <div class="award-year">November 2025</div>
+                    <div class="award-org">CSS Design Awards</div>
+                </div>
+                <div class="award-card reveal-up stagger-4">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg></div>
+                    <h3>Developer Award</h3>
+                    <div class="award-year">October 2025</div>
+                    <div class="award-org">Awwwards</div>
+                </div>
+                <div class="award-card reveal-up stagger-5">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" />
+                            <path d="M7 7h.01" />
+                            <path d="M17 7h.01" />
+                            <path d="M7 17h.01" />
+                            <path d="M17 17h.01" />
+                            <path d="M12 12h.01" />
+                        </svg></div>
+                    <h3>Best E-Commerce</h3>
+                    <div class="award-year">September 2025</div>
+                    <div class="award-org">Webby Awards</div>
+                </div>
+                <div class="award-card reveal-up stagger-6">
+                    <div class="award-icon"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M12 2l1.5 2.5L16 4l-.5 2.5L18 9l-2.5.5L16 12l-2.5-1.5L11 12l.5-2.5L9 9l2.5-2.5L11 4l2.5.5L12 2z" />
+                            <path d="M12 22v-6" />
+                            <path d="M9 18h6" />
+                        </svg></div>
+                    <h3>Best Animation</h3>
+                    <div class="award-year">August 2025</div>
+                    <div class="award-org">CSS Design Awards</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Historical Awards -->
+    <section
+        style="padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.02) 50%, transparent 100%);">
+        <div class="container">
+            <div class="section-label">AWARD PARTNERS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">Where We've Been
+                Recognized</h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="8" r="7" />
+                            <polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88" />
+                        </svg></div>
+                    <h3>Awwwards</h3>
+                    <p>15+ Site of the Day awards, multiple Developer Awards, and Honorable Mentions.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <circle cx="12" cy="12" r="6" />
+                            <circle cx="12" cy="12" r="2" />
+                        </svg></div>
+                    <h3>The FWA</h3>
+                    <p>8 FWA of the Day awards recognizing cutting-edge design and development.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <path d="M17.5 10.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5" />
+                            <circle cx="7.5" cy="14.5" r="2.5" />
+                            <path d="M5 18c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5" />
+                            <circle cx="16.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <h3>CSS Design Awards</h3>
+                    <p>Multiple wins for Best UI, Best UX, and Best Innovation categories.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <h3>Webby Awards</h3>
+                    <p>Honorees for Best Website and Best E-Commerce Experience.</p>
                 </div>
             </div>
         </div>
@@ -101,7 +262,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -117,6 +278,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

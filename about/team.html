@@ -4,40 +4,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leadership | Lumia Digital</title>
+    <title>Our Team | Lumia Digital</title>
+    <meta name="description"
+        content="Meet the Lumia Digital team. Designers, developers, and strategists united by a passion for digital excellence.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link active">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link active">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="team.html">Our Team</a>
+                        <a href="culture.html">Culture</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -49,38 +83,132 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
             <div class="section-label">AGENCY / PEOPLE</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Leadership</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    We are a collective of visionaries, engineers, and artists. Led by industry veterans, our team is dedicated to pushing the boundaries of digital.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        Our leadership team brings together decades of experience from top tech companies and design studios.
+            <h1>Our Team</h1>
+            <p class="lead">We're a collective of designers, developers, and strategists united by a passion for digital
+                excellence. Meet the minds behind the magic.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Team Members</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Countries</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Languages</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Remote-First</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Leadership Section -->
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label">LEADERSHIP</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">The Visionaries</h2>
+
+            <div class="team-grid">
+                <div class="team-member reveal-up stagger-1">
+                    <div class="team-photo">
+                        <img src="../assets/team/vibhu-thanki.png" alt="Vibhu Thanki - Founder & CEO">
+                        <div class="team-photo-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Vibhu Thanki</h3>
+                        <div class="team-role">Founder & CEO</div>
+                        <p class="team-bio">Visionary leader with 15+ years in digital. Previously led design at Spotify
+                            and Google.</p>
+                    </div>
+                </div>
+                <div class="team-member reveal-up stagger-2">
+                    <div class="team-photo">
+                        <img src="../assets/team/elena-kraft.png" alt="Elena Kraft - Creative Director">
+                        <div class="team-photo-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Elena Kraft</h3>
+                        <div class="team-role">Creative Director</div>
+                        <p class="team-bio">Award-winning designer. Former Art Director at IDEO with a focus on
+                            human-centered design.</p>
+                    </div>
+                </div>
+                <div class="team-member reveal-up stagger-3">
+                    <div class="team-photo">
+                        <img src="../assets/team/marcus-chen.png" alt="Marcus Chen - CTO">
+                        <div class="team-photo-overlay"></div>
+                    </div>
+                    <div class="team-info">
+                        <h3>Marcus Chen</h3>
+                        <div class="team-role">CTO</div>
+                        <p class="team-bio">Full-stack architect. Built systems scaling to 100M+ users at Meta and AWS.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Departments -->
+    <section
+        style="padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.02) 50%, transparent 100%);">
+        <div class="container">
+            <div class="section-label">DEPARTMENTS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">Specialized Talent</h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <path d="M17.5 10.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5" />
+                            <circle cx="7.5" cy="14.5" r="2.5" />
+                            <path d="M5 18c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5" />
+                            <circle cx="16.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <h3>Design Team</h3>
+                    <p>8 designers specializing in UI/UX, motion, and 3D. Creating interfaces that inspire and convert.
                     </p>
-                    <p style="margin-bottom: 2rem;">
-                        We believe in a flat hierarchy where the best idea wins. Every member of the team is empowered to make decisions and drive impact.
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg></div>
+                    <h3>Engineering</h3>
+                    <p>10 engineers across frontend, backend, and DevOps. Building scalable, performant applications.
                     </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Vibhu Thanki
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Founder & CEO
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Creative Director
-                        </li>
-                    </ul>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <h3>Strategy</h3>
+                    <p>4 strategists focused on growth, SEO, and analytics. Turning data into actionable insights.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                            <circle cx="9" cy="7" r="4" />
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                        </svg></div>
+                    <h3>Client Success</h3>
+                    <p>3 dedicated account managers ensuring every project exceeds expectations.</p>
                 </div>
             </div>
         </div>
@@ -101,7 +229,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -117,6 +245,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

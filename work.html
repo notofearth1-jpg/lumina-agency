@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Selected Work | Lumia Digital</title>
+    <meta name="description"
+        content="Explore our portfolio of award-winning digital experiences, brand identities, and web applications.">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,9 +15,13 @@
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
 
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="flowing-menu.css">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
@@ -23,18 +29,51 @@
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-    <!-- Flowing Menu Container (Removed for new marquee style) -->
-
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="logo.svg" alt="Lumia Digital Logo" class="logo-icon"
-                    style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span
-                    class="dot">.</span></a>
+            <a href="index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="work.html" class="nav-link active">Work</a>
-                <a href="expertise.html" class="nav-link">Expertise</a>
-                <a href="agency.html" class="nav-link">Agency</a>
+
+                <div class="nav-dropdown">
+                    <a href="work.html" class="nav-link active">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="projects/armory/index.html">Armory</a>
+                        <a href="projects/nexus/index.html">Nexus VR</a>
+                        <a href="projects/aura/index.html">Aura Interiors</a>
+                        <a href="projects/gym/index.html">Iron Forge</a>
+                        <a href="projects/restaurant/index.html">Spice Garden</a>
+                        <a href="projects/salon/index.html">Luxe Beauty</a>
+                        <a href="projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="services/design.html">UI/UX Design</a>
+                        <a href="services/development.html">Web Development</a>
+                        <a href="services/branding.html">Branding</a>
+                        <a href="services/seo.html">SEO</a>
+                        <a href="services/ecommerce.html">E-Commerce</a>
+                        <a href="services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="about/team.html">Our Team</a>
+                        <a href="about/culture.html">Culture</a>
+                        <a href="about/careers.html">Careers</a>
+                        <a href="about/awards.html">Awards</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
@@ -51,10 +90,44 @@
         </div>
     </div>
 
-    <section class="work-list-section" style="padding-top: 150px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 4rem;">Selected Work</h1>
+            <div class="section-label">PORTFOLIO</div>
+            <h1>Selected Work</h1>
+            <p class="lead">Crafting digital experiences that captivate, convert, and inspire. Explore our most
+                impactful projects.</p>
+        </div>
+    </section>
 
+    <!-- Stats Section -->
+    <section style="padding: 0 0 4rem;">
+        <div class="container">
+            <div class="stats-grid reveal-up">
+                <div class="stat-card">
+                    <div class="stat-number">50+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Industries</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Awards Won</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flowing Menu Section -->
+    <section class="work-list-section" style="padding: 2rem 0 6rem;">
+        <div class="container">
+            <div class="section-label reveal-up">EXPLORE PROJECTS</div>
             <div class="menu-wrap">
                 <div class="menu">
                     <!-- Armory -->
@@ -63,49 +136,63 @@
                             data-image="https://images.unsplash.com/photo-1700774607099-8c4631ee9764?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJtb3J5fGVufDB8fDB8fHww">
                             ARMORY.AI
                         </a>
+                        <span class="menu__item-tag">AI Platform</span>
                     </div>
-                    <!-- Projects -->
+                    <!-- Nexus VR -->
                     <div class="menu__item">
                         <a href="projects/nexus/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1588336443962-49d88df004a1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHZyJTIwaGVhZHNldHxlbnwwfHwwfHx8MA%3D%3D">
                             Nexus VR Launch
                         </a>
+                        <span class="menu__item-tag">Product Launch</span>
                     </div>
+                    <!-- Aura -->
                     <div class="menu__item">
                         <a href="projects/aura/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80">
                             Aura Interiors
                         </a>
+                        <span class="menu__item-tag">Interior Design</span>
                     </div>
+                    <!-- Iron Forge -->
                     <div class="menu__item">
                         <a href="projects/gym/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80">
                             Iron Forge Gym
                         </a>
+                        <span class="menu__item-tag">Fitness</span>
                     </div>
+                    <!-- Spice Garden -->
                     <div class="menu__item">
                         <a href="projects/restaurant/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80">
                             Spice Garden
                         </a>
+                        <span class="menu__item-tag">Restaurant</span>
                     </div>
+                    <!-- Luxe Beauty -->
                     <div class="menu__item">
                         <a href="projects/salon/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80">
                             Luxe Beauty
                         </a>
+                        <span class="menu__item-tag">Beauty & Wellness</span>
                     </div>
+                    <!-- Vogue Atelier -->
                     <div class="menu__item">
                         <a href="projects/boutique/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80">
                             Vogue Atelier
                         </a>
+                        <span class="menu__item-tag">E-Commerce</span>
                     </div>
+                    <!-- Bright Minds -->
                     <div class="menu__item">
                         <a href="projects/coaching/index.html" class="menu__item-link"
                             data-image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80">
                             Bright Minds
                         </a>
+                        <span class="menu__item-tag">Education</span>
                     </div>
                 </div>
             </div>
@@ -127,7 +214,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -145,6 +232,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="script.js"></script>
     <script src="flowing-menu.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

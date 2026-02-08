@@ -5,37 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Privacy Policy | Lumia Digital</title>
+    <meta name="description"
+        content="Lumia Digital privacy policy. How we collect, use, and protect your personal data.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,39 +83,102 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero -->
+    <section class="service-hero" style="padding-bottom: 4rem;">
         <div class="container">
             <div class="section-label">LEGAL</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Privacy Policy</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Your privacy is important to us. This policy outlines how we collect, use, and protect your personal data.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        We only collect data that is necessary for providing our services. We never sell your data to third parties.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        We use industry-standard encryption and security practices to keep your information safe.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Data Collection
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Data Usage
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Your Rights
-                        </li>
-                    </ul>
-                </div>
+            <h1>Privacy Policy</h1>
+            <p class="lead">Last updated: February 2026</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <section style="padding: 4rem 0 8rem;">
+        <div class="container">
+            <div class="legal-toc reveal-up">
+                <h4>Contents</h4>
+                <a href="#information">Information We Collect</a>
+                <a href="#usage">How We Use Your Information</a>
+                <a href="#sharing">Information Sharing</a>
+                <a href="#cookies">Cookies & Tracking</a>
+                <a href="#rights">Your Rights</a>
+                <a href="#contact">Contact Us</a>
+            </div>
+
+            <div class="legal-content">
+                <p>Lumia Digital ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy
+                    explains how we collect, use, disclose, and safeguard your information when you visit our website
+                    lumiadigital.site.</p>
+
+                <h2 id="information">Information We Collect</h2>
+                <p>We may collect information about you in various ways:</p>
+
+                <h3>Personal Data</h3>
+                <p>When you contact us or use our services, we may collect:</p>
+                <ul>
+                    <li>Name and email address</li>
+                    <li>Company name and job title</li>
+                    <li>Phone number</li>
+                    <li>Project details and requirements</li>
+                    <li>Payment and billing information</li>
+                </ul>
+
+                <h3>Automatically Collected Data</h3>
+                <p>When you visit our website, we automatically collect:</p>
+                <ul>
+                    <li>IP address and location data</li>
+                    <li>Browser type and version</li>
+                    <li>Pages visited and time spent</li>
+                    <li>Referring website addresses</li>
+                    <li>Device information</li>
+                </ul>
+
+                <h2 id="usage">How We Use Your Information</h2>
+                <p>We use the information we collect to:</p>
+                <ul>
+                    <li>Provide, operate, and maintain our services</li>
+                    <li>Respond to inquiries and fulfill requests</li>
+                    <li>Send marketing communications (with your consent)</li>
+                    <li>Improve our website and services</li>
+                    <li>Comply with legal obligations</li>
+                </ul>
+
+                <h2 id="sharing">Information Sharing</h2>
+                <p>We do not sell, trade, or rent your personal information. We may share data with:</p>
+                <ul>
+                    <li>Service providers who assist our operations</li>
+                    <li>Professional advisors (lawyers, accountants)</li>
+                    <li>Government authorities when required by law</li>
+                    <li>Business partners with your explicit consent</li>
+                </ul>
+
+                <h2 id="cookies">Cookies & Tracking</h2>
+                <p>We use cookies and similar technologies to enhance your experience. These include:</p>
+                <ul>
+                    <li><strong>Essential cookies:</strong> Required for website functionality</li>
+                    <li><strong>Analytics cookies:</strong> Help us understand how visitors use our site</li>
+                    <li><strong>Marketing cookies:</strong> Used to deliver relevant advertisements</li>
+                </ul>
+                <p>You can manage cookie preferences through your browser settings. See our <a href="cookies.html"
+                        style="color: #00D4FF;">Cookie Policy</a> for more details.</p>
+
+                <h2 id="rights">Your Rights</h2>
+                <p>Under GDPR and similar regulations, you have the right to:</p>
+                <ul>
+                    <li>Access your personal data</li>
+                    <li>Rectify inaccurate information</li>
+                    <li>Request deletion of your data</li>
+                    <li>Object to processing</li>
+                    <li>Data portability</li>
+                    <li>Withdraw consent at any time</li>
+                </ul>
+
+                <h2 id="contact">Contact Us</h2>
+                <p>For privacy-related inquiries or to exercise your rights:</p>
+                <ul>
+                    <li><strong>Email:</strong> privacy@lumiadigital.site</li>
+                    <li><strong>Address:</strong> Lumia Digital, Torstraße 123, 10119 Berlin, Germany</li>
+                </ul>
             </div>
         </div>
     </section>
@@ -99,13 +198,13 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
                     <a href="../sitemap.html">Sitemap</a>
-                    <a href="../legal/privacy.html">Privacy</a>
-                    <a href="../legal/terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
                 </div>
                 <div class="meta-col copyright">
                     <p>&copy; 2026 Lumia Digital</p>
@@ -115,6 +214,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

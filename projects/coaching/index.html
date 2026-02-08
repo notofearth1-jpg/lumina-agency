@@ -5,7 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bright Minds | Lumia Digital</title>
     <meta name="description" content="Case study for Bright Minds - A leading coaching institute needed to digitize their curriculum and track student progress online.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../../blue-fire-data.js"></script>
+
+
     <link rel="stylesheet" href="../../style.css">
     <link rel="icon" type="image/svg+xml" href="../../favicon.svg">
     <style>
@@ -33,14 +37,51 @@
     
     <nav>
         <div class="nav-container">
-            <a href="../../index.html" class="logo"><img src="../../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
-            <div class="desktop-menu">
+                        <a href="../../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
+                        <div class="desktop-menu">
                 <a href="../../index.html" class="nav-link">Home</a>
-                <a href="../../work.html" class="nav-link active">Work</a>
-                <a href="../../expertise.html" class="nav-link">Expertise</a>
-                <a href="../../agency.html" class="nav-link">Agency</a>
+                
+                <div class="nav-dropdown">
+                    <a href="../../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../../projects/armory/index.html">Armory</a>
+                        <a href="../../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../../projects/gym/index.html">Iron Forge</a>
+                        <a href="../../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                
+                <div class="nav-dropdown">
+                    <a href="../../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../../services/design.html">UI/UX Design</a>
+                        <a href="../../services/development.html">Web Development</a>
+                        <a href="../../services/branding.html">Branding</a>
+                        <a href="../../services/seo.html">SEO</a>
+                        <a href="../../services/ecommerce.html">E-Commerce</a>
+                        <a href="../../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                
+                <div class="nav-dropdown">
+                    <a href="../../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../../about/team.html">Our Team</a>
+                        <a href="../../about/culture.html">Culture</a>
+                        <a href="../../about/careers.html">Careers</a>
+                        <a href="../../about/awards.html">Awards</a>
+                        <a href="../../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
-            <a href="../../contact.html" class="cta-button">Let's Talk</a>
+<a href="../../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>

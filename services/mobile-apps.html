@@ -4,38 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mobile Apps | Lumia Digital</title>
+    <title>Mobile App Development | Lumia Digital</title>
+    <meta name="description"
+        content="Native and cross-platform mobile app development. React Native, Flutter, iOS, and Android solutions.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link active">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link active">Expertise <span
+                            class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="design.html">UI/UX Design</a>
+                        <a href="development.html">Web Development</a>
+                        <a href="branding.html">Branding</a>
+                        <a href="seo.html">SEO</a>
+                        <a href="ecommerce.html">E-Commerce</a>
+                        <a href="motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,38 +84,124 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">EXPERTISE / DEVELOPMENT</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Mobile Apps</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Put your brand in your customer’s pocket. We design and build native and cross-platform mobile applications.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        Using React Native and Flutter, we deliver native-like performance with a single codebase, accelerating time to market.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        We focus on intuitive gestures, offline capabilities, and seamless integration with your existing digital ecosystem.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> React Native Development
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> iOS & Android Design
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> App Store Optimization
-                        </li>
-                    </ul>
+            <div class="section-label">EXPERTISE / MOBILE</div>
+            <h1>Mobile App Development</h1>
+            <p class="lead">We build mobile experiences that users love. From concept to App Store, we deliver polished
+                iOS and Android apps that set you apart from the competition.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Apps Launched</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">4.8★</div>
+                    <div class="stat-label">Avg. Store Rating</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">5M+</div>
+                    <div class="stat-label">Total Downloads</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">iOS+</div>
+                    <div class="stat-label">Android Coverage</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-label">OUR PROCESS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">From Idea to App Store
+            </h2>
+
+            <div class="process-timeline">
+                <div class="process-step reveal-up stagger-1">
+                    <h3>Discovery & Planning</h3>
+                    <p>User research, feature prioritization, and technical architecture for your MVP and beyond.</p>
+                </div>
+                <div class="process-step reveal-up stagger-2">
+                    <h3>Design & Prototype</h3>
+                    <p>Native-feeling interfaces with platform-specific patterns for iOS and Android.</p>
+                </div>
+                <div class="process-step reveal-up stagger-3">
+                    <h3>Development</h3>
+                    <p>Agile sprints with continuous integration, automated testing, and beta releases.</p>
+                </div>
+                <div class="process-step reveal-up stagger-4">
+                    <h3>Launch & Scale</h3>
+                    <p>App Store optimization, crash monitoring, and feature updates to drive growth.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-label">TECHNOLOGIES</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">Cross-Platform Excellence
+            </h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="2" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+                        </svg></div>
+                    <h3>React Native</h3>
+                    <p>One codebase, two platforms. Fast development with native performance for iOS and Android.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a10 10 0 1 0 10 10H12V2z" />
+                            <path d="M12 12L2.05 7.86" />
+                            <path d="M12 12l-1.18 10.93" />
+                        </svg></div>
+                    <h3>Native iOS</h3>
+                    <p>Swift and SwiftUI for apps that take full advantage of Apple's ecosystem.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" />
+                        </svg></div>
+                    <h3>Native Android</h3>
+                    <p>Kotlin and Jetpack Compose for modern, efficient Android applications.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+                            <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+                        </svg></div>
+                    <h3>Push & Real-time</h3>
+                    <p>Push notifications, real-time messaging, and background sync that keep users engaged.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-5">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                            <circle cx="12" cy="10" r="3" />
+                        </svg></div>
+                    <h3>Location Services</h3>
+                    <p>Mapping, geofencing, and location-based features with privacy built in.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-6">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+                            <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+                        </svg></div>
+                    <h3>Secure Authentication</h3>
+                    <p>Biometrics, OAuth, and secure storage for sensitive user data.</p>
                 </div>
             </div>
         </div>
@@ -99,7 +222,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -115,6 +238,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

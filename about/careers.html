@@ -5,39 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Careers | Lumia Digital</title>
+    <meta name="description"
+        content="Join Lumia Digital. Explore open positions in design, development, and strategy. Remote-first, competitive compensation, endless growth.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link active">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link active">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="team.html">Our Team</a>
+                        <a href="culture.html">Culture</a>
+                        <a href="careers.html">Careers</a>
+                        <a href="awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -49,38 +83,142 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">AGENCY / JOIN US</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Careers</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Do the best work of your life. We are looking for exceptional talent to help us build the future of the web.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        We offer competitive equity, unlimited PTO, and a stipend for learning and development. If you are obsessed with quality, we want to hear from you.
+            <div class="section-label">AGENCY / CAREERS</div>
+            <h1>Join Our Team</h1>
+            <p class="lead">We're always looking for talented people who share our passion for digital excellence.
+                Remote-first, unlimited PTO, and meaningful work.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Remote-First</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Unlimited PTO</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">$2.5k</div>
+                    <div class="stat-label">Learning Budget</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number"><svg width="32" height="32" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <div class="stat-label">Equity Options</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Open Positions -->
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label">OPEN POSITIONS</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">Current Openings</h2>
+
+            <div class="capabilities-grid">
+                <a href="jobs/senior-frontend-engineer.html" class="capability-card reveal-up stagger-1"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="2" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)" />
+                            <ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)" />
+                        </svg></div>
+                    <h3>Senior Frontend Engineer</h3>
+                    <p>React, Next.js, TypeScript. 5+ years experience. Build cutting-edge web experiences.</p>
+                    <div style="margin-top: 1rem; color: #00D4FF; font-weight: 500;">View Role →</div>
+                </a>
+                <a href="jobs/product-designer.html" class="capability-card reveal-up stagger-2"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <path d="M17.5 10.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5" />
+                            <circle cx="7.5" cy="14.5" r="2.5" />
+                            <path d="M5 18c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5" />
+                            <circle cx="16.5" cy="17.5" r="2.5" />
+                        </svg></div>
+                    <h3>Product Designer</h3>
+                    <p>Figma, prototyping, design systems. Create intuitive, beautiful interfaces.</p>
+                    <div style="margin-top: 1rem; color: #00D4FF; font-weight: 500;">View Role →</div>
+                </a>
+                <a href="jobs/seo-strategist.html" class="capability-card reveal-up stagger-3"
+                    style="text-decoration: none; color: inherit;">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <h3>SEO Strategist</h3>
+                    <p>Technical SEO, content strategy, analytics. Drive organic growth for clients.</p>
+                    <div style="margin-top: 1rem; color: #00D4FF; font-weight: 500;">View Role →</div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Join Section -->
+    <section
+        style="padding: 6rem 0; background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.02) 50%, transparent 100%);">
+        <div class="container">
+            <div class="section-label">WHY LUMIA</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 3rem;">Why You'll Love Working
+                Here</h2>
+
+            <div class="values-grid">
+                <div class="value-card reveal-up stagger-1">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <h3>Work From Anywhere</h3>
+                    <p>We're remote-first with team members in 8 countries. Your talent matters more than your timezone.
                     </p>
-                    <p style="margin-bottom: 2rem;">
-                        Current Openings: 1. Senior Frontend Engineer (React/WebGL) - Remote. 2. UI/UX Designer - Berlin/Hybrid. 3. SEO Strategist - Remote.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Frontend Engineer
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Product Designer
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Growth Marketer
-                        </li>
-                    </ul>
+                </div>
+                <div class="value-card reveal-up stagger-2">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z" />
+                            <path
+                                d="M12 15l-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z" />
+                            <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0" />
+                            <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5" />
+                        </svg></div>
+                    <h3>Impactful Work</h3>
+                    <p>Work on award-winning projects for clients who push boundaries and value quality.</p>
+                </div>
+                <div class="value-card reveal-up stagger-3">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+                        </svg></div>
+                    <h3>Constant Growth</h3>
+                    <p>Learning budget, mentorship, and challenging projects that expand your skills.</p>
+                </div>
+                <div class="value-card reveal-up stagger-4">
+                    <div class="value-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+                            <line x1="12" y1="8" x2="12" y2="16" />
+                            <line x1="8" y1="12" x2="16" y2="12" />
+                        </svg></div>
+                    <h3>Work-Life Harmony</h3>
+                    <p>Flexible hours, unlimited PTO, and a culture that respects your time outside work.</p>
                 </div>
             </div>
         </div>
@@ -101,7 +239,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -117,6 +255,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

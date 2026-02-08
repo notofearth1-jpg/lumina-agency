@@ -4,84 +4,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expertise | Lumia Digital</title>
+    <title>Our Expertise | Lumia Digital</title>
+    <meta name="description"
+        content="Full-service digital agency expertise: UI/UX design, web development, branding, SEO, and more.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <!-- Lottie Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="icon" type="image/png" href="favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
-    
     <nav>
         <div class="nav-container">
-            <a href="index.html" class="logo"><img src="logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="work.html" class="nav-link">Work</a>
-                <a href="expertise.html" class="nav-link active">Expertise</a>
-                <a href="agency.html" class="nav-link">Agency</a>
+
+                <div class="nav-dropdown">
+                    <a href="work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="projects/armory/index.html">Armory</a>
+                        <a href="projects/nexus/index.html">Nexus VR</a>
+                        <a href="projects/aura/index.html">Aura Interiors</a>
+                        <a href="projects/gym/index.html">Iron Forge</a>
+                        <a href="projects/restaurant/index.html">Spice Garden</a>
+                        <a href="projects/salon/index.html">Luxe Beauty</a>
+                        <a href="projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="expertise.html" class="nav-link active">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="services/design.html">UI/UX Design</a>
+                        <a href="services/development.html">Web Development</a>
+                        <a href="services/branding.html">Branding</a>
+                        <a href="services/seo.html">SEO</a>
+                        <a href="services/ecommerce.html">E-Commerce</a>
+                        <a href="services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="about/team.html">Our Team</a>
+                        <a href="about/culture.html">Culture</a>
+                        <a href="about/careers.html">Careers</a>
+                        <a href="about/awards.html">Awards</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
 
-
-
-
-
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
             <a href="index.html">Home</a>
             <a href="work.html">Work</a>
+            <a href="expertise.html">Expertise</a>
             <a href="agency.html">Agency</a>
             <a href="contact.html">Contact</a>
         </div>
     </div>
 
-    <section class="expertise-section" style="padding-top: 150px;">
+    <!-- Hero Section -->
+    <section class="service-hero">
         <div class="container">
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 4rem;">Our Expertise</h1>
+            <div class="section-label">CAPABILITIES</div>
+            <h1>Our Expertise</h1>
+            <p class="lead">Full-service digital solutions from concept to launch. We blend creativity with technology
+                to deliver exceptional results.</p>
+        </div>
+    </section>
 
-            <div class="expertise-grid">
-                <a href="services/branding.html" class="exp-card">
-                    <h3>Design & Branding</h3>
-                    <p>We craft interfaces that are intuitive, beautiful, and brand-aligned. From wireframes to
-                        high-fidelity prototypes, every pixel serves a purpose.</p>
+    <!-- Core Services Grid -->
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-label reveal-up">CORE SERVICES</div>
+            <h2 class="section-title reveal-up">What We Do Best</h2>
+
+            <div class="capabilities-grid">
+                <a href="services/design.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="13.5" cy="6.5" r="2.5" />
+                            <path d="M17.5 10.5c0-1.38-1.12-2.5-2.5-2.5s-2.5 1.12-2.5 2.5" />
+                            <circle cx="7.5" cy="14.5" r="2.5" />
+                            <path d="M5 18c0-1.38 1.12-2.5 2.5-2.5s2.5 1.12 2.5 2.5" />
+                            <circle cx="16.5" cy="17.5" r="2.5" />
+                        </svg>
+                    </div>
+                    <h3>UI/UX Design</h3>
+                    <p>Intuitive, beautiful interfaces that delight users and drive engagement. From wireframes to
+                        pixel-perfect prototypes.</p>
+                    <span class="capability-link">Learn More →</span>
                 </a>
-                <a href="services/development.html" class="exp-card">
-                    <h3>Development</h3>
-                    <p>Using the latest tech stack (React, Next.js, WebGL), we build websites that are fast, secure, and
-                        scalable.</p>
+
+                <a href="services/development.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="16 18 22 12 16 6" />
+                            <polyline points="8 6 2 12 8 18" />
+                        </svg>
+                    </div>
+                    <h3>Web Development</h3>
+                    <p>Fast, scalable, and secure websites built with modern technologies. React, Next.js, and
+                        cutting-edge frameworks.</p>
+                    <span class="capability-link">Learn More →</span>
                 </a>
-                <a href="services/analytics.html" class="exp-card">
-                    <h3>Strategy & Data</h3>
-                    <p>We don't just build websites; we build businesses. Our data-driven approach ensures your digital
-                        presence converts.</p>
+
+                <a href="services/branding.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg>
+                    </div>
+                    <h3>Branding</h3>
+                    <p>Strategic brand identities that resonate. Logo design, color systems, typography, and
+                        comprehensive brand guidelines.</p>
+                    <span class="capability-link">Learn More →</span>
                 </a>
-                <a href="services/motion.html" class="exp-card">
-                    <h3>3D & Motion</h3>
-                    <p>Immersive experiences that captivate. We bring brands to life with 3D assets and fluid
-                        animations.</p>
+
+                <a href="services/seo.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg>
+                    </div>
+                    <h3>SEO & Growth</h3>
+                    <p>Data-driven strategies that put you in front of the right audience. Technical SEO, content
+                        strategy, and analytics.</p>
+                    <span class="capability-link">Learn More →</span>
                 </a>
-                <a href="services/seo.html" class="exp-card">
-                    <h3>SEO Growth</h3>
-                    <p>Technical and content SEO strategies that put you in front of the right audience at the right
-                        time.</p>
-                </a>
-                <a href="services/ecommerce.html" class="exp-card">
+
+                <a href="services/ecommerce.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg>
+                    </div>
                     <h3>E-Commerce</h3>
-                    <p>Robust online stores built on Shopify or custom headless solutions for maximum flexibility.</p>
+                    <p>High-converting online stores built on Shopify or custom headless solutions. Payment integration
+                        and CRO included.</p>
+                    <span class="capability-link">Learn More →</span>
                 </a>
+
+                <a href="services/motion.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                        </svg>
+                    </div>
+                    <h3>Motion Design</h3>
+                    <p>Captivating animations and immersive experiences. Lottie, WebGL, and 3D that bring brands to
+                        life.</p>
+                    <span class="capability-link">Learn More →</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="container">
+            <div class="section-label reveal-up">OUR APPROACH</div>
+            <h2 class="section-title reveal-up">How We Work</h2>
+
+            <div class="process-timeline">
+                <div class="process-step reveal-up">
+                    <h3>Discovery</h3>
+                    <p>Deep dive into your business, audience, and goals. We research, analyze, and uncover insights
+                        that inform our strategy.</p>
+                </div>
+                <div class="process-step reveal-up">
+                    <h3>Strategy</h3>
+                    <p>Craft a roadmap tailored to your needs. We define scope, milestones, and success metrics before
+                        writing a single line of code.</p>
+                </div>
+                <div class="process-step reveal-up">
+                    <h3>Design</h3>
+                    <p>Translate strategy into visual language. Wireframes, prototypes, and high-fidelity designs
+                        refined through collaborative feedback.</p>
+                </div>
+                <div class="process-step reveal-up">
+                    <h3>Development</h3>
+                    <p>Build with precision and performance in mind. Clean code, responsive design, and rigorous testing
+                        at every step.</p>
+                </div>
+                <div class="process-step reveal-up">
+                    <h3>Launch</h3>
+                    <p>Deploy with confidence. We handle hosting, optimization, and ensure a smooth go-live experience.
+                    </p>
+                </div>
+                <div class="process-step reveal-up">
+                    <h3>Growth</h3>
+                    <p>Post-launch support and iteration. We monitor performance, gather data, and continuously optimize
+                        for better results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Tech Stack Section -->
+    <section style="padding: 6rem 0;">
+        <div class="container">
+            <div class="section-label reveal-up">TECHNOLOGIES</div>
+            <h2 class="section-title reveal-up">Our Tech Stack</h2>
+
+            <div class="stats-grid reveal-up" style="margin-top: 3rem;">
+                <div class="stat-card">
+                    <div class="stat-number" style="font-size: 1.5rem;">React / Next.js</div>
+                    <div class="stat-label">Frontend</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="font-size: 1.5rem;">Node / Python</div>
+                    <div class="stat-label">Backend</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="font-size: 1.5rem;">Three.js / GSAP</div>
+                    <div class="stat-label">Animation</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" style="font-size: 1.5rem;">Shopify / Stripe</div>
+                    <div class="stat-label">Commerce</div>
+                </div>
             </div>
         </div>
     </section>
@@ -101,7 +279,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -117,6 +295,17 @@
     </footer>
 
     <script src="script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

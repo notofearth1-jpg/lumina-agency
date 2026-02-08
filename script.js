@@ -1,5 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    // ========================================
+    // INTRO ANIMATION (First Visit Only)
+    // ========================================
+    const introOverlay = document.getElementById('introOverlay');
+    const introFlame = document.getElementById('introFlame');
+    const introLetters = document.querySelectorAll('.intro-letter');
+    const introDot = document.querySelector('.intro-dot');
+
+    // Check if user has already seen the intro animation
+    const hasSeenIntro = localStorage.getItem('lumiaIntroSeen');
+
+    if (introOverlay && hasSeenIntro) {
+        // User has already seen the intro - hide immediately without animation
+        introOverlay.remove();
+    } else if (introOverlay && introFlame && typeof lottie !== 'undefined' && typeof blueFireAnimationData !== 'undefined') {
+        // First visit - play the full intro animation
+        lottie.loadAnimation({
+            container: introFlame,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: blueFireAnimationData
+        });
+
+        // Animation sequence timing
+        // 0s - Flame appears centered
+        // 1.2s - Flame slides left (CSS animation)
+        // 1.5s - Letters start appearing one by one
+        // ~3s - All letters visible
+        // 3.5s - Overlay fades out
+
+        setTimeout(() => {
+            // Animate letters one by one
+            introLetters.forEach((letter, index) => {
+                setTimeout(() => {
+                    letter.classList.add('animate');
+                }, index * 80); // 80ms stagger between letters
+            });
+
+            // Animate the dot after all letters
+            setTimeout(() => {
+                if (introDot) introDot.classList.add('animate');
+            }, introLetters.length * 80 + 200);
+
+            // Fade out overlay and reveal website
+            setTimeout(() => {
+                introOverlay.classList.add('hidden');
+                // Mark intro as seen in localStorage
+                localStorage.setItem('lumiaIntroSeen', 'true');
+                // Remove overlay from DOM after animation
+                setTimeout(() => {
+                    introOverlay.remove();
+                }, 800);
+            }, introLetters.length * 80 + 1000);
+
+        }, 1500); // Start letter animation after flame slides left
+    } else if (introOverlay) {
+        // If Lottie not available, just hide overlay
+        introOverlay.classList.add('hidden');
+        localStorage.setItem('lumiaIntroSeen', 'true');
+    }
+
+
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
     const mobileOverlay = document.querySelector('.mobile-menu-overlay');
@@ -30,6 +93,40 @@ document.addEventListener('DOMContentLoaded', () => {
             nav.classList.remove('scrolled');
         }
     });
+
+    // Logo Flame Effect - Lottie Animation + Page Dim
+    const logo = document.querySelector('.logo');
+    const flameContainer = document.getElementById('logoFlame');
+
+    if (logo) {
+        // Create dim overlay if it doesn't exist
+        let dimOverlay = document.querySelector('.page-dim-overlay');
+        if (!dimOverlay) {
+            dimOverlay = document.createElement('div');
+            dimOverlay.className = 'page-dim-overlay';
+            document.body.appendChild(dimOverlay);
+        }
+
+        // Initialize Lottie animation - always playing
+        if (flameContainer && typeof lottie !== 'undefined' && typeof blueFireAnimationData !== 'undefined') {
+            lottie.loadAnimation({
+                container: flameContainer,
+                renderer: 'svg',
+                loop: true,
+                autoplay: true,
+                animationData: blueFireAnimationData
+            });
+        }
+
+        // Hover: just toggle dim overlay (animation always plays)
+        logo.addEventListener('mouseenter', () => {
+            dimOverlay.classList.add('active');
+        });
+
+        logo.addEventListener('mouseleave', () => {
+            dimOverlay.classList.remove('active');
+        });
+    }
 
     // Expanding Project Cards (Scroll Intersection)
     const observerOptions = {
@@ -93,4 +190,29 @@ document.addEventListener('DOMContentLoaded', () => {
             highlightText.style.setProperty('--y', `${y}px`);
         });
     }
+
+    // ========================================
+    // 3D TECH ORB MOUSE INTERACTION
+    // ========================================
+    const techOrbs = document.querySelectorAll('.tech-orb');
+
+    techOrbs.forEach(orb => {
+        const orbInner = orb.querySelector('.orb-inner');
+
+        orb.addEventListener('mousemove', (e) => {
+            const rect = orb.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+
+            // Calculate rotation based on mouse position
+            const rotateX = (y / rect.height) * -30;
+            const rotateY = (x / rect.width) * 30;
+
+            orbInner.style.transform = `translateY(-10px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+        });
+
+        orb.addEventListener('mouseleave', () => {
+            orbInner.style.transform = 'translateY(0) rotateX(0) rotateY(0)';
+        });
+    });
 });

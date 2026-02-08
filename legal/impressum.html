@@ -5,37 +5,73 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Impressum | Lumia Digital</title>
+    <meta name="description"
+        content="Lumia Digital impressum. Legal information and company details as required by German law.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../services/design.html">UI/UX Design</a>
+                        <a href="../services/development.html">Web Development</a>
+                        <a href="../services/branding.html">Branding</a>
+                        <a href="../services/seo.html">SEO</a>
+                        <a href="../services/ecommerce.html">E-Commerce</a>
+                        <a href="../services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,44 +83,89 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <!-- Hero -->
+    <section class="service-hero" style="padding-bottom: 4rem;">
         <div class="container">
             <div class="section-label">LEGAL</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Impressum</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Legal information required by German law (TMG).
+            <h1>Impressum</h1>
+            <p class="lead">Angaben gemäß § 5 TMG</p>
+        </div>
+    </section>
+
+    <!-- Legal Content -->
+    <section style="padding: 4rem 0 8rem;">
+        <div class="container">
+            <div class="legal-content">
+                <h2>Firmeninformationen</h2>
+                <p>
+                    <strong>Lumia Digital GmbH</strong><br>
+                    Torstraße 123<br>
+                    10119 Berlin<br>
+                    Deutschland
                 </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        Lumia Digital GmbH
-Torstr. 1
-10119 Berlin
-Germany
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        Managing Director: Vibhu Thanki
-VAT ID: DE 123 456 789
-Email: hello@luminadigital.site
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Company Info
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Contact
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Dispute Resolution
-                        </li>
-                    </ul>
-                </div>
+
+                <h2>Kontakt</h2>
+                <p>
+                    <strong>Telefon:</strong> +49 30 1234 5678<br>
+                    <strong>E-Mail:</strong> <a href="mailto:hello@lumiadigital.site"
+                        style="color: #00D4FF;">hello@lumiadigital.site</a><br>
+                    <strong>Website:</strong> <a href="https://lumiadigital.site"
+                        style="color: #00D4FF;">lumiadigital.site</a>
+                </p>
+
+                <h2>Geschäftsführung</h2>
+                <p>Vibhu Thanki (Geschäftsführer)</p>
+
+                <h2>Registereintrag</h2>
+                <p>
+                    <strong>Eintragung im Handelsregister</strong><br>
+                    Registergericht: Amtsgericht Berlin-Charlottenburg<br>
+                    Registernummer: HRB 123456 B
+                </p>
+
+                <h2>Umsatzsteuer-ID</h2>
+                <p>
+                    Umsatzsteuer-Identifikationsnummer gemäß §27a Umsatzsteuergesetz:<br>
+                    DE123456789
+                </p>
+
+                <h2>Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
+                <p>
+                    Vibhu Thanki<br>
+                    Torstraße 123<br>
+                    10119 Berlin
+                </p>
+
+                <h2>EU-Streitschlichtung</h2>
+                <p>Die Europäische Kommission stellt eine Plattform zur Online-Streitbeilegung (OS) bereit: <a
+                        href="https://ec.europa.eu/consumers/odr/" target="_blank" rel="noopener"
+                        style="color: #00D4FF;">https://ec.europa.eu/consumers/odr/</a></p>
+                <p>Unsere E-Mail-Adresse finden Sie oben im Impressum.</p>
+
+                <h2>Verbraucherstreitbeilegung/Universalschlichtungsstelle</h2>
+                <p>Wir sind nicht bereit oder verpflichtet, an Streitbeilegungsverfahren vor einer
+                    Verbraucherschlichtungsstelle teilzunehmen.</p>
+
+                <h2>Haftung für Inhalte</h2>
+                <p>Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach den
+                    allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter jedoch nicht
+                    verpflichtet, übermittelte oder gespeicherte fremde Informationen zu überwachen oder nach Umständen
+                    zu forschen, die auf eine rechtswidrige Tätigkeit hinweisen.</p>
+                <p>Verpflichtungen zur Entfernung oder Sperrung der Nutzung von Informationen nach den allgemeinen
+                    Gesetzen bleiben hiervon unberührt. Eine diesbezügliche Haftung ist jedoch erst ab dem Zeitpunkt der
+                    Kenntnis einer konkreten Rechtsverletzung möglich. Bei Bekanntwerden von entsprechenden
+                    Rechtsverletzungen werden wir diese Inhalte umgehend entfernen.</p>
+
+                <h2>Haftung für Links</h2>
+                <p>Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen Einfluss
+                    haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen. Für die Inhalte
+                    der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der Seiten verantwortlich.</p>
+
+                <h2>Urheberrecht</h2>
+                <p>Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen dem
+                    deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art der Verwertung
+                    außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen Zustimmung des jeweiligen Autors
+                    bzw. Erstellers.</p>
             </div>
         </div>
     </section>
@@ -104,13 +185,13 @@ Email: hello@luminadigital.site
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
                     <a href="../sitemap.html">Sitemap</a>
-                    <a href="../legal/privacy.html">Privacy</a>
-                    <a href="../legal/terms.html">Terms</a>
+                    <a href="privacy.html">Privacy</a>
+                    <a href="terms.html">Terms</a>
                 </div>
                 <div class="meta-col copyright">
                     <p>&copy; 2026 Lumia Digital</p>
@@ -120,6 +201,17 @@ Email: hello@luminadigital.site
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

@@ -4,38 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEO Strategy | Lumia Digital</title>
+    <title>SEO Services | Lumia Digital</title>
+    <meta name="description"
+        content="Strategic SEO services that drive organic growth. Technical SEO, content strategy, and data-driven optimization.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link active">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link active">Expertise <span
+                            class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="design.html">UI/UX Design</a>
+                        <a href="development.html">Web Development</a>
+                        <a href="branding.html">Branding</a>
+                        <a href="seo.html">SEO</a>
+                        <a href="ecommerce.html">E-Commerce</a>
+                        <a href="motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,38 +84,128 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">EXPERTISE / GROWTH</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">SEO Strategy</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Dominating search results isn’t magic—it’s engineering. We build technical and content-driven SEO strategies that drive sustainable organic growth.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        Our approach goes beyond keywords. We analyze search intent, site architecture, and performance metrics to build a foundation for long-term visibility.
+            <div class="section-label">EXPERTISE / SEO</div>
+            <h1>Search Engine Optimization</h1>
+            <p class="lead">We help you get found by the people who matter most. Our data-driven SEO strategies deliver
+                sustainable organic growth that compounds over time.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">250%</div>
+                    <div class="stat-label">Avg. Traffic Increase</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">Top 3</div>
+                    <div class="stat-label">Keyword Rankings</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">45+</div>
+                    <div class="stat-label">Clients Ranked #1</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">3M+</div>
+                    <div class="stat-label">Organic Visits/Mo</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-label">OUR APPROACH</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">SEO That Actually Works
+            </h2>
+
+            <div class="process-timeline">
+                <div class="process-step reveal-up stagger-1">
+                    <h3>Technical Audit</h3>
+                    <p>Comprehensive site analysis covering crawlability, indexation, Core Web Vitals, and schema
+                        markup.</p>
+                </div>
+                <div class="process-step reveal-up stagger-2">
+                    <h3>Keyword Strategy</h3>
+                    <p>Intent-based keyword research, competitor gap analysis, and content opportunity mapping.</p>
+                </div>
+                <div class="process-step reveal-up stagger-3">
+                    <h3>On-Page Optimization</h3>
+                    <p>Content optimization, internal linking, meta optimization, and structured data implementation.
                     </p>
-                    <p style="margin-bottom: 2rem;">
-                        From technical audits to authority building, we ensure every aspect of your digital presence is optimized for both search engines and human users.
+                </div>
+                <div class="process-step reveal-up stagger-4">
+                    <h3>Authority Building</h3>
+                    <p>Digital PR, link building, and brand mention strategies to boost domain authority.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-label">SERVICES</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">Full-Spectrum SEO</h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+                        </svg></div>
+                    <h3>Technical SEO</h3>
+                    <p>Site speed, mobile optimization, crawl efficiency, and infrastructure that search engines love.
                     </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Technical SEO Audits
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Content Strategy
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Authority Building
-                        </li>
-                    </ul>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                            <polyline points="14 2 14 8 20 8" />
+                            <line x1="16" y1="13" x2="8" y2="13" />
+                            <line x1="16" y1="17" x2="8" y2="17" />
+                            <polyline points="10 9 9 9 8 9" />
+                        </svg></div>
+                    <h3>Content Strategy</h3>
+                    <p>Content pillars, topic clusters, and editorial calendars aligned with search intent.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg></div>
+                    <h3>Local SEO</h3>
+                    <p>Google Business Profile optimization, local citations, and map pack domination.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="9" cy="21" r="1" />
+                            <circle cx="20" cy="21" r="1" />
+                            <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6" />
+                        </svg></div>
+                    <h3>E-commerce SEO</h3>
+                    <p>Product page optimization, category strategy, and shopping feed management.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-5">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71" />
+                            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71" />
+                        </svg></div>
+                    <h3>Link Building</h3>
+                    <p>Ethical, white-hat link acquisition through content marketing and digital PR.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-6">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <h3>Analytics & Reporting</h3>
+                    <p>Custom dashboards, rank tracking, and ROI reporting that proves impact.</p>
                 </div>
             </div>
         </div>
@@ -99,7 +226,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -115,6 +242,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

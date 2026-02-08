@@ -4,38 +4,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>E-Commerce | Lumia Digital</title>
+    <title>E-Commerce Solutions | Lumia Digital</title>
+    <meta name="description"
+        content="E-commerce development and optimization. Shopify, headless commerce, and custom solutions that convert.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link active">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link active">Expertise <span
+                            class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="design.html">UI/UX Design</a>
+                        <a href="development.html">Web Development</a>
+                        <a href="branding.html">Branding</a>
+                        <a href="seo.html">SEO</a>
+                        <a href="ecommerce.html">E-Commerce</a>
+                        <a href="motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,38 +84,126 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">EXPERTISE / DEVELOPMENT</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">E-Commerce</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Converting visitors into loyal customers requires a frictionless shopping experience. We build stores that sell.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        We specialize in headless Shopify and custom Next.js commerce solutions that offer unparalleled speed and customization.
+            <div class="section-label">EXPERTISE / E-COMMERCE</div>
+            <h1>E-Commerce Solutions</h1>
+            <p class="lead">We build online stores that don't just look beautiful—they convert. From Shopify to headless
+                commerce, we create shopping experiences that drive revenue.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">$50M+</div>
+                    <div class="stat-label">Revenue Generated</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">35%</div>
+                    <div class="stat-label">Avg. Conv. Rate Lift</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">200+</div>
+                    <div class="stat-label">Stores Launched</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">99.9%</div>
+                    <div class="stat-label">Uptime Guarantee</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-label">OUR APPROACH</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">From Catalog to Cart to
+                Conversion</h2>
+
+            <div class="process-timeline">
+                <div class="process-step reveal-up stagger-1">
+                    <h3>Commerce Strategy</h3>
+                    <p>Platform selection, feature planning, and integration mapping tailored to your business model.
                     </p>
-                    <p style="margin-bottom: 2rem;">
-                        From product discovery to checkout, we optimize every step of the funnel to maximize average order value and conversion rates.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Headless Shopify
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Conversion Optimization
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> Custom Integrations
-                        </li>
-                    </ul>
+                </div>
+                <div class="process-step reveal-up stagger-2">
+                    <h3>Storefront Design</h3>
+                    <p>Conversion-focused UI/UX with product photography direction and brand integration.</p>
+                </div>
+                <div class="process-step reveal-up stagger-3">
+                    <h3>Development</h3>
+                    <p>Custom theme development, payment integrations, and third-party app connections.</p>
+                </div>
+                <div class="process-step reveal-up stagger-4">
+                    <h3>Launch & Optimize</h3>
+                    <p>Testing, launch support, and ongoing conversion rate optimization.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-label">PLATFORMS & SERVICES</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">Everything You Need to
+                Sell</h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z" />
+                            <line x1="3" y1="6" x2="21" y2="6" />
+                            <path d="M16 10a4 4 0 0 1-8 0" />
+                        </svg></div>
+                    <h3>Shopify & Shopify Plus</h3>
+                    <p>Custom themes, app development, and Plus migrations for scaling brands.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2" />
+                        </svg></div>
+                    <h3>Headless Commerce</h3>
+                    <p>Next.js storefronts with Shopify, Medusa, or Saleor backends for ultimate flexibility.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="1" y="4" width="22" height="16" rx="2" ry="2" />
+                            <line x1="1" y1="10" x2="23" y2="10" />
+                        </svg></div>
+                    <h3>Payment Solutions</h3>
+                    <p>Stripe, PayPal, Klarna, and Apple Pay integrations with PCI compliance.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2L2 7l10 5 10-5-10-5z" />
+                            <path d="M2 17l10 5 10-5" />
+                            <path d="M2 12l10 5 10-5" />
+                        </svg></div>
+                    <h3>Inventory & Fulfillment</h3>
+                    <p>ERP integrations, warehouse management, and multi-location inventory sync.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-5">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <h3>CRO & Analytics</h3>
+                    <p>A/B testing, heatmaps, and funnel optimization to maximize every visitor.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-6">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <h3>International Commerce</h3>
+                    <p>Multi-currency, multi-language, and market-specific checkout experiences.</p>
                 </div>
             </div>
         </div>
@@ -99,7 +224,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -115,6 +240,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>

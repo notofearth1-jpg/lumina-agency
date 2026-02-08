@@ -5,37 +5,74 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Motion Design | Lumia Digital</title>
+    <meta name="description"
+        content="Motion design services. 3D animations, micro-interactions, and cinematic experiences that captivate audiences.">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
         rel="stylesheet">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script src="../blue-fire-data.js"></script>
+
     <link rel="stylesheet" href="../style.css">
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+    <link rel="icon" type="image/png" href="../favicon.png">
 </head>
 
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-
-
-
-    
     <nav>
         <div class="nav-container">
-            <a href="../index.html" class="logo"><img src="../logo.svg" alt="Lumia Digital Logo" class="logo-icon" style="height: 32px; width: auto; margin-right: 10px; vertical-align: middle;">LUMIA DIGITAL<span class="dot">.</span></a>
+            <a href="../index.html" class="logo">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
+            </a>
             <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                <a href="../work.html" class="nav-link">Work</a>
-                <a href="../expertise.html" class="nav-link active">Expertise</a>
-                <a href="../agency.html" class="nav-link">Agency</a>
+                <div class="nav-dropdown">
+                    <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../projects/armory/index.html">Armory</a>
+                        <a href="../projects/nexus/index.html">Nexus VR</a>
+                        <a href="../projects/aura/index.html">Aura Interiors</a>
+                        <a href="../projects/gym/index.html">Iron Forge</a>
+                        <a href="../projects/restaurant/index.html">Spice Garden</a>
+                        <a href="../projects/salon/index.html">Luxe Beauty</a>
+                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../expertise.html" class="nav-link active">Expertise <span
+                            class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="design.html">UI/UX Design</a>
+                        <a href="development.html">Web Development</a>
+                        <a href="branding.html">Branding</a>
+                        <a href="seo.html">SEO</a>
+                        <a href="ecommerce.html">E-Commerce</a>
+                        <a href="motion.html">Motion Design</a>
+                    </div>
+                </div>
+                <div class="nav-dropdown">
+                    <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="../about/team.html">Our Team</a>
+                        <a href="../about/culture.html">Culture</a>
+                        <a href="../about/careers.html">Careers</a>
+                        <a href="../about/awards.html">Awards</a>
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
             <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
-
-
-
 
     <div class="mobile-menu-overlay">
         <div class="mobile-links">
@@ -47,38 +84,127 @@
         </div>
     </div>
 
-    <section style="padding: 180px 0 100px;">
+    <section class="service-hero">
         <div class="container">
-            <div class="section-label">EXPERTISE / ANIMATION</div>
-            <h1 class="hero-text" style="font-size: 4rem; margin-bottom: 2rem;">Motion Design</h1>
-            <div style="max-width: 800px;">
-                <p style="font-size: 1.25rem; color: var(--text-dim); line-height: 1.7; margin-bottom: 2rem;">
-                    Static is boring. We use motion to guide attention, explain complex concepts, and delight users with every interaction.
-                </p>
-                <div style="width: 100%; height: 1px; background: var(--line); margin: 3rem 0;"></div>
-                <div style="font-size: 1.1rem; line-height: 1.8; color: var(--text);">
-                    <p style="margin-bottom: 2rem;">
-                        Using tools like WebGL, GSAP, and Three.js, we create fluid animations that feel natural and performant.
-                    </p>
-                    <p style="margin-bottom: 2rem;">
-                        Motion isn’t just decoration; it’s communication. We ensure every transition and micro-interaction serves a clear purpose.
-                    </p>
-                    <h3 style="font-family: var(--font-head); font-size: 2rem; margin: 3rem 0 1.5rem;">Key Highlights
-                    </h3>
-                    <ul style="list-style: none; padding: 0;">
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> WebGL Experiences
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> UI Animation
-                        </li>
-                        <li
-                            style="margin-bottom: 1rem; display: flex; gap: 1rem; align-items: center; color: var(--text-dim);">
-                            <span style="color: var(--accent);">→</span> 3D Interactions
-                        </li>
-                    </ul>
+            <div class="section-label">EXPERTISE / MOTION</div>
+            <h1>Motion Design</h1>
+            <p class="lead">We bring static designs to life. From subtle micro-interactions to full cinematic
+                experiences, our motion work creates emotional connections with your audience.</p>
+
+            <div class="stats-grid">
+                <div class="stat-card reveal-up stagger-1">
+                    <div class="stat-number">500+</div>
+                    <div class="stat-label">Animations Created</div>
+                </div>
+                <div class="stat-card reveal-up stagger-2">
+                    <div class="stat-number">60fps</div>
+                    <div class="stat-label">Performance Target</div>
+                </div>
+                <div class="stat-card reveal-up stagger-3">
+                    <div class="stat-number">10+</div>
+                    <div class="stat-label">Awwwards Won</div>
+                </div>
+                <div class="stat-card reveal-up stagger-4">
+                    <div class="stat-number">3D</div>
+                    <div class="stat-label">WebGL Experts</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process-section">
+        <div class="container">
+            <div class="section-label">OUR CRAFT</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">Motion That Matters</h2>
+
+            <div class="process-timeline">
+                <div class="process-step reveal-up stagger-1">
+                    <h3>Concept & Storyboard</h3>
+                    <p>Define the motion language, create storyboards, and establish animation principles that align
+                        with your brand.</p>
+                </div>
+                <div class="process-step reveal-up stagger-2">
+                    <h3>Design & Prototype</h3>
+                    <p>Build interactive prototypes to test timing, easing, and user feedback before development.</p>
+                </div>
+                <div class="process-step reveal-up stagger-3">
+                    <h3>Production</h3>
+                    <p>Create final animations using industry-leading tools like After Effects, GSAP, and Three.js.</p>
+                </div>
+                <div class="process-step reveal-up stagger-4">
+                    <h3>Optimization</h3>
+                    <p>Performance tuning to ensure smooth 60fps animations across all devices and browsers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="capabilities-section">
+        <div class="container">
+            <div class="section-label">WHAT WE CREATE</div>
+            <h2 style="font-family: var(--font-head); font-size: 2.5rem; margin-bottom: 1rem;">Motion for Every Medium
+            </h2>
+
+            <div class="capabilities-grid">
+                <div class="capability-card reveal-up stagger-1">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon
+                                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+                        </svg></div>
+                    <h3>Micro-interactions</h3>
+                    <p>Subtle animations for buttons, forms, and UI elements that provide delightful feedback.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-2">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10" />
+                            <line x1="2" y1="12" x2="22" y2="12" />
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+                        </svg></div>
+                    <h3>WebGL Experiences</h3>
+                    <p>Immersive 3D web experiences using Three.js, GLSL shaders, and GPU acceleration.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-3">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2" />
+                            <line x1="12" y1="18" x2="12.01" y2="18" />
+                        </svg></div>
+                    <h3>Lottie Animations</h3>
+                    <p>Scalable, lightweight animations that work beautifully on web and mobile apps.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-4">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="23 7 16 12 23 17 23 7" />
+                            <rect x="1" y="5" width="15" height="14" rx="2" ry="2" />
+                        </svg></div>
+                    <h3>Brand Films</h3>
+                    <p>Cinematic motion graphics for brand stories, product launches, and campaigns.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-5">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="18" y1="20" x2="18" y2="10" />
+                            <line x1="12" y1="20" x2="12" y2="4" />
+                            <line x1="6" y1="20" x2="6" y2="14" />
+                        </svg></div>
+                    <h3>Data Visualization</h3>
+                    <p>Animated charts, graphs, and infographics that make complex data engaging.</p>
+                </div>
+                <div class="capability-card reveal-up stagger-6">
+                    <div class="capability-icon"><svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+                            stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="6" width="20" height="12" rx="2" />
+                            <line x1="6" y1="12" x2="10" y2="12" />
+                            <line x1="8" y1="10" x2="8" y2="14" />
+                            <circle cx="17" cy="10" r="1" />
+                            <circle cx="15" cy="14" r="1" />
+                        </svg></div>
+                    <h3>Interactive Experiences</h3>
+                    <p>Scroll-driven animations, parallax effects, and gamified interactions.</p>
                 </div>
             </div>
         </div>
@@ -99,7 +225,7 @@
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
-                    <a href="mailto:hello@luminadigital.site">hello@luminadigital.site</a>
+                    <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
                     <p>Berlin, Germany</p>
                 </div>
                 <div class="meta-links">
@@ -115,6 +241,17 @@
     </footer>
 
     <script src="../script.js"></script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal-up, .reveal-scale');
+        const revealOnScroll = () => {
+            revealElements.forEach(el => {
+                const rect = el.getBoundingClientRect();
+                if (rect.top < window.innerHeight * 0.85) el.classList.add('revealed');
+            });
+        };
+        window.addEventListener('scroll', revealOnScroll);
+        window.addEventListener('load', revealOnScroll);
+    </script>
 </body>
 
 </html>
