@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumia Social Studio</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #1a1a1a;
+            padding: 40px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .studio-header {
+            margin-bottom: 40px;
+            color: white;
+            border-bottom: 1px solid #333;
+            padding-bottom: 20px;
+        }
+
+        .export-controls {
+            margin-bottom: 20px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 40px;
+        }
+
+        /* ARTBOARD CONTAINER */
+        .artboard-wrapper {
+            margin-bottom: 20px;
+        }
+
+        .artboard-label {
+            color: #888;
+            margin-bottom: 10px;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        /* ACTUAL SOCIAL POST DIMENSIONS */
+        .artboard {
+            width: 1080px;
+            /* Scaled down for preview using transform */
+            height: 1080px;
+            background: #050507;
+            /* Matches site bg */
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transform-origin: top left;
+            transform: scale(0.35);
+            /* Scale for viewing */
+            border: 1px solid #333;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .artboard.portrait {
+            height: 1350px;
+            /* 4:5 Aspect Ratio */
+        }
+
+        /* --- POST STYLES (Utilizing Site CSS Variables) --- */
+
+        /* 1. THE STATEMENT (Bold Text) */
+        .post-statement {
+            padding: 80px;
+            text-align: center;
+        }
+
+        .post-statement h1 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 7rem;
+            line-height: 0.95;
+            color: white;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .post-statement h1 span.highlight {
+            color: #00D4FF;
+            text-shadow: 0 0 30px rgba(0, 212, 255, 0.4);
+        }
+
+        /* 2. THE QUOTE */
+        .post-quote {
+            padding: 100px;
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            width: 80%;
+            height: 80%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+        }
+
+        .post-quote::before,
+        .post-quote::after {
+            content: '"';
+            position: absolute;
+            font-family: 'Space Grotesk';
+            font-size: 10rem;
+            color: #4f46e5;
+            opacity: 0.3;
+        }
+
+        .post-quote::before {
+            top: 40px;
+            left: 40px;
+        }
+
+        .post-quote::after {
+            bottom: -60px;
+            right: 40px;
+            transform: rotate(180deg);
+        }
+
+        .post-quote h2 {
+            font-size: 4rem;
+            color: white;
+            font-weight: 300;
+            line-height: 1.2;
+        }
+
+        /* 3. THE GRID (List) */
+        .post-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            width: 80%;
+        }
+
+        .grid-item {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 20px;
+        }
+
+        .grid-item h3 {
+            color: #00D4FF;
+            font-size: 2rem;
+            margin-bottom: 10px;
+            font-family: 'Space Grotesk';
+        }
+
+        .grid-item p {
+            color: #aaa;
+            font-size: 1.5rem;
+        }
+
+        /* COMMON ELEMENTS */
+        .post-logo {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .post-logo span {
+            font-family: 'Space Grotesk';
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: white;
+            letter-spacing: 2px;
+        }
+
+        .post-tag {
+            position: absolute;
+            top: 60px;
+            left: 0;
+            right: 0;
+            margin: 0 auto;
+            width: fit-content;
+            background: rgba(0, 0, 0, 0.6);
+            color: #00D4FF;
+            padding: 8px 24px;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            z-index: 20;
+            letter-spacing: 2px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.1);
+        }
+
+        /* Background Effects */
+        .bg-grid {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
+            z-index: 0;
+            opacity: 0.4;
+        }
+
+        .bg-glow {
+            position: absolute;
+            width: 900px;
+            height: 900px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.12) 0%, transparent 60%);
+            top: -300px;
+            left: -300px;
+            filter: blur(100px);
+            z-index: 0;
+        }
+
+        .content-layer {
+            position: relative;
+            z-index: 10;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="studio-header">
+        <h1>Lumia Social Studio</h1>
+        <p>High-resolution HTML generators for social media. <strong>Zoom out or use standard screen capture.</strong>
+        </p>
+    </div>
+
+    <div class="grid-container" id="artboard-container">
+        <!-- JS will inject artboards here -->
+    </div>
+
+    <script>
+        const posts = [
+            {
+                type: 'statement',
+                title: 'We didn\'t just build an agency. <span class="highlight">We built an engine.</span>',
+                tag: 'Launch'
+            },
+            {
+                type: 'quote',
+                title: 'Your website is asleep 80% of the time. Wake it up with AI.',
+                tag: 'Automation'
+            },
+            {
+                type: 'grid',
+                items: [
+                    { title: '01', text: 'AI Agents' },
+                    { title: '02', text: 'Chatbots' },
+                    { title: '03', text: 'Automation' },
+                    { title: '04', text: 'Scale' }
+                ],
+                tag: 'Services'
+            },
+            {
+                type: 'statement',
+                title: 'Design that <span class="highlight">Stops the Scroll.</span>',
+                tag: 'Visuals'
+            },
+            {
+                type: 'quote',
+                title: 'Simplicity is the ultimate sophistication.',
+                tag: 'Design'
+            },
+            {
+                type: 'statement',
+                title: 'Free 30-Min <span class="highlight">Strategy Call.</span>',
+                tag: 'Offer'
+            }
+        ];
+
+        const container = document.getElementById('artboard-container');
+
+        const logoHTML = `
+            <div class="post-logo">
+                <img src="favicon.png" alt="Lumia Logo" style="width: 40px; height: 40px; object-fit: contain;">
+                <span>LUMIA DIGITAL</span>
+            </div>
+        `;
+
+        const bgHTML = `
+            <div class="bg-grid"></div>
+            <div class="bg-glow"></div>
+        `;
+
+        posts.forEach((post, index) => {
+            const wrapper = document.createElement('div');
+            wrapper.className = 'artboard-wrapper';
+
+            let contentHTML = '';
+
+            if (post.type === 'statement') {
+                contentHTML = `
+                    <div class="post-statement content-layer">
+                        <h1>${post.title}</h1>
+                    </div>
+                `;
+            } else if (post.type === 'quote') {
+                contentHTML = `
+                    <div class="post-quote content-layer">
+                        <h2>${post.title}</h2>
+                    </div>
+                `;
+            } else if (post.type === 'grid') {
+                const gridItems = post.items.map(item => `
+                    <div class="grid-item">
+                        <h3>${item.title}</h3>
+                        <p>${item.text}</p>
+                    </div>
+                `).join('');
+                contentHTML = `
+                    <div class="post-grid content-layer">
+                        ${gridItems}
+                    </div>
+                `;
+            }
+
+            wrapper.innerHTML = `
+                <div class="artboard-label">Post ${index + 1}: ${post.tag}</div>
+                <div class="artboard">
+                    ${bgHTML}
+                    <div class="post-tag content-layer">${post.tag}</div>
+                    ${contentHTML}
+                    ${logoHTML}
+                </div>
+            `;
+
+            container.appendChild(wrapper);
+        });
+    </script>
+</body>
+
+</html>
