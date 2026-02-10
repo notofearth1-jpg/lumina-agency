@@ -16,13 +16,13 @@ const listHTML = (items) => items.map(i => `<li>${i}</li>`).join('');
 const setActiveNav = (html, activePage) => {
     // Reset all actives
     let newHtml = html.replace(/class="nav-link active"/g, 'class="nav-link"');
-    
+
     // Set specific active
     if (activePage === 'home') newHtml = newHtml.replace('href="../index.html" class="nav-link"', 'href="../index.html" class="nav-link active"');
     if (activePage === 'work') newHtml = newHtml.replace('href="../work.html" class="nav-link"', 'href="../work.html" class="nav-link active"');
     if (activePage === 'expertise') newHtml = newHtml.replace('href="../expertise.html" class="nav-link"', 'href="../expertise.html" class="nav-link active"');
     if (activePage === 'agency') newHtml = newHtml.replace('href="../agency.html" class="nav-link"', 'href="../agency.html" class="nav-link active"');
-    
+
     return newHtml;
 };
 
@@ -100,11 +100,39 @@ careers.forEach(job => {
         .replace(/TYPE_PLACEHOLDER/g, job.type)
         .replace(/INTRO_PLACEHOLDER/g, job.intro)
         .replace(/RESPONSIBILITIES_PLACEHOLDER/g, listHTML(job.responsibilities))
-        .replace(/REQUIREMENTS_PLACEHOLDER/g, listHTML(job.requirements));
-    
+        .replace(/REQUIREMENTS_PLACEHOLDER/g, listHTML(job.requirements))
+        .replace(/content="Premium digital agency specializing in design, development, and digital transformation."/g, `content="Join Lumia Digital as a ${job.title}. ${job.intro}"`)
+        .replace(/content="TITLE_PLACEHOLDER \| Lumia Digital"/g, `content="${job.title} | Lumia Digital"`); // Fix OG Title if placeholder exists
+
     // Fix nav paths since we are deeper in /about/jobs/
-    content = content.replace(/\.\.\/\.\.\//g, '../../'); // Ensure base path is correct
-    
+    // 1. Replace existing ../ links with ../../
+    // NOTE: This might turn existing ../../ into ../../../ so we fix that after.
+    content = content.replace(/href="\.\.\//g, 'href="../../');
+    content = content.replace(/src="\.\.\//g, 'src="../../');
+
+    // 2. Fix triple nesting (created by step 1 on already correct links)
+    content = content.replace(/href="\.\.\/\.\.\/\.\.\//g, 'href="../../');
+    content = content.replace(/src="\.\.\/\.\.\/\.\.\//g, 'src="../../');
+
+    // 3. Replace root-relative links (e.g. href="index.html") with ../../
+    const rootLinks = ['index.html', 'work.html', 'expertise.html', 'agency.html', 'contact.html', 'style.css', 'script.js', 'favicon.png', 'logo.svg'];
+    rootLinks.forEach(link => {
+        // Replace href="link" with href="../../link"
+        const regexHref = new RegExp(`href="${link}"`, 'g');
+        content = content.replace(regexHref, `href="../../${link}"`);
+
+        // Replace src="link" with src="../../link"
+        const regexSrc = new RegExp(`src="${link}"`, 'g');
+        content = content.replace(regexSrc, `src="../../${link}"`);
+    });
+
+    // Fix chatbot separately as it had specific issues
+    content = content.replace('src="js/chatbot.js"', 'src="../../js/chatbot.js"');
+    content = content.replace('src="../../js/email-forms.js"', 'src="../../js/email-forms.js"');
+
+    // Fix favicon consistency
+    content = content.replace('href="/favicon.png"', 'href="../../favicon.png"');
+
     fs.writeFileSync(path.join(careersDir, `${job.slug}.html`), content);
     console.log(`Generated Job: ${job.slug}`);
 });

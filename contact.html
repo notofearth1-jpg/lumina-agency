@@ -59,6 +59,95 @@
             }
         }
     </style>
+
+    <!-- Open Graph / Facebook -->
+
+
+
+    <meta property="og:description"
+        content="Premium digital agency specializing in design, development, and digital transformation.">
+
+
+
+    <!-- Twitter -->
+
+
+
+    <meta property="twitter:description"
+        content="Premium digital agency specializing in design, development, and digital transformation.">
+
+
+    <!-- Canonical -->
+
+
+    <!-- Favicon (Ensure consistency) -->
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <!-- Structured Data (ProfessionalService) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Lumia Digital",
+      "image": "https://lumiadigital.site/assets/lumia-og-image.jpg",
+      "@id": "https://lumiadigital.site",
+      "url": "https://lumiadigital.site",
+      "email": "hello@lumiadigital.site",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Berlin",
+        "addressCountry": "DE"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 52.5200,
+        "longitude": 13.4050
+      },
+      "openingHoursSpecification": {
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+          "Monday",
+          "Tuesday",
+          "Wednesday",
+          "Thursday",
+          "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "18:00"
+      },
+      "sameAs": [
+        "https://www.linkedin.com/company/lumiadigital",
+        "https://twitter.com/LumiaDigital",
+        "https://www.instagram.com/lumiadigital"
+      ]
+    }
+    </script>
+
+    <meta name="description"
+        content="Get in touch with Lumia Digital. We are a Berlin-based agency ready to transform your digital presence. Start your project today.">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lumiadigital.site/contact.html">
+    <meta property="og:title" content="Contact | Lumia Digital">
+    <meta property="og:description"
+        content="Get in touch with Lumia Digital. We are a Berlin-based agency ready to transform your digital presence. Start your project today.">
+    <meta property="og:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
+    <meta property="og:site_name" content="Lumia Digital">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://lumiadigital.site/contact.html">
+    <meta property="twitter:title" content="Contact | Lumia Digital">
+    <meta property="twitter:description"
+        content="Get in touch with Lumia Digital. We are a Berlin-based agency ready to transform your digital presence. Start your project today.">
+    <meta property="twitter:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="https://lumiadigital.site/contact.html">
+
+    <!-- Favicon (Ensure consistency) -->
+    <link rel="icon" type="image/png" href="/favicon.png">
 </head>
 
 <body>
@@ -139,18 +228,19 @@
             <h1 class="hero-text" style="font-size: 4rem;">Let's Talk</h1>
 
             <div class="contact-grid">
-                <form action="#">
+                <form id="contact-form" action="#">
                     <div class="form-group">
                         <label class="form-label">Name</label>
-                        <input type="text" class="form-input" placeholder="Enter your name">
+                        <input type="text" name="name" class="form-input" placeholder="Enter your name" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Email</label>
-                        <input type="email" class="form-input" placeholder="Enter your email">
+                        <input type="email" name="email" class="form-input" placeholder="Enter your email" required>
                     </div>
                     <div class="form-group">
                         <label class="form-label">Message</label>
-                        <textarea class="form-input" rows="4" placeholder="Tell us about your project"></textarea>
+                        <textarea name="message" class="form-input" rows="4" placeholder="Tell us about your project"
+                            required></textarea>
                     </div>
                     <button type="submit" class="cta-button"
                         style="background: white; color: black; margin-top: 1rem;">Send Message</button>
@@ -159,8 +249,7 @@
                 <div class="contact-info">
                     <div class="form-group">
                         <span class="form-label">Email</span>
-                        <a href="mailto:hello@lumiadigital.site"
-                            style="font-size: 1.5rem;">hello@lumiadigital.site</a>
+                        <a href="mailto:hello@lumiadigital.site" style="font-size: 1.5rem;">hello@lumiadigital.site</a>
                     </div>
                     <div class="form-group">
                         <span class="form-label">Location</span>
@@ -200,6 +289,7 @@
     <script src="script.js"></script>
     <!-- EmailJS SDK -->
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script src="js/email-forms.js"></script>
     <!-- Lumia Assistant Chatbot -->
     <script src="js/chatbot.js"></script>
 </body>

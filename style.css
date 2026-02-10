@@ -45,7 +45,7 @@
     width: 80px;
     height: 80px;
     transform: translateX(150px) translateY(-14px);
-    animation: flameSlideLeft 1s ease-out 1.2s forwards;
+    animation: flameSlideLeft 0.5s ease-out 0.1s forwards;
 }
 
 @keyframes flameSlideLeft {
@@ -443,9 +443,10 @@ nav.scrolled {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: -0.02em;
+    margin: 0;
 }
 
-.hero-text h1.highlight {
+.hero-text h1 .highlight {
     color: transparent;
     -webkit-text-stroke: 1px rgba(255, 255, 255, 0.5);
     position: relative;
@@ -454,7 +455,7 @@ nav.scrolled {
     --y: -100px;
 }
 
-.hero-text h1.highlight::before {
+.hero-text h1 .highlight::before {
     content: attr(data-text);
     position: absolute;
     top: 0;

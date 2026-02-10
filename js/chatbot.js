@@ -6,9 +6,9 @@
 
 (function () {
     // Configuration
-    const API_ENDPOINT = '/api/chat'; // Vercel Edge function
-    const EMAILJS_PUBLIC_KEY = '7s_WCgf_2sO8ahjIy';
-    const EMAILJS_SERVICE_ID = 'service_8olui5o';
+    const API_ENDPOINT = '/.netlify/functions/chat'; // Netlify Functions
+    const EMAILJS_PUBLIC_KEY = 't_jt2N1fPjoNlie9e';
+    const EMAILJS_SERVICE_ID = 'service_bzwukue';
     const EMAILJS_TEMPLATE_ID = 'template_0r3ufzq';
     const RECIPIENT_EMAIL = 'hello@lumiadigital.site';
 
@@ -646,25 +646,125 @@ What would you like to know?`;
         document.getElementById('lumia-send-btn').disabled = false;
     }
 
+    // Generate Calendar Links
+    function generateCalendarLinks(dateStr, timeStr) {
+        // Parse "Wed, Feb 11" and "3:00 PM"
+        const currentYear = new Date().getFullYear();
+        const dateParts = dateStr.split(', ')[1].split(' '); // ["Feb", "11"]
+        const monthMap = { Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5, Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11 };
+        const month = monthMap[dateParts[0]];
+        const day = parseInt(dateParts[1]);
+
+        const timeParts = timeStr.match(/(\d+):(\d+) (AM|PM)/);
+        let hours = parseInt(timeParts[1]);
+        const minutes = parseInt(timeParts[2]);
+        const isPM = timeParts[3] === 'PM';
+
+        if (isPM && hours !== 12) hours += 12;
+        if (!isPM && hours === 12) hours = 0;
+
+        const startDate = new Date(currentYear, month, day, hours, minutes);
+        const endDate = new Date(startDate.getTime() + 30 * 60000); // 30 min duration
+
+        const formatTime = (date) => date.toISOString().replace(/-|:|\.\d+/g, '');
+
+        const start = formatTime(startDate);
+        const end = formatTime(endDate);
+
+        const title = encodeURIComponent("Consultation with Lumia Digital");
+        const details = encodeURIComponent("Discussing your project requirements and how Lumia Digital can help.");
+        const location = encodeURIComponent("Google Meet (Link to be provided)");
+
+        const google = `https://www.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${start}/${end}&details=${details}&location=${location}`;
+        const outlook = `https://outlook.live.com/calendar/0/deeplink/compose?subject=${title}&startdt=${startDate.toISOString()}&enddt=${endDate.toISOString()}&body=${details}&location=${location}`;
+
+        return { google, outlook };
+    }
+
     // Send lead data via EmailJS
     function sendLeadEmail(withMeeting) {
         if (typeof emailjs !== 'undefined' && leadData.email) {
-            const templateParams = {
+
+            // Service IDs
+            const ADMIN_SERVICE_ID = 'service_bth9k5j'; // Gmail (for Admin)
+            const CLIENT_SERVICE_ID = 'service_bzwukue'; // Brevo (for Client)
+
+            // Generate Calendar Links if meeting exists
+            let calendarLinks = { google: '', outlook: '' };
+            if (withMeeting && leadData.meetingDate && leadData.meetingTime) {
+                calendarLinks = generateCalendarLinks(leadData.meetingDate, leadData.meetingTime);
+            }
+
+            // 1. Send to Admin (Standard Template)
+            const adminParams = {
                 to_email: RECIPIENT_EMAIL,
                 lead_name: leadData.name || 'Unknown',
                 lead_email: leadData.email,
+                name: leadData.name || 'Unknown',
+                email: leadData.email,
+                reply_to: leadData.email,
                 lead_company: leadData.company || 'Not provided',
                 lead_service: leadData.service || 'General inquiry',
                 meeting_date: leadData.meetingDate || 'Not scheduled',
                 meeting_time: leadData.meetingTime || 'Not scheduled',
                 has_meeting: withMeeting ? 'Yes' : 'No',
                 chat_log: conversationHistory.map(m => `${m.isBot ? 'Lumia' : 'User'}: ${m.text}`).join('\n\n'),
+                google_calendar_link: calendarLinks.google,
+                outlook_calendar_link: calendarLinks.outlook,
+                from_name: 'Lumia Digital',
                 timestamp: new Date().toISOString()
             };
 
-            emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, templateParams)
-                .then(() => console.log('Lead sent successfully'))
-                .catch(err => console.error('EmailJS error:', err));
+            // Chain the requests: Admin (Gmail) -> Client (Brevo)
+            console.log('Attempting to send Admin email via Gmail Service...');
+            emailjs.send(ADMIN_SERVICE_ID, EMAILJS_TEMPLATE_ID, adminParams, EMAILJS_PUBLIC_KEY)
+                .then(() => {
+                    console.log('✅ Lead sent to admin successfully (via Gmail)');
+
+                    // 2. Send to User (Client Confirmation)
+                    if (withMeeting) {
+                        const userParams = { ...adminParams };
+                        userParams.to_email = leadData.email;
+                        userParams.is_user_copy = true;
+
+                        userParams.chat_log = `
+Hi ${leadData.name},
+
+Thanks for scheduling a time with us. We're looking forward to hearing about your project.
+
+📅 **Meeting Confirmed**
+Date: ${leadData.meetingDate}
+Time: ${leadData.meetingTime}
+
+👇 **Add to your Calendar**
+[Google Calendar](${calendarLinks.google}) | [Outlook](${calendarLinks.outlook})
+
+--
+Lumia Digital Team
+                        `;
+
+                        const CLIENT_CONFIRMATION_TEMPLATE_ID = 'template_client_confirm';
+
+                        console.log('Attempting to send Client email via Brevo Service...');
+                        return emailjs.send(CLIENT_SERVICE_ID, CLIENT_CONFIRMATION_TEMPLATE_ID, userParams, EMAILJS_PUBLIC_KEY);
+                    }
+                })
+                .then((result) => {
+                    if (result) console.log('✅ Confirmation sent to user successfully (via Brevo)');
+                })
+                .catch(err => {
+                    console.error('❌ EmailJS Error:', err);
+                    // Fallback: If Admin failed, try sending client email anyway
+                    if (withMeeting && err.text !== 'OK') {
+                        const userParams = { ...adminParams };
+                        userParams.to_email = leadData.email;
+                        userParams.chat_log = `Hi ${leadData.name},\n\nMeeting Confirmed: ${leadData.meetingDate} at ${leadData.meetingTime}`;
+                        const CLIENT_CONFIRMATION_TEMPLATE_ID = 'template_client_confirm';
+                        const CLIENT_SERVICE_ID = 'service_bzwukue';
+                        emailjs.send(CLIENT_SERVICE_ID, CLIENT_CONFIRMATION_TEMPLATE_ID, userParams, EMAILJS_PUBLIC_KEY)
+                            .catch(e => console.error('Client email also failed:', e));
+                    }
+                });
         }
     }
 

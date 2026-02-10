@@ -2,12 +2,11 @@
     "name": "lumia-digital",
     "version": "1.0.0",
     "description": "Lumia Digital Agency Website",
-    "type": "module",
     "scripts": {
-        "dev": "vercel dev",
-        "deploy": "vercel --prod"
+        "install:functions": "cd netlify/functions && npm install"
     },
     "dependencies": {
-        "@google/generative-ai": "^0.21.0"
+        "@google/generative-ai": "^0.21.0",
+        "jsdom": "^28.0.0"
     }
 }

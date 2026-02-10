@@ -36,13 +36,13 @@ document.addEventListener('DOMContentLoaded', () => {
             introLetters.forEach((letter, index) => {
                 setTimeout(() => {
                     letter.classList.add('animate');
-                }, index * 80); // 80ms stagger between letters
+                }, index * 40); // 40ms stagger between letters
             });
 
             // Animate the dot after all letters
             setTimeout(() => {
                 if (introDot) introDot.classList.add('animate');
-            }, introLetters.length * 80 + 200);
+            }, introLetters.length * 40 + 100);
 
             // Fade out overlay and reveal website
             setTimeout(() => {
@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 setTimeout(() => {
                     introOverlay.remove();
                 }, 800);
-            }, introLetters.length * 80 + 1000);
+            }, introLetters.length * 40 + 500);
 
-        }, 1500); // Start letter animation after flame slides left
+        }, 600); // Start letter animation after flame slides left (0.6s)
     } else if (introOverlay) {
         // If Lottie not available, just hide overlay
         introOverlay.classList.add('hidden');
