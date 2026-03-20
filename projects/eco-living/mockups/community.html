@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Community</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAFAF5;
+            color: #1a1a1a;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .organic-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(191, 219, 254, .3), transparent 40%), radial-gradient(ellipse at 30% 100%, rgba(187, 247, 208, .25), transparent 40%), #FAFAF5;
+            z-index: 0
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, .04);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .04)
+        }
+
+        .card-strong {
+            background: rgba(255, 255, 255, .85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, .06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .05)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .rank-gold {
+            background: linear-gradient(135deg, #f59e0b, #d97706)
+        }
+
+        .rank-silver {
+            background: linear-gradient(135deg, #9ca3af, #6b7280)
+        }
+
+        .rank-bronze {
+            background: linear-gradient(135deg, #d97706, #92400e)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="organic-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-emerald-600 font-bold uppercase tracking-[.2em]">TOGETHER</p>
+                <h1 class="text-2xl font-extrabold text-gray-900">Community</h1>
+            </div>
+            <button class="w-10 h-10 card rounded-2xl flex items-center justify-center text-gray-400">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Active Challenge -->
+        <div class="card-strong rounded-[28px] overflow-hidden mb-6 slide-up" style="animation-delay:.05s">
+            <div
+                class="relative h-36 bg-gradient-to-br from-emerald-500 to-teal-600 p-5 flex flex-col justify-end overflow-hidden">
+                <div
+                    class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1518531933037-91b2f5f229cc?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-overlay">
+                </div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                <div class="relative z-10">
+                    <span
+                        class="text-[9px] font-bold text-white/60 uppercase tracking-wider bg-white/10 backdrop-blur px-2 py-0.5 rounded-full">Active
+                        Challenge</span>
+                    <h3 class="font-extrabold text-white text-xl mt-2">Plastic-Free Week</h3>
+                </div>
+            </div>
+            <div class="p-5">
+                <div class="flex items-center justify-between mb-3">
+                    <div class="flex items-center gap-2">
+                        <div class="flex -space-x-2">
+                            <img src="https://i.pravatar.cc/32?img=15"
+                                class="w-7 h-7 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/32?img=22"
+                                class="w-7 h-7 rounded-full border-2 border-white">
+                            <img src="https://i.pravatar.cc/32?img=33"
+                                class="w-7 h-7 rounded-full border-2 border-white">
+                            <div
+                                class="w-7 h-7 rounded-full bg-emerald-100 border-2 border-white flex items-center justify-center text-[8px] font-bold text-emerald-600">
+                                +142</div>
+                        </div>
+                    </div>
+                    <span class="text-[10px] text-gray-400 font-bold">3 days left</span>
+                </div>
+                <div class="w-full h-2 bg-emerald-100 rounded-full overflow-hidden">
+                    <div class="h-full bg-gradient-to-r from-emerald-500 to-teal-400 rounded-full" style="width:72%">
+                    </div>
+                </div>
+                <p class="text-[10px] text-gray-400 mt-1.5">72% of community goal reached</p>
+            </div>
+        </div>
+
+        <!-- Leaderboard -->
+        <h3 class="font-bold text-sm text-gray-900 mb-3 slide-up" style="animation-delay:.1s">Leaderboard</h3>
+        <div class="space-y-2.5 mb-6 slide-up" style="animation-delay:.15s">
+            <div class="card-strong rounded-2xl p-4 flex items-center gap-3">
+                <div
+                    class="w-7 h-7 rank-gold rounded-lg flex items-center justify-center text-[10px] font-black text-white shadow-md shadow-amber-500/20">
+                    1</div>
+                <img src="https://i.pravatar.cc/40?img=15"
+                    class="w-10 h-10 rounded-xl border border-gray-100 object-cover">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-gray-900 text-[13px]">Emma Green</h4>
+                    <p class="text-[10px] text-gray-400">2,847 eco points</p>
+                </div>
+                <div class="text-lg">🏆</div>
+            </div>
+            <div class="card-strong rounded-2xl p-4 flex items-center gap-3">
+                <div
+                    class="w-7 h-7 rank-silver rounded-lg flex items-center justify-center text-[10px] font-black text-white">
+                    2</div>
+                <img src="https://i.pravatar.cc/40?img=22"
+                    class="w-10 h-10 rounded-xl border border-gray-100 object-cover">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-gray-900 text-[13px]">Liam Forest</h4>
+                    <p class="text-[10px] text-gray-400">2,631 eco points</p>
+                </div>
+                <div class="text-lg">🥈</div>
+            </div>
+            <div
+                class="card-strong rounded-2xl p-4 flex items-center gap-3 border-2 border-emerald-200 bg-emerald-50/50">
+                <div
+                    class="w-7 h-7 rank-bronze rounded-lg flex items-center justify-center text-[10px] font-black text-white">
+                    3</div>
+                <img src="https://i.pravatar.cc/40?img=47"
+                    class="w-10 h-10 rounded-xl border border-gray-100 object-cover">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-gray-900 text-[13px]">You 🌱</h4>
+                    <p class="text-[10px] text-emerald-600 font-bold">2,412 eco points</p>
+                </div>
+                <div class="text-lg">🥉</div>
+            </div>
+        </div>
+
+        <!-- Upcoming Events -->
+        <h3 class="font-bold text-sm text-gray-900 mb-3 slide-up" style="animation-delay:.2s">Local Events</h3>
+        <div class="space-y-3 slide-up" style="animation-delay:.25s">
+            <div
+                class="card-strong rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-emerald-50 flex flex-col items-center justify-center border border-emerald-100 shrink-0">
+                    <span class="text-lg font-black text-emerald-600">26</span>
+                    <span class="text-[8px] text-gray-400 font-bold -mt-0.5">OCT</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-gray-900 text-[13px]">Beach Cleanup Drive</h4>
+                    <p class="text-[10px] text-gray-400">Sunset Beach • 8:00 AM</p>
+                </div>
+                <div class="w-8 h-8 rounded-xl card flex items-center justify-center text-gray-300">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </div>
+            </div>
+            <div
+                class="card-strong rounded-2xl p-4 flex items-center gap-4 cursor-pointer hover:shadow-md transition-shadow">
+                <div
+                    class="w-14 h-14 rounded-2xl bg-blue-50 flex flex-col items-center justify-center border border-blue-100 shrink-0">
+                    <span class="text-lg font-black text-blue-600">28</span>
+                    <span class="text-[8px] text-gray-400 font-bold -mt-0.5">OCT</span>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-gray-900 text-[13px]">Tree Planting Day</h4>
+                    <p class="text-[10px] text-gray-400">City Park • 10:00 AM</p>
+                </div>
+                <div class="w-8 h-8 rounded-xl card flex items-center justify-center text-gray-300">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="card-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto shadow-lg">
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="bar-chart-3"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Impact</span></button>
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="store"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Market</span></button>
+            <button class="flex flex-col items-center gap-1 text-emerald-600"><i data-lucide="users"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Community</span></button>
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

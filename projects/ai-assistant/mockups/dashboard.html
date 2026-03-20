@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #08080F;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .aurora {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 180deg at 50% 50%, #0a0a1a 0deg, #1a0533 72deg, #0a192f 144deg, #0d1f22 216deg, #1a0a2e 288deg, #0a0a1a 360deg);
+            animation: rotate 20s linear infinite;
+            opacity: .4;
+            z-index: 0
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #a78bfa, #818cf8, #6366f1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .stat-glow {
+            box-shadow: 0 0 40px -10px rgba(139, 92, 246, .3)
+        }
+
+        .bar-animate {
+            animation: barGrow .8s cubic-bezier(.22, 1, .36, 1) forwards;
+            transform-origin: bottom;
+            transform: scaleY(0)
+        }
+
+        @keyframes barGrow {
+            from {
+                transform: scaleY(0)
+            }
+
+            to {
+                transform: scaleY(1)
+            }
+        }
+
+        .pulse-ring {
+            animation: pulseRing 2s ease-out infinite
+        }
+
+        @keyframes pulseRing {
+            0% {
+                box-shadow: 0 0 0 0 rgba(139, 92, 246, .4)
+            }
+
+            100% {
+                box-shadow: 0 0 0 20px rgba(139, 92, 246, 0)
+            }
+        }
+
+        .float {
+            animation: float 6s ease-in-out infinite
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-6px)
+            }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, .05), transparent);
+            background-size: 200% 100%;
+            animation: shimmer 2s infinite
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: 200%
+            }
+
+            100% {
+                background-position: -200%
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Status Bar -->
+        <div class="flex justify-between items-center mb-8">
+            <div class="flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-2xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-lg shadow-violet-500/30">
+                    <i data-lucide="brain" class="w-5 h-5 text-white"></i>
+                </div>
+                <div>
+                    <p class="text-[10px] text-white/40 font-medium uppercase tracking-widest">AI COMPANION</p>
+                    <p class="text-sm font-bold text-white">Good Evening, Alex</p>
+                </div>
+            </div>
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shadow-lg shadow-emerald-400/50"></div>
+                <span class="text-[10px] text-emerald-400 font-semibold">ONLINE</span>
+            </div>
+        </div>
+
+        <!-- AI Status Card -->
+        <div class="glass-strong rounded-[28px] p-6 mb-6 relative overflow-hidden stat-glow float">
+            <div class="absolute -top-20 -right-20 w-60 h-60 bg-violet-600/20 rounded-full blur-3xl"></div>
+            <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-indigo-600/20 rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-6">
+                    <div>
+                        <h2 class="text-2xl font-extrabold text-white mb-1">System Overview</h2>
+                        <p class="text-white/40 text-xs">All protocols running optimally</p>
+                    </div>
+                    <div class="w-12 h-12 rounded-2xl glass flex items-center justify-center pulse-ring">
+                        <i data-lucide="activity" class="w-6 h-6 text-violet-400"></i>
+                    </div>
+                </div>
+
+                <!-- Stats Row -->
+                <div class="grid grid-cols-3 gap-3">
+                    <div class="glass rounded-2xl p-3 text-center">
+                        <p class="text-2xl font-black gradient-text">94%</p>
+                        <p class="text-[9px] text-white/30 font-semibold uppercase tracking-wider mt-1">Efficiency</p>
+                    </div>
+                    <div class="glass rounded-2xl p-3 text-center">
+                        <p class="text-2xl font-black gradient-text">12</p>
+                        <p class="text-[9px] text-white/30 font-semibold uppercase tracking-wider mt-1">Active Tasks</p>
+                    </div>
+                    <div class="glass rounded-2xl p-3 text-center">
+                        <p class="text-2xl font-black gradient-text">3.2k</p>
+                        <p class="text-[9px] text-white/30 font-semibold uppercase tracking-wider mt-1">Processed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Weekly Activity Chart -->
+        <div class="glass rounded-[28px] p-5 mb-6">
+            <div class="flex justify-between items-center mb-5">
+                <h3 class="font-bold text-sm text-white">Weekly Activity</h3>
+                <span class="text-[10px] text-violet-400 font-bold glass px-3 py-1 rounded-full">+18%</span>
+            </div>
+            <div class="flex items-end justify-between gap-2 h-32">
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-violet-400/40 bar-animate"
+                        style="height:45%"></div>
+                    <span class="text-[9px] text-white/30 font-bold">M</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-violet-400/40 bar-animate"
+                        style="height:70%;animation-delay:.05s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">T</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-violet-400/40 bar-animate"
+                        style="height:55%;animation-delay:.1s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">W</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-indigo-400/60 bar-animate"
+                        style="height:90%;animation-delay:.15s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">T</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-violet-400/40 bar-animate"
+                        style="height:60%;animation-delay:.2s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">F</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-violet-600/80 to-violet-400/40 bar-animate"
+                        style="height:40%;animation-delay:.25s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">S</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-2">
+                    <div class="w-full rounded-xl bg-gradient-to-t from-indigo-600/80 to-violet-400/60 bar-animate"
+                        style="height:80%;animation-delay:.3s"></div>
+                    <span class="text-[9px] text-white/30 font-bold">S</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Protocols -->
+        <h3 class="font-bold text-sm text-white mb-3 px-1">Active Protocols</h3>
+        <div class="space-y-3">
+            <div
+                class="glass rounded-2xl p-4 flex items-center gap-4 group hover:bg-white/[.06] transition-all cursor-pointer">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-br from-emerald-500/20 to-emerald-600/10 flex items-center justify-center border border-emerald-500/20">
+                    <i data-lucide="shield-check" class="w-5 h-5 text-emerald-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[13px]">Security Monitor</h4>
+                    <p class="text-[10px] text-white/30">All systems nominal • 0 threats</p>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-emerald-400 shadow-lg shadow-emerald-400/50"></div>
+            </div>
+            <div
+                class="glass rounded-2xl p-4 flex items-center gap-4 group hover:bg-white/[.06] transition-all cursor-pointer">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-br from-blue-500/20 to-blue-600/10 flex items-center justify-center border border-blue-500/20">
+                    <i data-lucide="database" class="w-5 h-5 text-blue-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[13px]">Data Sync</h4>
+                    <p class="text-[10px] text-white/30">Syncing 247 items • 82% complete</p>
+                </div>
+                <div class="flex items-center gap-1">
+                    <div class="w-16 h-1.5 bg-white/10 rounded-full overflow-hidden">
+                        <div class="w-[82%] h-full bg-blue-500 rounded-full"></div>
+                    </div>
+                </div>
+            </div>
+            <div
+                class="glass rounded-2xl p-4 flex items-center gap-4 group hover:bg-white/[.06] transition-all cursor-pointer">
+                <div
+                    class="w-11 h-11 rounded-2xl bg-gradient-to-br from-amber-500/20 to-amber-600/10 flex items-center justify-center border border-amber-500/20">
+                    <i data-lucide="cpu" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[13px]">Neural Engine</h4>
+                    <p class="text-[10px] text-white/30">Learning rate: 0.003 • Epoch 142</p>
+                </div>
+                <div class="w-2 h-2 rounded-full bg-amber-400 animate-pulse shadow-lg shadow-amber-400/50"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="glass-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto">
+            <button class="flex flex-col items-center gap-1 text-violet-400"><i data-lucide="layout-dashboard"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Home</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"><i
+                    data-lucide="message-circle" class="w-5 h-5"></i><span
+                    class="text-[8px] font-bold">Chat</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"><i
+                    data-lucide="calendar" class="w-5 h-5"></i><span
+                    class="text-[8px] font-bold">Schedule</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30 hover:text-white/60 transition-colors"><i
+                    data-lucide="mic" class="w-5 h-5"></i><span class="text-[8px] font-bold">Voice</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

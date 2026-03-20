@@ -6,3 +6,23 @@ node_modules/
 
 # Local Netlify folder
 .netlify
+
+# Internal Assets & Dashboards
+app_mockups/
+lead-dashboard/
+social_posts/
+email-previews/
+email-dashboard.html
+test_email_*.html
+
+# Internal Scripts
+scrape_*.js
+generate_*.js
+send_*.js
+fix_headers*.js
+
+# Data files
+*.csv
+*leads.json
+leads-data/
+.wwebjs_auth/

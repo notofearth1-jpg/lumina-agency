@@ -1,0 +1,1319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumia Digital — Business Summit Pitch</title>
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        /* ═══════════════════════════════════════════════
+           RESET & GLOBAL
+        ═══════════════════════════════════════════════ */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #06080f;
+            --surface: rgba(255, 255, 255, 0.04);
+            --glass: rgba(255, 255, 255, 0.06);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text: #f0f2f8;
+            --text-muted: rgba(240, 242, 248, 0.55);
+            --cyan: #00d4ff;
+            --blue: #0092e4;
+            --purple: #6a00ff;
+            --gradient: linear-gradient(135deg, #00d4ff 0%, #6a00ff 100%);
+            --glow-cyan: rgba(0, 212, 255, 0.35);
+            --glow-purple: rgba(106, 0, 255, 0.25);
+            --font-display: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+        }
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+            background: var(--bg);
+            color: var(--text);
+            font-family: var(--font-body);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* ═══════════════════════════════════════════════
+           BACKGROUND CANVAS
+        ═══════════════════════════════════════════════ */
+        #bgCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .bg-grid {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            background-image:
+                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+            background-size: 60px 60px;
+            pointer-events: none;
+        }
+
+        /* Ambient Orbs */
+        .orb {
+            position: fixed;
+            border-radius: 50%;
+            filter: blur(100px);
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .orb-1 {
+            width: 600px;
+            height: 600px;
+            background: var(--glow-cyan);
+            top: -200px;
+            left: -200px;
+            animation: orbFloat 18s ease-in-out infinite;
+        }
+
+        .orb-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--glow-purple);
+            bottom: -200px;
+            right: -200px;
+            animation: orbFloat 22s ease-in-out infinite reverse;
+        }
+
+        .orb-3 {
+            width: 350px;
+            height: 350px;
+            background: rgba(0, 180, 255, 0.12);
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            animation: orbPulse 12s ease-in-out infinite;
+        }
+
+        @keyframes orbFloat {
+
+            0%,
+            100% {
+                transform: translate(0, 0);
+            }
+
+            33% {
+                transform: translate(60px, -40px);
+            }
+
+            66% {
+                transform: translate(-40px, 60px);
+            }
+        }
+
+        @keyframes orbPulse {
+
+            0%,
+            100% {
+                transform: translate(-50%, -50%) scale(1);
+                opacity: 0.6;
+            }
+
+            50% {
+                transform: translate(-50%, -50%) scale(1.3);
+                opacity: 0.3;
+            }
+        }
+
+        /* ═══════════════════════════════════════════════
+           SLIDE SYSTEM
+        ═══════════════════════════════════════════════ */
+        .slide-deck {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            z-index: 1;
+        }
+
+        .slide {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 60px 80px;
+            opacity: 0;
+            transform: translateY(40px) scale(0.97);
+            transition: opacity 0.9s cubic-bezier(.22, 1, .36, 1),
+                transform 0.9s cubic-bezier(.22, 1, .36, 1);
+            pointer-events: none;
+            will-change: opacity, transform;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+            pointer-events: auto;
+        }
+
+        .slide.exit {
+            opacity: 0;
+            transform: translateY(-40px) scale(0.97);
+        }
+
+        /* ═══════════════════════════════════════════════
+           TYPOGRAPHY
+        ═══════════════════════════════════════════════ */
+        .headline {
+            font-family: var(--font-display);
+            font-size: clamp(2.8rem, 5.5vw, 5.5rem);
+            font-weight: 700;
+            line-height: 1.08;
+            letter-spacing: -0.03em;
+            text-align: center;
+        }
+
+        .headline .accent {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .headline .thin {
+            font-weight: 300;
+            color: var(--text-muted);
+        }
+
+        .subline {
+            font-family: var(--font-body);
+            font-size: clamp(1rem, 1.6vw, 1.35rem);
+            font-weight: 300;
+            color: var(--text-muted);
+            line-height: 1.65;
+            text-align: center;
+            max-width: 680px;
+            margin-top: 28px;
+        }
+
+        .micro-label {
+            font-family: var(--font-display);
+            font-size: 0.75rem;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            margin-bottom: 18px;
+        }
+
+        /* ═══════════════════════════════════════════════
+           COMPONENTS
+        ═══════════════════════════════════════════════ */
+
+        /* Logo Lockup (Slide 1) */
+        .logo-lockup {
+            display: flex;
+            align-items: center;
+            gap: 2px;
+            margin-bottom: 44px;
+        }
+
+        .logo-lockup svg {
+            width: 56px;
+            height: 56px;
+            filter: drop-shadow(0 0 20px var(--glow-cyan));
+            animation: logoPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes logoPulse {
+
+            0%,
+            100% {
+                filter: drop-shadow(0 0 20px var(--glow-cyan));
+            }
+
+            50% {
+                filter: drop-shadow(0 0 35px var(--glow-cyan));
+            }
+        }
+
+        .logo-lockup span {
+            font-family: var(--font-display);
+            font-size: 1.6rem;
+            font-weight: 600;
+            letter-spacing: 0.12em;
+        }
+
+        .logo-lockup .dot {
+            color: var(--cyan);
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 36px 32px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(0, 212, 255, 0.08);
+        }
+
+        /* Service Grid (Slide 3) */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+            max-width: 960px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 32px 20px;
+        }
+
+        .service-item .icon {
+            width: 52px;
+            height: 52px;
+            margin: 0 auto 16px;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(0, 212, 255, 0.12), rgba(106, 0, 255, 0.12));
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            font-size: 1.5rem;
+        }
+
+        .service-item h4 {
+            font-family: var(--font-display);
+            font-size: 1.05rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .service-item p {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* AI Power Section (Slide 4) */
+        .ai-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            max-width: 900px;
+            width: 100%;
+            margin-top: 40px;
+        }
+
+        .ai-card {
+            text-align: left;
+            padding: 32px;
+        }
+
+        .ai-card h4 {
+            font-family: var(--font-display);
+            font-size: 1.15rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .ai-card h4 .emoji {
+            font-size: 1.3rem;
+        }
+
+        .ai-card p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* Stats Row (Slide 5) */
+        .stats-row {
+            display: flex;
+            gap: 48px;
+            margin-top: 48px;
+        }
+
+        .stat-block {
+            text-align: center;
+        }
+
+        .stat-num {
+            font-family: var(--font-display);
+            font-size: clamp(2.5rem, 4vw, 4rem);
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1.1;
+        }
+
+        .stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 6px;
+            font-weight: 400;
+        }
+
+        /* Tech Orbit (Slide 6) */
+        .tech-pills {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 14px;
+            max-width: 750px;
+            margin-top: 40px;
+        }
+
+        .tech-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 20px;
+            border-radius: 50px;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            font-family: var(--font-display);
+            font-size: 0.85rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            animation: pillFade 0.6s ease both;
+        }
+
+        .tech-pill:hover {
+            border-color: var(--cyan);
+            box-shadow: 0 0 20px rgba(0, 212, 255, 0.12);
+        }
+
+        .tech-pill img {
+            width: 20px;
+            height: 20px;
+        }
+
+        @keyframes pillFade {
+            from {
+                opacity: 0;
+                transform: scale(0.85);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Process Steps (Slide 7) */
+        .process-timeline {
+            display: flex;
+            gap: 20px;
+            max-width: 1000px;
+            width: 100%;
+            margin-top: 44px;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            padding: 28px 16px;
+        }
+
+        .process-step .step-num {
+            font-family: var(--font-display);
+            font-size: 2.4rem;
+            font-weight: 700;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            line-height: 1;
+            margin-bottom: 14px;
+        }
+
+        .process-step h4 {
+            font-family: var(--font-display);
+            font-size: 0.95rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .process-step p {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -10px;
+            width: 20px;
+            height: 2px;
+            background: var(--gradient);
+            opacity: 0.4;
+        }
+
+        .process-step:last-child::after {
+            display: none;
+        }
+
+        /* CTA Slide (Slide 8) */
+        .cta-wrapper {
+            text-align: center;
+        }
+
+        .cta-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            margin-top: 36px;
+            padding: 18px 44px;
+            border-radius: 60px;
+            background: var(--gradient);
+            color: #fff;
+            font-family: var(--font-display);
+            font-size: 1.1rem;
+            font-weight: 600;
+            text-decoration: none;
+            letter-spacing: 0.02em;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            box-shadow: 0 8px 32px rgba(0, 212, 255, 0.25);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 48px rgba(0, 212, 255, 0.35);
+        }
+
+        .cta-btn .arrow {
+            font-size: 1.2rem;
+            transition: transform 0.3s;
+        }
+
+        .cta-btn:hover .arrow {
+            transform: translateX(4px);
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 40px;
+            margin-top: 44px;
+            justify-content: center;
+        }
+
+        .contact-info a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+
+        .contact-info a:hover {
+            color: var(--cyan);
+        }
+
+        /* ═══════════════════════════════════════════════
+           PROGRESS BAR
+        ═══════════════════════════════════════════════ */
+        .progress-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 100;
+            transition: width 0.4s ease;
+            box-shadow: 0 0 16px var(--glow-cyan);
+        }
+
+        /* Slide Dots */
+        .slide-dots {
+            position: fixed;
+            right: 36px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            z-index: 100;
+        }
+
+        .slide-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.15);
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            padding: 0;
+        }
+
+        .slide-dot.active {
+            background: var(--cyan);
+            box-shadow: 0 0 12px var(--glow-cyan);
+            transform: scale(1.4);
+        }
+
+        /* Controls Hint */
+        .controls-hint {
+            position: fixed;
+            bottom: 24px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.72rem;
+            color: rgba(255, 255, 255, 0.2);
+            font-family: var(--font-display);
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .controls-hint .key {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 28px;
+            height: 24px;
+            padding: 0 8px;
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 5px;
+            font-size: 0.65rem;
+        }
+
+        .controls-hint .key.wide {
+            min-width: 56px;
+        }
+
+        /* Auto-play indicator */
+        .autoplay-badge {
+            position: fixed;
+            top: 24px;
+            right: 36px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 16px;
+            border-radius: 50px;
+            background: rgba(0, 212, 255, 0.08);
+            border: 1px solid rgba(0, 212, 255, 0.15);
+            font-family: var(--font-display);
+            font-size: 0.7rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--cyan);
+            z-index: 100;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .autoplay-badge:hover {
+            background: rgba(0, 212, 255, 0.15);
+        }
+
+        .autoplay-badge .pulse-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: var(--cyan);
+            animation: pulseDot 1.5s ease-in-out infinite;
+        }
+
+        .autoplay-badge.paused .pulse-dot {
+            animation: none;
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .autoplay-badge.paused {
+            color: var(--text-muted);
+            border-color: var(--glass-border);
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.4;
+                transform: scale(0.7);
+            }
+        }
+
+        /* Slide-Specific Entrance Animations */
+        .slide.active .stagger-1 {
+            animation: fadeUp 0.7s 0.15s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .slide.active .stagger-2 {
+            animation: fadeUp 0.7s 0.3s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .slide.active .stagger-3 {
+            animation: fadeUp 0.7s 0.45s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .slide.active .stagger-4 {
+            animation: fadeUp 0.7s 0.6s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        .slide.active .stagger-5 {
+            animation: fadeUp 0.7s 0.75s cubic-bezier(.22, 1, .36, 1) both;
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glowing border effect for highlighted cards */
+        .glow-border {
+            position: relative;
+        }
+
+        .glow-border::before {
+            content: '';
+            position: absolute;
+            inset: -1px;
+            border-radius: 21px;
+            background: var(--gradient);
+            opacity: 0;
+            transition: opacity 0.5s;
+            z-index: -1;
+        }
+
+        .glow-border:hover::before {
+            opacity: 0.4;
+        }
+
+        /* ═══════════════════════════════════════════════
+           PARTICLE CANVAS
+        ═══════════════════════════════════════════════ */
+        #particleCanvas {
+            position: fixed;
+            inset: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Timer ring */
+        .timer-ring {
+            position: fixed;
+            top: 24px;
+            left: 36px;
+            z-index: 100;
+        }
+
+        .timer-ring svg {
+            width: 40px;
+            height: 40px;
+            transform: rotate(-90deg);
+        }
+
+        .timer-ring circle {
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .timer-ring .track {
+            stroke: rgba(255, 255, 255, 0.06);
+        }
+
+        .timer-ring .fill {
+            stroke: var(--cyan);
+            stroke-dasharray: 113;
+            stroke-dashoffset: 113;
+            transition: stroke-dashoffset 0.2s linear;
+            filter: drop-shadow(0 0 4px var(--glow-cyan));
+        }
+
+        .timer-text {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-display);
+            font-size: 0.6rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .slide {
+                padding: 40px 24px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 14px;
+            }
+
+            .ai-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .stats-row {
+                flex-wrap: wrap;
+                gap: 24px;
+            }
+
+            .process-timeline {
+                flex-wrap: wrap;
+            }
+
+            .process-step::after {
+                display: none;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+                gap: 16px;
+            }
+
+            .slide-dots {
+                right: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Background Elements -->
+    <canvas id="particleCanvas"></canvas>
+    <div class="bg-grid"></div>
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+
+    <!-- Timer Ring -->
+    <div class="timer-ring">
+        <svg viewBox="0 0 40 40">
+            <circle class="track" cx="20" cy="20" r="18" />
+            <circle class="fill" cx="20" cy="20" r="18" />
+        </svg>
+        <div class="timer-text" id="timerText">1:30</div>
+    </div>
+
+    <!-- Auto-play badge -->
+    <div class="autoplay-badge" id="autoplayBadge" onclick="toggleAutoplay()">
+        <div class="pulse-dot"></div>
+        <span id="autoplayLabel">Auto</span>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- Slide Dots -->
+    <div class="slide-dots" id="slideDots"></div>
+
+    <!-- Controls Hint -->
+    <div class="controls-hint">
+        <span class="key">←</span><span class="key">→</span> Navigate
+        <span style="margin-left: 8px;">·</span>
+        <span style="margin-left: 8px;" class="key wide">Space</span> Pause
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         SLIDES
+    ════════════════════════════════════════════ -->
+    <div class="slide-deck">
+
+        <!-- SLIDE 1: Title / Opening -->
+        <div class="slide active" data-duration="11">
+            <div class="stagger-1 logo-lockup">
+                <img src="favicon.svg" alt="Lumia Digital"
+                    style="width:56px;height:56px;filter:drop-shadow(0 0 20px rgba(0,212,255,0.35));animation:logoPulse 3s ease-in-out infinite;">
+                <span>LUMIA DIGITAL<span class="dot">.</span></span>
+            </div>
+            <div class="stagger-2 headline">
+                <span class="thin">We</span> engineer<br>
+                <span class="accent">digital gravity.</span>
+            </div>
+            <p class="stagger-3 subline">
+                A team of tech enthusiasts & highly trained AI agents — building future-ready digital experiences that
+                pull the world in.
+            </p>
+            <div class="stagger-4 micro-label" style="margin-top: 44px;">
+                www.lumiadigital.site
+            </div>
+        </div>
+
+        <!-- SLIDE 2: The Problem -->
+        <div class="slide" data-duration="11">
+            <div class="stagger-1 micro-label">The Reality</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 4vw, 3.8rem);">
+                <span class="thin">90% of businesses</span><br>
+                <span class="accent">lose customers</span><br>
+                to poor digital presence.
+            </div>
+            <p class="stagger-3 subline">
+                Outdated websites. Broken funnels. Manual processes that drain time and money.
+                Your competitors are already automating — <strong style="color: var(--cyan);">are you?</strong>
+            </p>
+        </div>
+
+        <!-- SLIDE 3: What We Do -->
+        <div class="slide" data-duration="13">
+            <div class="stagger-1 micro-label">Our Expertise</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+                Design. Develop. <span class="accent">Automate.</span>
+            </div>
+            <div class="stagger-3 services-grid">
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">🎨</div>
+                    <h4>UI/UX Design</h4>
+                    <p>Premium interfaces that convert visitors into customers</p>
+                </div>
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">⚡</div>
+                    <h4>Web & App Dev</h4>
+                    <p>Lightning-fast, scalable apps with modern frameworks</p>
+                </div>
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">🤖</div>
+                    <h4>AI Automation</h4>
+                    <p>Smart agents that handle operations 24/7</p>
+                </div>
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">📈</div>
+                    <h4>SEO & Growth</h4>
+                    <p>Data-driven strategies for organic visibility</p>
+                </div>
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">🛒</div>
+                    <h4>E-Commerce</h4>
+                    <p>High-conversion stores that scale revenue</p>
+                </div>
+                <div class="glass-card service-item glow-border">
+                    <div class="icon">🔥</div>
+                    <h4>Branding</h4>
+                    <p>Identities that resonate and stand out</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 4: AI Superpower -->
+        <div class="slide" data-duration="13">
+            <div class="stagger-1 micro-label">Our Secret Weapon</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 3.5vw, 3.2rem);">
+                Humans + <span class="accent">AI Agents</span><br>
+                <span class="thin" style="font-size: 0.5em;">A team that never sleeps.</span>
+            </div>
+            <div class="stagger-3 ai-grid">
+                <div class="glass-card ai-card">
+                    <h4><span class="emoji">🧠</span> Intelligent Automation</h4>
+                    <p>Our AI agents handle lead capture, content creation, customer support, and workflow automation —
+                        running your business while you sleep.</p>
+                </div>
+                <div class="glass-card ai-card">
+                    <h4><span class="emoji">⚙️</span> Smart Integrations</h4>
+                    <p>We connect your tools — CRM, email, analytics, payments — into one seamless automated pipeline
+                        using n8n, LangChain, and custom AI.</p>
+                </div>
+                <div class="glass-card ai-card">
+                    <h4><span class="emoji">🎯</span> Precision Marketing</h4>
+                    <p>AI-powered SEO audits, automated social media, and personalized outreach that converts at 3×
+                        industry average.</p>
+                </div>
+                <div class="glass-card ai-card">
+                    <h4><span class="emoji">📊</span> Real-Time Intelligence</h4>
+                    <p>Dashboards with live analytics, predictive insights, and AI recommendations that adapt to your
+                        business in real-time.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 5: Impact / Results -->
+        <div class="slide" data-duration="11">
+            <div class="stagger-1 micro-label">Proven Impact</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+                Results that <span class="accent">speak volumes.</span>
+            </div>
+            <div class="stagger-3 stats-row">
+                <div class="stat-block glass-card" style="padding: 32px 40px;">
+                    <div class="stat-num" data-count="50">0+</div>
+                    <div class="stat-label">Projects Delivered</div>
+                </div>
+                <div class="stat-block glass-card" style="padding: 32px 40px;">
+                    <div class="stat-num" data-count="200">0%</div>
+                    <div class="stat-label">Avg. Traffic Increase</div>
+                </div>
+                <div class="stat-block glass-card" style="padding: 32px 40px;">
+                    <div class="stat-num" data-count="40">0%</div>
+                    <div class="stat-label">Conversion Uplift</div>
+                </div>
+                <div class="stat-block glass-card" style="padding: 32px 40px;">
+                    <div class="stat-num" data-count="100">0%</div>
+                    <div class="stat-label">Client Satisfaction</div>
+                </div>
+            </div>
+            <p class="stagger-4 subline" style="margin-top: 32px; font-size: 0.95rem;">
+                From fitness brands to fashion boutiques, restaurants to coaching institutes — we've scaled businesses
+                across every industry.
+            </p>
+        </div>
+
+        <!-- SLIDE 6: Tech Stack -->
+        <div class="slide" data-duration="10">
+            <div class="stagger-1 micro-label">Technologies We Master</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+                Built with the <span class="accent">best in class.</span>
+            </div>
+            <div class="stagger-3 tech-pills">
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg"
+                        alt="React">React</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg"
+                        alt="Next.js">Next.js</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg"
+                        alt="Python">Python</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg"
+                        alt="Node.js">Node.js</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg"
+                        alt="TypeScript">TypeScript</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/figma/figma-original.svg"
+                        alt="Figma">Figma</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg"
+                        alt="TensorFlow">TensorFlow</span>
+                <span class="tech-pill">🔗 LangChain</span>
+                <span class="tech-pill">🤖 OpenAI</span>
+                <span class="tech-pill">⚡ n8n</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg"
+                        alt="Docker">Docker</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg"
+                        alt="AWS">AWS</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/firebase/firebase-plain.svg"
+                        alt="Firebase">Firebase</span>
+                <span class="tech-pill"><img
+                        src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg"
+                        alt="PostgreSQL">PostgreSQL</span>
+            </div>
+        </div>
+
+        <!-- SLIDE 7: Our Process -->
+        <div class="slide" data-duration="10">
+            <div class="stagger-1 micro-label">How We Work</div>
+            <div class="stagger-2 headline" style="font-size: clamp(2rem, 3.5vw, 3rem);">
+                From idea to <span class="accent">launch in weeks.</span>
+            </div>
+            <div class="stagger-3 process-timeline">
+                <div class="glass-card process-step">
+                    <div class="step-num">01</div>
+                    <h4>Discover</h4>
+                    <p>Deep-dive into your business goals, audience & competitors</p>
+                </div>
+                <div class="glass-card process-step">
+                    <div class="step-num">02</div>
+                    <h4>Design</h4>
+                    <p>Pixel-perfect UI/UX crafted for conversion & delight</p>
+                </div>
+                <div class="glass-card process-step">
+                    <div class="step-num">03</div>
+                    <h4>Develop</h4>
+                    <p>Clean, performant code with AI-powered automations built in</p>
+                </div>
+                <div class="glass-card process-step">
+                    <div class="step-num">04</div>
+                    <h4>Launch & Scale</h4>
+                    <p>Go live with ongoing optimization & growth strategies</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SLIDE 8: CTA / Close -->
+        <div class="slide" data-duration="11">
+            <div class="stagger-1 logo-lockup">
+                <img src="favicon.svg" alt="Lumia Digital"
+                    style="width:48px;height:48px;filter:drop-shadow(0 0 20px rgba(0,212,255,0.35));animation:logoPulse 3s ease-in-out infinite;">
+            </div>
+            <div class="stagger-2 cta-wrapper">
+                <div class="headline" style="font-size: clamp(2.2rem, 4.5vw, 4.5rem);">
+                    Let's build<br>
+                    <span class="accent">something extraordinary.</span>
+                </div>
+                <p class="subline" style="margin-top: 20px;">
+                    Your next chapter starts with a conversation.
+                </p>
+                <a href="https://lumiadigital.site/contact.html" class="cta-btn">
+                    Start Your Project <span class="arrow">→</span>
+                </a>
+            </div>
+            <div class="stagger-4 contact-info">
+                <a href="https://lumiadigital.site">🌐 lumiadigital.site</a>
+                <a href="mailto:hello@lumiadigital.site">✉️ hello@lumiadigital.site</a>
+                <a href="#">🔗 LinkedIn</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- ════════════════════════════════════════════
+         JAVASCRIPT
+    ════════════════════════════════════════════ -->
+    <script>
+        (() => {
+            // ── Particle Background ──
+            const canvas = document.getElementById('particleCanvas');
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+
+            function resizeCanvas() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resizeCanvas();
+            window.addEventListener('resize', resizeCanvas);
+
+            class Particle {
+                constructor() { this.reset(); }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 1.5 + 0.3;
+                    this.speedX = (Math.random() - 0.5) * 0.3;
+                    this.speedY = (Math.random() - 0.5) * 0.3;
+                    this.opacity = Math.random() * 0.4 + 0.1;
+                    this.hue = Math.random() > 0.5 ? 195 : 270;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) this.reset();
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `hsla(${this.hue}, 100%, 65%, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => { p.update(); p.draw(); });
+
+                // Draw connecting lines
+                for (let a = 0; a < particles.length; a++) {
+                    for (let b = a + 1; b < particles.length; b++) {
+                        const dx = particles[a].x - particles[b].x;
+                        const dy = particles[a].y - particles[b].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 120) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(0, 212, 255, ${0.06 * (1 - dist / 120)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[a].x, particles[a].y);
+                            ctx.lineTo(particles[b].x, particles[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                requestAnimationFrame(animateParticles);
+            }
+            animateParticles();
+
+            // ── Slide Engine ──
+            const slides = document.querySelectorAll('.slide');
+            const totalSlides = slides.length;
+            const progressBar = document.getElementById('progressBar');
+            const dotsContainer = document.getElementById('slideDots');
+            const timerFill = document.querySelector('.timer-ring .fill');
+            const timerText = document.getElementById('timerText');
+
+            let current = 0;
+            let autoplay = true;
+            let slideTimer = null;
+            let elapsed = 0; // ms elapsed in current slide
+            let tickInterval = null;
+
+            // Build dots
+            for (let i = 0; i < totalSlides; i++) {
+                const dot = document.createElement('button');
+                dot.className = 'slide-dot' + (i === 0 ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dotsContainer.appendChild(dot);
+            }
+
+            function getDuration(idx) {
+                return (parseInt(slides[idx].dataset.duration) || 10) * 1000;
+            }
+
+            function totalTime() {
+                let t = 0;
+                slides.forEach(s => t += parseInt(s.dataset.duration) || 10);
+                return t;
+            }
+
+            // Timer
+            function updateTimerRing() {
+                const dur = getDuration(current);
+                const pct = elapsed / dur;
+                const offset = 113 - (113 * pct);
+                timerFill.style.strokeDashoffset = offset;
+
+                // Overall time remaining
+                let remaining = 0;
+                for (let i = current; i < totalSlides; i++) {
+                    remaining += ((parseInt(slides[i].dataset.duration) || 10) * 1000);
+                }
+                remaining -= elapsed;
+                const secs = Math.max(0, Math.ceil(remaining / 1000));
+                const m = Math.floor(secs / 60);
+                const s = secs % 60;
+                timerText.textContent = `${m}:${s.toString().padStart(2, '0')}`;
+            }
+
+            function goTo(idx) {
+                if (idx === current) return;
+                slides[current].classList.remove('active');
+                slides[current].classList.add('exit');
+                setTimeout(() => slides[current !== idx ? current : idx].classList.remove('exit'), 900);
+
+                const prev = current;
+                current = idx;
+                slides[current].classList.add('active');
+
+                // Update dots
+                document.querySelectorAll('.slide-dot').forEach((d, i) => {
+                    d.classList.toggle('active', i === current);
+                });
+
+                // Update progress bar
+                progressBar.style.width = `${((current + 1) / totalSlides) * 100}%`;
+
+                // Animated counters on slide 5 (index 4)
+                if (current === 4) animateCounters();
+
+                // Reset timer
+                elapsed = 0;
+                updateTimerRing();
+                if (autoplay) startAutoAdvance();
+            }
+
+            function next() {
+                if (current < totalSlides - 1) goTo(current + 1);
+                else { autoplay = false; updateBadge(); clearSlideTimer(); }
+            }
+
+            function prev() {
+                if (current > 0) goTo(current - 1);
+            }
+
+            function startAutoAdvance() {
+                clearSlideTimer();
+                const dur = getDuration(current);
+                slideTimer = setTimeout(next, dur - elapsed);
+                tickInterval = setInterval(() => {
+                    elapsed += 100;
+                    updateTimerRing();
+                }, 100);
+            }
+
+            function clearSlideTimer() {
+                clearTimeout(slideTimer);
+                clearInterval(tickInterval);
+            }
+
+            function toggleAutoplay() {
+                autoplay = !autoplay;
+                if (autoplay) { startAutoAdvance(); }
+                else { clearSlideTimer(); }
+                updateBadge();
+            }
+
+            function updateBadge() {
+                const badge = document.getElementById('autoplayBadge');
+                const label = document.getElementById('autoplayLabel');
+                badge.classList.toggle('paused', !autoplay);
+                label.textContent = autoplay ? 'Auto' : 'Paused';
+            }
+
+            // Keyboard
+            document.addEventListener('keydown', e => {
+                if (e.key === 'ArrowRight' || e.key === 'ArrowDown') next();
+                else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') prev();
+                else if (e.key === ' ') { e.preventDefault(); toggleAutoplay(); }
+            });
+
+            // Animated Counters
+            function animateCounters() {
+                document.querySelectorAll('.stat-num[data-count]').forEach(el => {
+                    const target = parseInt(el.dataset.count);
+                    const suffix = el.textContent.replace(/[0-9]/g, '');
+                    let val = 0;
+                    const step = Math.ceil(target / 40);
+                    const interval = setInterval(() => {
+                        val += step;
+                        if (val >= target) { val = target; clearInterval(interval); }
+                        el.textContent = val + suffix;
+                    }, 35);
+                });
+            }
+
+            // Init
+            updateTimerRing();
+            progressBar.style.width = `${(1 / totalSlides) * 100}%`;
+            if (autoplay) startAutoAdvance();
+        })();
+    </script>
+
+</body>
+
+</html>

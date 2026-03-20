@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>City Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #050508;
+            color: #E2E8F0;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .city-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(6, 182, 212, .12), transparent 50%), radial-gradient(ellipse at 80% 80%, rgba(168, 85, 247, .06), transparent 40%), linear-gradient(rgba(255, 255, 255, .02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .02) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+            z-index: 0
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .neon-cyan {
+            color: #06b6d4;
+            text-shadow: 0 0 20px rgba(6, 182, 212, .3)
+        }
+
+        .neon-border {
+            border-color: rgba(6, 182, 212, .3);
+            box-shadow: 0 0 20px -5px rgba(6, 182, 212, .15)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .bar-grow {
+            animation: barGrow .8s cubic-bezier(.22, 1, .36, 1) forwards;
+            transform-origin: bottom;
+            transform: scaleY(0)
+        }
+
+        @keyframes barGrow {
+            from {
+                transform: scaleY(0)
+            }
+
+            to {
+                transform: scaleY(1)
+            }
+        }
+
+        .pulse-dot {
+            animation: pulse 2s ease-in-out infinite
+        }
+
+        @keyframes pulse {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(6, 182, 212, .5)
+            }
+
+            50% {
+                box-shadow: 0 0 0 6px rgba(6, 182, 212, 0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="city-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] neon-cyan font-bold uppercase tracking-[.3em] font-mono">SYSTEM ONLINE</p>
+                <h1 class="text-2xl font-bold text-white">City Dashboard</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <div class="glass rounded-full px-3 py-1.5 flex items-center gap-2">
+                    <div class="w-2 h-2 bg-cyan-400 rounded-full pulse-dot"></div>
+                    <span class="text-[9px] font-mono text-cyan-400 font-bold">LIVE</span>
+                </div>
+                <img src="https://i.pravatar.cc/80?img=11"
+                    class="w-10 h-10 rounded-2xl border border-cyan-500/20 object-cover">
+            </div>
+        </div>
+
+        <!-- City Health Score -->
+        <div class="glass-strong rounded-[28px] p-6 mb-5 neon-border relative overflow-hidden slide-up"
+            style="animation-delay:.05s">
+            <div class="absolute -top-20 -right-20 w-60 h-60 bg-cyan-500/5 rounded-full blur-3xl"></div>
+            <div class="relative z-10">
+                <div class="flex justify-between items-start mb-5">
+                    <div>
+                        <p class="text-[10px] text-white/30 font-mono uppercase tracking-widest mb-1">CITY HEALTH INDEX
+                        </p>
+                        <div class="flex items-baseline gap-2">
+                            <span class="text-5xl font-bold neon-cyan">94</span>
+                            <span class="text-sm text-white/20 font-mono">/100</span>
+                        </div>
+                    </div>
+                    <span
+                        class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-3 py-1 rounded-full font-mono">▲
+                        3.2%</span>
+                </div>
+                <div class="grid grid-cols-4 gap-3">
+                    <div class="text-center">
+                        <div class="w-full h-1 bg-white/5 rounded-full mb-1.5 overflow-hidden">
+                            <div class="h-full bg-cyan-400 rounded-full" style="width:92%"></div>
+                        </div>
+                        <span class="text-[8px] text-white/25 font-mono">AIR</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-full h-1 bg-white/5 rounded-full mb-1.5 overflow-hidden">
+                            <div class="h-full bg-emerald-400 rounded-full" style="width:96%"></div>
+                        </div>
+                        <span class="text-[8px] text-white/25 font-mono">WATER</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-full h-1 bg-white/5 rounded-full mb-1.5 overflow-hidden">
+                            <div class="h-full bg-violet-400 rounded-full" style="width:88%"></div>
+                        </div>
+                        <span class="text-[8px] text-white/25 font-mono">ENERGY</span>
+                    </div>
+                    <div class="text-center">
+                        <div class="w-full h-1 bg-white/5 rounded-full mb-1.5 overflow-hidden">
+                            <div class="h-full bg-amber-400 rounded-full" style="width:78%"></div>
+                        </div>
+                        <span class="text-[8px] text-white/25 font-mono">TRAFFIC</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Stats Grid -->
+        <div class="grid grid-cols-2 gap-3 mb-5">
+            <div class="glass-strong rounded-2xl p-4 slide-up" style="animation-delay:.1s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                        <i data-lucide="thermometer" class="w-4 h-4 text-cyan-400"></i>
+                    </div>
+                </div>
+                <p class="text-2xl font-bold text-white">24°C</p>
+                <p class="text-[9px] text-white/25 font-mono mt-0.5">TEMPERATURE</p>
+            </div>
+            <div class="glass-strong rounded-2xl p-4 slide-up" style="animation-delay:.12s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-8 h-8 rounded-xl bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
+                        <i data-lucide="users" class="w-4 h-4 text-violet-400"></i>
+                    </div>
+                </div>
+                <p class="text-2xl font-bold text-white">2.4M</p>
+                <p class="text-[9px] text-white/25 font-mono mt-0.5">COMMUTERS</p>
+            </div>
+            <div class="glass-strong rounded-2xl p-4 slide-up" style="animation-delay:.14s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-8 h-8 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                        <i data-lucide="zap" class="w-4 h-4 text-emerald-400"></i>
+                    </div>
+                </div>
+                <p class="text-2xl font-bold text-white">847<span class="text-sm text-white/20"> MW</span></p>
+                <p class="text-[9px] text-white/25 font-mono mt-0.5">POWER GRID</p>
+            </div>
+            <div class="glass-strong rounded-2xl p-4 slide-up" style="animation-delay:.16s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                        <i data-lucide="train-front" class="w-4 h-4 text-amber-400"></i>
+                    </div>
+                </div>
+                <p class="text-2xl font-bold text-white">98.7<span class="text-sm text-white/20">%</span></p>
+                <p class="text-[9px] text-white/25 font-mono mt-0.5">TRANSIT ON-TIME</p>
+            </div>
+        </div>
+
+        <!-- Energy Consumption -->
+        <div class="glass-strong rounded-[24px] p-5 mb-5 slide-up" style="animation-delay:.2s">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-sm text-white">Energy Today</h3>
+                <span class="text-[9px] text-cyan-400 font-mono font-bold glass px-3 py-1 rounded-full">-12% vs
+                    avg</span>
+            </div>
+            <div class="flex items-end justify-between gap-1.5 h-20">
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
+                    <div class="w-full rounded-md bg-gradient-to-t from-cyan-600/60 to-cyan-400/20 bar-grow"
+                        style="height:40%"></div>
+                    <span class="text-[7px] text-white/15 font-mono">00</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
+                    <div class="w-full rounded-md bg-gradient-to-t from-cyan-600/60 to-cyan-400/20 bar-grow"
+                        style="height:30%;animation-delay:.03s"></div>
+                    <span class="text-[7px] text-white/15 font-mono">04</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
+                    <div class="w-full rounded-md bg-gradient-to-t from-cyan-600/80 to-cyan-400/40 bar-grow"
+                        style="height:65%;animation-delay:.06s"></div>
+                    <span class="text-[7px] text-white/15 font-mono">08</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
+                    <div class="w-full rounded-md bg-gradient-to-t from-cyan-500 to-violet-400/40 bar-grow"
+                        style="height:85%;animation-delay:.09s"></div>
+                    <span class="text-[7px] text-white/15 font-mono">12</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-1.5">
+                    <div class="w-full rounded-md bg-gradient-to-t from-cyan-500 to-cyan-400/40 bar-grow neon-border"
+                        style="height:95%;animation-delay:.12s"></div>
+                    <span class="text-[7px] text-cyan-400 font-mono font-bold">NOW</span>
+                </div>
+                <div class="flex-1 flex flex-col items-center gap-1.5">
+                    <div class="w-full rounded-md bg-white/5 border border-dashed border-white/10" style="height:70%">
+                    </div>
+                    <span class="text-[7px] text-white/15 font-mono">20</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Alerts -->
+        <h3 class="font-bold text-sm text-white mb-3 slide-up" style="animation-delay:.25s">Active Alerts</h3>
+        <div class="space-y-2.5 slide-up" style="animation-delay:.3s">
+            <div class="glass-strong rounded-2xl p-4 flex items-center gap-3 border-l-2 border-amber-400">
+                <div
+                    class="w-9 h-9 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                    <i data-lucide="construction" class="w-4 h-4 text-amber-400"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-white text-[12px]">Road work on 5th Ave</h4>
+                    <p class="text-[10px] text-white/25 font-mono">ETA: 2 hrs • Alt route available</p>
+                </div>
+            </div>
+            <div class="glass-strong rounded-2xl p-4 flex items-center gap-3 border-l-2 border-cyan-400">
+                <div
+                    class="w-9 h-9 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                    <i data-lucide="droplets" class="w-4 h-4 text-cyan-400"></i>
+                </div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-white text-[12px]">Water maintenance — Zone 7</h4>
+                    <p class="text-[10px] text-white/25 font-mono">Scheduled • 11 PM – 3 AM</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="glass-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto">
+            <button class="flex flex-col items-center gap-1 text-cyan-400"><i data-lucide="layout-dashboard"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Dashboard</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="map"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Map</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="alert-circle"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Report</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="settings"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Settings</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

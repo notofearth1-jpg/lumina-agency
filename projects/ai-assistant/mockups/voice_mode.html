@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Voice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #08080F;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center
+        }
+
+        .aurora {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg at 50% 50%, #0a0a1a 0deg, #1a0533 80deg, #0a192f 160deg, #1a0a2e 240deg, #0a0a1a 360deg);
+            animation: rotate 15s linear infinite;
+            opacity: .5;
+            z-index: 0
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .orb-container {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center
+        }
+
+        .orb-core {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 35% 35%, #c4b5fd, #8b5cf6, #6d28d9, #4c1d95);
+            box-shadow: 0 0 60px rgba(139, 92, 246, .6), 0 0 120px rgba(99, 102, 241, .3), 0 0 200px rgba(139, 92, 246, .15);
+            animation: orbBreathe 4s ease-in-out infinite
+        }
+
+        @keyframes orbBreathe {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 60px rgba(139, 92, 246, .6), 0 0 120px rgba(99, 102, 241, .3)
+            }
+
+            50% {
+                transform: scale(1.1);
+                box-shadow: 0 0 80px rgba(139, 92, 246, .8), 0 0 160px rgba(99, 102, 241, .4)
+            }
+        }
+
+        .ring {
+            position: absolute;
+            border-radius: 50%;
+            border: 1px solid rgba(139, 92, 246, .15);
+            animation: ringPulse 3s ease-in-out infinite
+        }
+
+        .ring-1 {
+            width: 160px;
+            height: 160px;
+            animation-delay: 0s
+        }
+
+        .ring-2 {
+            width: 200px;
+            height: 200px;
+            animation-delay: .5s
+        }
+
+        .ring-3 {
+            width: 240px;
+            height: 240px;
+            animation-delay: 1s;
+            border-style: dashed
+        }
+
+        @keyframes ringPulse {
+
+            0%,
+            100% {
+                opacity: .3;
+                transform: scale(1)
+            }
+
+            50% {
+                opacity: .6;
+                transform: scale(1.05)
+            }
+        }
+
+        .wave-bar {
+            width: 3px;
+            border-radius: 999px;
+            background: linear-gradient(to top, rgba(139, 92, 246, .3), rgba(139, 92, 246, .8));
+            animation: wave 1.2s ease-in-out infinite
+        }
+
+        @keyframes wave {
+
+            0%,
+            100% {
+                height: 6px
+            }
+
+            50% {
+                height: 28px
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .transcript {
+            animation: fadeIn .6s ease-out
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora"></div>
+
+    <div class="relative z-10 flex flex-col items-center justify-between h-full w-full p-6">
+        <!-- Top -->
+        <div class="w-full flex justify-between items-center">
+            <button class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/40">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
+            <div class="text-center">
+                <p class="text-[10px] text-violet-400 font-bold uppercase tracking-widest">VOICE MODE</p>
+                <p class="text-[9px] text-white/20 font-medium">Low Latency • HD Audio</p>
+            </div>
+            <button class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/40">
+                <i data-lucide="settings" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- Center Orb -->
+        <div class="flex flex-col items-center gap-8">
+            <div class="orb-container">
+                <div class="ring ring-1"></div>
+                <div class="ring ring-2"></div>
+                <div class="ring ring-3"></div>
+                <div class="orb-core"></div>
+            </div>
+
+            <!-- Transcript -->
+            <div class="text-center transcript max-w-xs">
+                <p class="text-white/80 text-base font-medium leading-relaxed">"Remind me to call the dentist tomorrow
+                    at <span class="text-violet-300 font-bold">9 AM</span>"</p>
+                <p class="text-white/20 text-[10px] mt-3">Listening...</p>
+            </div>
+        </div>
+
+        <!-- Sound Waves -->
+        <div class="flex items-center justify-center gap-1.5 h-10 mb-2">
+            <div class="wave-bar" style="animation-delay:0s"></div>
+            <div class="wave-bar" style="animation-delay:.1s"></div>
+            <div class="wave-bar" style="animation-delay:.2s"></div>
+            <div class="wave-bar" style="animation-delay:.3s"></div>
+            <div class="wave-bar" style="animation-delay:.4s"></div>
+            <div class="wave-bar" style="animation-delay:.3s"></div>
+            <div class="wave-bar" style="animation-delay:.2s"></div>
+            <div class="wave-bar" style="animation-delay:.15s"></div>
+            <div class="wave-bar" style="animation-delay:.35s"></div>
+            <div class="wave-bar" style="animation-delay:.25s"></div>
+            <div class="wave-bar" style="animation-delay:.1s"></div>
+            <div class="wave-bar" style="animation-delay:.05s"></div>
+            <div class="wave-bar" style="animation-delay:.2s"></div>
+            <div class="wave-bar" style="animation-delay:.35s"></div>
+            <div class="wave-bar" style="animation-delay:.4s"></div>
+        </div>
+
+        <!-- Controls -->
+        <div class="w-full flex items-center justify-center gap-6 pb-4">
+            <button
+                class="w-14 h-14 glass-strong rounded-full flex items-center justify-center text-white/40 hover:text-white/70 transition-colors">
+                <i data-lucide="keyboard" class="w-6 h-6"></i>
+            </button>
+            <button
+                class="w-20 h-20 rounded-full bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center shadow-[0_0_40px_rgba(139,92,246,.5)] hover:shadow-[0_0_60px_rgba(139,92,246,.7)] transition-all active:scale-95">
+                <i data-lucide="mic" class="w-8 h-8 text-white"></i>
+            </button>
+            <button
+                class="w-14 h-14 glass-strong rounded-full flex items-center justify-center text-white/40 hover:text-white/70 transition-colors">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

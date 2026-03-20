@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aesthete | Luxury Real Estate</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        serif: ['"Playfair Display"', 'serif'],
+                        sans: ['Montserrat', 'sans-serif']
+                    },
+                    colors: {
+                        brown: {
+                            100: '#F4EFEA',
+                            400: '#C0A080',
+                            900: '#2A2521'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #FAFAFA;
+            color: #2A2521;
+            overflow-x: hidden;
+        }
+
+        /* Image Masking & Animations */
+        .img-reveal {
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+            transition: clip-path 1.2s cubic-bezier(0.77, 0, 0.175, 1);
+        }
+
+        .img-zoom {
+            transition: transform 1.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .property-card:hover .img-zoom {
+            transform: scale(1.05);
+        }
+
+        /* Interactive Typography */
+        .text-line {
+            position: relative;
+            display: inline-block;
+        }
+
+        .text-line::before {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+
+        .text-line-hover:hover .text-line::before {
+            width: 100%;
+        }
+
+        /* Fine Borders */
+        .fine-border-b {
+            border-bottom: 1px solid rgba(42, 37, 33, 0.1);
+        }
+
+        .fine-border-t {
+            border-top: 1px solid rgba(42, 37, 33, 0.1);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 4px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #FAFAFA;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #C0A080;
+        }
+    </style>
+</head>
+
+<body class="antialiased selection:bg-brown-400 selection:text-white">
+
+    <!-- Navbar -->
+    <nav
+        class="absolute w-full z-50 py-8 px-8 md:px-16 flex justify-between items-center text-white mix-blend-difference">
+        <div class="text-sm tracking-[0.2em] uppercase font-medium">Menu</div>
+
+        <div class="font-serif text-3xl font-bold tracking-tight">ÆSTHETE</div>
+
+        <div
+            class="text-sm tracking-[0.2em] uppercase font-medium cursor-pointer flex items-center gap-2 text-line-hover">
+            <span class="text-line">Inquire</span>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative w-full h-screen overflow-hidden">
+        <div class="absolute inset-0 img-reveal">
+            <!-- Luxury architectural photo -->
+            <img src="https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=2675&auto=format&fit=crop"
+                class="w-full h-full object-cover img-zoom" alt="Luxury Home">
+            <!-- Dark gradient overlay for text legibility -->
+            <div class="absolute inset-0 bg-gradient-to-t from-brown-900/80 via-transparent to-black/20"></div>
+        </div>
+
+        <!-- Hero Content -->
+        <div
+            class="absolute bottom-0 w-full px-8 md:px-16 pb-16 flex flex-col md:flex-row md:items-end justify-between text-white">
+            <div class="max-w-3xl">
+                <p class="font-sans text-xs tracking-[0.3em] uppercase mb-4 text-brown-400 font-semibold">Featured
+                    Property</p>
+                <h1 class="font-serif text-5xl md:text-8xl leading-[1.1] mb-6">The Glass <br> Pavilion.</h1>
+                <div class="flex gap-8 font-sans text-sm tracking-widest uppercase opacity-90">
+                    <div>Los Angeles, CA</div>
+                    <div>$ 14,500,000</div>
+                </div>
+            </div>
+
+            <div class="mt-8 md:mt-0 flex gap-4">
+                <button
+                    class="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-500">
+                    <i class="fa-solid fa-arrow-left"></i>
+                </button>
+                <button
+                    class="w-14 h-14 rounded-full border border-white/30 flex items-center justify-center hover:bg-white hover:text-black transition-colors duration-500">
+                    <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Search/Filter Bar -->
+    <div
+        class="fine-border-b bg-white py-6 px-8 md:px-16 flex flex-wrap items-center justify-between gap-6 font-sans text-sm uppercase tracking-widest sticky top-0 z-40">
+        <div class="flex gap-12">
+            <div class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-brown-900 transition-colors">
+                <span>Location</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </div>
+            <div class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-brown-900 transition-colors">
+                <span>Property Type</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </div>
+            <div class="flex items-center gap-3 cursor-pointer text-gray-500 hover:text-brown-900 transition-colors">
+                <span>Price Range</span> <i class="fa-solid fa-chevron-down text-[10px]"></i>
+            </div>
+        </div>
+        <button class="text-white bg-brown-900 px-8 py-3 rounded hover:bg-brown-400 transition-colors font-medium">
+            Search Registry
+        </button>
+    </div>
+
+    <!-- Collection Grid -->
+    <section class="py-24 px-8 md:px-16 max-w-[1600px] mx-auto">
+        <div class="flex justify-between items-end mb-16">
+            <h2 class="font-serif text-4xl md:text-5xl">Curated <br><span class="text-brown-400 italic">Estates</span>
+            </h2>
+            <a href="#" class="font-sans text-sm tracking-[0.1em] uppercase pb-1 fine-border-b text-line-hover">
+                <span class="text-line">View All Properties</span>
+            </a>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
+
+            <!-- Property 1 -->
+            <div class="property-card group cursor-pointer block mt-12 md:mt-0">
+                <div class="relative w-full aspect-[4/5] overflow-hidden mb-6">
+                    <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2653&auto=format&fit=crop"
+                        class="w-full h-full object-cover img-zoom" alt="Estate">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-brown-400 transition-colors">Villa Firenze
+                        </h3>
+                        <p class="font-sans text-xs tracking-widest uppercase text-gray-500">Beverly Hills, CA</p>
+                    </div>
+                    <div class="font-sans text-sm tracking-widest font-medium">$ 22,000,000</div>
+                </div>
+                <div class="flex gap-6 mt-4 font-sans text-xs text-gray-400">
+                    <span>6 BEDS</span>
+                    <span>8 BATHS</span>
+                    <span>12,500 SQFT</span>
+                </div>
+            </div>
+
+            <!-- Property 2 (Offset) -->
+            <div class="property-card group cursor-pointer block md:mt-32">
+                <div class="relative w-full aspect-[4/5] overflow-hidden mb-6">
+                    <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2670&auto=format&fit=crop"
+                        class="w-full h-full object-cover img-zoom" alt="Estate">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-brown-400 transition-colors">Coastal
+                            Retreat</h3>
+                        <p class="font-sans text-xs tracking-widest uppercase text-gray-500">Malibu, CA</p>
+                    </div>
+                    <div class="font-sans text-sm tracking-widest font-medium">$ 18,500,000</div>
+                </div>
+                <div class="flex gap-6 mt-4 font-sans text-xs text-gray-400">
+                    <span>5 BEDS</span>
+                    <span>6.5 BATHS</span>
+                    <span>8,200 SQFT</span>
+                </div>
+            </div>
+
+            <!-- Property 3 -->
+            <div class="property-card group cursor-pointer block">
+                <div class="relative w-full aspect-[4/3] overflow-hidden mb-6 bg-brown-100">
+                    <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=2670&auto=format&fit=crop"
+                        class="w-full h-full object-cover img-zoom" alt="Estate">
+                </div>
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h3 class="font-serif text-2xl mb-2 group-hover:text-brown-400 transition-colors">Modernist
+                            Haven</h3>
+                        <p class="font-sans text-xs tracking-widest uppercase text-gray-500">Bel Air, CA</p>
+                    </div>
+                    <div class="font-sans text-sm tracking-widest font-medium">$ 9,250,000</div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Editorial Block -->
+    <section class="py-24 bg-brown-900 text-white">
+        <div class="max-w-[1600px] mx-auto px-8 md:px-16 grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <div class="order-2 md:order-1 max-w-lg">
+                <p class="font-sans text-xs tracking-[0.3em] uppercase mb-8 text-brown-400">Our Philosophy</p>
+                <h2 class="font-serif text-4xl leading-tight mb-8">Architecture is the learned game, correct and
+                    magnificent, of forms assembled in the light.</h2>
+                <p class="font-sans text-sm text-gray-400 leading-relaxed mb-10">
+                    We represent properties of architectural significance. From historic mid-century moderns to
+                    contemporary masterpieces, our portfolio is curated for the discerning buyer who treats real estate
+                    not just as a dwelling, but as art.
+                </p>
+                <button
+                    class="border border-white/30 px-8 py-4 text-xs tracking-[0.2em] font-medium uppercase hover:bg-white hover:text-black transition-colors duration-500">
+                    Meet The Brokers
+                </button>
+            </div>
+            <div class="order-1 md:order-2">
+                <img src="https://images.unsplash.com/photo-1613490908682-1d54bd8c61fa?q=80&w=2600&auto=format&fit=crop"
+                    class="w-full h-[600px] object-cover grayscale opacity-80" alt="Architecture">
+            </div>
+        </div>
+    </section>
+
+</body>
+
+</html>

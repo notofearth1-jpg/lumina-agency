@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID | Avant-Garde Apparel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Anton&family=Space+Mono:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        display: ['Anton', 'sans-serif'],
+                        mono: ['"Space Mono"', 'monospace']
+                    },
+                    colors: {
+                        void: {
+                            black: '#0A0A0A',
+                            white: '#F4F4F4',
+                            accent: '#FF3300' /* High-vis orange/red */
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F4F4F4;
+            color: #0A0A0A;
+            overflow-x: hidden;
+            cursor: crosshair;
+        }
+
+        /* Brutalist Elements */
+        .brutal-border {
+            border: 2px solid #0A0A0A;
+        }
+
+        .brutal-shadow {
+            box-shadow: 6px 6px 0px 0px #0A0A0A;
+            transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .brutal-shadow:hover {
+            transform: translate(2px, 2px);
+            box-shadow: 4px 4px 0px 0px #0A0A0A;
+        }
+
+        .brutal-shadow:active {
+            transform: translate(6px, 6px);
+            box-shadow: 0px 0px 0px 0px #0A0A0A;
+        }
+
+        /* Marquee Animation */
+        .marquee {
+            white-space: nowrap;
+            overflow: hidden;
+            box-sizing: border-box;
+            background: #0A0A0A;
+            color: #F4F4F4;
+            display: flex;
+            align-items: center;
+        }
+
+        .marquee span {
+            display: inline-block;
+            padding-left: 100%;
+            animation: marquee 20s linear infinite;
+            font-family: 'Space Mono', monospace;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 0.1em;
+        }
+
+        @keyframes marquee {
+            0% {
+                transform: translate(0, 0);
+            }
+
+            100% {
+                transform: translate(-100%, 0);
+            }
+        }
+
+        /* Glitch Effect on Hover for Images */
+        .glitch-wrapper {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .glitch-wrapper img {
+            transition: filter 0.3s ease, transform 0.5s ease;
+        }
+
+        .glitch-wrapper:hover img {
+            filter: contrast(120%) saturate(0%);
+            transform: scale(1.03);
+        }
+
+        .glitch-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Anton', sans-serif;
+            font-size: 4rem;
+            color: white;
+            text-transform: uppercase;
+            opacity: 0;
+            mix-blend-mode: difference;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            z-index: 10;
+            white-space: nowrap;
+        }
+
+        .glitch-wrapper:hover .glitch-text {
+            opacity: 1;
+        }
+
+        /* Typographic Background */
+        .bg-text {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Anton', sans-serif;
+            font-size: 35vw;
+            color: rgba(10, 10, 10, 0.03);
+            z-index: -1;
+            pointer-events: none;
+            white-space: nowrap;
+            line-height: 0.8;
+        }
+
+        /* Custom selection */
+        ::selection {
+            background: #FF3300;
+            color: #0A0A0A;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-mono">
+
+    <div class="bg-text">VOID</div>
+
+    <!-- Top Marquee -->
+    <div class="marquee border-b-[2px] border-void-black h-10 w-full z-50 fixed top-0">
+        <span>// FREE WORLDWIDE SHIPPING ON ORDERS OVER $250 // NEW COLLECTION 'DISTOPIA' DROPPING FRIDAY 00:00 EST //
+            PRE-ORDER NOW AVAILABLE // DO NOT CONFORM //</span>
+    </div>
+
+    <!-- Navigation -->
+    <nav
+        class="fixed top-10 w-full z-40 bg-void-white/90 backdrop-blur-md border-b-[2px] border-void-black flex justify-between items-stretch h-16">
+
+        <!-- Left Nav -->
+        <div class="flex h-full font-bold text-sm tracking-widest uppercase">
+            <a href="#"
+                class="flex items-center px-6 border-r-[2px] border-void-black hover:bg-void-black hover:text-void-white transition-colors">Shop</a>
+            <a href="#"
+                class="hidden md:flex items-center px-6 border-r-[2px] border-void-black hover:bg-void-black hover:text-void-white transition-colors">Collections</a>
+            <a href="#"
+                class="hidden lg:flex items-center px-6 border-r-[2px] border-void-black hover:bg-void-accent hover:text-void-black transition-colors">Archive</a>
+        </div>
+
+        <!-- Center Logo -->
+        <div
+            class="absolute left-1/2 -translate-x-1/2 top-1/2 -translate-y-1/2 h-full flex items-center px-8 bg-void-black text-void-white transform -skew-x-[15deg]">
+            <span class="font-display text-3xl transform skew-x-[15deg] tracking-wider relative top-0.5">VOID.</span>
+        </div>
+
+        <!-- Right Nav -->
+        <div class="flex h-full font-bold text-sm">
+            <a href="#"
+                class="flex items-center px-6 border-l-[2px] border-void-black hover:bg-void-black hover:text-void-white transition-colors uppercase tracking-widest hidden md:flex">Account</a>
+            <button
+                class="flex items-center px-6 border-l-[2px] border-void-black bg-void-accent hover:bg-void-black hover:text-void-white transition-colors gap-2">
+                CART [2]
+            </button>
+        </div>
+    </nav>
+
+    <main class="pt-[104px] px-4 md:px-8 pb-20">
+
+        <!-- Hero Massive Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-0 brutal-border my-8 bg-void-black relative">
+
+            <!-- Left Text Block -->
+            <div class="md:col-span-5 p-8 md:p-12 lg:p-16 flex flex-col justify-between text-void-white min-h-[60vh]">
+                <div>
+                    <div
+                        class="inline-block bg-void-accent text-void-black font-bold uppercase text-xs px-2 py-1 mb-8 transform -rotate-2">
+                        Season 04</div>
+                    <h1
+                        class="font-display text-7xl md:text-8xl lg:text-9xl leading-[0.85] tracking-tight mb-6 uppercase">
+                        Tech Wear <br> Protocol.
+                    </h1>
+                </div>
+
+                <div class="max-w-md">
+                    <p class="text-sm text-gray-400 mb-8 leading-relaxed">
+                        Engineered for the urban dystopia. Heavyweight fabrics, modular utility, and absolute anonymity.
+                        Subject 001 wearing the complete set.
+                    </p>
+                    <button
+                        class="w-full bg-void-white text-void-black font-bold py-4 text-xl uppercase tracking-widest brutal-shadow border-2 border-void-black hover:bg-void-accent hover:border-void-accent">
+                        Shop The Look →
+                    </button>
+                </div>
+            </div>
+
+            <!-- Right Image Block -->
+            <div
+                class="md:col-span-7 border-t-[2px] md:border-t-0 md:border-l-[2px] border-void-black glitch-wrapper bg-void-white h-[60vh] md:h-auto">
+                <img src="techwear_hero.png" class="w-full h-full object-cover object-top grayscale"
+                    alt="Techwear Model">
+                <div class="glitch-text">SYSTEM OVERRIDE</div>
+
+                <!-- Target Icon Overlay -->
+                <div
+                    class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-void-accent/50 rounded-full flex items-center justify-center mix-blend-difference pointer-events-none">
+                    <div class="w-1 h-1 bg-void-accent/50 rounded-full"></div>
+                    <div class="absolute top-0 w-px h-4 bg-void-accent"></div>
+                    <div class="absolute bottom-0 w-px h-4 bg-void-accent"></div>
+                    <div class="absolute left-0 w-4 h-px bg-void-accent"></div>
+                    <div class="absolute right-0 w-4 h-px bg-void-accent"></div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Product Grid Header -->
+        <div
+            class="flex flex-col md:flex-row justify-between items-end mb-8 mt-24 border-b-[2px] border-void-black pb-4">
+            <h2 class="font-display text-5xl md:text-6xl uppercase tracking-tight">New Arrivals [FW26]</h2>
+            <div class="flex gap-4 mt-4 md:mt-0 font-bold text-sm uppercase">
+                <button class="underline decoration-2 underline-offset-4">View All</button>
+                <button class="text-gray-400 hover:text-void-black">Tops</button>
+                <button class="text-gray-400 hover:text-void-black">Bottoms</button>
+                <button class="text-gray-400 hover:text-void-black">Accessories</button>
+            </div>
+        </div>
+
+        <!-- Product Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- Product 1 -->
+            <div class="group cursor-pointer">
+                <div class="aspect-[3/4] brutal-border bg-white overflow-hidden relative mb-4">
+                    <img src="cargo_vest.png"
+                        class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                        alt="Jacket">
+                    <div
+                        class="absolute top-2 left-2 bg-void-accent text-void-black font-bold text-xs px-2 py-1 uppercase">
+                        Restocked</div>
+
+                    <!-- Quick Add Hover -->
+                    <div
+                        class="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <button
+                            class="w-full bg-void-black text-void-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-void-accent hover:text-void-black transition-colors">
+                            + Quick Add
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start font-bold uppercase text-sm">
+                    <h3>Modular Cargo Vest v2</h3>
+                    <span>$ 285.00</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1 uppercase">Midnight Black / Onyx</p>
+            </div>
+
+            <!-- Product 2 -->
+            <div class="group cursor-pointer">
+                <div class="aspect-[3/4] brutal-border bg-white overflow-hidden relative mb-4">
+                    <img src="oversized_tee.png"
+                        class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                        alt="Shirt">
+
+                    <div
+                        class="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <button
+                            class="w-full bg-void-black text-void-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-void-accent hover:text-void-black transition-colors">
+                            + Quick Add
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start font-bold uppercase text-sm">
+                    <h3>Heavyweight Oversized Tee</h3>
+                    <span>$ 85.00</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1 uppercase">Concrete Ash</p>
+            </div>
+
+            <!-- Product 3 -->
+            <div class="group cursor-pointer">
+                <div class="aspect-[3/4] brutal-border bg-white overflow-hidden relative mb-4">
+                    <img src="tactical_pants.png"
+                        class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                        alt="Pants">
+                    <div
+                        class="absolute top-2 left-2 bg-void-black text-void-white font-bold text-xs px-2 py-1 uppercase">
+                        Low Stock</div>
+
+                    <div
+                        class="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <button
+                            class="w-full bg-void-black text-void-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-void-accent hover:text-void-black transition-colors">
+                            + Quick Add
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start font-bold uppercase text-sm">
+                    <h3>Tactical Parachute Pants</h3>
+                    <span>$ 195.00</span>
+                </div>
+                <p class="text-xs text-gray-500 mt-1 uppercase">Midnight Black</p>
+            </div>
+
+            <!-- Product 4 -->
+            <div class="group cursor-pointer">
+                <div class="aspect-[3/4] brutal-border bg-white overflow-hidden relative mb-4">
+                    <img src="combat_boots.png"
+                        class="w-full h-full object-cover object-center grayscale group-hover:grayscale-0 transition-all duration-500"
+                        alt="Sneakers">
+
+                    <div
+                        class="absolute bottom-0 left-0 w-full translate-y-full group-hover:translate-y-0 transition-transform duration-300">
+                        <button
+                            class="w-full bg-void-black text-void-white py-4 font-bold uppercase tracking-widest text-sm hover:bg-void-accent hover:text-void-black transition-colors">
+                            + Sold Out
+                        </button>
+                    </div>
+                </div>
+                <div class="flex justify-between items-start font-bold uppercase text-sm text-gray-400">
+                    <h3 class="line-through">Platform Combat Boots</h3>
+                    <span>$ 320.00</span>
+                </div>
+                <p class="text-xs text-gray-400 mt-1 uppercase">Currently Unavailable</p>
+            </div>
+
+        </div>
+
+    </main>
+
+</body>
+
+</html>

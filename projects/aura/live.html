@@ -687,6 +687,11 @@
             display: none;
         }
 
+        /* --- Custom Section Header --- */
+        .section-header {
+            padding: var(--gap-section) 8rem 4rem 8rem;
+        }
+
         /* --- Responsive Styles --- */
         @media (max-width: 1024px) {
             :root {
@@ -764,6 +769,59 @@
                 --gap-section: 4rem;
             }
 
+            .section-header {
+                padding: var(--gap-section) 2rem 2rem 2rem;
+            }
+
+            /* --- Disable Horizontal Scrollers & Enable Vertical Stack --- */
+            .projects-sticky, .process-sticky {
+                position: relative;
+                height: auto;
+                display: block;
+            }
+
+            /* --- Project Modal Responsive Overrides --- */
+            .project-modal__inner {
+                padding: 2rem;
+                border-radius: 1rem;
+            }
+            .project-modal__header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+                padding-bottom: 1.5rem;
+                margin-bottom: 2rem;
+            }
+            .project-modal__title {
+                font-size: 3.5rem;
+            }
+            .project-modal__year {
+                font-size: 3rem;
+            }
+            .project-modal__content {
+                grid-template-columns: 1fr;
+                gap: 2.5rem;
+            }
+            .project-modal__specs {
+                grid-template-columns: 1fr 1fr;
+                gap: 1rem;
+            }
+            .project-modal__hero {
+                height: 25rem;
+                margin-bottom: 2rem;
+            }
+            .project-modal__gallery {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+            .project-modal__gallery-item {
+                aspect-ratio: auto;
+            }
+            .project-modal__gallery-item img {
+                height: auto;
+                aspect-ratio: 16/9;
+            }
+
             body {
                 cursor: auto;
             }
@@ -825,16 +883,18 @@
             }
 
             .projects-track {
-                padding-left: 2rem;
-                gap: 3rem;
+                padding: 0 2rem 4rem 2rem;
+                flex-direction: column;
+                gap: 4rem;
             }
 
             .project-card {
-                width: 28rem;
+                width: 100%;
             }
 
             .project-card__img {
-                height: 35rem;
+                height: auto;
+                aspect-ratio: 4/5;
             }
 
             .project-card__title {
@@ -850,12 +910,13 @@
             }
 
             .process-track {
-                padding-left: 2rem;
-                gap: 6rem;
+                padding: 0 2rem 4rem 2rem;
+                flex-direction: column;
+                gap: 4rem;
             }
 
             .process-step {
-                width: 30rem;
+                width: 100%;
             }
 
             .process-step__num {
@@ -895,20 +956,8 @@
                 font-size: 2rem;
             }
 
-            .project-card {
-                width: 24rem;
-            }
-
-            .project-card__img {
-                height: 30rem;
-            }
-
             .service-item__name {
                 font-size: 2.2rem;
-            }
-
-            .process-step {
-                width: 26rem;
             }
 
             .footer-cta {
@@ -1011,7 +1060,7 @@
 
         <!-- Projects (Horizontal Scroll) -->
         <section class="section-dark" style="padding: 0;">
-            <div style="padding: var(--gap-section) 8rem 4rem 8rem;">
+            <div class="section-header">
                 <div class="subtitle">
                     <div class="subtitle__dot"></div>SELECTED WORK
                 </div>
@@ -1114,7 +1163,7 @@
 
         <!-- Process (Horizontal Scroll) -->
         <section style="padding: 0; background: var(--bg);">
-            <div style="padding: var(--gap-section) 8rem 4rem 8rem;">
+            <div class="section-header">
                 <div class="subtitle">
                     <div class="subtitle__dot"></div>THE AURA METHOD
                 </div>
@@ -1245,41 +1294,44 @@
                 .to('.hero__scroll', { opacity: 0.5, duration: 1 }, '-=0.5');
         }
 
-        // --- Horizontal Scroll: Projects ---
-        const projectsTrack = document.querySelector('.projects-track');
-        if (projectsTrack) {
-            gsap.to(projectsTrack, {
-                x: () => -(projectsTrack.scrollWidth - window.innerWidth + 80), // 80 = padding
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.projects-wrap',
-                    start: 'top top',
-                    end: () => '+=' + (projectsTrack.scrollWidth - window.innerWidth + 80),
-                    scrub: 1,
-                    pin: '.projects-sticky',
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
+        // --- Horizontal Scroll (Desktop Only) ---
+        let mm = gsap.matchMedia();
 
-        // --- Horizontal Scroll: Process ---
-        const processTrack = document.querySelector('.process-track');
-        if (processTrack) {
-            gsap.to(processTrack, {
-                x: () => -(processTrack.scrollWidth - window.innerWidth + 80),
-                ease: 'none',
-                scrollTrigger: {
-                    trigger: '.process-wrap',
-                    start: 'top top',
-                    end: () => '+=' + (processTrack.scrollWidth - window.innerWidth + 80),
-                    scrub: 1,
-                    pin: '.process-sticky',
-                    anticipatePin: 1,
-                    invalidateOnRefresh: true
-                }
-            });
-        }
+        mm.add("(min-width: 769px)", () => {
+            const projectsTrack = document.querySelector('.projects-track');
+            if (projectsTrack) {
+                gsap.to(projectsTrack, {
+                    x: () => -(projectsTrack.scrollWidth - window.innerWidth + 80), // 80 = padding
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.projects-wrap',
+                        start: 'top top',
+                        end: () => '+=' + (projectsTrack.scrollWidth - window.innerWidth + 80),
+                        scrub: 1,
+                        pin: '.projects-sticky',
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+            }
+
+            const processTrack = document.querySelector('.process-track');
+            if (processTrack) {
+                gsap.to(processTrack, {
+                    x: () => -(processTrack.scrollWidth - window.innerWidth + 80),
+                    ease: 'none',
+                    scrollTrigger: {
+                        trigger: '.process-wrap',
+                        start: 'top top',
+                        end: () => '+=' + (processTrack.scrollWidth - window.innerWidth + 80),
+                        scrub: 1,
+                        pin: '.process-sticky',
+                        anticipatePin: 1,
+                        invalidateOnRefresh: true
+                    }
+                });
+            }
+        });
 
         // --- Text Animations ---
         const splitDescriptions = new SplitType('.description', { types: 'words' });
