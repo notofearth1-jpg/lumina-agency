@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insights & Blog | Web Design Trends 2026 | Lumia Digital</title>
-    <meta name="description" content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
+    <meta name="description"
+        content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
     <meta name="robots" content="index, follow">
-    
+
     <link rel="icon" type="image/png" href="favicon.png">
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">    <!-- Lottie Animation Library -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Inter:wght@300;400;500&display=swap"
+        rel="stylesheet"> <!-- Lottie Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="blue-fire-data.js"></script>
 
@@ -20,6 +24,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 3rem;
         }
+
         .blog-card {
             background: var(--card-bg);
             border: 1px solid var(--card-border);
@@ -31,19 +36,23 @@
             display: flex;
             flex-direction: column;
         }
+
         .blog-card:hover {
             transform: translateY(-5px);
             border-color: var(--primary);
         }
+
         .blog-img {
             height: 200px;
             width: 100%;
             object-fit: cover;
         }
+
         .blog-content {
             padding: 2rem;
             flex: 1;
         }
+
         .blog-tag {
             font-size: 0.8rem;
             color: var(--primary);
@@ -53,6 +62,7 @@
             margin-bottom: 0.5rem;
             display: block;
         }
+
         .blog-date {
             font-size: 0.8rem;
             color: var(--text-muted);
@@ -62,32 +72,33 @@
     </style>
 
     <!-- Open Graph / Facebook -->
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     <!-- Twitter -->
-    
-    
-    
-    
-    
+
+
+
+
+
 
     <!-- Canonical -->
-    
-    
+
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lumiadigital.site/blog.html">
     <meta property="og:title" content="Insights & Blog | Web Design Trends 2026 | Lumia Digital">
-    <meta property="og:description" content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
+    <meta property="og:description"
+        content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
     <meta property="og:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
     <meta property="og:site_name" content="Lumia Digital">
 
@@ -95,72 +106,141 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://lumiadigital.site/blog.html">
     <meta property="twitter:title" content="Insights & Blog | Web Design Trends 2026 | Lumia Digital">
-    <meta property="twitter:description" content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
+    <meta property="twitter:description"
+        content="Read our latest thoughts on Web Design trends, SEO strategies, and the future of digital marketing. Expert insights from the Lumia Digital team.">
     <meta property="twitter:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://lumiadigital.site/blog.html">
-    
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
+
 <body>
-    
+
     <nav>
-        <div class="container">
+        <div class="nav-container">
             <a href="index.html" class="logo">
-                <img src="logo.svg" alt="Lumia Digital Logo" style="height: 40px;">
+                <div class="logo-flame-container" id="logoFlame"></div>
+                LUMIA DIGITAL<span class="dot">.</span>
             </a>
-            <div class="nav-links">
-                <a href="work.html">Work</a>
-                <a href="services.html">Services</a>
-                <a href="process.html">Process</a>
-                <a href="blog.html" class="active">Insights</a>
-                <a href="contact.html" class="btn btn-primary">Start Project</a>
+            <div class="desktop-menu">
+                <a href="index.html" class="nav-link">Home</a>
+
+                <div class="nav-dropdown">
+                    <a href="work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <!-- Websites -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/websites.html">Websites <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/armory/index.html">Armory.ai</a>
+                                <a href="projects/aura/index.html">Aura Interiors</a>
+                                <a href="projects/gym/index.html">Iron Forge</a>
+                                <a href="projects/restaurant/index.html">Spice Garden</a>
+                                <a href="projects/salon/index.html">Luxe Beauty</a>
+                                <a href="projects/boutique/index.html">Vogue Atelier</a>
+                                <a href="projects/coaching/index.html">Bright Minds</a>
+                            
+                                <a href="projects/nexus/index.html">Nexus VR</a></div>
+                        </div>
+
+                        <!-- Mobile Apps -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/mobile-apps.html">Mobile Apps <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/native-apps/index.html">Native Apps Showcase</a>
+                                <a href="projects/ai-assistant/index.html">AI Life Assistant</a>
+                                <a href="projects/ar-vr-learning/index.html">AR/VR Learning</a>
+                                <a href="projects/eco-living/index.html">Eco-Conscious Living</a>
+                                <a href="projects/healthcare/index.html">Healthcare Companion</a>
+                                <a href="projects/smart-city/index.html">Smart City OS</a>
+                            </div>
+                        </div>
+                        <!-- Web Applications -->
+                        <a href="work/webapps.html">Web Applications</a>
+
+                        <!-- AI Automations -->
+                        <a href="work/ai-automations.html">AI Automations</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="services/design.html">UI/UX Design</a>
+                        <a href="services/development.html">Web Development</a>
+                        <a href="services/branding.html">Branding</a>
+                        <a href="services/seo.html">SEO</a>
+                        <a href="services/ecommerce.html">E-Commerce</a>
+                        <a href="services/motion.html">Motion Design</a>
+                    </div>
+                </div>
+
+                <div class="nav-dropdown">
+                    <a href="agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
+                    <div class="dropdown-menu">
+                        <a href="about/team.html">Our Team</a>
+                        <a href="about/culture.html">Culture</a>
+                        <a href="about/careers.html">Careers</a>
+                        <a href="about/awards.html">Awards</a>
+                        <a href="contact.html">Contact</a>
+                    </div>
+                </div>
             </div>
+            <a href="contact.html" class="cta-button">Let's Talk</a>
+            <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
 
     <div class="page-header">
         <div class="container">
             <h1>Latest <span class="gradient-text">Insights</span></h1>
-            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">Thoughts on design, technology, and business.</p>
+            <p style="max-width: 600px; margin: 0 auto; color: var(--text-muted);">Thoughts on design, technology, and
+                business.</p>
         </div>
     </div>
 
     <section style="padding-bottom: 8rem;">
         <div class="container">
             <div class="blog-grid">
-                
+
                 <!-- Post 1 -->
                 <a href="#" class="blog-card fade-in">
-                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="Web Design Trends">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?auto=format&fit=crop&w=800&q=80"
+                        class="blog-img" alt="Web Design Trends">
                     <div class="blog-content">
                         <span class="blog-tag">Design</span>
                         <h3>5 Web Design Trends Defining 2026</h3>
-                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">From 3D interactive elements to neo-brutalism, here is what's taking over the web this year.</p>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">From 3D interactive
+                            elements to neo-brutalism, here is what's taking over the web this year.</p>
                         <span class="blog-date">Jan 30, 2026 • 5 min read</span>
                     </div>
                 </a>
 
                 <!-- Post 2 -->
                 <a href="#" class="blog-card fade-in" style="transition-delay: 100ms;">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="SEO Strategies">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80"
+                        class="blog-img" alt="SEO Strategies">
                     <div class="blog-content">
                         <span class="blog-tag">SEO</span>
                         <h3>The Death of Keywords?</h3>
-                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">Why semantic search and AI are changing how we rank on Google forever.</p>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">Why semantic search
+                            and AI are changing how we rank on Google forever.</p>
                         <span class="blog-date">Jan 15, 2026 • 7 min read</span>
                     </div>
                 </a>
 
                 <!-- Post 3 -->
                 <a href="#" class="blog-card fade-in" style="transition-delay: 200ms;">
-                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80" class="blog-img" alt="Headless CMS">
+                    <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&w=800&q=80"
+                        class="blog-img" alt="Headless CMS">
                     <div class="blog-content">
                         <span class="blog-tag">Development</span>
                         <h3>Why We Switched to Headless CMS</h3>
-                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">The benefits of decoupling your frontend from your backend for speed and scalability.</p>
+                        <p style="font-size: 1rem; color: var(--text-muted); margin-top: 0.5rem;">The benefits of
+                            decoupling your frontend from your backend for speed and scalability.</p>
                         <span class="blog-date">Dec 20, 2025 • 4 min read</span>
                     </div>
                 </a>
@@ -213,4 +293,5 @@
     <!-- Lumia Assistant Chatbot -->
     <script src="js/chatbot.js"></script>
 </body>
+
 </html>

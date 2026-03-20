@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Proposal from Lumia Digital</title>
+    <!-- We must use inline styles or standard CSS blocks for email compatibility -->
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #030303;
+            color: #ffffff;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #0a0a0a;
+            border: 1px solid #1a1a1a;
+            border-radius: 12px;
+            overflow: hidden;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+
+        .header {
+            padding: 40px 40px 20px 40px;
+            text-align: center;
+            border-bottom: 1px solid rgba(155, 240, 11, 0.1);
+            background: linear-gradient(180deg, rgba(155, 240, 11, 0.05) 0%, rgba(10, 10, 10, 1) 100%);
+        }
+
+        .logo-text {
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            color: #ffffff;
+            margin: 0;
+            display: inline-block;
+        }
+
+        .logo-dot {
+            color: #9bf00b;
+        }
+
+        .hero {
+            padding: 40px;
+            text-align: left;
+        }
+
+        .greeting {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 24px;
+            color: #ffffff;
+        }
+
+        .ai-personalization {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #cccccc;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.03);
+            border-left: 4px solid #9bf00b;
+            border-radius: 4px;
+        }
+
+        .content {
+            font-size: 16px;
+            line-height: 1.6;
+            color: #aaaaaa;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            color: #ffffff;
+            font-weight: 500;
+        }
+
+        .cta-container {
+            text-align: center;
+            margin: 40px 0;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: #9bf00b;
+            color: #000000;
+            font-weight: 700;
+            font-size: 16px;
+            text-decoration: none;
+            padding: 16px 32px;
+            border-radius: 8px;
+            transition: transform 0.2s ease;
+        }
+
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+
+        .footer {
+            padding: 30px 40px;
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            background-color: #050505;
+        }
+
+        .footer-text {
+            font-size: 13px;
+            color: #666666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .footer-link {
+            color: #9bf00b;
+            text-decoration: none;
+        }
+
+        /* Mobile responsivenes */
+        @media only screen and (max-width: 600px) {
+            .container {
+                width: 100% !important;
+                border-radius: 0 !important;
+                margin-top: 0 !important;
+            }
+
+            .hero,
+            .header,
+            .footer {
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div
+        style="display:none;font-size:1px;color:#333333;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">
+        A quick proposal about your digital presence from Lumia Digital.
+    </div>
+
+    <table width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #030303;">
+        <tr>
+            <td align="center">
+                <div class="container">
+
+                    <!-- Header -->
+                    <div class="header">
+                        <h1 class="logo-text">LUMIA DIGITAL<span class="logo-dot">.</span></h1>
+                    </div>
+
+                    <!-- Main Content -->
+                    <div class="hero">
+                        <div class="greeting">Hi {{LEAD_NAME}},</div>
+
+                        <!-- 🤖 AI Injected Content Goes Here -->
+                        <div class="ai-personalization">
+                            {{AI_GENERATED_HOOK}}
+                        </div>
+
+                        <div class="content">
+                            My name is Vibhu from <span class="highlight">Lumia Digital</span>. We are a premium design
+                            agency that specializes in transforming standard interfaces into <span
+                                class="highlight">internet-unseen, visually stunning web experiences</span> that
+                            actually convert traffic into revenue.
+                            <br><br>
+                            I noticed there might be some massive potential to elevate your current digital presence to
+                            match the quality of your product. Whether it's a complete brand refresh, a custom
+                            high-performance Webflow site, or a sleeker UI/UX for your software—we build it.
+                        </div>
+
+                        <div class="cta-container">
+                            <a href="mailto:vibhuthanki@gmail.com?subject=Re: Design Audit for {{LEAD_NAME}}"
+                                class="cta-button">
+                                Claim Free Design Audit
+                            </a>
+                        </div>
+
+                        <div class="content" style="font-size: 14px; text-align: center; margin-bottom: 0;">
+                            If you're open to seeing what's possible, let's chat. No obligation.
+                            <br>Just reply to this email, and I'll send over some custom concepts.
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <div class="footer">
+                        <p class="footer-text">
+                            <strong>Lumia Digital</strong><br>
+                            Elevating the internet.<br><br>
+                            <a href="#" class="footer-link">lumiadigital.agency</a><br><br>
+                            <span style="font-size: 11px;">You received this because I genuinely liked your product. If
+                                you'd rather not hear from me again, just reply "No thanks".</span>
+                        </p>
+                    </div>
+
+                </div>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

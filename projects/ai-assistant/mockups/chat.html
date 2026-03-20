@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chat</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #08080F;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .aurora {
+            position: fixed;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 230deg at 50% 50%, #0a0a1a 0deg, #1a0533 72deg, #0a192f 144deg, #0d1f22 216deg, #1a0a2e 288deg, #0a0a1a 360deg);
+            animation: rotate 20s linear infinite;
+            opacity: .35;
+            z-index: 0
+        }
+
+        @keyframes rotate {
+            to {
+                transform: rotate(360deg)
+            }
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(30px);
+            -webkit-backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .msg-ai {
+            background: linear-gradient(135deg, rgba(139, 92, 246, .12), rgba(99, 102, 241, .08));
+            border: 1px solid rgba(139, 92, 246, .15)
+        }
+
+        .msg-user {
+            background: linear-gradient(135deg, rgba(99, 102, 241, .5), rgba(139, 92, 246, .4));
+            border: 1px solid rgba(255, 255, 255, .15)
+        }
+
+        .orb {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: radial-gradient(circle at 30% 30%, #a78bfa, #6366f1, #4338ca);
+            box-shadow: 0 0 30px rgba(139, 92, 246, .5), 0 0 60px rgba(99, 102, 241, .2);
+            animation: orbPulse 3s ease-in-out infinite
+        }
+
+        @keyframes orbPulse {
+
+            0%,
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 30px rgba(139, 92, 246, .5)
+            }
+
+            50% {
+                transform: scale(1.08);
+                box-shadow: 0 0 50px rgba(139, 92, 246, .7)
+            }
+        }
+
+        .typing-dot {
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: rgba(167, 139, 250, .6);
+            animation: typingBounce 1.4s ease-in-out infinite
+        }
+
+        .typing-dot:nth-child(2) {
+            animation-delay: .2s
+        }
+
+        .typing-dot:nth-child(3) {
+            animation-delay: .4s
+        }
+
+        @keyframes typingBounce {
+
+            0%,
+            60%,
+            100% {
+                transform: translateY(0)
+            }
+
+            30% {
+                transform: translateY(-6px)
+            }
+        }
+
+        .fade-up {
+            animation: fadeUp .5s ease-out forwards;
+            opacity: 0
+        }
+
+        @keyframes fadeUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="aurora"></div>
+
+    <div class="relative z-10 flex flex-col h-screen">
+        <!-- Header -->
+        <div class="p-5 pb-3 flex items-center justify-between">
+            <div class="flex items-center gap-3">
+                <button
+                    class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-colors">
+                    <i data-lucide="arrow-left" class="w-4 h-4"></i>
+                </button>
+                <div class="flex items-center gap-3">
+                    <div class="orb" style="width:36px;height:36px"></div>
+                    <div>
+                        <h3 class="font-bold text-sm text-white">Nova AI</h3>
+                        <p class="text-[10px] text-emerald-400 font-medium flex items-center gap-1"><span
+                                class="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block"></span> Active now</p>
+                    </div>
+                </div>
+            </div>
+            <button
+                class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-colors">
+                <i data-lucide="more-vertical" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- Messages -->
+        <div class="flex-1 overflow-y-auto px-5 py-4 space-y-4">
+            <!-- AI Message -->
+            <div class="flex gap-3 items-end fade-up" style="transform:translateY(10px)">
+                <div class="orb shrink-0" style="width:28px;height:28px;animation-duration:4s"></div>
+                <div class="msg-ai rounded-[20px] rounded-bl-md p-4 max-w-[80%]">
+                    <p class="text-[13px] text-white/90 leading-relaxed">Hey Alex! I've analyzed your schedule for
+                        tomorrow. You have <span class="text-violet-300 font-semibold">3 meetings</span> and a 2-hour
+                        focus block. Want me to optimize it?</p>
+                    <p class="text-[9px] text-white/20 mt-2 text-right">2:34 PM</p>
+                </div>
+            </div>
+
+            <!-- User Message -->
+            <div class="flex justify-end fade-up" style="transform:translateY(10px);animation-delay:.15s">
+                <div class="msg-user rounded-[20px] rounded-br-md p-4 max-w-[80%]">
+                    <p class="text-[13px] text-white leading-relaxed">Yes please! Also can you check if there are any
+                        conflicts with my deadlines?</p>
+                    <p class="text-[9px] text-white/40 mt-2 text-right">2:35 PM</p>
+                </div>
+            </div>
+
+            <!-- AI Message with Card -->
+            <div class="flex gap-3 items-end fade-up" style="transform:translateY(10px);animation-delay:.3s">
+                <div class="orb shrink-0" style="width:28px;height:28px;animation-duration:4s"></div>
+                <div class="max-w-[85%] space-y-2">
+                    <div class="msg-ai rounded-[20px] rounded-bl-md p-4">
+                        <p class="text-[13px] text-white/90 leading-relaxed">Done! I found one conflict and rearranged
+                            your schedule. Here's the optimized version:</p>
+                    </div>
+                    <!-- Schedule Preview Card -->
+                    <div class="glass-strong rounded-2xl p-4 space-y-3">
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-10 rounded-full bg-gradient-to-b from-violet-400 to-indigo-500"></div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Design Review</p>
+                                <p class="text-[10px] text-white/30">9:00 - 10:00 AM</p>
+                            </div>
+                            <div class="ml-auto glass px-2 py-0.5 rounded-full text-[9px] text-emerald-400 font-bold">
+                                Confirmed</div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-10 rounded-full bg-gradient-to-b from-blue-400 to-cyan-500"></div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Focus Block</p>
+                                <p class="text-[10px] text-white/30">10:30 AM - 12:30 PM</p>
+                            </div>
+                            <div class="ml-auto glass px-2 py-0.5 rounded-full text-[9px] text-violet-400 font-bold">
+                                Moved ↑</div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <div class="w-1 h-10 rounded-full bg-gradient-to-b from-amber-400 to-orange-500"></div>
+                            <div>
+                                <p class="text-xs font-bold text-white">Sprint Planning</p>
+                                <p class="text-[10px] text-white/30">2:00 - 3:00 PM</p>
+                            </div>
+                            <div class="ml-auto glass px-2 py-0.5 rounded-full text-[9px] text-amber-400 font-bold">
+                                Conflict ✓</div>
+                        </div>
+                    </div>
+                    <p class="text-[9px] text-white/20 px-1">2:36 PM</p>
+                </div>
+            </div>
+
+            <!-- Typing Indicator -->
+            <div class="flex gap-3 items-end fade-up" style="transform:translateY(10px);animation-delay:.5s">
+                <div class="orb shrink-0" style="width:28px;height:28px;animation-duration:4s"></div>
+                <div class="msg-ai rounded-[20px] rounded-bl-md px-5 py-4 flex gap-1.5">
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                    <div class="typing-dot"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Input -->
+        <div class="p-4">
+            <div class="glass-strong rounded-[22px] p-2 flex items-center gap-2">
+                <button
+                    class="w-10 h-10 rounded-xl glass flex items-center justify-center text-white/40 hover:text-white/70 transition-colors shrink-0">
+                    <i data-lucide="plus" class="w-5 h-5"></i>
+                </button>
+                <input type="text" placeholder="Ask Nova anything..."
+                    class="bg-transparent text-sm text-white placeholder-white/20 flex-1 focus:outline-none px-1">
+                <button
+                    class="w-10 h-10 rounded-xl bg-gradient-to-br from-violet-500 to-indigo-600 flex items-center justify-center text-white shadow-lg shadow-violet-500/30 hover:shadow-violet-500/50 transition-all shrink-0">
+                    <i data-lucide="arrow-up" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

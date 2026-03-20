@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ethernal | Premium NFT Marketplace</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['"Space Grotesk"', 'sans-serif'] },
+                    colors: {
+                        cyber: {
+                            bg: '#0B0A10',
+                            card: '#15131C',
+                            border: '#272336',
+                            pink: '#FF2A85',
+                            cyan: '#00F0FF',
+                            purple: '#8A2BE2'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #0B0A10;
+            color: #FFFFFF;
+            overflow-x: hidden;
+            background-image:
+                radial-gradient(circle at 15% 50%, rgba(255, 42, 133, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 240, 255, 0.1), transparent 25%),
+                radial-gradient(circle at 50% 100%, rgba(138, 43, 226, 0.1), transparent 40%);
+        }
+
+        /* Glass Cards */
+        .cyber-card {
+            background: rgba(21, 19, 28, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .cyber-card:hover {
+            border-color: rgba(0, 240, 255, 0.3);
+            box-shadow: 0 0 30px rgba(0, 240, 255, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Gradients & Text */
+        .text-glow {
+            text-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #FF2A85, #00F0FF);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(90deg, #FF2A85, #8A2BE2);
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, #8A2BE2, #00F0FF);
+            z-index: -1;
+            transition: opacity 0.3s ease;
+            opacity: 0;
+        }
+
+        .btn-primary:hover::before {
+            opacity: 1;
+        }
+
+        /* NFT Image Hover */
+        .nft-image-container::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(11, 10, 16, 0.9) 0%, transparent 60%);
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+        }
+
+        .cyber-card:hover .nft-image-container::after {
+            opacity: 1;
+        }
+
+        .cyber-card img {
+            transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .cyber-card:hover img {
+            transform: scale(1.05);
+        }
+
+        /* Nav Blob */
+        .nav-blob {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(0, 240, 255, 0.3);
+            filter: blur(40px);
+            border-radius: 50%;
+            z-index: -1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .nav-link:hover .nav-blob {
+            opacity: 1;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #0B0A10;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #272336;
+            border-radius: 4px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #FF2A85;
+        }
+    </style>
+</head>
+
+<body class="antialiased font-sans selection:bg-cyber-cyan selection:text-black">
+
+    <!-- Top Navigation -->
+    <nav class="fixed w-full z-50 top-0 border-b border-cyber-border/50 bg-cyber-bg/80 backdrop-blur-xl">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-gradient-to-tr from-cyber-pink to-cyber-cyan p-0.5">
+                    <div class="w-full h-full bg-cyber-bg rounded-full flex items-center justify-center">
+                        <i class="fa-brands fa-ethereum text-white"></i>
+                    </div>
+                </div>
+                <span class="text-2xl font-bold tracking-tighter">ETHERNAL</span>
+            </div>
+
+            <!-- Search -->
+            <div class="hidden md:flex flex-1 max-w-md mx-8 relative group">
+                <div
+                    class="absolute -inset-0.5 bg-gradient-to-r from-cyber-pink to-cyber-cyan rounded-full blur opacity-30 group-hover:opacity-60 transition duration-500">
+                </div>
+                <div
+                    class="relative w-full bg-cyber-card border border-cyber-border rounded-full flex items-center px-4 py-2.5">
+                    <i class="fa-solid fa-search text-gray-500 mr-3"></i>
+                    <input type="text" placeholder="Search unrevealed assets, collections..."
+                        class="bg-transparent border-none text-sm w-full focus:outline-none text-white placeholder-gray-500">
+                    <div
+                        class="px-3 py-2 bg-cyber-bg rounded text-[10px] whitespace-nowrap font-bold text-gray-400 border border-cyber-border">
+                        ⌘ K</div>
+                </div>
+            </div>
+
+            <!-- Links -->
+            <div class="hidden lg:flex items-center gap-8 font-medium text-sm">
+                <a href="#" class="nav-link relative group text-white">
+                    <div class="nav-blob bg-cyber-cyan/30"></div>
+                    Market <i class="fa-solid fa-chevron-down text-[10px] ml-1 opacity-50"></i>
+                </a>
+                <a href="#" class="nav-link relative group text-gray-400 hover:text-white transition-colors">
+                    <div class="nav-blob bg-cyber-pink/30"></div>
+                    Stats
+                </a>
+                <a href="#" class="nav-link relative group text-gray-400 hover:text-white transition-colors">
+                    <div class="nav-blob bg-cyber-purple/30"></div>
+                    Create
+                </a>
+            </div>
+
+            <!-- Actions -->
+            <div class="flex items-center gap-4">
+                <button
+                    class="w-10 h-10 rounded-full bg-cyber-card border border-cyber-border flex items-center justify-center hover:bg-white/5 transition-colors">
+                    <i class="fa-regular fa-bell"></i>
+                </button>
+                <button
+                    class="btn-primary px-6 py-2.5 rounded-full font-bold text-sm shadow-[0_0_20px_rgba(255,42,133,0.3)] flex items-center gap-2">
+                    <i class="fa-solid fa-wallet"></i> Connect Wallet
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-20 max-w-7xl mx-auto px-6">
+
+        <!-- Hero Section -->
+        <div class="flex flex-col lg:flex-row gap-12 items-center mb-24">
+            <div class="flex-1 lg:pr-12">
+                <div
+                    class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-cyber-card border border-cyber-cyan/30 text-cyber-cyan text-xs font-bold mb-6">
+                    <span class="w-2 h-2 rounded-full bg-cyber-cyan animate-pulse"></span>
+                    LIVE DROP: NEON GENESIS
+                </div>
+                <h1 class="text-6xl md:text-7xl font-bold leading-[1.1] mb-6 tracking-tight">
+                    Discover the <br>
+                    <span class="gradient-text italic pr-2">Next Epoch</span> of<br>
+                    Digital Art.
+                </h1>
+                <p class="text-gray-400 text-lg mb-8 max-w-xl leading-relaxed">
+                    Ethernal is the premier marketplace for curated, high-fidelity digital assets. Trade with absolute
+                    zero gas fees on Layer 2.
+                </p>
+                <div class="flex items-center gap-4">
+                    <button
+                        class="btn-primary px-8 py-3.5 rounded-full font-bold text-lg shadow-[0_0_20px_rgba(138,43,226,0.3)]">
+                        Explore Market
+                    </button>
+                    <button
+                        class="px-8 py-3.5 rounded-full font-bold text-lg bg-white/5 border border-white/10 hover:bg-white/10 transition-colors">
+                        Create
+                    </button>
+                </div>
+
+                <!-- Stats row -->
+                <div class="flex items-center gap-10 mt-12 pt-8 border-t border-cyber-border/50">
+                    <div>
+                        <div class="text-3xl font-bold">142 <span class="text-cyber-cyan">K</span></div>
+                        <div class="text-sm text-gray-500 font-medium tracking-wide">COLLECTIONS</div>
+                    </div>
+                    <div>
+                        <div class="text-3xl font-bold">4.2 <span class="text-cyber-pink">M</span></div>
+                        <div class="text-sm text-gray-500 font-medium tracking-wide">VOLUME (ETH)</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Hero Image / Featured NFT -->
+            <div class="flex-1 w-full max-w-md relative">
+                <!-- Decorative blurred shapes behind card -->
+                <div class="absolute -top-10 -right-10 w-64 h-64 bg-cyber-pink/20 blur-[80px] rounded-full"></div>
+                <div class="absolute -bottom-10 -left-10 w-64 h-64 bg-cyber-cyan/20 blur-[80px] rounded-full"></div>
+
+                <!-- Featured Card -->
+                <div class="cyber-card p-4 relative z-10">
+                    <div class="relative rounded-2xl overflow-hidden aspect-[4/5] w-full nft-image-container mb-4">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=2564&auto=format&fit=crop"
+                            alt="Featured NFT" class="w-full h-full object-cover">
+                        <!-- Overlay elements -->
+                        <div
+                            class="absolute top-4 right-4 bg-black/50 backdrop-blur-md px-3 py-1.5 rounded-full border border-white/10 text-xs font-bold flex items-center gap-1">
+                            <i class="fa-solid fa-heart text-cyber-pink"></i> 4.2k
+                        </div>
+                        <div class="absolute bottom-4 left-4 right-4 flex justify-between items-end z-10">
+                            <div>
+                                <h3 class="text-xl font-bold text-white text-glow mb-1">Abstract Construct #042</h3>
+                                <p class="text-gray-300 text-sm flex items-center gap-2">
+                                    <img src="https://i.pravatar.cc/150?img=33"
+                                        class="w-5 h-5 rounded-full border border-white/30"> by @oxVector
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="flex justify-between items-center px-2 pb-2">
+                        <div>
+                            <div class="text-xs text-gray-500 font-medium mb-1 uppercase tracking-widest">Current Bid
+                            </div>
+                            <div class="font-bold text-lg flex items-center gap-1.5">
+                                <i class="fa-brands fa-ethereum text-gray-400"></i> 4.25
+                                <span class="text-sm text-gray-500 font-normal">($12,450)</span>
+                            </div>
+                        </div>
+                        <button
+                            class="bg-white text-black font-bold px-6 py-2.5 rounded-xl hover:bg-gray-200 transition-colors shadow-[0_0_15px_rgba(255,255,255,0.2)]">
+                            Place Bid
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trending Section -->
+        <div>
+            <div class="flex items-end justify-between mb-10">
+                <div>
+                    <h2 class="text-3xl font-bold flex items-center gap-3">
+                        <i class="fa-solid fa-fire text-cyber-pink"></i> Trending Drops
+                    </h2>
+                </div>
+                <div class="flex gap-2">
+                    <button
+                        class="w-10 h-10 rounded-full border border-cyber-border bg-cyber-card flex items-center justify-center hover:bg-white/5 disabled:opacity-50"><i
+                            class="fa-solid fa-arrow-left"></i></button>
+                    <button
+                        class="w-10 h-10 rounded-full border border-cyber-border bg-cyber-card flex items-center justify-center hover:bg-white/5"><i
+                            class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- NFT Card 1 -->
+                <div class="cyber-card p-3 group cursor-pointer">
+                    <div class="relative rounded-xl overflow-hidden aspect-square mb-4 nft-image-container">
+                        <img src="https://images.unsplash.com/photo-1620641788421-7a1c342ea42e?q=80&w=2574&auto=format&fit=crop"
+                            alt="NFT" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-3 left-3 bg-cyber-bg/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold border border-white/10 uppercase tracking-wider text-cyber-cyan">
+                            Rare</div>
+                    </div>
+                    <div class="px-1">
+                        <h4 class="font-bold text-lg mb-1 truncate">Liquid Obsidian #12</h4>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-gray-400">Volumetric</span>
+                            <span class="text-sm font-bold flex items-center gap-1"><i
+                                    class="fa-brands fa-ethereum"></i> 1.80</span>
+                        </div>
+                        <button
+                            class="w-full py-2 bg-cyber-bg border border-cyber-border rounded-lg text-sm font-bold text-gray-300 group-hover:bg-white/10 group-hover:text-white transition-all">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NFT Card 2 -->
+                <div class="cyber-card p-3 group cursor-pointer">
+                    <div class="relative rounded-xl overflow-hidden aspect-square mb-4 nft-image-container">
+                        <img src="https://images.unsplash.com/photo-1634152962476-4b8a00e1915c?q=80&w=2574&auto=format&fit=crop"
+                            alt="NFT" class="w-full h-full object-cover">
+                    </div>
+                    <div class="px-1">
+                        <h4 class="font-bold text-lg mb-1 truncate">Neon Dreamscape</h4>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-gray-400">Synthwave</span>
+                            <span class="text-sm font-bold flex items-center gap-1"><i
+                                    class="fa-brands fa-ethereum"></i> 0.95</span>
+                        </div>
+                        <button
+                            class="w-full py-2 bg-cyber-bg border border-cyber-border rounded-lg text-sm font-bold text-gray-300 group-hover:border-cyber-cyan group-hover:text-cyber-cyan transition-all">
+                            Place Bid
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NFT Card 3 -->
+                <div class="cyber-card p-3 group cursor-pointer">
+                    <div class="relative rounded-xl overflow-hidden aspect-square mb-4 nft-image-container">
+                        <img src="https://images.unsplash.com/photo-1642427749670-f20e2e76ed8c?q=80&w=2680&auto=format&fit=crop"
+                            alt="NFT" class="w-full h-full object-cover">
+                        <div
+                            class="absolute top-3 left-3 bg-cyber-bg/80 backdrop-blur-md px-2 py-1 rounded-md text-[10px] font-bold border border-white/10 uppercase tracking-wider text-cyber-pink">
+                            Legendary</div>
+                    </div>
+                    <div class="px-1">
+                        <h4 class="font-bold text-lg mb-1 truncate">Chrome Anatomy</h4>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-gray-400">0xPunk</span>
+                            <span class="text-sm font-bold flex items-center gap-1"><i
+                                    class="fa-brands fa-ethereum"></i> 5.50</span>
+                        </div>
+                        <button
+                            class="w-full py-2 bg-cyber-bg border border-cyber-border rounded-lg text-sm font-bold text-gray-300 group-hover:bg-white/10 group-hover:text-white transition-all">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+                <!-- NFT Card 4 -->
+                <div class="cyber-card p-3 group cursor-pointer">
+                    <div class="relative rounded-xl overflow-hidden aspect-square mb-4 nft-image-container">
+                        <img src="https://images.unsplash.com/photo-1614850523459-c2f4c699c52e?q=80&w=2670&auto=format&fit=crop"
+                            alt="NFT" class="w-full h-full object-cover">
+                    </div>
+                    <div class="px-1">
+                        <h4 class="font-bold text-lg mb-1 truncate">Geometric Void</h4>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-sm text-gray-400">Studio 54</span>
+                            <span class="text-sm font-bold flex items-center gap-1"><i
+                                    class="fa-brands fa-ethereum"></i> 2.10</span>
+                        </div>
+                        <button
+                            class="w-full py-2 bg-cyber-bg border border-cyber-border rounded-lg text-sm font-bold text-gray-300 group-hover:bg-white/10 group-hover:text-white transition-all">
+                            Buy Now
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+</body>
+
+</html>

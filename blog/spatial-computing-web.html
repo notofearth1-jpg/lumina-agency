@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spatial Computing & The Web | Lumia Digital</title>
     <meta name="description" content="Designing websites for Apple Vision Pro and Meta Quest.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">    <!-- Lottie Animation Library -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet"> <!-- Lottie Animation Library -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
     <script src="../blue-fire-data.js"></script>
 
@@ -13,45 +16,135 @@
     <link rel="stylesheet" href="../style.css">
     <link rel="icon" type="image/svg+xml" href="../favicon.svg">
     <style>
-        .blog-header { padding: 180px 0 60px; text-align: center; max-width: 900px; margin: 0 auto; }
-        .blog-meta { color: var(--accent); font-family: var(--font-head); letter-spacing: 1px; text-transform: uppercase; margin-bottom: 1rem; font-size: 0.9rem; }
-        .blog-hero-img { width: 100%; height: 500px; object-fit: cover; border-radius: 20px; margin-bottom: 4rem; border: 1px solid var(--line); }
-        .blog-content { max-width: 740px; margin: 0 auto; font-size: 1.15rem; line-height: 1.8; color: #d4d4d8; }
-        .blog-content h2 { font-size: 2rem; color: white; margin: 3rem 0 1.5rem; font-family: var(--font-head); }
-        .blog-content p { margin-bottom: 1.5rem; }
-        .blog-content ul { list-style: disc; padding-left: 1.5rem; margin-bottom: 2rem; color: #a1a1aa; }
-        .blog-content li { margin-bottom: 0.5rem; }
-        .blog-content strong { color: white; }
-        .author-box { border-top: 1px solid var(--line); margin-top: 4rem; padding-top: 2rem; display: flex; align-items: center; gap: 1.5rem; }
-        .author-img { width: 60px; height: 60px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent); }
-        .share-links { margin-top: 3rem; display: flex; gap: 1rem; justify-content: center; }
-        .share-btn { padding: 0.5rem 1.5rem; border: 1px solid var(--line); border-radius: 50px; font-size: 0.9rem; transition: 0.3s; }
-        .share-btn:hover { background: white; color: black; }
-        @media(max-width: 768px) { .blog-hero-img { height: 300px; } .blog-header { padding-top: 120px; } }
+        .blog-header {
+            padding: 180px 0 60px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .blog-meta {
+            color: var(--accent);
+            font-family: var(--font-head);
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .blog-hero-img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: 20px;
+            margin-bottom: 4rem;
+            border: 1px solid var(--line);
+        }
+
+        .blog-content {
+            max-width: 740px;
+            margin: 0 auto;
+            font-size: 1.15rem;
+            line-height: 1.8;
+            color: #d4d4d8;
+        }
+
+        .blog-content h2 {
+            font-size: 2rem;
+            color: white;
+            margin: 3rem 0 1.5rem;
+            font-family: var(--font-head);
+        }
+
+        .blog-content p {
+            margin-bottom: 1.5rem;
+        }
+
+        .blog-content ul {
+            list-style: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 2rem;
+            color: #a1a1aa;
+        }
+
+        .blog-content li {
+            margin-bottom: 0.5rem;
+        }
+
+        .blog-content strong {
+            color: white;
+        }
+
+        .author-box {
+            border-top: 1px solid var(--line);
+            margin-top: 4rem;
+            padding-top: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .author-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--accent);
+        }
+
+        .share-links {
+            margin-top: 3rem;
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .share-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--line);
+            border-radius: 50px;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .share-btn:hover {
+            background: white;
+            color: black;
+        }
+
+        @media(max-width: 768px) {
+            .blog-hero-img {
+                height: 300px;
+            }
+
+            .blog-header {
+                padding-top: 120px;
+            }
+        }
     </style>
 
     <!-- Open Graph / Facebook -->
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     <!-- Twitter -->
-    
-    
-    
-    
-    
+
+
+
+
+
 
     <!-- Canonical -->
-    
-    
+
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lumiadigital.site/blog/spatial-computing-web.html">
@@ -69,38 +162,63 @@
 
     <!-- Canonical -->
     <link rel="canonical" href="https://lumiadigital.site/blog/spatial-computing-web.html">
-    
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
+
 <body>
     <div class="grid-bg"></div>
     <div class="glow-orb"></div>
 
-    
+
     <nav>
         <div class="nav-container">
-                        <a href="../index.html" class="logo">
+            <a href="../index.html" class="logo">
                 <div class="logo-flame-container" id="logoFlame"></div>
                 LUMIA DIGITAL<span class="dot">.</span>
             </a>
-                        <div class="desktop-menu">
+            <div class="desktop-menu">
                 <a href="../index.html" class="nav-link">Home</a>
-                
+
                 <div class="nav-dropdown">
                     <a href="../work.html" class="nav-link">Work <span class="dropdown-arrow">▾</span></a>
                     <div class="dropdown-menu">
-                        <a href="../projects/armory/index.html">Armory</a>
-                        <a href="../projects/nexus/index.html">Nexus VR</a>
-                        <a href="../projects/aura/index.html">Aura Interiors</a>
-                        <a href="../projects/gym/index.html">Iron Forge</a>
-                        <a href="../projects/restaurant/index.html">Spice Garden</a>
-                        <a href="../projects/salon/index.html">Luxe Beauty</a>
-                        <a href="../projects/boutique/index.html">Vogue Atelier</a>
-                        <a href="../projects/coaching/index.html">Bright Minds</a>
+                        <!-- Websites -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="../work/websites.html">Websites <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="../projects/armory/index.html">Armory.ai</a>
+                                <a href="../projects/aura/index.html">Aura Interiors</a>
+                                <a href="../projects/gym/index.html">Iron Forge</a>
+                                <a href="../projects/restaurant/index.html">Spice Garden</a>
+                                <a href="../projects/salon/index.html">Luxe Beauty</a>
+                                <a href="../projects/boutique/index.html">Vogue Atelier</a>
+                                <a href="../projects/coaching/index.html">Bright Minds</a>
+                            
+                                <a href="../projects/nexus/index.html">Nexus VR</a></div>
+                        </div>
+
+                        <!-- Mobile Apps -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="../work/mobile-apps.html">Mobile Apps <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="../projects/native-apps/index.html">Native Apps Showcase</a>
+                                <a href="../projects/ai-assistant/index.html">AI Life Assistant</a>
+                                <a href="../projects/ar-vr-learning/index.html">AR/VR Learning</a>
+                                <a href="../projects/eco-living/index.html">Eco-Conscious Living</a>
+                                <a href="../projects/healthcare/index.html">Healthcare Companion</a>
+                                <a href="../projects/smart-city/index.html">Smart City OS</a>
+                            </div>
+                        </div>
+                        <!-- Web Applications -->
+                        <a href="../work/webapps.html">Web Applications</a>
+
+                        <!-- AI Automations -->
+                        <a href="../work/ai-automations.html">AI Automations</a>
                     </div>
                 </div>
-                
+
                 <div class="nav-dropdown">
                     <a href="../expertise.html" class="nav-link">Expertise <span class="dropdown-arrow">▾</span></a>
                     <div class="dropdown-menu">
@@ -112,7 +230,7 @@
                         <a href="../services/motion.html">Motion Design</a>
                     </div>
                 </div>
-                
+
                 <div class="nav-dropdown">
                     <a href="../agency.html" class="nav-link">Agency <span class="dropdown-arrow">▾</span></a>
                     <div class="dropdown-menu">
@@ -124,7 +242,7 @@
                     </div>
                 </div>
             </div>
-<a href="../contact.html" class="cta-button">Let's Talk</a>
+            <a href="../contact.html" class="cta-button">Let's Talk</a>
             <button class="menu-toggle"><span class="line"></span><span class="line"></span></button>
         </div>
     </nav>
@@ -150,26 +268,37 @@
         </header>
 
         <div class="container">
-            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&w=1200&q=80" alt="Spatial Computing & The Web" class="blog-hero-img">
-            
+            <img src="https://images.unsplash.com/photo-1622979135225-d2ba269fb1bd?auto=format&fit=crop&w=1200&q=80"
+                alt="Spatial Computing & The Web" class="blog-hero-img">
+
             <div class="blog-content">
-                
-            <h2>The Infinite Canvas</h2>
-            <p>With the release of Vision Pro, the web is breaking out of the 16:9 monitor. Spatial web design isn't just about VR; it's about depth, glassmorphism, and gaze-based interaction. Your website is no longer a flat plane; it's a window floating in the user's physical space.</p>
-            <p>This requires a rethink of layout. Elements can extend beyond the viewport. Interactions need to account for eye-tracking accuracy. Hover states are triggered by looking, not mousing.</p>
 
-            <img src="https://images.unsplash.com/photo-1592478411213-61535fdd861d?auto=format&fit=crop&w=800&q=80" alt="VR Headset User" style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+                <h2>The Infinite Canvas</h2>
+                <p>With the release of Vision Pro, the web is breaking out of the 16:9 monitor. Spatial web design isn't
+                    just about VR; it's about depth, glassmorphism, and gaze-based interaction. Your website is no
+                    longer a flat plane; it's a window floating in the user's physical space.</p>
+                <p>This requires a rethink of layout. Elements can extend beyond the viewport. Interactions need to
+                    account for eye-tracking accuracy. Hover states are triggered by looking, not mousing.</p>
 
-            <h2>CSS for Spatial</h2>
-            <p>Did you know CSS is evolving? New media queries allow us to detect immersive sessions. We can now design layouts that curve around the user or float elements at different Z-depths using the new spatial properties.</p>
-            <p>Brands that adopt spatial-ready websites now will define the luxury digital experience of the late 2020s. Imagine an e-commerce store where products float out of the screen for inspection.</p>
-        
-                
+                <img src="https://images.unsplash.com/photo-1592478411213-61535fdd861d?auto=format&fit=crop&w=800&q=80"
+                    alt="VR Headset User"
+                    style="width:100%; border-radius:12px; margin: 2rem 0; border:1px solid var(--line);">
+
+                <h2>CSS for Spatial</h2>
+                <p>Did you know CSS is evolving? New media queries allow us to detect immersive sessions. We can now
+                    design layouts that curve around the user or float elements at different Z-depths using the new
+                    spatial properties.</p>
+                <p>Brands that adopt spatial-ready websites now will define the luxury digital experience of the late
+                    2020s. Imagine an e-commerce store where products float out of the screen for inspection.</p>
+
+
                 <div class="author-box">
-                    <img src="https://ui-avatars.com/api/?name=Elena Voigt&background=random" alt="Author" class="author-img">
+                    <img src="https://ui-avatars.com/api/?name=Elena Voigt&background=random" alt="Author"
+                        class="author-img">
                     <div>
                         <h4 style="color: white; margin-bottom: 0.2rem;">Elena Voigt</h4>
-                        <p style="font-size: 0.9rem; color: var(--text-dim); margin: 0;">Senior Editor & Tech Strategist at Lumia Digital.</p>
+                        <p style="font-size: 0.9rem; color: var(--text-dim); margin: 0;">Senior Editor & Tech Strategist
+                            at Lumia Digital.</p>
                     </div>
                 </div>
             </div>
@@ -188,7 +317,9 @@
                     <a href="../legal/privacy.html">Privacy</a>
                     <a href="../legal/terms.html">Terms</a>
                 </div>
-                <div class="meta-col copyright"><p>&copy; 2026 Lumia Digital</p></div>
+                <div class="meta-col copyright">
+                    <p>&copy; 2026 Lumia Digital</p>
+                </div>
             </div>
         </div>
     </footer>
@@ -199,4 +330,5 @@
     <!-- Lumia Assistant Chatbot -->
     <script src="../js/chatbot.js"></script>
 </body>
+
 </html>

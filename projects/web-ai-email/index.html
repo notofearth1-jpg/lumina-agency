@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MailGenius | AI Email Copilot</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Outfit', 'sans-serif'] },
+                    colors: {
+                        brand: {
+                            50: '#F0F5FF',
+                            100: '#E5EDFF',
+                            500: '#4F46E5', /* Indigo */
+                            600: '#4338CA',
+                            900: '#1E1B4B'
+                        },
+                        ui: {
+                            surface: '#FFFFFF',
+                            background: '#F8FAFC', /* Slate-50 */
+                            border: '#E2E8F0',
+                            text: '#0F172A',
+                            muted: '#64748B'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #F8FAFC;
+            color: #0F172A;
+            overflow: hidden;
+        }
+
+        /* Soft Shadows & Cards */
+        .glass-card {
+            background: #FFFFFF;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05);
+            border-radius: 16px;
+        }
+
+        .premium-shadow {
+            box-shadow: 0 20px 40px -10px rgba(79, 70, 229, 0.15);
+        }
+
+        /* Gradients */
+        .text-gradient {
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-image: linear-gradient(135deg, #4F46E5 0%, #A855F7 100%);
+        }
+
+        .bg-mesh {
+            position: absolute;
+            top: -20%;
+            left: 0%;
+            w: 100%;
+            h: 100%;
+            background-image:
+                radial-gradient(ellipse at 10% 20%, rgba(79, 70, 229, 0.05) 0%, transparent 40%),
+                radial-gradient(ellipse at 90% 10%, rgba(168, 85, 247, 0.05) 0%, transparent 40%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Animations */
+        @keyframes typing {
+            from {
+                width: 0
+            }
+
+            to {
+                width: 100%
+            }
+        }
+
+        .typewriter {
+            overflow: hidden;
+            white-space: nowrap;
+            margin: 0 auto;
+            border-right: .15em solid #4F46E5;
+            animation:
+                typing 2s steps(40, end),
+                blink-caret .75s step-end infinite;
+        }
+
+        @keyframes blink-caret {
+
+            from,
+            to {
+                border-color: transparent
+            }
+
+            50% {
+                border-color: #4F46E5;
+            }
+        }
+
+        .shimmer {
+            background: linear-gradient(90deg,
+                    rgba(255, 255, 255, 0) 0%,
+                    rgba(255, 255, 255, 0.8) 50%,
+                    rgba(255, 255, 255, 0) 100%);
+            background-size: 200% 100%;
+            animation: shimmer 2.5s infinite linear;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -100% 0;
+            }
+
+            100% {
+                background-position: 100% 0;
+            }
+        }
+
+        /* Interactive States */
+        .btn-hover {
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .btn-hover:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.2);
+        }
+
+        .nav-item-active {
+            background: #F0F5FF;
+            color: #4F46E5;
+            font-weight: 600;
+        }
+
+        .nav-indicator {
+            position: absolute;
+            left: 0;
+            top: 10%;
+            height: 80%;
+            width: 3px;
+            background-color: #4F46E5;
+            border-radius: 0 4px 4px 0;
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen font-sans selection:bg-brand-500 selection:text-white flex">
+    <div class="bg-mesh w-full h-full absolute"></div>
+
+    <!-- Sidebar Layout -->
+    <aside class="w-64 bg-white border-r border-ui-border flex flex-col relative z-10 h-screen">
+        <!-- Logo -->
+        <div class="h-20 flex items-center px-6 border-b border-ui-border/50">
+            <div
+                class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center text-white mr-3 shadow-lg shadow-brand-500/30">
+                <i class="fa-solid fa-bolt text-sm"></i>
+            </div>
+            <span class="font-bold text-xl tracking-wide">MailGenius</span>
+        </div>
+
+        <!-- Navigation -->
+        <div class="flex-1 py-6 flex flex-col gap-1 px-3">
+            <div class="px-3 text-xs font-semibold text-ui-muted uppercase tracking-wider mb-2">Workspace</div>
+
+            <a href="#" class="relative flex items-center px-3 py-2.5 rounded-lg nav-item-active transition-colors">
+                <div class="nav-indicator"></div>
+                <i class="fa-solid fa-pen-nib w-6 opacity-80"></i>
+                <span class="text-sm">AI Composer</span>
+            </a>
+            <a href="#"
+                class="flex items-center px-3 py-2.5 rounded-lg text-ui-muted hover:bg-gray-50 hover:text-ui-text transition-colors">
+                <i class="fa-solid fa-paper-plane w-6 opacity-80"></i>
+                <span class="text-sm font-medium">Campaigns</span>
+            </a>
+            <a href="#"
+                class="flex items-center px-3 py-2.5 rounded-lg text-ui-muted hover:bg-gray-50 hover:text-ui-text transition-colors">
+                <i class="fa-solid fa-users w-6 opacity-80"></i>
+                <span class="text-sm font-medium">Audience</span>
+            </a>
+            <a href="#"
+                class="flex items-center px-3 py-2.5 rounded-lg text-ui-muted hover:bg-gray-50 hover:text-ui-text transition-colors">
+                <i class="fa-solid fa-chart-pie w-6 opacity-80"></i>
+                <span class="text-sm font-medium">Analytics</span>
+            </a>
+
+            <div class="px-3 text-xs font-semibold text-ui-muted uppercase tracking-wider mt-8 mb-2">Automations</div>
+            <a href="#"
+                class="flex items-center justify-between px-3 py-2.5 rounded-lg text-ui-muted hover:bg-gray-50 hover:text-ui-text transition-colors">
+                <div class="flex items-center">
+                    <i class="fa-solid fa-robot w-6 opacity-80"></i>
+                    <span class="text-sm font-medium">Smart Workflows</span>
+                </div>
+                <span
+                    class="bg-purple-100 text-purple-700 text-[10px] font-bold px-1.5 py-0.5 rounded uppercase">Beta</span>
+            </a>
+        </div>
+
+        <!-- User Profile Bottom -->
+        <div class="p-4 border-t border-ui-border bg-gray-50/50">
+            <div class="flex items-center gap-3">
+                <img src="https://i.pravatar.cc/150?img=47" alt="User"
+                    class="w-10 h-10 rounded-full border-2 border-white shadow-sm">
+                <div class="overflow-hidden">
+                    <p class="text-sm font-bold truncate">Sarah Jenkins</p>
+                    <p class="text-xs text-ui-muted truncate">Acme Corp</p>
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Workspace -->
+    <main class="flex-1 flex flex-col h-screen relative z-10">
+
+        <!-- Top Navigation -->
+        <header
+            class="h-20 bg-white/80 backdrop-blur-md border-b border-ui-border flex items-center justify-between px-8 sticky top-0 z-20">
+            <div>
+                <h1 class="text-2xl font-bold">New Campaign</h1>
+                <p class="text-sm text-ui-muted">Generate highly-converting copy using AI.</p>
+            </div>
+            <div class="flex items-center gap-4">
+                <span class="text-sm font-medium text-ui-muted bg-gray-100 px-3 py-1 rounded-full"><i
+                        class="fa-brands fa-google mr-1"></i> Autosaved 1m ago</span>
+                <button
+                    class="w-10 h-10 rounded-full border border-ui-border text-ui-muted hover:text-ui-text hover:bg-gray-50 transition-colors">
+                    <i class="fa-solid fa-bell"></i>
+                </button>
+                <button
+                    class="bg-brand-500 text-white font-semibold text-sm px-6 py-2.5 rounded-xl btn-hover shadow-[0_4px_14px_0_rgba(79,70,229,0.39)] flex items-center gap-2">
+                    Export to Mailchimp <i class="fa-solid fa-arrow-right"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Dashboard Content -->
+        <div class="flex-1 overflow-y-auto p-8 grid grid-cols-12 gap-8">
+
+            <!-- Left Panel: The AI Prompter -->
+            <div class="col-span-4 flex flex-col gap-6">
+
+                <div class="glass-card p-6 border-t-4 border-t-brand-500">
+                    <div class="flex items-center justify-between mb-6">
+                        <h2 class="font-bold text-lg flex items-center gap-2">
+                            <i class="fa-solid fa-wand-magic-sparkles text-brand-500"></i> AI Composer
+                        </h2>
+                        <button class="text-ui-muted hover:text-brand-500"><i
+                                class="fa-solid fa-rotate-right"></i></button>
+                    </div>
+
+                    <div class="space-y-5">
+                        <!-- Input 1 -->
+                        <div>
+                            <label class="block text-sm font-medium text-ui-text mb-1.5">Goal of Email</label>
+                            <div class="relative">
+                                <select
+                                    class="w-full bg-ui-background border border-ui-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 appearance-none">
+                                    <option>B2B Cold Outreach (Sales)</option>
+                                    <option>Product Launch Announcement</option>
+                                    <option>Newsletter / Update</option>
+                                    <option>Re-engagement Campaign</option>
+                                </select>
+                                <i
+                                    class="fa-solid fa-chevron-down absolute right-4 top-1/2 -translate-y-1/2 text-ui-muted text-xs pointer-events-none"></i>
+                            </div>
+                        </div>
+
+                        <!-- Input 2 -->
+                        <div>
+                            <label class="block text-sm font-medium text-ui-text mb-1.5">Target Audience</label>
+                            <input type="text" value="VP of Marketing at SaaS companies"
+                                class="w-full bg-ui-background border border-ui-border rounded-lg px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50">
+                        </div>
+
+                        <!-- Input 3 -->
+                        <div>
+                            <label class="block text-sm font-medium text-ui-text mb-1.5">Value Proposition /
+                                Context</label>
+                            <textarea rows="4"
+                                class="w-full bg-ui-background border border-ui-border rounded-lg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500/50 resize-none">We provide an AI email tool that increases cold outreach conversion by 45%. We integrate with Hubspot and Salesforce.</textarea>
+                        </div>
+
+                        <!-- Tone Selection -->
+                        <div>
+                            <label class="block text-sm font-medium text-ui-text mb-2">Tone Settings</label>
+                            <div class="grid grid-cols-3 gap-2">
+                                <button
+                                    class="py-2 border-2 border-brand-500 bg-brand-50 text-brand-600 rounded-lg text-xs font-bold transition-colors">Professional</button>
+                                <button
+                                    class="py-2 border border-ui-border text-ui-muted hover:bg-gray-50 rounded-lg text-xs font-medium transition-colors">Humorous</button>
+                                <button
+                                    class="py-2 border border-ui-border text-ui-muted hover:bg-gray-50 rounded-lg text-xs font-medium transition-colors">Urgent</button>
+                            </div>
+                        </div>
+
+                        <button
+                            class="w-full bg-gray-900 text-white font-bold py-3 rounded-xl mt-4 hover:bg-black transition-colors flex items-center justify-center gap-2 group">
+                            Generate Copy
+                            <i class="fa-solid fa-sparkles group-hover:animate-spin"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- History / Saved -->
+                <div class="glass-card p-6">
+                    <h3 class="font-bold text-[15px] mb-4 text-ui-muted">Recent Generations</h3>
+                    <div class="space-y-3">
+                        <div
+                            class="flex items-center justify-between p-3 border border-ui-border rounded-lg cursor-pointer hover:border-brand-500 transition-colors">
+                            <div class="truncate pr-4">
+                                <p class="text-sm font-semibold truncate">SaaS Founders Outreach V2</p>
+                                <p class="text-xs text-ui-muted truncate">"Saw your latest funding round, congrats..."
+                                </p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                        </div>
+                        <div
+                            class="flex items-center justify-between p-3 border border-ui-border rounded-lg cursor-pointer hover:border-brand-500 transition-colors">
+                            <div class="truncate pr-4">
+                                <p class="text-sm font-semibold truncate">Q3 Product Update</p>
+                                <p class="text-xs text-ui-muted truncate">"We've massively upgraded the dashboard..."
+                                </p>
+                            </div>
+                            <i class="fa-solid fa-chevron-right text-gray-300 text-xs"></i>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Panel: Editor & Preview -->
+            <div class="col-span-8 flex flex-col h-[calc(100vh-140px)]">
+
+                <div class="glass-card flex-1 flex flex-col overflow-hidden premium-shadow relative">
+
+                    <!-- Editor Toolbar -->
+                    <div class="h-14 border-b border-ui-border bg-gray-50/80 flex items-center px-4 justify-between">
+                        <div class="flex items-center gap-1">
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-bold text-sm"></i></button>
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-italic text-sm"></i></button>
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-underline text-sm"></i></button>
+                            <div class="w-px h-5 bg-gray-300 mx-2"></div>
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-list-ul text-sm"></i></button>
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-list-ol text-sm"></i></button>
+                            <button
+                                class="w-8 h-8 rounded hover:bg-gray-200 text-ui-text transition-colors flex items-center justify-center"><i
+                                    class="fa-solid fa-link text-sm"></i></button>
+                            <div class="w-px h-5 bg-gray-300 mx-2"></div>
+                            <button
+                                class="px-3 h-8 rounded hover:bg-gray-200 text-brand-600 font-medium text-xs flex items-center gap-1 transition-colors">
+                                <i class="fa-solid fa-brackets-curly"></i> Insert Variable
+                            </button>
+                        </div>
+
+                        <div class="flex items-center gap-2">
+                            <span
+                                class="text-xs font-semibold text-brand-600 bg-brand-50 px-2 py-1 rounded">Readability:
+                                92/100</span>
+                        </div>
+                    </div>
+
+                    <!-- Editor Canvas -->
+                    <div class="flex-1 p-8 overflow-y-auto bg-white relative">
+
+                        <!-- AI Generating State Overlay (simulated but static for mockup) -->
+                        <div
+                            class="absolute top-4 right-4 bg-gradient-to-r from-purple-500 to-brand-500 text-white text-xs font-bold px-3 py-1.5 rounded-full flex items-center gap-2 shadow-lg shadow-brand-500/20">
+                            <i class="fa-solid fa-robot animate-pulse"></i> AI Optimized
+                        </div>
+
+                        <!-- Email Subject -->
+                        <div class="mb-6">
+                            <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mb-1 block">Subject
+                                Line</label>
+                            <div
+                                class="text-xl font-bold text-gray-800 border-b border-gray-100 pb-2 flex justify-between items-center group">
+                                <span>Quick question about your outbound team, {{firstName}}</span>
+                                <button
+                                    class="opacity-0 group-hover:opacity-100 text-brand-500 text-sm transition-opacity bg-brand-50 px-2 py-1 rounded"><i
+                                        class="fa-solid fa-wand-magic-sparkles mr-1"></i> Rewrite</button>
+                            </div>
+                        </div>
+
+                        <!-- Email Body -->
+                        <div class="prose prose-slate max-w-none text-gray-700 leading-relaxed text-[15px]">
+                            <p>Hi {{firstName}},</p>
+
+                            <p>I noticed that {{companyName}} has been aggressively scaling up the marketing team this
+                                quarter. I imagine a big focus right now is improving the conversion rates on your
+                                outbound pipeline.</p>
+
+                            <p>I completely get how frustrating it can be to send thousands of cold emails and get stuck
+                                in spam or see low reply rates. Standard templates don't cut it anymore.</p>
+
+                            <p class="relative group">
+                                <span
+                                    class="bg-purple-100/50 rounded p-1 -mx-1 border border-purple-200 cursor-pointer transition-colors duration-300">
+                                    That's exactly why we built MailGenius. Our AI analyzes your prospect's linked data
+                                    and automatically generates highly-personalized, relevant opening hooks for every
+                                    single lead at scale.
+                                </span>
+                                <!-- Tooltip -->
+                            <div
+                                class="absolute -top-10 left-1/2 -translate-x-1/2 bg-gray-900 text-white text-xs px-3 py-1.5 rounded opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none whitespace-nowrap z-10 shadow-xl">
+                                <i class="fa-solid fa-sparkles text-brand-400 mr-1"></i> AI rewrote this to be more
+                                persuasive
+                                <div class="absolute -bottom-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-gray-900 rotate-45">
+                                </div>
+                            </div>
+                            </p>
+
+                            <p>Teams like AcmeCorp recently saw a <strong>45% lift in their meeting booked rate</strong>
+                                within two weeks of switching to our smart workflows.</p>
+
+                            <p>Would you be open to a quick 10-minute demo on {{dayOfWeek}} to see how it works?</p>
+
+                            <p>Best,<br>
+                                Sarah Jenkins<br>
+                                <span class="text-sm text-gray-500">Founder, MailGenius</span>
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <!-- Bottom Action Bar -->
+                    <div class="h-16 border-t border-ui-border bg-gray-50 px-6 flex items-center justify-between">
+                        <div class="flex gap-4 text-sm text-ui-muted font-medium">
+                            <span>142 Words</span>
+                            <span>~ 45 sec read</span>
+                            <span class="text-green-600 flex items-center gap-1"><i
+                                    class="fa-solid fa-shield-check"></i> Spam Score: Low</span>
+                        </div>
+
+                        <div class="flex gap-3">
+                            <button
+                                class="px-5 py-2 border border-ui-border bg-white text-ui-text font-semibold rounded-lg hover:bg-gray-50 transition-colors">
+                                Send Test Email
+                            </button>
+                            <button
+                                class="px-6 py-2 bg-brand-500 text-white font-semibold rounded-lg hover:bg-brand-600 transition-colors shadow-sm">
+                                Save & Continue
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</body>
+
+</html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoBank | Premium Web Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: {
+                        dark: {
+                            900: '#050505',
+                            800: '#0F0F11',
+                            700: '#18181B',
+                            600: '#27272A'
+                        },
+                        neon: {
+                            green: '#9DFF20',
+                            blue: '#4DB8FF',
+                            purple: '#A855F7'
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            background-color: #050505;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        /* Glassmorphism Panels */
+        .glass-panel {
+            background: rgba(24, 24, 27, 0.6);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+            border-radius: 20px;
+        }
+
+        /* Mesh Gradients */
+        .mesh-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -1;
+            background-color: #050505;
+            background-image:
+                radial-gradient(at 0% 0%, rgba(157, 255, 32, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 0%, rgba(77, 184, 255, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(168, 85, 247, 0.05) 0px, transparent 50%);
+        }
+
+        /* Animations */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        .animate-float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes pulse-glow {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(157, 255, 32, 0);
+            }
+
+            50% {
+                box-shadow: 0 0 20px 0 rgba(157, 255, 32, 0.3);
+            }
+        }
+
+        .animate-pulse-glow {
+            animation: pulse-glow 3s infinite;
+        }
+
+        .chart-bar-animation {
+            transform-origin: bottom;
+            animation: growBar 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            opacity: 0;
+        }
+
+        @keyframes growBar {
+            0% {
+                transform: scaleY(0);
+                opacity: 0;
+            }
+
+            100% {
+                transform: scaleY(1);
+                opacity: 1;
+            }
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #27272A;
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #3f3f46;
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-4px);
+            border-color: rgba(157, 255, 32, 0.3);
+            box-shadow: 0 10px 30px -10px rgba(157, 255, 32, 0.15);
+        }
+    </style>
+</head>
+
+<body class="antialiased min-h-screen font-sans selection:bg-neon-green selection:text-black">
+    <div class="mesh-bg"></div>
+
+    <div class="flex h-screen overflow-hidden p-6 gap-6">
+
+        <!-- Sidebar -->
+        <aside class="glass-panel w-72 flex flex-col justify-between py-8 px-6 hidden lg:flex">
+            <div>
+                <!-- Brand -->
+                <div class="flex items-center gap-3 mb-12 px-2">
+                    <div
+                        class="w-10 h-10 rounded-xl bg-neon-green flex items-center justify-center text-black font-bold text-xl">
+                        N</div>
+                    <span class="text-xl font-bold tracking-tight">NeoBank</span>
+                </div>
+
+                <!-- Nav -->
+                <nav class="space-y-2">
+                    <a href="#"
+                        class="flex items-center gap-4 px-4 py-3 bg-dark-600/50 text-neon-green rounded-xl border border-neon-green/20 transition-all">
+                        <i class="fa-solid fa-house-chimney w-5"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-4 px-4 py-3 text-gray-400 hover:text-white hover:bg-dark-600/30 rounded-xl transition-all">
+                        <i class="fa-solid fa-chart-line w-5"></i>
+                        <span class="font-medium">Markets</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-4 px-4 py-3 text-gray-400 hover:text-white hover:bg-dark-600/30 rounded-xl transition-all">
+                        <i class="fa-solid fa-wallet w-5"></i>
+                        <span class="font-medium">Wallets</span>
+                        <span class="ml-auto bg-dark-600 text-xs px-2 py-0.5 rounded-full">3</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-4 px-4 py-3 text-gray-400 hover:text-white hover:bg-dark-600/30 rounded-xl transition-all">
+                        <i class="fa-solid fa-arrow-right-arrow-left w-5"></i>
+                        <span class="font-medium">Exchange</span>
+                    </a>
+                    <a href="#"
+                        class="flex items-center gap-4 px-4 py-3 text-gray-400 hover:text-white hover:bg-dark-600/30 rounded-xl transition-all">
+                        <i class="fa-solid fa-clock-rotate-left w-5"></i>
+                        <span class="font-medium">History</span>
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Profile Upgrade -->
+            <div class="mt-auto">
+                <div
+                    class="p-5 rounded-2xl bg-gradient-to-br from-dark-600/40 to-dark-700 border border-white/5 relative overflow-hidden group cursor-pointer transition-all hover:border-neon-purple/30">
+                    <div
+                        class="absolute -right-4 -top-4 w-20 h-20 bg-neon-purple/20 blur-2xl rounded-full group-hover:bg-neon-purple/30 transition-all">
+                    </div>
+                    <div class="relative z-10">
+                        <h4 class="font-bold mb-1">Neo Pro</h4>
+                        <p class="text-xs text-gray-400 mb-3 leading-relaxed">0% fees on crypto swaps and premium metal
+                            card.</p>
+                        <button
+                            class="text-xs font-semibold text-neon-purple flex items-center gap-1 hover:gap-2 transition-all">
+                            Upgrade Now <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- User user -->
+                <div class="mt-6 flex items-center gap-3 px-2">
+                    <img src="https://i.pravatar.cc/150?img=11" alt="User"
+                        class="w-10 h-10 rounded-full border border-white/10">
+                    <div>
+                        <div class="text-sm font-semibold">David Chen</div>
+                        <div class="text-xs text-gray-400">david.c@example.com</div>
+                    </div>
+                    <button class="ml-auto text-gray-500 hover:text-white transition-colors">
+                        <i class="fa-solid fa-gear"></i>
+                    </button>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 flex flex-col overflow-y-auto pr-2 pb-6">
+
+            <!-- Topbar -->
+            <header class="glass-panel flex items-center justify-between p-4 px-6 mb-6 rounded-2xl">
+                <div class="relative w-96">
+                    <i class="fa-solid fa-search absolute left-4 top-1/2 -translate-y-1/2 text-gray-500"></i>
+                    <input type="text" placeholder="Search assets, quick actions..."
+                        class="w-full bg-dark-700/50 border border-white/5 rounded-xl py-2.5 pl-11 pr-4 text-sm focus:outline-none focus:border-neon-green/30 focus:ring-1 focus:ring-neon-green/30 transition-all text-white placeholder-gray-500">
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <button
+                        class="w-10 h-10 rounded-xl bg-dark-700/50 border border-white/5 flex items-center justify-center text-gray-400 hover:text-white transition-colors relative">
+                        <i class="fa-regular fa-bell"></i>
+                        <span class="absolute top-2 right-2.5 w-2 h-2 rounded-full bg-neon-green animate-pulse"></span>
+                    </button>
+                    <button
+                        class="bg-neon-green text-black font-semibold text-sm px-5 py-2.5 rounded-xl animate-pulse-glow flex items-center gap-2 hover:bg-[#8AE619] transition-colors">
+                        <i class="fa-solid fa-plus"></i> Deposit
+                    </button>
+                </div>
+            </header>
+
+            <!-- Dashboard Grid -->
+            <div class="grid grid-cols-1 xl:grid-cols-3 gap-6 flex-1">
+
+                <!-- Left Column (Balance & Chart) -->
+                <div class="xl:col-span-2 flex flex-col gap-6">
+
+                    <!-- Total Balance Card -->
+                    <div class="glass-panel p-8 relative overflow-hidden group">
+                        <div
+                            class="absolute right-0 top-0 w-64 h-64 bg-neon-green/10 blur-[100px] rounded-full group-hover:bg-neon-green/20 transition-all duration-700">
+                        </div>
+
+                        <div class="flex justify-between items-start relative z-10 mb-8">
+                            <div>
+                                <p class="text-gray-400 font-medium mb-1">Total Portfolio Value</p>
+                                <h1 class="text-4xl md:text-5xl font-bold tracking-tight mb-2">$124,592.80</h1>
+                                <div class="flex items-center gap-2 text-sm">
+                                    <span
+                                        class="bg-neon-green/10 text-neon-green px-2 py-0.5 rounded-md font-semibold flex items-center gap-1">
+                                        <i class="fa-solid fa-arrow-trend-up"></i> +$3,240.50 (2.4%)
+                                    </span>
+                                    <span class="text-gray-500">Past 24 hours</span>
+                                </div>
+                            </div>
+
+                            <div class="flex bg-dark-700/50 rounded-lg p-1 border border-white/5">
+                                <button
+                                    class="px-3 py-1 rounded-md text-sm font-medium text-gray-400 hover:text-white">1H</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-sm font-medium text-gray-400 hover:text-white">1D</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-sm font-medium bg-dark-600 text-white shadow-sm">1W</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-sm font-medium text-gray-400 hover:text-white">1M</button>
+                                <button
+                                    class="px-3 py-1 rounded-md text-sm font-medium text-gray-400 hover:text-white">All</button>
+                            </div>
+                        </div>
+
+                        <!-- FAKE CHART GRAPHIC -->
+                        <div class="h-48 w-full flex items-end justify-between relative z-10 gap-1 md:gap-2">
+                            <!-- Bars -->
+                            <div class="w-full bg-neon-green/20 rounded-t-sm chart-bar-animation"
+                                style="height: 30%; animation-delay: 0.1s;"></div>
+                            <div class="w-full bg-neon-green/20 rounded-t-sm chart-bar-animation"
+                                style="height: 40%; animation-delay: 0.2s;"></div>
+                            <div class="w-full bg-neon-green/40 rounded-t-sm chart-bar-animation"
+                                style="height: 35%; animation-delay: 0.3s;"></div>
+                            <div class="w-full bg-neon-green/30 rounded-t-sm chart-bar-animation"
+                                style="height: 50%; animation-delay: 0.4s;"></div>
+                            <div class="w-full bg-neon-green/50 rounded-t-sm chart-bar-animation"
+                                style="height: 45%; animation-delay: 0.5s;"></div>
+                            <div class="w-full bg-neon-green/30 rounded-t-sm chart-bar-animation"
+                                style="height: 60%; animation-delay: 0.6s;"></div>
+                            <div class="w-full bg-neon-green/40 rounded-t-sm chart-bar-animation"
+                                style="height: 75%; animation-delay: 0.7s;"></div>
+                            <div class="w-full bg-neon-green/60 rounded-t-sm chart-bar-animation"
+                                style="height: 65%; animation-delay: 0.8s;"></div>
+                            <div class="w-full bg-neon-green/80 rounded-t-sm chart-bar-animation"
+                                style="height: 85%; animation-delay: 0.9s;"></div>
+                            <div class="w-full bg-neon-green rounded-t-sm chart-bar-animation shadow-[0_0_15px_rgba(157,255,32,0.5)] relative"
+                                style="height: 100%; animation-delay: 1.0s;">
+                                <!-- Tooltip dot -->
+                                <div
+                                    class="absolute -top-1.5 left-1/2 -translate-x-1/2 w-3 h-3 bg-white rounded-full border-2 border-neon-green">
+                                </div>
+                            </div>
+
+                            <!-- Graph line mock -->
+                            <svg class="absolute top-0 left-0 w-full h-full overflow-visible z-0 opacity-50 pointer-events-none"
+                                preserveAspectRatio="none" viewBox="0 0 100 100">
+                                <path d="M0,70 L10,60 L20,65 L30,50 L40,55 L50,40 L60,25 L70,35 L80,15 L90,10 L100,0"
+                                    fill="none" stroke="#9DFF20" stroke-width="2" vector-effect="non-scaling-stroke"
+                                    style="filter: drop-shadow(0px 4px 6px rgba(157, 255, 32, 0.4));"></path>
+                            </svg>
+                        </div>
+                    </div>
+
+                    <!-- Assets List -->
+                    <div class="glass-panel flex-1 flex flex-col">
+                        <div class="p-6 border-b border-white/5 flex justify-between items-center">
+                            <h3 class="font-bold text-lg">Your Assets</h3>
+                            <button
+                                class="text-sm text-gray-400 hover:text-white transition-colors flex items-center gap-1">
+                                View All <i class="fa-solid fa-chevron-right text-xs"></i>
+                            </button>
+                        </div>
+
+                        <div class="p-2 flex-1">
+                            <!-- Asset Item -->
+                            <div
+                                class="p-4 rounded-xl hover:bg-dark-600/30 transition-colors flex items-center justify-between cursor-pointer group card-hover">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-[#f2a900]/10 flex items-center justify-center text-[#f2a900] text-xl border border-[#f2a900]/20">
+                                        <i class="fa-brands fa-bitcoin"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-base">Bitcoin</div>
+                                        <div class="text-sm text-gray-400">BTC</div>
+                                    </div>
+                                </div>
+
+                                <div class="w-32 h-8 hidden md:block">
+                                    <!-- Mini sparkline mock -->
+                                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                        <path d="M0,80 L20,60 L40,70 L60,30 L80,10 L100,20" fill="none" stroke="#9DFF20"
+                                            stroke-width="3" vector-effect="non-scaling-stroke"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="text-right">
+                                    <div class="font-bold">$84,020.10</div>
+                                    <div class="text-sm text-neon-green flex items-center justify-end gap-1">
+                                        <i class="fa-solid fa-caret-up"></i> 1.25 BTC
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Asset Item -->
+                            <div
+                                class="p-4 rounded-xl hover:bg-dark-600/30 transition-colors flex items-center justify-between cursor-pointer group card-hover">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-[#627eea]/10 flex items-center justify-center text-[#627eea] text-xl border border-[#627eea]/20">
+                                        <i class="fa-brands fa-ethereum"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-base">Ethereum</div>
+                                        <div class="text-sm text-gray-400">ETH</div>
+                                    </div>
+                                </div>
+
+                                <div class="w-32 h-8 hidden md:block">
+                                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                        <path d="M0,50 L20,40 L40,60 L60,20 L80,30 L100,10" fill="none" stroke="#9DFF20"
+                                            stroke-width="3" vector-effect="non-scaling-stroke"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="text-right">
+                                    <div class="font-bold">$28,450.00</div>
+                                    <div class="text-sm text-neon-green flex items-center justify-end gap-1">
+                                        <i class="fa-solid fa-caret-up"></i> 14.5 ETH
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Asset Item -->
+                            <div
+                                class="p-4 rounded-xl hover:bg-dark-600/30 transition-colors flex items-center justify-between cursor-pointer group card-hover">
+                                <div class="flex items-center gap-4">
+                                    <div
+                                        class="w-12 h-12 rounded-full bg-white/10 flex items-center justify-center text-white text-xl border border-white/20">
+                                        <i class="fa-brands fa-apple"></i>
+                                    </div>
+                                    <div>
+                                        <div class="font-bold text-base">Apple Inc.</div>
+                                        <div class="text-sm text-gray-400">AAPL · Stock</div>
+                                    </div>
+                                </div>
+
+                                <div class="w-32 h-8 hidden md:block">
+                                    <svg class="w-full h-full" preserveAspectRatio="none" viewBox="0 0 100 100">
+                                        <path d="M0,20 L20,30 L40,10 L60,40 L80,60 L100,80" fill="none" stroke="#ff4d4f"
+                                            stroke-width="3" vector-effect="non-scaling-stroke"></path>
+                                    </svg>
+                                </div>
+
+                                <div class="text-right">
+                                    <div class="font-bold">$12,122.70</div>
+                                    <div class="text-sm text-[#ff4d4f] flex items-center justify-end gap-1">
+                                        <i class="fa-solid fa-caret-down"></i> 65 Shares
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column (Cards & Quick Swap) -->
+                <div class="flex flex-col gap-6">
+
+                    <!-- Credit Card -->
+                    <div class="relative h-56 rounded-2xl p-6 overflow-hidden animate-float"
+                        style="background: linear-gradient(135deg, #27272A 0%, #0F0F11 100%); border: 1px solid rgba(255,255,255,0.1); box-shadow: 0 20px 40px -10px rgba(0,0,0,0.5);">
+                        <div class="absolute top-0 right-0 w-48 h-48 bg-neon-blue/20 blur-[80px] rounded-full"></div>
+
+                        <div class="relative z-10 h-full flex flex-col justify-between">
+                            <div class="flex justify-between items-start">
+                                <div class="text-white/60 font-medium tracking-wider text-sm">VIRTUAL DEBIT</div>
+                                <i class="fa-brands fa-cc-visa text-3xl opacity-80"></i>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center gap-3 mb-2 opacity-80">
+                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                    <div class="w-2 h-2 rounded-full bg-white"></div>
+                                    <span class="ml-2 font-mono text-lg tracking-widest">4920</span>
+                                </div>
+                                <div class="flex justify-between text-sm opacity-60 font-medium">
+                                    <span>DAVID CHEN</span>
+                                    <span>12/28</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Swap Widget -->
+                    <div class="glass-panel flex-1 flex flex-col p-6">
+                        <h3 class="font-bold text-lg mb-6">Quick Swap</h3>
+
+                        <!-- You Pay -->
+                        <div
+                            class="bg-dark-700/50 rounded-xl p-4 border border-white/5 mb-2 hover:border-gray-600 transition-colors">
+                            <div class="text-xs text-gray-500 font-medium mb-2">YOU PAY</div>
+                            <div class="flex justify-between items-center">
+                                <input type="text" value="0.5"
+                                    class="bg-transparent text-2xl font-bold w-1/2 focus:outline-none text-white">
+                                <button
+                                    class="flex items-center gap-2 bg-dark-600 px-3 py-1.5 rounded-lg font-medium hover:bg-dark-600/80 transition-colors">
+                                    <img src="https://cryptologos.cc/logos/ethereum-eth-logo.svg?v=029" class="w-5 h-5">
+                                    ETH <i class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                                </button>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-1">~$1,422.50</div>
+                        </div>
+
+                        <!-- Swap Icon -->
+                        <div class="flex justify-center -my-3 relative z-10">
+                            <button
+                                class="w-10 h-10 rounded-full bg-dark-600 border border-white/10 flex items-center justify-center hover:bg-neon-green hover:text-black hover:border-neon-green transition-all shadow-lg">
+                                <i class="fa-solid fa-arrow-down-up-across-line"></i>
+                            </button>
+                        </div>
+
+                        <!-- You Receive -->
+                        <div
+                            class="bg-dark-700/50 rounded-xl p-4 border border-white/5 mt-2 hover:border-gray-600 transition-colors">
+                            <div class="text-xs text-gray-500 font-medium mb-2">YOU RECEIVE</div>
+                            <div class="flex justify-between items-center">
+                                <input type="text" value="34,250"
+                                    class="bg-transparent text-2xl font-bold w-1/2 focus:outline-none text-white">
+                                <button
+                                    class="flex items-center gap-2 bg-dark-600 px-3 py-1.5 rounded-lg font-medium hover:bg-dark-600/80 transition-colors">
+                                    <img src="https://cryptologos.cc/logos/polkadot-new-dot-logo.svg?v=029"
+                                        class="w-5 h-5">
+                                    DOT <i class="fa-solid fa-chevron-down text-xs ml-1"></i>
+                                </button>
+                            </div>
+                            <div class="text-sm text-gray-400 mt-1">~$1,420.10</div>
+                        </div>
+
+                        <div class="flex justify-between text-xs text-gray-500 font-medium mt-4 mb-6">
+                            <span>Exchange Rate</span>
+                            <span>1 ETH = 68,500 DOT</span>
+                        </div>
+
+                        <button
+                            class="w-full bg-white text-black font-bold py-3.5 rounded-xl hover:bg-gray-200 transition-colors mt-auto shadow-[0_4px_14px_0_rgba(255,255,255,0.2)]">
+                            Confirm Swap
+                        </button>
+                    </div>
+
+                </div>
+            </div>
+
+        </main>
+    </div>
+</body>
+
+</html>

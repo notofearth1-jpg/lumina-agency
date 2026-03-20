@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Progress</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #06060E;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(170deg, #06060E, #0d0a1a, #06060E);
+            z-index: 0
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .progress-ring {
+            transform: rotate(-90deg)
+        }
+
+        .progress-ring-fill {
+            stroke-dasharray: 283;
+            stroke-dashoffset: 283;
+            animation: ringFill 1.5s ease-out forwards
+        }
+
+        @keyframes ringFill {
+            to {
+                stroke-dashoffset: 85
+            }
+        }
+
+        .bar-grow {
+            animation: barGrow .8s cubic-bezier(.22, 1, .36, 1) forwards;
+            transform-origin: bottom;
+            transform: scaleY(0)
+        }
+
+        @keyframes barGrow {
+            from {
+                transform: scaleY(0)
+            }
+
+            to {
+                transform: scaleY(1)
+            }
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(15px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .streak-glow {
+            background: linear-gradient(135deg, rgba(251, 191, 36, .15), rgba(245, 158, 11, .08));
+            border: 1px solid rgba(251, 191, 36, .2);
+            box-shadow: 0 0 30px -5px rgba(251, 191, 36, .15)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mesh-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8 slide-up">
+            <div>
+                <h2 class="text-2xl font-extrabold text-white">Progress</h2>
+                <p class="text-white/30 text-xs font-medium">Your learning journey</p>
+            </div>
+            <button class="w-10 h-10 glass-strong rounded-2xl flex items-center justify-center text-white/50">
+                <i data-lucide="share-2" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Main Progress Circle -->
+        <div class="flex justify-center mb-8 slide-up" style="animation-delay:.1s">
+            <div class="relative w-48 h-48">
+                <svg class="progress-ring w-full h-full" viewBox="0 0 100 100">
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="rgba(255,255,255,.05)" stroke-width="6" />
+                    <circle cx="50" cy="50" r="45" fill="none" stroke="url(#grad)" stroke-width="6"
+                        stroke-linecap="round" class="progress-ring-fill" />
+                    <defs>
+                        <linearGradient id="grad" x1="0" y1="0" x2="1" y2="1">
+                            <stop offset="0%" stop-color="#ec4899" />
+                            <stop offset="50%" stop-color="#a78bfa" />
+                            <stop offset="100%" stop-color="#38bdf8" />
+                        </linearGradient>
+                    </defs>
+                </svg>
+                <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span class="text-4xl font-black text-white">70<span class="text-xl">%</span></span>
+                    <span class="text-[10px] text-white/30 font-bold">OVERALL</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Streak -->
+        <div class="streak-glow rounded-2xl p-4 flex items-center gap-4 mb-6 slide-up" style="animation-delay:.15s">
+            <div
+                class="w-12 h-12 rounded-2xl bg-gradient-to-br from-amber-400/20 to-amber-500/10 flex items-center justify-center border border-amber-400/30">
+                <i data-lucide="flame" class="w-6 h-6 text-amber-400"></i>
+            </div>
+            <div class="flex-1">
+                <h4 class="font-bold text-white text-sm">14 Day Streak! 🔥</h4>
+                <p class="text-[10px] text-white/30">Keep going, you're on fire!</p>
+            </div>
+            <div class="flex gap-0.5">
+                <div class="w-2 h-6 rounded-full bg-amber-400/80"></div>
+                <div class="w-2 h-6 rounded-full bg-amber-400/60"></div>
+                <div class="w-2 h-6 rounded-full bg-amber-400/40"></div>
+                <div class="w-2 h-6 rounded-full bg-amber-400/20"></div>
+                <div class="w-2 h-6 rounded-full bg-white/5"></div>
+            </div>
+        </div>
+
+        <!-- Weekly Hours -->
+        <div class="glass-strong rounded-[24px] p-5 mb-6 slide-up" style="animation-delay:.2s">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-sm text-white">Weekly Hours</h3>
+                <span class="text-[10px] text-pink-400 font-bold glass px-3 py-1 rounded-full">12.5 hrs</span>
+            </div>
+            <div class="flex items-end justify-between gap-2 h-24">
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-pink-600/60 to-pink-400/30 bar-grow"
+                        style="height:30%"></div>
+                    <span class="text-[8px] text-white/20 font-bold">M</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-pink-600/60 to-violet-400/40 bar-grow"
+                        style="height:55%;animation-delay:.05s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">T</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-violet-600/60 to-violet-400/40 bar-grow"
+                        style="height:80%;animation-delay:.1s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">W</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-violet-600/60 to-sky-400/40 bar-grow"
+                        style="height:45%;animation-delay:.15s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">T</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-sky-600/60 to-sky-400/30 bar-grow"
+                        style="height:65%;animation-delay:.2s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">F</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-sky-600/40 to-sky-400/20 bar-grow"
+                        style="height:30%;animation-delay:.25s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">S</span>
+                </div>
+                <div class="flex-1 h-full flex flex-col items-center justify-end gap-2">
+                    <div class="w-full rounded-lg bg-gradient-to-t from-pink-600/40 to-pink-400/20 bar-grow"
+                        style="height:20%;animation-delay:.3s"></div>
+                    <span class="text-[8px] text-white/20 font-bold">S</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Achievements -->
+        <h3 class="font-bold text-sm text-white mb-3 slide-up" style="animation-delay:.25s">Achievements</h3>
+        <div class="grid grid-cols-3 gap-3 slide-up" style="animation-delay:.3s">
+            <div class="glass-strong rounded-2xl p-4 flex flex-col items-center text-center">
+                <div class="text-2xl mb-2">🧬</div>
+                <p class="text-[10px] font-bold text-white/80">Gene Master</p>
+                <p class="text-[8px] text-white/20 mt-0.5">All DNA labs</p>
+            </div>
+            <div class="glass-strong rounded-2xl p-4 flex flex-col items-center text-center">
+                <div class="text-2xl mb-2">🚀</div>
+                <p class="text-[10px] font-bold text-white/80">Space Cadet</p>
+                <p class="text-[8px] text-white/20 mt-0.5">5 VR trips</p>
+            </div>
+            <div class="glass rounded-2xl p-4 flex flex-col items-center text-center opacity-40">
+                <div class="text-2xl mb-2">⚗️</div>
+                <p class="text-[10px] font-bold text-white/60">Alchemist</p>
+                <p class="text-[8px] text-white/20 mt-0.5">3/10 labs</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="glass-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto">
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="compass"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Explore</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="flask-conical"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Labs</span></button>
+            <button class="flex flex-col items-center gap-1 text-pink-400"><i data-lucide="bar-chart-3"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Progress</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

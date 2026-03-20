@@ -24,32 +24,33 @@
     <link rel="icon" type="image/png" href="favicon.png">
 
     <!-- Open Graph / Facebook -->
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
 
     <!-- Twitter -->
-    
-    
-    
-    
-    
+
+
+
+
+
 
     <!-- Canonical -->
-    
-    
+
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 
-    
+
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://lumiadigital.site/work.html">
     <meta property="og:title" content="Selected Work | Lumia Digital">
-    <meta property="og:description" content="Explore our portfolio of award-winning digital experiences, brand identities, and web applications.">
+    <meta property="og:description"
+        content="Explore our portfolio of award-winning digital experiences, brand identities, and web applications.">
     <meta property="og:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
     <meta property="og:site_name" content="Lumia Digital">
 
@@ -57,12 +58,13 @@
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://lumiadigital.site/work.html">
     <meta property="twitter:title" content="Selected Work | Lumia Digital">
-    <meta property="twitter:description" content="Explore our portfolio of award-winning digital experiences, brand identities, and web applications.">
+    <meta property="twitter:description"
+        content="Explore our portfolio of award-winning digital experiences, brand identities, and web applications.">
     <meta property="twitter:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://lumiadigital.site/work.html">
-    
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
@@ -84,14 +86,39 @@
                 <div class="nav-dropdown">
                     <a href="work.html" class="nav-link active">Work <span class="dropdown-arrow">▾</span></a>
                     <div class="dropdown-menu">
-                        <a href="projects/armory/index.html">Armory</a>
-                        <a href="projects/nexus/index.html">Nexus VR</a>
-                        <a href="projects/aura/index.html">Aura Interiors</a>
-                        <a href="projects/gym/index.html">Iron Forge</a>
-                        <a href="projects/restaurant/index.html">Spice Garden</a>
-                        <a href="projects/salon/index.html">Luxe Beauty</a>
-                        <a href="projects/boutique/index.html">Vogue Atelier</a>
-                        <a href="projects/coaching/index.html">Bright Minds</a>
+                        <!-- Websites -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/websites.html">Websites <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/armory/index.html">Armory.ai</a>
+                                <a href="projects/aura/index.html">Aura Interiors</a>
+                                <a href="projects/gym/index.html">Iron Forge</a>
+                                <a href="projects/restaurant/index.html">Spice Garden</a>
+                                <a href="projects/salon/index.html">Luxe Beauty</a>
+                                <a href="projects/boutique/index.html">Vogue Atelier</a>
+                                <a href="projects/coaching/index.html">Bright Minds</a>
+
+                                <a href="projects/nexus/index.html">Nexus VR</a>
+                            </div>
+                        </div>
+
+                        <!-- Mobile Apps -->
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/mobile-apps.html">Mobile Apps <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/native-apps/index.html">Native Apps Showcase</a>
+                                <a href="projects/ai-assistant/index.html">AI Life Assistant</a>
+                                <a href="projects/ar-vr-learning/index.html">AR/VR Learning</a>
+                                <a href="projects/eco-living/index.html">Eco-Conscious Living</a>
+                                <a href="projects/healthcare/index.html">Healthcare Companion</a>
+                                <a href="projects/smart-city/index.html">Smart City OS</a>
+                            </div>
+                        </div>
+                        <!-- Web Applications -->
+                        <a href="work/webapps.html">Web Applications</a>
+
+                        <!-- AI Automations -->
+                        <a href="work/ai-automations.html">AI Automations</a>
                     </div>
                 </div>
 
@@ -167,77 +194,71 @@
         </div>
     </section>
 
-    <!-- Flowing Menu Section -->
-    <section class="work-list-section" style="padding: 2rem 0 6rem;">
+    <!-- Categories Grid Section -->
+    <section class="work-categories-section" style="padding: 2rem 0 6rem;">
         <div class="container">
-            <div class="section-label reveal-up">EXPLORE PROJECTS</div>
-            <div class="menu-wrap">
-                <div class="menu">
-                    <!-- Armory -->
-                    <div class="menu__item">
-                        <a href="projects/armory/index.html" target="_blank" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1700774607099-8c4631ee9764?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8YXJtb3J5fGVufDB8fDB8fHww">
-                            ARMORY.AI
-                        </a>
-                        <span class="menu__item-tag">AI Platform</span>
+            <div class="section-label reveal-up">CATEGORIES</div>
+            <div class="capabilities-grid" style="margin-top: 3rem;">
+                <!-- Websites -->
+                <a href="work/websites.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
                     </div>
-                    <!-- Nexus VR -->
-                    <div class="menu__item">
-                        <a href="projects/nexus/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1588336443962-49d88df004a1?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHZyJTIwaGVhZHNldHxlbnwwfHwwfHx8MA%3D%3D">
-                            Nexus VR Launch
-                        </a>
-                        <span class="menu__item-tag">Product Launch</span>
+                    <h3>Websites</h3>
+                    <p>Immersive, high-performance websites. From product launches to brand experiences.</p>
+                    <span class="capability-link">View Projects →</span>
+                </a>
+
+                <!-- Webapps -->
+                <a href="work/webapps.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                            <polyline points="2 17 12 22 22 17"></polyline>
+                            <polyline points="2 12 12 17 22 12"></polyline>
+                        </svg>
                     </div>
-                    <!-- Aura -->
-                    <div class="menu__item">
-                        <a href="projects/aura/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?auto=format&fit=crop&w=1600&q=80">
-                            Aura Interiors
-                        </a>
-                        <span class="menu__item-tag">Interior Design</span>
+                    <h3>Web Applications</h3>
+                    <p>Robust SaaS platforms, e-commerce solutions, and complex web tools.</p>
+                    <span class="capability-link">View Projects →</span>
+                </a>
+
+                <!-- Mobile Apps -->
+                <a href="work/mobile-apps.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect>
+                            <line x1="12" y1="18" x2="12.01" y2="18"></line>
+                        </svg>
                     </div>
-                    <!-- Iron Forge -->
-                    <div class="menu__item">
-                        <a href="projects/gym/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&w=1600&q=80">
-                            Iron Forge Gym
-                        </a>
-                        <span class="menu__item-tag">Fitness</span>
+                    <h3>Mobile Apps</h3>
+                    <p>Native iOS and Android applications built with React Native and modern frameworks.</p>
+                    <span class="capability-link">View Projects →</span>
+                </a>
+
+                <!-- AI Automations -->
+                <a href="work/ai-automations.html" class="capability-card reveal-up">
+                    <div class="capability-icon">
+                        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 2a2 2 0 0 1 2 2v2a2 2 0 0 1-2 2 2 2 0 0 1-2-2V4a2 2 0 0 1 2-2z"></path>
+                            <path d="M12 22a2 2 0 0 1 2-2v-2a2 2 0 0 1-2 2 2 2 0 0 1-2-2v2a2 2 0 0 1 2 2z"></path>
+                            <path d="M2 12a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2 2 2 0 0 1-2 2H4a2 2 0 0 1-2-2z"></path>
+                            <path d="M22 12a2 2 0 0 1-2-2h-2a2 2 0 0 1-2 2 2 2 0 0 1 2 2h2a2 2 0 0 1 2-2z"></path>
+                            <rect x="9" y="9" width="6" height="6" rx="1"></rect>
+                        </svg>
                     </div>
-                    <!-- Spice Garden -->
-                    <div class="menu__item">
-                        <a href="projects/restaurant/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1600&q=80">
-                            Spice Garden
-                        </a>
-                        <span class="menu__item-tag">Restaurant</span>
-                    </div>
-                    <!-- Luxe Beauty -->
-                    <div class="menu__item">
-                        <a href="projects/salon/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1600&q=80">
-                            Luxe Beauty
-                        </a>
-                        <span class="menu__item-tag">Beauty & Wellness</span>
-                    </div>
-                    <!-- Vogue Atelier -->
-                    <div class="menu__item">
-                        <a href="projects/boutique/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80">
-                            Vogue Atelier
-                        </a>
-                        <span class="menu__item-tag">E-Commerce</span>
-                    </div>
-                    <!-- Bright Minds -->
-                    <div class="menu__item">
-                        <a href="projects/coaching/index.html" class="menu__item-link"
-                            data-image="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1600&q=80">
-                            Bright Minds
-                        </a>
-                        <span class="menu__item-tag">Education</span>
-                    </div>
-                </div>
+                    <h3>AI Automations</h3>
+                    <p>Intelligent chatbots, agents, and automated workflows to streamline operations.</p>
+                    <span class="capability-link">View Solutions →</span>
+                </a>
             </div>
         </div>
     </section>

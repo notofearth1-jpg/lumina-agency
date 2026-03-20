@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Issue Reporter</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Space Grotesk', sans-serif;
+            background: #050508;
+            color: #E2E8F0;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .city-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 100%, rgba(168, 85, 247, .08), transparent 40%), radial-gradient(ellipse at 70% 0%, rgba(6, 182, 212, .06), transparent 40%), linear-gradient(rgba(255, 255, 255, .015) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, .015) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
+            z-index: 0
+        }
+
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .05);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .issue-card {
+            transition: all .3s ease;
+            cursor: pointer
+        }
+
+        .issue-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .3)
+        }
+    </style>
+</head>
+
+<body>
+    <div class="city-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-violet-400 font-bold uppercase tracking-[.3em] font-mono">CIVIC TOOLS</p>
+                <h1 class="text-2xl font-bold text-white">Report Issue</h1>
+            </div>
+            <button class="w-10 h-10 glass-strong rounded-2xl flex items-center justify-center text-white/40">
+                <i data-lucide="history" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Quick Report -->
+        <div class="glass-strong rounded-[28px] p-6 mb-6 border border-violet-500/15 slide-up"
+            style="animation-delay:.05s">
+            <h3 class="font-bold text-white text-base mb-1">What's the issue?</h3>
+            <p class="text-white/25 text-xs mb-5 font-mono">Select a category to start</p>
+
+            <div class="grid grid-cols-3 gap-3 mb-5">
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20">
+                        <i data-lucide="construction" class="w-5 h-5 text-amber-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Road</span>
+                </button>
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20">
+                        <i data-lucide="droplets" class="w-5 h-5 text-cyan-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Water</span>
+                </button>
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
+                        <i data-lucide="lightbulb" class="w-5 h-5 text-emerald-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Lights</span>
+                </button>
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-red-500/10 flex items-center justify-center border border-red-500/20">
+                        <i data-lucide="trash-2" class="w-5 h-5 text-red-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Waste</span>
+                </button>
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-violet-500/10 flex items-center justify-center border border-violet-500/20">
+                        <i data-lucide="tree-pine" class="w-5 h-5 text-violet-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Parks</span>
+                </button>
+                <button
+                    class="glass rounded-2xl p-4 flex flex-col items-center gap-2 hover:bg-white/5 transition-all active:scale-95">
+                    <div
+                        class="w-11 h-11 rounded-xl bg-pink-500/10 flex items-center justify-center border border-pink-500/20">
+                        <i data-lucide="more-horizontal" class="w-5 h-5 text-pink-400"></i></div>
+                    <span class="text-[9px] text-white/40 font-bold">Other</span>
+                </button>
+            </div>
+
+            <button
+                class="w-full py-3.5 rounded-2xl bg-gradient-to-r from-violet-600 to-purple-600 text-white text-sm font-bold shadow-lg shadow-violet-600/25 flex items-center justify-center gap-2 hover:shadow-xl transition-shadow active:scale-[.98]">
+                <i data-lucide="camera" class="w-4 h-4"></i> Quick Photo Report
+            </button>
+        </div>
+
+        <!-- Recent Reports -->
+        <h3 class="font-bold text-sm text-white mb-3 slide-up" style="animation-delay:.1s">Your Reports</h3>
+        <div class="space-y-3 slide-up" style="animation-delay:.15s">
+            <div class="issue-card glass-strong rounded-2xl p-4 flex items-center gap-4 border-l-2 border-emerald-400">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
+                    <i data-lucide="check-circle" class="w-5 h-5 text-emerald-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <h4 class="font-bold text-white text-[12px]">Pothole on Oak St</h4>
+                        <span
+                            class="text-[8px] font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full font-mono">RESOLVED</span>
+                    </div>
+                    <p class="text-[10px] text-white/25 font-mono">#SC-1847 • Fixed 2 days ago</p>
+                </div>
+            </div>
+
+            <div class="issue-card glass-strong rounded-2xl p-4 flex items-center gap-4 border-l-2 border-amber-400">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-amber-500/10 flex items-center justify-center border border-amber-500/20 shrink-0">
+                    <i data-lucide="clock" class="w-5 h-5 text-amber-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <h4 class="font-bold text-white text-[12px]">Broken streetlight</h4>
+                        <span
+                            class="text-[8px] font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded-full font-mono">IN
+                            PROGRESS</span>
+                    </div>
+                    <p class="text-[10px] text-white/25 font-mono">#SC-1902 • Crew dispatched</p>
+                </div>
+            </div>
+
+            <div class="issue-card glass-strong rounded-2xl p-4 flex items-center gap-4 border-l-2 border-cyan-400">
+                <div
+                    class="w-12 h-12 rounded-2xl bg-cyan-500/10 flex items-center justify-center border border-cyan-500/20 shrink-0">
+                    <i data-lucide="send" class="w-5 h-5 text-cyan-400"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <div class="flex items-center gap-2 mb-0.5">
+                        <h4 class="font-bold text-white text-[12px]">Water leak — Main Ave</h4>
+                        <span
+                            class="text-[8px] font-bold text-cyan-400 bg-cyan-500/10 px-2 py-0.5 rounded-full font-mono">SUBMITTED</span>
+                    </div>
+                    <p class="text-[10px] text-white/25 font-mono">#SC-1955 • Submitted today</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="glass-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto">
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="layout-dashboard"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Dashboard</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="map"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Map</span></button>
+            <button class="flex flex-col items-center gap-1 text-violet-400"><i data-lucide="alert-circle"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Report</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/20"><i data-lucide="settings"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold font-mono">Settings</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vitals</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F0F4F8;
+            color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 4px 24px rgba(0, 0, 0, .04)
+        }
+
+        .vital-card {
+            transition: all .3s ease
+        }
+
+        .vital-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .heartbeat {
+            animation: heartbeat 1.5s ease-in-out infinite
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1)
+            }
+
+            15% {
+                transform: scale(1.15)
+            }
+
+            30% {
+                transform: scale(1)
+            }
+
+            45% {
+                transform: scale(1.1)
+            }
+
+            60% {
+                transform: scale(1)
+            }
+        }
+
+        .sparkline-bar {
+            animation: barGrow .6s ease-out forwards
+        }
+
+        @keyframes barGrow {
+            from {
+                height: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen p-5 pb-28">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-blue-600 font-bold uppercase tracking-[.2em]">HEALTH MONITOR</p>
+                <h1 class="text-2xl font-extrabold text-slate-900">Vitals</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="w-10 h-10 bg-white rounded-2xl flex items-center justify-center text-slate-400 shadow-sm"><i
+                        data-lucide="bell" class="w-5 h-5"></i></button>
+                <img src="https://i.pravatar.cc/80?img=68"
+                    class="w-10 h-10 rounded-2xl object-cover border-2 border-white shadow-sm">
+            </div>
+        </div>
+
+        <!-- Primary Vital -->
+        <div class="card p-6 mb-5 relative overflow-hidden slide-up" style="animation-delay:.05s">
+            <div class="absolute -top-16 -right-16 w-48 h-48 bg-red-50 rounded-full blur-2xl"></div>
+            <div class="relative z-10 flex items-center gap-5">
+                <div
+                    class="w-16 h-16 rounded-[20px] bg-gradient-to-br from-red-500 to-rose-600 flex items-center justify-center shadow-lg shadow-red-500/25">
+                    <i data-lucide="heart" class="w-8 h-8 text-white heartbeat"></i>
+                </div>
+                <div class="flex-1">
+                    <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Heart Rate</p>
+                    <div class="flex items-baseline gap-1">
+                        <span class="text-4xl font-black text-slate-900">76</span>
+                        <span class="text-sm text-slate-400 font-bold">bpm</span>
+                    </div>
+                </div>
+                <div class="flex gap-0.5 items-end h-12">
+                    <div class="w-1.5 rounded-t bg-red-200 sparkline-bar" style="height:40%"></div>
+                    <div class="w-1.5 rounded-t bg-red-200 sparkline-bar" style="height:60%;animation-delay:.05s"></div>
+                    <div class="w-1.5 rounded-t bg-red-300 sparkline-bar" style="height:45%;animation-delay:.1s"></div>
+                    <div class="w-1.5 rounded-t bg-red-400 sparkline-bar" style="height:80%;animation-delay:.15s"></div>
+                    <div class="w-1.5 rounded-t bg-red-500 sparkline-bar" style="height:55%;animation-delay:.2s"></div>
+                    <div class="w-1.5 rounded-t bg-red-400 sparkline-bar" style="height:70%;animation-delay:.25s"></div>
+                    <div class="w-1.5 rounded-t bg-red-300 sparkline-bar" style="height:50%;animation-delay:.3s"></div>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center gap-2 relative z-10">
+                <div class="w-5 h-5 rounded-lg bg-emerald-100 flex items-center justify-center"><i data-lucide="check"
+                        class="w-3 h-3 text-emerald-600"></i></div>
+                <span class="text-[11px] text-emerald-600 font-semibold">Normal range • Resting</span>
+            </div>
+        </div>
+
+        <!-- Vitals Grid -->
+        <div class="grid grid-cols-2 gap-4 mb-5">
+            <div class="vital-card card p-5 slide-up" style="animation-delay:.1s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-9 h-9 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100">
+                        <i data-lucide="droplets" class="w-4 h-4 text-blue-600"></i></div>
+                </div>
+                <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Blood Pressure</p>
+                <p class="text-2xl font-black text-slate-900 mt-0.5">120<span class="text-sm text-slate-400">/80</span>
+                </p>
+                <p class="text-[10px] text-emerald-500 font-bold mt-1">✓ Optimal</p>
+            </div>
+            <div class="vital-card card p-5 slide-up" style="animation-delay:.15s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100">
+                        <i data-lucide="activity" class="w-4 h-4 text-purple-600"></i></div>
+                </div>
+                <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">SpO₂ Level</p>
+                <p class="text-2xl font-black text-slate-900 mt-0.5">98<span class="text-sm text-slate-400">%</span></p>
+                <p class="text-[10px] text-emerald-500 font-bold mt-1">✓ Healthy</p>
+            </div>
+            <div class="vital-card card p-5 slide-up" style="animation-delay:.2s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div
+                        class="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-100">
+                        <i data-lucide="thermometer" class="w-4 h-4 text-amber-600"></i></div>
+                </div>
+                <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Temperature</p>
+                <p class="text-2xl font-black text-slate-900 mt-0.5">98.6<span class="text-sm text-slate-400">°F</span>
+                </p>
+                <p class="text-[10px] text-emerald-500 font-bold mt-1">✓ Normal</p>
+            </div>
+            <div class="vital-card card p-5 slide-up" style="animation-delay:.25s">
+                <div class="flex items-center gap-2 mb-3">
+                    <div class="w-9 h-9 rounded-xl bg-teal-50 flex items-center justify-center border border-teal-100">
+                        <i data-lucide="moon" class="w-4 h-4 text-teal-600"></i></div>
+                </div>
+                <p class="text-[10px] text-slate-400 font-semibold uppercase tracking-wider">Sleep Score</p>
+                <p class="text-2xl font-black text-slate-900 mt-0.5">87<span class="text-sm text-slate-400">/100</span>
+                </p>
+                <p class="text-[10px] text-blue-500 font-bold mt-1">↑ 5% better</p>
+            </div>
+        </div>
+
+        <!-- Recent Logs -->
+        <h3 class="font-bold text-sm text-slate-900 mb-3 slide-up" style="animation-delay:.3s">Recent Logs</h3>
+        <div class="space-y-2.5 slide-up" style="animation-delay:.35s">
+            <div class="card p-4 flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100"><i
+                        data-lucide="footprints" class="w-5 h-5 text-blue-500"></i></div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-slate-800 text-[13px]">8,247 steps today</h4>
+                    <p class="text-[10px] text-slate-400">Goal: 10,000 • 82% complete</p>
+                </div>
+                <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-300"><i
+                        data-lucide="chevron-right" class="w-4 h-4"></i></div>
+            </div>
+            <div class="card p-4 flex items-center gap-3">
+                <div
+                    class="w-10 h-10 rounded-xl bg-orange-50 flex items-center justify-center border border-orange-100">
+                    <i data-lucide="flame" class="w-5 h-5 text-orange-500"></i></div>
+                <div class="flex-1">
+                    <h4 class="font-bold text-slate-800 text-[13px]">412 calories burned</h4>
+                    <p class="text-[10px] text-slate-400">Morning jog • 35 min</p>
+                </div>
+                <div class="w-8 h-8 rounded-xl bg-slate-50 flex items-center justify-center text-slate-300"><i
+                        data-lucide="chevron-right" class="w-4 h-4"></i></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div
+            class="bg-white rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto shadow-lg border border-slate-100">
+            <button class="flex flex-col items-center gap-1 text-blue-600"><i data-lucide="heart-pulse"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Vitals</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="video"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Telehealth</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="pill"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Meds</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

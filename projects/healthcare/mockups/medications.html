@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medications</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F0F4F8;
+            color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 4px 24px rgba(0, 0, 0, .04)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .med-card {
+            transition: all .3s ease;
+            cursor: pointer
+        }
+
+        .med-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08)
+        }
+
+        .progress-fill {
+            animation: fillWidth 1.2s ease-out forwards
+        }
+
+        @keyframes fillWidth {
+            from {
+                width: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen p-5 pb-28">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-blue-600 font-bold uppercase tracking-[.2em]">PHARMACY</p>
+                <h1 class="text-2xl font-extrabold text-slate-900">Medications</h1>
+            </div>
+            <button class="w-10 h-10 bg-white rounded-2xl flex items-center justify-center text-slate-400 shadow-sm">
+                <i data-lucide="plus" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Today's Schedule -->
+        <div class="card p-5 mb-5 slide-up" style="animation-delay:.05s">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="font-bold text-sm text-slate-900">Today's Schedule</h3>
+                <span
+                    class="text-[10px] font-bold text-emerald-600 bg-emerald-50 px-3 py-1 rounded-full border border-emerald-100">2
+                    of 4 taken</span>
+            </div>
+
+            <!-- Timeline -->
+            <div class="space-y-3">
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-md shadow-emerald-500/30"></div>
+                        <div class="w-0.5 h-10 bg-slate-100"></div>
+                    </div>
+                    <div class="flex-1 flex items-center gap-3 opacity-60">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center border border-blue-100">
+                            <span class="text-lg">💊</span></div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 text-[12px] line-through">Metformin 500mg</h4>
+                            <p class="text-[10px] text-slate-400">8:00 AM • With breakfast</p>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center"><i
+                                data-lucide="check" class="w-3 h-3 text-white"></i></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-emerald-500 shadow-md shadow-emerald-500/30"></div>
+                        <div class="w-0.5 h-10 bg-slate-100"></div>
+                    </div>
+                    <div class="flex-1 flex items-center gap-3 opacity-60">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-purple-50 flex items-center justify-center border border-purple-100">
+                            <span class="text-lg">💜</span></div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 text-[12px] line-through">Lisinopril 10mg</h4>
+                            <p class="text-[10px] text-slate-400">8:00 AM • With water</p>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center"><i
+                                data-lucide="check" class="w-3 h-3 text-white"></i></div>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-blue-500 shadow-md shadow-blue-500/30 animate-pulse"></div>
+                        <div class="w-0.5 h-10 bg-slate-100"></div>
+                    </div>
+                    <div class="flex-1 flex items-center gap-3">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center border border-amber-100">
+                            <span class="text-lg">🧡</span></div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-900 text-[12px]">Vitamin D 5000 IU</h4>
+                            <p class="text-[10px] text-blue-500 font-semibold">Due at 2:00 PM • After lunch</p>
+                        </div>
+                        <button
+                            class="w-6 h-6 rounded-full bg-blue-500 flex items-center justify-center shadow-md shadow-blue-500/30"><i
+                                data-lucide="bell" class="w-3 h-3 text-white"></i></button>
+                    </div>
+                </div>
+
+                <div class="flex items-center gap-4">
+                    <div class="flex flex-col items-center shrink-0">
+                        <div class="w-3 h-3 rounded-full bg-slate-200"></div>
+                    </div>
+                    <div class="flex-1 flex items-center gap-3 opacity-40">
+                        <div
+                            class="w-10 h-10 rounded-xl bg-red-50 flex items-center justify-center border border-red-100">
+                            <span class="text-lg">❤️</span></div>
+                        <div class="flex-1">
+                            <h4 class="font-bold text-slate-800 text-[12px]">Atorvastatin 20mg</h4>
+                            <p class="text-[10px] text-slate-400">9:00 PM • Before bed</p>
+                        </div>
+                        <div class="w-6 h-6 rounded-full bg-slate-100"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Refill Alert -->
+        <div class="bg-amber-50 border border-amber-200 rounded-2xl p-4 flex items-start gap-3 mb-5 slide-up"
+            style="animation-delay:.15s">
+            <div
+                class="w-9 h-9 rounded-xl bg-amber-100 flex items-center justify-center shrink-0 border border-amber-200">
+                <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-600"></i>
+            </div>
+            <div class="flex-1">
+                <h4 class="font-bold text-amber-800 text-xs">Refill Needed</h4>
+                <p class="text-[11px] text-amber-600 mt-0.5">Metformin — 5 pills left (~3 days)</p>
+                <button
+                    class="mt-2 px-4 py-1.5 bg-amber-500 text-white text-[10px] font-bold rounded-xl shadow-sm hover:bg-amber-600 transition-colors">Order
+                    Refill</button>
+            </div>
+        </div>
+
+        <!-- Adherence -->
+        <div class="card p-5 slide-up" style="animation-delay:.2s">
+            <div class="flex justify-between items-center mb-3">
+                <h3 class="font-bold text-sm text-slate-900">Weekly Adherence</h3>
+                <span class="text-[10px] font-bold text-blue-600">92%</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded-full overflow-hidden">
+                <div class="h-full bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full progress-fill"
+                    style="width:92%"></div>
+            </div>
+            <div class="flex justify-between mt-2">
+                <span class="text-[9px] text-slate-300 font-bold">Mon</span>
+                <span class="text-[9px] text-slate-300 font-bold">Tue</span>
+                <span class="text-[9px] text-slate-300 font-bold">Wed</span>
+                <span class="text-[9px] text-slate-300 font-bold">Thu</span>
+                <span class="text-[9px] text-slate-300 font-bold">Fri</span>
+                <span class="text-[9px] text-slate-300 font-bold">Sat</span>
+                <span class="text-[9px] text-slate-300 font-bold">Sun</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div
+            class="bg-white rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto shadow-lg border border-slate-100">
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="heart-pulse"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Vitals</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="video"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Telehealth</span></button>
+            <button class="flex flex-col items-center gap-1 text-blue-600"><i data-lucide="pill"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Meds</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

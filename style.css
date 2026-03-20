@@ -353,7 +353,8 @@ nav.scrolled {
     display: inline-block;
 }
 
-.nav-dropdown:hover .dropdown-arrow {
+/* Only rotate the top-level arrow */
+.nav-dropdown:hover>.nav-link .dropdown-arrow {
     transform: rotate(180deg);
 }
 
@@ -375,7 +376,7 @@ nav.scrolled {
     isolation: isolate;
 }
 
-.nav-dropdown:hover .dropdown-menu {
+.nav-dropdown:hover>.dropdown-menu {
     opacity: 1;
     visibility: visible;
     transform: translateX(-50%) translateY(0);
@@ -388,6 +389,7 @@ nav.scrolled {
     color: var(--text-dim);
     transition: all 0.2s ease;
     position: relative;
+    white-space: nowrap;
 }
 
 .dropdown-menu a:hover {
@@ -410,6 +412,47 @@ nav.scrolled {
 
 .dropdown-menu a:hover::before {
     transform: translateY(-50%) scaleX(1);
+}
+
+/* --- Nested Dropdown (Sub-menu) --- */
+.nested-dropdown {
+    position: relative;
+    width: 100%;
+}
+
+/* Arrow for nested item */
+.nested-dropdown>a {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nested-dropdown>a .dropdown-arrow {
+    transform: rotate(0deg);
+    font-size: 0.8em;
+    margin-left: 10px;
+}
+
+.nested-dropdown:hover>a .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.sub-menu {
+    top: -10px;
+    /* Align with top of parent item */
+    left: 100%;
+    /* Move to right */
+    margin-left: 0;
+    /* No margin */
+    transform: translateX(10px) translateY(0);
+    min-width: 220px;
+}
+
+/* Override hover for nested */
+.nested-dropdown:hover>.sub-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(0) translateY(0);
 }
 
 .cta-button {
@@ -797,6 +840,96 @@ footer {
     border-top: 1px solid var(--line);
     /* Separator line */
     padding-top: 3rem;
+}
+
+/* --- Mobile App iPhone Frame --- */
+.iphone-mockup {
+    position: relative;
+    border-radius: 50px;
+    border: 12px solid #1a1a1a;
+    box-shadow:
+        0 0 0 2px #333,
+        0 20px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    aspect-ratio: 9/19.5;
+    background: #000;
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    /* Realistic sizing constraint */
+    transition: transform 0.4s ease;
+}
+
+.iphone-mockup:hover {
+    transform: translateY(-10px);
+}
+
+/* Notch */
+.iphone-mockup::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    height: 25px;
+    background: #1a1a1a;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+    z-index: 10;
+}
+
+/* Iframe scaling wrapper — renders at 375x812 native, scales to fit */
+.mockup-iframe-wrap {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 375px;
+    height: 812px;
+    transform-origin: top left;
+    /* Scale is set dynamically by JS based on frame size */
+}
+
+.mockup-iframe-wrap iframe {
+    width: 375px;
+    height: 812px;
+    border: none;
+    overflow: hidden;
+}
+
+/* Mockup Grid - Mobile Specific */
+.mockup-grid-mobile {
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+}
+
+.mockup-grid-mobile>div {
+    flex: 1 1 350px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.mockup-caption-mobile {
+    text-align: center;
+    margin-top: 2rem;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.mockup-caption-mobile h3 {
+    font-size: 1.5rem;
+    font-family: var(--font-head);
+    margin-bottom: 0.5rem;
+    color: white;
+}
+
+.mockup-caption-mobile p {
+    color: var(--text-dim);
+    font-size: 0.95rem;
 }
 
 .meta-links {
@@ -1833,5 +1966,159 @@ footer {
 
     .spotlight-info h2 {
         font-size: 3rem;
+    }
+}
+
+/* ========================================
+   SHARED PROJECT PAGE STYLES (From Nexus)
+   ======================================== */
+.cs-hero {
+    padding: 180px 0 80px;
+    text-align: center;
+}
+
+.cs-meta {
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    margin-bottom: 2rem;
+    font-family: var(--font-head);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--accent);
+    font-size: 0.9rem;
+}
+
+.cs-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 4rem;
+    margin: 4rem 0;
+}
+
+.cs-sidebar h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: white;
+}
+
+.cs-sidebar ul {
+    margin-bottom: 3rem;
+    color: var(--text-dim);
+}
+
+.cs-sidebar li {
+    margin-bottom: 0.5rem;
+}
+
+.cs-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #d4d4d8;
+    margin-bottom: 2rem;
+}
+
+.cs-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin: 4rem 0;
+}
+
+.cs-img {
+    width: 100%;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+}
+
+.live-btn-container {
+    text-align: center;
+    margin: 6rem 0;
+    padding: 4rem 0;
+    border-top: 1px solid var(--line);
+    border-bottom: 1px solid var(--line);
+}
+
+/* ========================================
+   macOS Window Frame Styles
+   ======================================== */
+.macos-window {
+    background: #1e1e1e;
+    border-radius: 12px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+    overflow: hidden;
+    border: 1px solid #333;
+    margin: 4rem 0;
+    width: 100%;
+}
+
+.macos-header {
+    background: #2a2a2a;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #333;
+}
+
+.macos-buttons {
+    display: flex;
+    gap: 8px;
+    margin-right: 16px;
+}
+
+.macos-btn {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.macos-btn.close {
+    background: #ff5f56;
+}
+
+.macos-btn.minimize {
+    background: #ffbd2e;
+}
+
+.macos-btn.maximize {
+    background: #27c93f;
+}
+
+.macos-address-bar {
+    flex: 1;
+    background: #1a1a1a;
+    border-radius: 6px;
+    padding: 6px 12px;
+    color: #666;
+    font-size: 12px;
+    text-align: center;
+    border: 1px solid #333;
+    font-family: var(--font-body);
+    user-select: none;
+}
+
+.macos-content {
+    background: #fff;
+    height: 600px;
+    position: relative;
+    /* Smooth scrolling inside iframe */
+    -webkit-overflow-scrolling: touch;
+}
+
+.macos-content iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+@media(max-width: 768px) {
+    .macos-content {
+        height: 400px;
+    }
+}
+
+@media(max-width:900px) {
+    .cs-grid {
+        grid-template-columns: 1fr;
     }
 }

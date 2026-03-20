@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AR Lab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #06060E;
+            color: #fff;
+            height: 100vh;
+            overflow: hidden
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .04);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, .08)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .07);
+            backdrop-filter: blur(30px);
+            border: 1px solid rgba(255, 255, 255, .12)
+        }
+
+        .lab-bg {
+            background: radial-gradient(ellipse at 50% 40%, rgba(236, 72, 153, .15), transparent 60%), radial-gradient(ellipse at 80% 70%, rgba(56, 189, 248, .1), transparent 40%), #06060E
+        }
+
+        .model-glow {
+            filter: drop-shadow(0 0 40px rgba(236, 72, 153, .3)) drop-shadow(0 0 80px rgba(56, 189, 248, .15))
+        }
+
+        .rotate-model {
+            animation: rotateY 20s linear infinite
+        }
+
+        @keyframes rotateY {
+            to {
+                transform: rotateY(360deg)
+            }
+        }
+
+        .scan-line {
+            position: absolute;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(236, 72, 153, .5), transparent);
+            animation: scanDown 3s ease-in-out infinite
+        }
+
+        @keyframes scanDown {
+            0% {
+                top: 15%;
+                opacity: 0
+            }
+
+            10% {
+                opacity: 1
+            }
+
+            90% {
+                opacity: 1
+            }
+
+            100% {
+                top: 70%;
+                opacity: 0
+            }
+        }
+
+        .label-float {
+            animation: labelFloat 3s ease-in-out infinite
+        }
+
+        @keyframes labelFloat {
+
+            0%,
+            100% {
+                transform: translateY(0)
+            }
+
+            50% {
+                transform: translateY(-4px)
+            }
+        }
+
+        .pulse-dot {
+            animation: pulseDot 2s ease-in-out infinite
+        }
+
+        @keyframes pulseDot {
+
+            0%,
+            100% {
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, .6)
+            }
+
+            50% {
+                box-shadow: 0 0 0 8px rgba(236, 72, 153, 0)
+            }
+        }
+    </style>
+</head>
+
+<body class="lab-bg">
+
+    <div class="flex flex-col h-full relative">
+        <!-- Top Bar -->
+        <div class="p-5 flex justify-between items-center z-20">
+            <button class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50">
+                <i data-lucide="arrow-left" class="w-4 h-4"></i>
+            </button>
+            <div class="glass rounded-full px-4 py-1.5 flex items-center gap-2">
+                <div class="w-2 h-2 bg-pink-500 rounded-full pulse-dot"></div>
+                <span class="text-[10px] font-bold text-white/60 uppercase tracking-widest">AR MODE</span>
+            </div>
+            <button class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50">
+                <i data-lucide="maximize-2" class="w-4 h-4"></i>
+            </button>
+        </div>
+
+        <!-- 3D Model Area -->
+        <div class="flex-1 relative flex items-center justify-center z-10">
+            <!-- Scan Line -->
+            <div class="scan-line"></div>
+
+            <!-- Grid Floor Effect -->
+            <div class="absolute bottom-0 inset-x-0 h-1/3"
+                style="background:linear-gradient(to top,rgba(236,72,153,.05),transparent);mask-image:linear-gradient(to top,black,transparent)">
+            </div>
+
+            <!-- Model Placeholder (Skeleton Silhouette) -->
+            <div class="relative model-glow">
+                <div class="w-40 h-56 relative">
+                    <!-- Stylized body shape -->
+                    <div
+                        class="absolute top-0 left-1/2 -translate-x-1/2 w-14 h-14 rounded-full border-2 border-pink-400/40 bg-pink-500/5">
+                    </div>
+                    <div
+                        class="absolute top-14 left-1/2 -translate-x-1/2 w-12 h-28 rounded-xl border border-pink-400/20 bg-pink-500/5 flex items-center justify-center">
+                        <div class="w-8 h-20 rounded-lg border border-sky-400/20 bg-sky-500/5"></div>
+                    </div>
+                    <div
+                        class="absolute top-16 left-0 w-8 h-24 rounded-xl border border-pink-400/15 bg-pink-500/3 -rotate-12 origin-top-right">
+                    </div>
+                    <div
+                        class="absolute top-16 right-0 w-8 h-24 rounded-xl border border-pink-400/15 bg-pink-500/3 rotate-12 origin-top-left">
+                    </div>
+                </div>
+
+                <!-- Floating Labels -->
+                <div class="absolute -top-2 -right-16 label-float" style="animation-delay:.3s">
+                    <div
+                        class="glass-strong rounded-xl px-3 py-1.5 text-[10px] font-bold text-white/80 flex items-center gap-1.5 whitespace-nowrap">
+                        <div class="w-1.5 h-1.5 bg-pink-500 rounded-full"></div>
+                        Cranium
+                    </div>
+                    <div class="w-8 h-px bg-pink-500/30 ml-auto mr-2"></div>
+                </div>
+
+                <div class="absolute top-20 -left-20 label-float" style="animation-delay:.6s">
+                    <div
+                        class="glass-strong rounded-xl px-3 py-1.5 text-[10px] font-bold text-white/80 flex items-center gap-1.5 whitespace-nowrap">
+                        <div class="w-1.5 h-1.5 bg-sky-500 rounded-full"></div>
+                        Humerus
+                    </div>
+                </div>
+
+                <div class="absolute top-36 -right-20 label-float" style="animation-delay:.9s">
+                    <div
+                        class="glass-strong rounded-xl px-3 py-1.5 text-[10px] font-bold text-white/80 flex items-center gap-1.5 whitespace-nowrap">
+                        <div class="w-1.5 h-1.5 bg-violet-500 rounded-full"></div>
+                        Thorax
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Panel -->
+        <div class="p-5 z-20">
+            <div class="glass-strong rounded-[28px] p-5">
+                <div class="flex justify-between items-start mb-4">
+                    <div>
+                        <h3 class="font-extrabold text-white text-lg">Skeletal System</h3>
+                        <p class="text-white/30 text-xs">Tap any bone to identify</p>
+                    </div>
+                    <div class="flex gap-2">
+                        <button
+                            class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-colors">
+                            <i data-lucide="rotate-3d" class="w-4 h-4"></i>
+                        </button>
+                        <button
+                            class="w-9 h-9 glass rounded-xl flex items-center justify-center text-white/50 hover:text-white transition-colors">
+                            <i data-lucide="layers" class="w-4 h-4"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="flex gap-3">
+                    <button
+                        class="flex-1 py-3 rounded-2xl bg-gradient-to-r from-pink-500 to-rose-600 text-white text-xs font-bold shadow-lg shadow-pink-500/30 flex items-center justify-center gap-2">
+                        <i data-lucide="scan" class="w-4 h-4"></i> Identify Mode
+                    </button>
+                    <button
+                        class="flex-1 py-3 rounded-2xl glass text-white/60 text-xs font-bold flex items-center justify-center gap-2 hover:text-white/80 transition-colors">
+                        <i data-lucide="book-open" class="w-4 h-4"></i> Study Guide
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

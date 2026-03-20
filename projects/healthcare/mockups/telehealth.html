@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telehealth</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #F0F4F8;
+            color: #1e293b;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .card {
+            background: white;
+            border-radius: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .04), 0 4px 24px rgba(0, 0, 0, .04)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .doctor-card {
+            transition: all .3s ease;
+            cursor: pointer
+        }
+
+        .doctor-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .08)
+        }
+
+        .time-slot {
+            transition: all .2s ease
+        }
+    </style>
+</head>
+
+<body>
+    <div class="min-h-screen p-5 pb-28">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-blue-600 font-bold uppercase tracking-[.2em]">SECURE CONNECTION</p>
+                <h1 class="text-2xl font-extrabold text-slate-900">Telehealth</h1>
+            </div>
+            <button class="w-10 h-10 bg-white rounded-2xl flex items-center justify-center text-slate-400 shadow-sm">
+                <i data-lucide="search" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Active Session Banner -->
+        <div class="bg-gradient-to-r from-blue-600 to-indigo-600 rounded-[24px] p-5 mb-6 relative overflow-hidden slide-up"
+            style="animation-delay:.05s">
+            <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full blur-2xl"></div>
+            <div class="relative z-10 flex items-center gap-4">
+                <img src="https://i.pravatar.cc/80?img=32"
+                    class="w-14 h-14 rounded-2xl border-2 border-white/30 object-cover">
+                <div class="flex-1">
+                    <h3 class="font-bold text-white text-base">Dr. Sarah Chen</h3>
+                    <p class="text-white/60 text-xs">Upcoming • Today 3:00 PM</p>
+                </div>
+                <button
+                    class="w-12 h-12 bg-white/20 backdrop-blur rounded-2xl flex items-center justify-center text-white border border-white/10">
+                    <i data-lucide="video" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div class="flex gap-2 mt-4 relative z-10">
+                <span class="text-[9px] font-bold text-white/50 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur">⏱ In
+                    2 hours</span>
+                <span class="text-[9px] font-bold text-white/50 bg-white/10 px-2.5 py-1 rounded-full backdrop-blur">🔒
+                    E2E Encrypted</span>
+            </div>
+        </div>
+
+        <!-- Specialties -->
+        <h3 class="font-bold text-sm text-slate-900 mb-3 slide-up" style="animation-delay:.1s">Find a Doctor</h3>
+        <div class="flex gap-3 mb-6 overflow-x-auto pb-1 slide-up"
+            style="animation-delay:.12s;-ms-overflow-style:none;scrollbar-width:none">
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl bg-blue-600 text-white text-xs font-bold shadow-md shadow-blue-600/20">All</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl bg-white text-slate-400 text-xs font-bold shadow-sm">🫀
+                Cardiology</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl bg-white text-slate-400 text-xs font-bold shadow-sm">🧠
+                Neurology</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl bg-white text-slate-400 text-xs font-bold shadow-sm">👶
+                Pediatrics</button>
+        </div>
+
+        <!-- Available Doctors -->
+        <div class="space-y-3 mb-6 slide-up" style="animation-delay:.15s">
+            <div class="doctor-card card p-4 flex items-center gap-4">
+                <img src="https://i.pravatar.cc/60?img=59"
+                    class="w-14 h-14 rounded-2xl object-cover border border-slate-100">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-slate-900 text-[13px]">Dr. James Harper</h4>
+                    <p class="text-[10px] text-slate-400">Cardiologist • 12 yrs exp</p>
+                    <div class="flex items-center gap-2 mt-1.5">
+                        <div class="flex items-center gap-0.5 text-amber-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <span class="text-[10px] font-bold">4.9</span>
+                        </div>
+                        <span class="text-[10px] text-slate-300">•</span>
+                        <span class="text-[10px] text-emerald-500 font-bold">Available today</span>
+                    </div>
+                </div>
+                <button
+                    class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 border border-blue-100 hover:bg-blue-100 transition-colors">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="doctor-card card p-4 flex items-center gap-4">
+                <img src="https://i.pravatar.cc/60?img=44"
+                    class="w-14 h-14 rounded-2xl object-cover border border-slate-100">
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-slate-900 text-[13px]">Dr. Priya Patel</h4>
+                    <p class="text-[10px] text-slate-400">General Medicine • 8 yrs exp</p>
+                    <div class="flex items-center gap-2 mt-1.5">
+                        <div class="flex items-center gap-0.5 text-amber-500">
+                            <i data-lucide="star" class="w-3 h-3 fill-current"></i>
+                            <span class="text-[10px] font-bold">4.8</span>
+                        </div>
+                        <span class="text-[10px] text-slate-300">•</span>
+                        <span class="text-[10px] text-emerald-500 font-bold">Next slot: 4 PM</span>
+                    </div>
+                </div>
+                <button
+                    class="w-10 h-10 bg-blue-50 rounded-xl flex items-center justify-center text-blue-600 border border-blue-100 hover:bg-blue-100 transition-colors">
+                    <i data-lucide="calendar-plus" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- Time Slots -->
+        <h3 class="font-bold text-sm text-slate-900 mb-3 slide-up" style="animation-delay:.2s">Available Slots</h3>
+        <div class="grid grid-cols-3 gap-2 slide-up" style="animation-delay:.25s">
+            <button
+                class="time-slot bg-white p-3 rounded-2xl text-center shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-200">
+                <p class="font-bold text-slate-800 text-xs">4:00 PM</p>
+                <p class="text-[9px] text-slate-300">Today</p>
+            </button>
+            <button
+                class="time-slot bg-blue-600 p-3 rounded-2xl text-center shadow-md shadow-blue-600/20 border border-blue-500">
+                <p class="font-bold text-white text-xs">4:30 PM</p>
+                <p class="text-[9px] text-blue-200">Today</p>
+            </button>
+            <button
+                class="time-slot bg-white p-3 rounded-2xl text-center shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-200">
+                <p class="font-bold text-slate-800 text-xs">5:00 PM</p>
+                <p class="text-[9px] text-slate-300">Today</p>
+            </button>
+            <button
+                class="time-slot bg-white p-3 rounded-2xl text-center shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-200">
+                <p class="font-bold text-slate-800 text-xs">9:00 AM</p>
+                <p class="text-[9px] text-slate-300">Tomorrow</p>
+            </button>
+            <button
+                class="time-slot bg-white p-3 rounded-2xl text-center shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-200">
+                <p class="font-bold text-slate-800 text-xs">10:30 AM</p>
+                <p class="text-[9px] text-slate-300">Tomorrow</p>
+            </button>
+            <button
+                class="time-slot bg-white p-3 rounded-2xl text-center shadow-sm hover:shadow-md border border-slate-100 hover:border-blue-200">
+                <p class="font-bold text-slate-800 text-xs">2:00 PM</p>
+                <p class="text-[9px] text-slate-300">Tomorrow</p>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div
+            class="bg-white rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto shadow-lg border border-slate-100">
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="heart-pulse"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Vitals</span></button>
+            <button class="flex flex-col items-center gap-1 text-blue-600"><i data-lucide="video"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Telehealth</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="pill"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Meds</span></button>
+            <button class="flex flex-col items-center gap-1 text-slate-300"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

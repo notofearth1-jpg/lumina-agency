@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #06060E;
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .mesh-bg {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(145deg, #06060E 0%, #0c0c1d 30%, #120c20 60%, #06060E 100%);
+            z-index: 0
+        }
+
+        .mesh-bg::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 70% 20%, rgba(236, 72, 153, .08), transparent 50%), radial-gradient(ellipse at 20% 80%, rgba(56, 189, 248, .06), transparent 50%)
+        }
+
+        .glass {
+            background: rgba(255, 255, 255, .03);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, .06)
+        }
+
+        .glass-strong {
+            background: rgba(255, 255, 255, .06);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, .1)
+        }
+
+        .course-card {
+            transition: all .3s ease;
+            cursor: pointer
+        }
+
+        .course-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, .5)
+        }
+
+        .gradient-pink {
+            background: linear-gradient(135deg, #ec4899, #db2777, #be185d)
+        }
+
+        .gradient-blue {
+            background: linear-gradient(135deg, #38bdf8, #0ea5e9, #0284c7)
+        }
+
+        .gradient-purple {
+            background: linear-gradient(135deg, #a78bfa, #7c3aed, #6d28d9)
+        }
+
+        .slide-up {
+            animation: slideUp .6s cubic-bezier(.22, 1, .36, 1) forwards;
+            opacity: 0;
+            transform: translateY(20px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .progress-fill {
+            animation: fillWidth 1s ease-out forwards
+        }
+
+        @keyframes fillWidth {
+            from {
+                width: 0
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mesh-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-8 slide-up">
+            <div>
+                <p class="text-[10px] text-white/30 font-bold uppercase tracking-[.2em] mb-1">IMMERSIVE LEARNING</p>
+                <h1 class="text-2xl font-extrabold text-white">Course Hub</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="w-10 h-10 glass-strong rounded-2xl flex items-center justify-center text-white/50 hover:text-white transition-colors relative">
+                    <i data-lucide="bell" class="w-5 h-5"></i>
+                    <div
+                        class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 bg-pink-500 rounded-full border-2 border-[#06060E]">
+                    </div>
+                </button>
+                <img src="https://i.pravatar.cc/80?img=12"
+                    class="w-10 h-10 rounded-2xl border-2 border-white/10 object-cover">
+            </div>
+        </div>
+
+        <!-- Continue Learning -->
+        <div class="slide-up" style="animation-delay:.1s">
+            <div class="course-card rounded-[28px] overflow-hidden relative mb-6">
+                <div class="gradient-pink p-6 pb-8 relative">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=800&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay">
+                    </div>
+                    <div class="relative z-10">
+                        <div class="flex justify-between items-start mb-6">
+                            <span
+                                class="text-[10px] font-bold uppercase tracking-widest text-white/60 bg-white/10 px-3 py-1 rounded-full backdrop-blur">CONTINUE
+                                LEARNING</span>
+                            <button
+                                class="w-10 h-10 bg-white/10 backdrop-blur rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-colors">
+                                <i data-lucide="play" class="w-5 h-5 fill-current"></i>
+                            </button>
+                        </div>
+                        <h3 class="text-xl font-extrabold text-white mb-1">Human Anatomy in 3D</h3>
+                        <p class="text-sm text-white/60 mb-4">Module 4: Skeletal System</p>
+                        <div class="flex items-center gap-3">
+                            <div class="flex-1 h-1.5 bg-white/20 rounded-full overflow-hidden">
+                                <div class="h-full bg-white rounded-full progress-fill" style="width:68%"></div>
+                            </div>
+                            <span class="text-xs font-bold text-white/80">68%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Categories -->
+        <div class="flex gap-3 mb-6 overflow-x-auto pb-1 slide-up"
+            style="animation-delay:.15s;-ms-overflow-style:none;scrollbar-width:none">
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl bg-white/10 text-white text-xs font-bold border border-white/10">All</button>
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl glass text-white/40 text-xs font-bold hover:text-white/70 transition-colors">AR
+                Labs</button>
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl glass text-white/40 text-xs font-bold hover:text-white/70 transition-colors">VR
+                Worlds</button>
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl glass text-white/40 text-xs font-bold hover:text-white/70 transition-colors">3D
+                Models</button>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="space-y-4">
+            <div class="course-card glass-strong rounded-[24px] p-4 flex gap-4 slide-up" style="animation-delay:.2s">
+                <div
+                    class="w-20 h-20 rounded-2xl gradient-blue shrink-0 flex items-center justify-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1614732414444-096e5f1122d5?q=80&w=400&auto=format&fit=crop')] bg-cover bg-center opacity-30 mix-blend-overlay">
+                    </div>
+                    <i data-lucide="atom" class="w-8 h-8 text-white relative z-10"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[14px] mb-1">Molecular Chemistry</h4>
+                    <p class="text-[11px] text-white/30 mb-3">8 AR Experiments</p>
+                    <div class="flex items-center gap-2">
+                        <div class="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-sky-400 rounded-full progress-fill" style="width:45%"></div>
+                        </div>
+                        <span class="text-[10px] text-white/40 font-bold">45%</span>
+                    </div>
+                </div>
+                <button
+                    class="self-center w-9 h-9 glass rounded-xl flex items-center justify-center text-white/30 hover:text-white/60 transition-colors">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="course-card glass-strong rounded-[24px] p-4 flex gap-4 slide-up" style="animation-delay:.25s">
+                <div
+                    class="w-20 h-20 rounded-2xl gradient-purple shrink-0 flex items-center justify-center relative overflow-hidden">
+                    <div
+                        class="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?q=80&w=400&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay">
+                    </div>
+                    <i data-lucide="orbit" class="w-8 h-8 text-white relative z-10"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[14px] mb-1">Solar System Explorer</h4>
+                    <p class="text-[11px] text-white/30 mb-3">12 VR Journeys</p>
+                    <div class="flex items-center gap-2">
+                        <div class="flex-1 h-1 bg-white/10 rounded-full overflow-hidden">
+                            <div class="h-full bg-violet-400 rounded-full progress-fill" style="width:20%"></div>
+                        </div>
+                        <span class="text-[10px] text-white/40 font-bold">20%</span>
+                    </div>
+                </div>
+                <button
+                    class="self-center w-9 h-9 glass rounded-xl flex items-center justify-center text-white/30 hover:text-white/60 transition-colors">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+
+            <div class="course-card glass-strong rounded-[24px] p-4 flex gap-4 slide-up" style="animation-delay:.3s">
+                <div
+                    class="w-20 h-20 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 shrink-0 flex items-center justify-center relative overflow-hidden">
+                    <i data-lucide="leaf" class="w-8 h-8 text-white relative z-10"></i>
+                </div>
+                <div class="flex-1 min-w-0">
+                    <h4 class="font-bold text-white text-[14px] mb-1">Ecosystem Dynamics</h4>
+                    <p class="text-[11px] text-white/30 mb-3">6 Interactive Labs</p>
+                    <span
+                        class="text-[9px] font-bold text-emerald-400 bg-emerald-500/10 border border-emerald-500/20 px-2 py-0.5 rounded-full">NEW</span>
+                </div>
+                <button
+                    class="self-center w-9 h-9 glass rounded-xl flex items-center justify-center text-white/30 hover:text-white/60 transition-colors">
+                    <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="glass-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto">
+            <button class="flex flex-col items-center gap-1 text-pink-400"><i data-lucide="compass"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Explore</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="flask-conical"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Labs</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="bar-chart-3"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Progress</span></button>
+            <button class="flex flex-col items-center gap-1 text-white/30"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>

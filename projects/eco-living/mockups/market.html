@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Market</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #FAFAF5;
+            color: #1a1a1a;
+            min-height: 100vh;
+            overflow-x: hidden
+        }
+
+        .organic-bg {
+            position: fixed;
+            inset: 0;
+            background: radial-gradient(ellipse at 80% 0%, rgba(187, 247, 208, .3), transparent 40%), radial-gradient(ellipse at 0% 80%, rgba(254, 215, 170, .25), transparent 40%), #FAFAF5;
+            z-index: 0
+        }
+
+        .card {
+            background: rgba(255, 255, 255, .7);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(0, 0, 0, .04);
+            box-shadow: 0 1px 3px rgba(0, 0, 0, .04)
+        }
+
+        .card-strong {
+            background: rgba(255, 255, 255, .85);
+            backdrop-filter: blur(20px);
+            border: 1px solid rgba(0, 0, 0, .06);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, .05)
+        }
+
+        .product-card {
+            transition: all .3s ease
+        }
+
+        .product-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, .08)
+        }
+
+        .slide-up {
+            animation: slideUp .5s ease-out forwards;
+            opacity: 0;
+            transform: translateY(12px)
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .eco-badge {
+            background: linear-gradient(135deg, #059669, #10b981);
+            color: white;
+            font-size: 8px;
+            font-weight: 800;
+            padding: 2px 6px;
+            border-radius: 6px;
+            letter-spacing: .5px
+        }
+    </style>
+</head>
+
+<body>
+    <div class="organic-bg"></div>
+
+    <div class="relative z-10 p-5 pb-28 min-h-screen">
+        <!-- Header -->
+        <div class="flex justify-between items-center mb-6 slide-up">
+            <div>
+                <p class="text-[10px] text-emerald-600 font-bold uppercase tracking-[.2em]">SUSTAINABLE</p>
+                <h1 class="text-2xl font-extrabold text-gray-900">Green Market</h1>
+            </div>
+            <div class="flex items-center gap-3">
+                <button
+                    class="w-10 h-10 card rounded-2xl flex items-center justify-center text-gray-400 hover:text-gray-600 transition-colors relative">
+                    <i data-lucide="shopping-bag" class="w-5 h-5"></i>
+                    <div
+                        class="absolute -top-0.5 -right-0.5 w-4 h-4 bg-emerald-500 rounded-full border-2 border-[#FAFAF5] flex items-center justify-center text-[8px] font-bold text-white">
+                        3</div>
+                </button>
+            </div>
+        </div>
+
+        <!-- Search -->
+        <div class="card-strong rounded-2xl px-4 py-3 flex items-center gap-3 mb-6 slide-up"
+            style="animation-delay:.05s">
+            <i data-lucide="search" class="w-4 h-4 text-gray-300"></i>
+            <input type="text" placeholder="Search sustainable products..."
+                class="bg-transparent text-sm text-gray-800 placeholder-gray-300 flex-1 focus:outline-none">
+        </div>
+
+        <!-- Categories -->
+        <div class="flex gap-3 mb-6 overflow-x-auto pb-1 slide-up"
+            style="animation-delay:.1s;-ms-overflow-style:none;scrollbar-width:none">
+            <button
+                class="shrink-0 px-5 py-2.5 rounded-2xl bg-emerald-600 text-white text-xs font-bold shadow-md shadow-emerald-600/20">All</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl card text-gray-400 text-xs font-bold">🌿 Organic</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl card text-gray-400 text-xs font-bold">♻️ Zero Waste</button>
+            <button class="shrink-0 px-5 py-2.5 rounded-2xl card text-gray-400 text-xs font-bold">🧴 Personal</button>
+        </div>
+
+        <!-- Featured -->
+        <div class="card-strong rounded-[24px] p-5 mb-6 flex gap-4 slide-up" style="animation-delay:.12s">
+            <div
+                class="w-24 h-24 rounded-2xl bg-gradient-to-br from-amber-100 to-amber-50 flex items-center justify-center shrink-0 overflow-hidden border border-amber-200/50">
+                <img src="https://images.unsplash.com/photo-1602143407151-7111542de6e8?q=80&w=400&auto=format&fit=crop"
+                    class="w-full h-full object-cover rounded-2xl">
+            </div>
+            <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-1">
+                    <span class="eco-badge">ECO PICK</span>
+                </div>
+                <h3 class="font-bold text-gray-900 text-[14px] mb-0.5">Bamboo Water Bottle</h3>
+                <p class="text-[11px] text-gray-400 mb-2">100% biodegradable materials</p>
+                <div class="flex items-center justify-between">
+                    <span class="font-black text-emerald-600 text-lg">$24.99</span>
+                    <button
+                        class="w-8 h-8 bg-emerald-500 rounded-xl flex items-center justify-center text-white shadow-md shadow-emerald-500/30 hover:bg-emerald-600 transition-colors">
+                        <i data-lucide="plus" class="w-4 h-4"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <h3 class="font-bold text-sm text-gray-900 mb-3 slide-up" style="animation-delay:.15s">Popular Items</h3>
+        <div class="grid grid-cols-2 gap-3 slide-up" style="animation-delay:.2s">
+            <div class="product-card card-strong rounded-[20px] p-4 cursor-pointer">
+                <div
+                    class="w-full aspect-square rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 mb-3 flex items-center justify-center overflow-hidden border border-emerald-100/50">
+                    <img src="https://images.unsplash.com/photo-1556228578-0d85b1a4d571?q=80&w=400&auto=format&fit=crop"
+                        class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <h4 class="font-bold text-gray-800 text-xs mb-0.5">Organic Soap Set</h4>
+                <p class="text-[10px] text-gray-400 mb-2">Handmade • Vegan</p>
+                <div class="flex justify-between items-center">
+                    <span class="font-black text-emerald-600 text-sm">$18.50</span>
+                    <div class="flex items-center gap-1 text-[9px] text-amber-500 font-bold">
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i> 4.8
+                    </div>
+                </div>
+            </div>
+            <div class="product-card card-strong rounded-[20px] p-4 cursor-pointer">
+                <div
+                    class="w-full aspect-square rounded-2xl bg-gradient-to-br from-amber-50 to-yellow-50 mb-3 flex items-center justify-center overflow-hidden border border-amber-100/50">
+                    <img src="https://images.unsplash.com/photo-1607006344380-b6775a0824a7?q=80&w=400&auto=format&fit=crop"
+                        class="w-full h-full object-cover rounded-2xl">
+                </div>
+                <h4 class="font-bold text-gray-800 text-xs mb-0.5">Beeswax Wraps</h4>
+                <p class="text-[10px] text-gray-400 mb-2">Reusable • Natural</p>
+                <div class="flex justify-between items-center">
+                    <span class="font-black text-emerald-600 text-sm">$12.99</span>
+                    <div class="flex items-center gap-1 text-[9px] text-amber-500 font-bold">
+                        <i data-lucide="star" class="w-3 h-3 fill-current"></i> 4.9
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bottom Nav -->
+    <div class="fixed bottom-0 inset-x-0 z-30 p-4">
+        <div class="card-strong rounded-[22px] px-6 py-3 flex justify-between items-center max-w-sm mx-auto shadow-lg">
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="bar-chart-3"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Impact</span></button>
+            <button class="flex flex-col items-center gap-1 text-emerald-600"><i data-lucide="store"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Market</span></button>
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="users"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Community</span></button>
+            <button class="flex flex-col items-center gap-1 text-gray-300"><i data-lucide="user"
+                    class="w-5 h-5"></i><span class="text-[8px] font-bold">Profile</span></button>
+        </div>
+    </div>
+
+    <script>lucide.createIcons();</script>
+</body>
+
+</html>
