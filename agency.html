@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>The Agency | Lumia Digital</title>
     <meta name="description"
-        content="Lumia Digital is a Berlin-based digital design studio creating immersive, fast, and beautiful web experiences.">
+        content="Lumia Digital is an Ahmedabad-based digital design studio creating immersive, fast, and beautiful web experiences.">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -48,7 +48,7 @@
     <meta property="og:url" content="https://lumiadigital.site/agency.html">
     <meta property="og:title" content="The Agency | Lumia Digital">
     <meta property="og:description"
-        content="Lumia Digital is a Berlin-based digital design studio creating immersive, fast, and beautiful web experiences.">
+        content="Lumia Digital is an Ahmedabad-based digital design studio creating immersive, fast, and beautiful web experiences.">
     <meta property="og:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
     <meta property="og:site_name" content="Lumia Digital">
 
@@ -57,11 +57,30 @@
     <meta property="twitter:url" content="https://lumiadigital.site/agency.html">
     <meta property="twitter:title" content="The Agency | Lumia Digital">
     <meta property="twitter:description"
-        content="Lumia Digital is a Berlin-based digital design studio creating immersive, fast, and beautiful web experiences.">
+        content="Lumia Digital is an Ahmedabad-based digital design studio creating immersive, fast, and beautiful web experiences.">
     <meta property="twitter:image" content="https://lumiadigital.site/assets/lumia-og-image.jpg">
 
     <!-- Canonical -->
     <link rel="canonical" href="https://lumiadigital.site/agency.html">
+
+    <!-- Structured Data (BreadcrumbList) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://lumiadigital.site/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "The Agency",
+        "item": "https://lumiadigital.site/agency.html"
+      }]
+    }
+    </script>
 
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
@@ -111,7 +130,12 @@
                             </div>
                         </div>
                         <!-- Web Applications -->
-                        <a href="work/webapps.html">Web Applications</a>
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/webapps.html">Web Applications <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/codeviki/index.html">Codeviki</a>
+                            </div>
+                        </div>
 
                         <!-- AI Automations -->
                         <a href="work/ai-automations.html">AI Automations</a>
@@ -161,7 +185,7 @@
         <div class="container">
             <div class="section-label">ABOUT US</div>
             <h1>The Agency</h1>
-            <p class="lead">We are Lumia Digital — a Berlin-based design studio crafting immersive digital experiences
+            <p class="lead">We are Lumia Digital — an Ahmedabad-based design studio crafting immersive digital experiences
                 at the intersection of art and engineering.</p>
         </div>
     </section>
@@ -175,7 +199,7 @@
                     <div class="stat-label">Founded</div>
                 </div>
                 <div class="stat-card">
-                    <div class="stat-number">Berlin</div>
+                    <div class="stat-number">Ahmedabad</div>
                     <div class="stat-label">Headquarters</div>
                 </div>
                 <div class="stat-card">
@@ -356,14 +380,15 @@
             <div class="footer-meta">
                 <div class="meta-col">
                     <span class="label">Socials</span>
-                    <a href="#">Instagram</a>
+                    <a href="https://www.instagram.com/lumiadigitalstudio/" target="_blank">Instagram</a>
                     <a href="#">Twitter</a>
-                    <a href="#">LinkedIn</a>
+                    <a href="https://www.linkedin.com/company/lumia-digital/" target="_blank">LinkedIn</a>
                 </div>
                 <div class="meta-col">
                     <span class="label">Contact</span>
                     <a href="mailto:hello@lumiadigital.site">hello@lumiadigital.site</a>
-                    <p>Berlin, Germany</p>
+                    <a href="tel:+916352798249">+91 6352 798 249</a>
+                    <p>Ahmedabad, India</p>
                 </div>
                 <div class="meta-links">
                     <a href="sitemap.html">Sitemap</a>

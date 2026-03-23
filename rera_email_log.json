@@ -1,0 +1,178 @@
+{
+  "sent": [
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16622/200326/310328",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16612/200326/310328",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16618/200326/311229",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/CAA16591/160326/311231",
+    "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/MAA16604/160326/010928",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16598/160326/311229",
+    "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Urban Development Authority/MAA16609/160326/311230",
+    "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/RAA16596/160326/310829",
+    "PR/GJ/AHMEDABAD/SANAND/Ahmedabad Urban Development Authority/MAA16603/160326/310330",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16588/130326/300626",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16587/130326/310329",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/CAA16585/120326/311228",
+    "PR/GJ/AHMEDABAD/BAVLA/Bavla Municipality/RAA16572/100326/311226",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16571/100326/311227",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16563/100326/310528",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/CAA16574/100326/070728",
+    "PR/GJ/AHMEDABAD/SANAND/Ahmedabad Urban Development Authority/MAA16575/100326/311232",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/CAA16551/070326/311229",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16546/070326/311227",
+    "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Urban Development Authority/RAA16552/070326/311229",
+    "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16550/070326/311230",
+    "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/RAA16554/070326/310329",
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16544/070326/311227",
+      "variant": "aura",
+      "time": "2026-03-23T09:51:19.384Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16535/030326/300928",
+      "variant": "lumia",
+      "time": "2026-03-23T09:52:00.649Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/RAA16531/030326/050129",
+      "variant": "aura",
+      "time": "2026-03-23T09:53:22.140Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16533/030326/310330",
+      "variant": "lumia",
+      "time": "2026-03-23T09:54:04.489Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Urban Development Authority/MAA16536/030326/311229",
+      "variant": "aura",
+      "time": "2026-03-23T09:55:21.813Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16526/270226/310330",
+      "variant": "lumia",
+      "time": "2026-03-23T09:55:55.744Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16518/250226/311229",
+      "variant": "aura",
+      "time": "2026-03-23T09:56:30.019Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/CAA16520/250226/301131",
+      "variant": "lumia",
+      "time": "2026-03-23T09:57:30.272Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16507/230226/011131",
+      "variant": "aura",
+      "time": "2026-03-23T09:58:37.181Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16504/230226/311231",
+      "variant": "lumia",
+      "time": "2026-03-23T09:59:08.319Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16495/200226/310329",
+      "variant": "aura",
+      "time": "2026-03-23T10:00:55.818Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/CAA16499/200226/311229",
+      "variant": "lumia",
+      "time": "2026-03-23T10:01:33.798Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16482/190226/311228",
+      "variant": "aura",
+      "time": "2026-03-23T10:02:07.016Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/MAA16483/190226/300628",
+      "variant": "lumia",
+      "time": "2026-03-23T10:03:15.320Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/PAA16486/190226/310327",
+      "variant": "aura",
+      "time": "2026-03-23T10:04:25.573Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Urban Development Authority/MAA16481/190226/301129",
+      "variant": "lumia",
+      "time": "2026-03-23T10:05:45.108Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16479/190226/311230",
+      "variant": "aura",
+      "time": "2026-03-23T10:06:51.170Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/VIRAMGAM/Viramgam Municipality/MAA16465/160226/311228",
+      "variant": "lumia",
+      "time": "2026-03-23T10:08:03.901Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16469/160226/311228",
+      "variant": "aura",
+      "time": "2026-03-23T10:08:43.739Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/MAA16472/160226/311230",
+      "variant": "lumia",
+      "time": "2026-03-23T10:09:40.932Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/PAA16473/160226/311228",
+      "variant": "aura",
+      "time": "2026-03-23T10:10:31.983Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16463/160226/300929",
+      "variant": "lumia",
+      "time": "2026-03-23T10:11:30.221Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/SANAND/Ahmedabad Urban Development Authority/RAA16464/160226/311228",
+      "variant": "aura",
+      "time": "2026-03-23T10:12:37.241Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16459/130226/040428",
+      "variant": "lumia",
+      "time": "2026-03-23T10:13:24.996Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16457/110226/310728",
+      "variant": "aura",
+      "time": "2026-03-23T10:14:27.392Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/CAA16442/070226/310330",
+      "variant": "lumia",
+      "time": "2026-03-23T10:15:34.560Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/MAA16446/070226/311229",
+      "variant": "aura",
+      "time": "2026-03-23T10:16:09.392Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/DASKROI/Ahmedabad Municipal Corporation/RAA16431/060226/310331",
+      "variant": "lumia",
+      "time": "2026-03-23T10:16:55.417Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16428/040226/311226",
+      "variant": "aura",
+      "time": "2026-03-23T10:17:40.257Z"
+    },
+    {
+      "id": "PR/GJ/AHMEDABAD/AHMEDABAD CITY/Ahmedabad Municipal Corporation/RAA16425/040226/311227",
+      "variant": "lumia",
+      "time": "2026-03-23T10:18:31.824Z"
+    }
+  ],
+  "failed": [],
+  "lastRun": "2026-03-23T10:18:31.824Z"
+}

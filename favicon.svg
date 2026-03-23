@@ -7,11 +7,11 @@
     </linearGradient>
   </defs>
 
-  <!-- main geometric slice -->
+  <!-- main geometric slice - centered -->
   <path d="M64 40c18-14 56-22 96 6 46 32 38 74 8 106-30 32-58 34-96 10-34-22-36-62-8-98 6-8 12-12 16-20z"
-        fill="url(#grad2)" opacity="0.98" transform="translate(4 4)"/>
+        fill="url(#grad2)" opacity="0.98" transform="translate(7 26)"/>
 
-  <!-- counter-slice for negative-space / digital cut -->
+  <!-- counter-slice for negative-space / digital cut - centered -->
   <path d="M84 84c18-12 46-10 76 10 20 14 28 36 12 56-18 22-44 28-74 14-26-12-34-40-14-70 6-8 8-12 14-10z"
-        fill="#ffffff" fill-opacity="0.08"/>
+        fill="#ffffff" fill-opacity="0.08" transform="translate(7 26)"/>
 </svg>

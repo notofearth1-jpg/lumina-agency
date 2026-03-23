@@ -113,6 +113,25 @@
     <!-- Canonical -->
     <link rel="canonical" href="https://lumiadigital.site/blog.html">
 
+    <!-- Structured Data (BreadcrumbList) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "name": "Home",
+        "item": "https://lumiadigital.site/"
+      },{
+        "@type": "ListItem",
+        "position": 2,
+        "name": "Insights & Blog",
+        "item": "https://lumiadigital.site/blog.html"
+      }]
+    }
+    </script>
+
     <!-- Favicon (Ensure consistency) -->
     <link rel="icon" type="image/png" href="/favicon.png">
 </head>
@@ -159,7 +178,12 @@
                             </div>
                         </div>
                         <!-- Web Applications -->
-                        <a href="work/webapps.html">Web Applications</a>
+                        <div class="nav-dropdown nested-dropdown">
+                            <a href="work/webapps.html">Web Applications <span class="dropdown-arrow">›</span></a>
+                            <div class="dropdown-menu sub-menu">
+                                <a href="projects/codeviki/index.html">Codeviki</a>
+                            </div>
+                        </div>
 
                         <!-- AI Automations -->
                         <a href="work/ai-automations.html">AI Automations</a>
@@ -269,8 +293,8 @@
                 <div class="footer-col">
                     <h4>Socials</h4>
                     <ul>
-                        <li><a href="#">Instagram</a></li>
-                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="https://www.instagram.com/lumiadigitalstudio/" target="_blank">Instagram</a></li>
+                        <li><a href="https://www.linkedin.com/company/lumia-digital/" target="_blank">LinkedIn</a></li>
                         <li><a href="#">Twitter</a></li>
                     </ul>
                 </div>
