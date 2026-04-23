@@ -1,0 +1,3 @@
+[submodule "projects/codeviki"]
+	path = projects/codeviki
+	url = https://github.com/Lumia-Digital/codeviki.git
