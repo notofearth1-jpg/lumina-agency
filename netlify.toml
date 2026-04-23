@@ -1,5 +1,5 @@
 [build]
-  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF projects/codeviki/ netlify.toml"
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- . ':!lumia-orchestrator' ':!lumia-social-agents' ':!lumia-socials'"
   publish = "."
   functions = "netlify/functions"
 
